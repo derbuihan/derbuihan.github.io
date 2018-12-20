@@ -58,7 +58,7 @@
     },
     "datePublished": "2018-12-20",
     "description": "",
-    "wordCount": 279
+    "wordCount": 447
   }
 </script>
   
@@ -157,7 +157,7 @@
 
   <small>
   &middot; Read in about 1 min
-  &middot; (279 words)
+  &middot; (447 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f" onclick="window.open(this.href, 'mywin',
@@ -230,17 +230,42 @@
 (package-initialize)
 </code></pre>
 
-<p>を~/.emacs/init.elに追加する。
+<p>を~/.emacs.d/init.elに追加する。
 これでemacsでpackage managerを使うことができる。</p>
 
 <p>emacsを起動して</p>
 
 <ol>
-<li>M-x package-refresh-contents RET</li>
+<li>M-x package-refresh-contents RET  ←初回のみ実行</li>
 <li>M-x Package-install RET proof-general RET</li>
 </ol>
 
 <p>でproof-generalをインストールすることができる。</p>
+
+<p>brewを用いてインストールして、No such file or directory, coqtopと出た時は、</p>
+
+<pre><code>(custom-set-variables '(coq-prog-name &quot;/usr/local/bin/coqtop&quot;) '(proof-three-window-enable t))
+</code></pre>
+
+<p>を~/.emacs.d/init.elを追加すれば解決する。</p>
+
+<h4 id="補完のパッケージの追加">補完のパッケージの追加</h4>
+
+<p>company-coqは最強なのでこれも入れましょう。
+emacsを起動して、</p>
+
+<ol>
+<li>M-x Package-install RET company-coq RET</li>
+</ol>
+
+<p>を実行。</p>
+
+<p>~/.emacs.d/init.elに</p>
+
+<pre><code>(add-hook 'coq-mode-hook #'company-coq-mode)
+</code></pre>
+
+<p>を追加すると良い。</p>
 
 </div>
 
