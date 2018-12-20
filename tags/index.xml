@@ -6,10 +6,28 @@
     <description>Recent content in Tags on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 20 Dec 2018 12:43:24 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 20 Dec 2018 15:17:22 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.derbuihan.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Coq</title>
+      <link>https://blog.derbuihan.xyz/tags/coq/</link>
+      <pubDate>Thu, 20 Dec 2018 15:17:22 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/tags/coq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Emacs</title>
+      <link>https://blog.derbuihan.xyz/tags/emacs/</link>
+      <pubDate>Thu, 20 Dec 2018 15:17:22 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/tags/emacs/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Hugo</title>

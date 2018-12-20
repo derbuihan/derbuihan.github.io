@@ -10,5 +10,14 @@
 	<atom:link href="https://blog.derbuihan.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Coq</title>
+      <link>https://blog.derbuihan.xyz/categories/coq/</link>
+      <pubDate>Thu, 20 Dec 2018 15:17:22 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/categories/coq/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

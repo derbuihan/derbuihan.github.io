@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coq on derbuihan blog</title>
+    <link>https://blog.derbuihan.xyz/tags/coq/</link>
+    <description>Recent content in Coq on derbuihan blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Thu, 20 Dec 2018 15:17:22 +0900</lastBuildDate>
+    
+	<atom:link href="https://blog.derbuihan.xyz/tags/coq/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Proof-Generalを用いたCoqの環境構築</title>
+      <link>https://blog.derbuihan.xyz/2018/12/20/coq_install/</link>
+      <pubDate>Thu, 20 Dec 2018 15:17:22 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/2018/12/20/coq_install/</guid>
+      <description>Mac編 brewとbrew caskを用いた環境構築を行います。 GUI版Emacsのインストール brew cask install emacs Coqのインストール brewでCoqを</description>
+    </item>
+    
+  </channel>
+</rss>
