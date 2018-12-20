@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>hugoを使って軽量ブログを作る  &middot; derbuihan blog</title>
+  <title>Proof-Generalを用いたCoqの環境構築  &middot; derbuihan blog</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -14,33 +14,29 @@
 
 <meta name="description" content="" />
 
-<meta name="keywords" content="Hugo, ">
+<meta name="keywords" content="">
 
 
-<meta property="og:title" content="hugoを使って軽量ブログを作る  &middot; derbuihan blog ">
+<meta property="og:title" content="Proof-Generalを用いたCoqの環境構築  &middot; derbuihan blog ">
 <meta property="og:site_name" content="derbuihan blog"/>
-<meta property="og:url" content="https://blog.derbuihan.xyz/2018/12/20/start_blog_hugo/" />
+<meta property="og:url" content="https://blog.derbuihan.xyz/2018/12/20/coq_install/" />
 <meta property="og:locale" content="ja-jp">
 
 
 <meta property="og:type" content="article" />
 <meta property="og:description" content=""/>
-<meta property="og:article:published_time" content="2018-12-20T12:43:24&#43;09:00" />
-<meta property="og:article:modified_time" content="2018-12-20T12:43:24&#43;09:00" />
+<meta property="og:article:published_time" content="2018-12-20T15:17:22&#43;09:00" />
+<meta property="og:article:modified_time" content="2018-12-20T15:17:22&#43;09:00" />
 
-  
-    
-<meta property="og:article:tag" content="Hugo">
-    
   
 
   
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@" />
-<meta name="twitter:title" content="hugoを使って軽量ブログを作る" />
+<meta name="twitter:title" content="Proof-Generalを用いたCoqの環境構築" />
 <meta name="twitter:description" content="" />
-<meta name="twitter:url" content="https://blog.derbuihan.xyz/2018/12/20/start_blog_hugo/" />
+<meta name="twitter:url" content="https://blog.derbuihan.xyz/2018/12/20/coq_install/" />
 <meta name="twitter:domain" content="https://blog.derbuihan.xyz/">
   
 
@@ -49,21 +45,21 @@
   {
     "@context": "http://schema.org",
     "@type": "Article",
-    "headline": "hugoを使って軽量ブログを作る",
+    "headline": "Proof-Generalを用いたCoqの環境構築",
     "author": {
       "@type": "Person",
       "name": "http://profiles.google.com/+?rel=author"
     },
     "datePublished": "2018-12-20",
     "description": "",
-    "wordCount": 345
+    "wordCount": 279
   }
 </script>
   
 
 
 
-<link rel="canonical" href="https://blog.derbuihan.xyz/2018/12/20/start_blog_hugo/" />
+<link rel="canonical" href="https://blog.derbuihan.xyz/2018/12/20/coq_install/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
 <meta name="generator" content="Hugo 0.52" />
@@ -143,7 +139,7 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
   <div class="title-metas text-center">
 
-    <h1>hugoを使って軽量ブログを作る
+    <h1>Proof-Generalを用いたCoqの環境構築
 </h1>
 
     <div class="metas">
@@ -155,35 +151,30 @@
 
   <small>
   &middot; Read in about 1 min
-  &middot; (345 words)
+  &middot; (279 words)
   &middot; 
 <span class="share-box">Share this on:
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fstart_blog_hugo%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
 
-    <a href="https://twitter.com/intent/tweet?text=hugo%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e8%bb%bd%e9%87%8f%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%82%8b&amp;url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fstart_blog_hugo%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://twitter.com/intent/tweet?text=Proof-General%e3%82%92%e7%94%a8%e3%81%84%e3%81%9fCoq%e3%81%ae%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89&amp;url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 
-    <a href="https://plus.google.com/share?url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fstart_blog_hugo%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
 
-    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fstart_blog_hugo%2f" onclick="window.open(this.href, 'mywin',
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fstart_blog_hugo%2f&amp;title=hugo%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e8%bb%bd%e9%87%8f%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%82%8b" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f&amp;title=Proof-General%e3%82%92%e7%94%a8%e3%81%84%e3%81%9fCoq%e3%81%ae%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
 
-    <a href="mailto:?subject=hugo%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e8%bb%bd%e9%87%8f%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%82%8b&amp;body=Check out this site https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fstart_blog_hugo%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+    <a href="mailto:?subject=Proof-General%e3%82%92%e7%94%a8%e3%81%84%e3%81%9fCoq%e3%81%ae%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89&amp;body=Check out this site https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
   </span>
 
   </small>
 
 <div class="margin-10">
-  <i class="fa fa-tags"></i>
-  
-  <a href="https://blog.derbuihan.xyz/tags/hugo" class="label label-primary">Hugo</a>
-  
-
 
 </div>
 
@@ -197,49 +188,46 @@
       <div class="content">
   
 
-<h3 id="hugoとは">Hugoとは</h3>
+<h3 id="mac編">Mac編</h3>
 
-<p>オープンソースの軽量ブログジェジェネレーターです。
-Markdownで書くことが出来て楽です。</p>
+<p>brewとbrew caskを用いた環境構築を行います。</p>
 
-<h3 id="インストール方法">インストール方法</h3>
+<h4 id="gui版emacsのインストール">GUI版Emacsのインストール</h4>
 
-<pre><code>brew install hugo
+<pre><code>brew cask install emacs
 </code></pre>
 
-<h3 id="ブログの作成">ブログの作成</h3>
+<h4 id="coqのインストール">Coqのインストール</h4>
 
-<pre><code>hugo new site hugo
+<p>brewでCoqをインストールします。</p>
+
+<pre><code>brew install coq
 </code></pre>
 
-<h3 id="記事の作成">記事の作成</h3>
+<h4 id="emacsの設定">Emacsの設定</h4>
 
-<pre><code>hugo new post/fuga.md
+<p>最近のEmacsはパッケージマネージャも付属しているので、それを用いてProof-Generalもインストールします。</p>
+
+<pre><code>(require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl &quot;http&quot; &quot;https&quot;)))
+  (add-to-list 'package-archives
+               (cons &quot;melpa&quot; (concat proto &quot;://melpa.org/packages/&quot;)) t))
+(package-initialize)
 </code></pre>
 
-<h3 id="localhostでテスト">localhostでテスト</h3>
+<p>を~/.emacs/init.elに追加する。
+これでemacsでpackage managerを使うことができる。</p>
 
-<pre><code>hugo server
-</code></pre>
+<p>emacsを起動して</p>
 
-<p>を実行し、<a href="http://localhost:1313/">http://localhost:1313/</a> にアクセス。
-この時はpublicには何も作成されない。</p>
+<ol>
+<li>M-x package-refresh-contents RET</li>
+<li>M-x Package-install RET proof-general RET</li>
+</ol>
 
-<h3 id="ページを作成する">ページを作成する。</h3>
-
-<pre><code>hugo
-</code></pre>
-
-<p>を実行するとpublicにサイトが作成される。</p>
-
-<h3 id="gitで管理する方法">gitで管理する方法</h3>
-
-<p><a href="https://chanmitsu55.github.io/2017/12/25/2017-12-25-create-blog-by-hugo/">HUGOでブログ作成 → GitHub Pagesで公開する手順</a> にgitのサブモジュールを用いて管理する方法が素晴らしいのでやると良い。</p>
-
-<h3 id="感想">感想</h3>
-
-<p>GitHub Pagesで楽にブログができて、実質ドメイン代しかかからないのが素晴らしいと思いました。
-gitでpushすると更新なのでネットがないところでもblogが書けるのもいいと思います。</p>
+<p>でproof-generalをインストールすることができる。</p>
 
 </div>
 
@@ -247,22 +235,22 @@ gitでpushすると更新なのでネットがないところでもblogが書け
       <footer>
   
 <span class="share-box">Share this on:
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fstart_blog_hugo%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
 
-    <a href="https://twitter.com/intent/tweet?text=hugo%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e8%bb%bd%e9%87%8f%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%82%8b&amp;url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fstart_blog_hugo%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://twitter.com/intent/tweet?text=Proof-General%e3%82%92%e7%94%a8%e3%81%84%e3%81%9fCoq%e3%81%ae%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89&amp;url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 
-    <a href="https://plus.google.com/share?url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fstart_blog_hugo%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
 
-    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fstart_blog_hugo%2f" onclick="window.open(this.href, 'mywin',
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fstart_blog_hugo%2f&amp;title=hugo%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e8%bb%bd%e9%87%8f%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%82%8b" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f&amp;title=Proof-General%e3%82%92%e7%94%a8%e3%81%84%e3%81%9fCoq%e3%81%ae%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
 
-    <a href="mailto:?subject=hugo%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e8%bb%bd%e9%87%8f%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%82%8b&amp;body=Check out this site https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fstart_blog_hugo%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+    <a href="mailto:?subject=Proof-General%e3%82%92%e7%94%a8%e3%81%84%e3%81%9fCoq%e3%81%ae%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89&amp;body=Check out this site https%3a%2f%2fblog.derbuihan.xyz%2f2018%2f12%2f20%2fcoq_install%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
   </span>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -270,13 +258,13 @@ gitでpushすると更新なのでネットがないところでもblogが書け
   
     <nav><ul class="pager">
     
-
+        <li class="previous">
+          <a href="https://blog.derbuihan.xyz/2018/12/20/start_blog_hugo/" title="hugoを使って軽量ブログを作る">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
     
-      <li class="next">
-        <a href="https://blog.derbuihan.xyz/2018/12/20/coq_install/" title="Proof-Generalを用いたCoqの環境構築">
-            Next <span aria-hidden="true">&rarr;</span>
-        </a>
-      </li>
+
     
     </ul> </nav>
   
