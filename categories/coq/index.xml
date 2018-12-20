@@ -13,10 +13,10 @@
     
     <item>
       <title>Proof-Generalを用いたCoqの環境構築</title>
-      <link>https://blog.derbuihan.xyz/2018/12/20/coq_install/</link>
+      <link>https://blog.derbuihan.xyz/posts/coq_install/</link>
       <pubDate>Thu, 20 Dec 2018 15:17:22 +0900</pubDate>
       
-      <guid>https://blog.derbuihan.xyz/2018/12/20/coq_install/</guid>
+      <guid>https://blog.derbuihan.xyz/posts/coq_install/</guid>
       <description>Mac編 brewとbrew caskを用いた環境構築を行います。 GUI版Emacsのインストール brew cask install emacs Coqのインストール brewでCoqを</description>
     </item>
     

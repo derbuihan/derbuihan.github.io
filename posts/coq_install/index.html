@@ -3,8 +3,8 @@
 <head>
   
   <meta charset="utf-8">
-  <title>Tags</title>
-  <meta name="description" content="Tags">
+  <title>Proof-Generalを用いたCoqの環境構築</title>
+  <meta name="description" content="Proof-Generalを用いたCoqの環境構築">
   <meta name="author" content="derbuihan">
   
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -337,8 +337,6 @@ body {
 
   
   
-  <link href="https://blog.derbuihan.xyz/tags/index.xml" rel="alternate" type="application/rss+xml" title="derbuihan blog Feed" />
-  
 
   <meta name="generator" content="Hugo 0.52" />
 
@@ -375,33 +373,111 @@ body {
     <div class="pure-u-1-24 pure-u-md-5-24"></div>
 </div>
 
+
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-md-5-24"></div>
   <div class="pure-u-11-12 pure-u-md-7-12">
-    <p class="posts-name">Tags:</p>
-    <div class="post-content">
-      <ul class="posts">
+    <div class="post">
+
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2018-12-20 15:17:22 &#43;0900 JST">
+            
+              12-20-2018
+            
+          </time>
         
         
-        <li>
-          <a href="coq">coq</a>
-          <span>&#40;1&#41;</span>
-        </li>
+        |
         
-        <li>
-          <a href="emacs">emacs</a>
-          <span>&#40;1&#41;</span>
-        </li>
         
-        <li>
-          <a href="hugo">hugo</a>
-          <span>&#40;1&#41;</span>
-        </li>
+        tags: [ <a href="https://blog.derbuihan.xyz/tags/coq">Coq</a> <a href="https://blog.derbuihan.xyz/tags/emacs">Emacs</a> ]
         
-      </ul>
+
+        
+        categories: [ <a href="https://blog.derbuihan.xyz/categories/coq">Coq</a> ]
+        
+
+        
+        </p>
+        <h1>Proof-Generalを用いたCoqの環境構築</h1>
+      </div>
+
+      <div class="post-content">
+        
+
+<h3 id="mac編">Mac編</h3>
+
+<p>brewとbrew caskを用いた環境構築を行います。</p>
+
+<h4 id="gui版emacsのインストール">GUI版Emacsのインストール</h4>
+
+<pre><code>brew cask install emacs
+</code></pre>
+
+<h4 id="coqのインストール">Coqのインストール</h4>
+
+<p>brewでCoqをインストールします。</p>
+
+<pre><code>brew install coq
+</code></pre>
+
+<h4 id="emacsの設定">Emacsの設定</h4>
+
+<p>最近のEmacsはパッケージマネージャも付属しているので、それを用いてProof-Generalもインストールします。</p>
+
+<pre><code>(require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl &quot;http&quot; &quot;https&quot;)))
+  (add-to-list 'package-archives
+               (cons &quot;melpa&quot; (concat proto &quot;://melpa.org/packages/&quot;)) t))
+(package-initialize)
+</code></pre>
+
+<p>を~/.emacs.d/init.elに追加する。
+これでemacsでpackage managerを使うことができる。</p>
+
+<p>emacsを起動して</p>
+
+<ol>
+<li>M-x package-refresh-contents RET  ←初回のみ実行</li>
+<li>M-x Package-install RET proof-general RET</li>
+</ol>
+
+<p>でproof-generalをインストールすることができる。</p>
+
+<p>brewを用いてインストールして、No such file or directory, coqtopと出た時は、</p>
+
+<pre><code>(custom-set-variables '(coq-prog-name &quot;/usr/local/bin/coqtop&quot;) '(proof-three-window-enable t))
+</code></pre>
+
+<p>を~/.emacs.d/init.elを追加すれば解決する。</p>
+
+<h4 id="補完のパッケージの追加">補完のパッケージの追加</h4>
+
+<p>company-coqは最強なのでこれも入れましょう。
+emacsを起動して、</p>
+
+<ol>
+<li>M-x Package-install RET company-coq RET</li>
+</ol>
+
+<p>を実行。</p>
+
+<p>~/.emacs.d/init.elに</p>
+
+<pre><code>(add-hook 'coq-mode-hook #'company-coq-mode)
+</code></pre>
+
+<p>を追加すると良い。</p>
+
+      </div>
     </div>
   </div>
   <div class="pure-u-1-24 pure-u-md-5-24"></div>
+</div>
+
 <div class="footer pure-g">
   <div class="pure-u-1-24 pure-u-md-5-24"></div>
   <div class="pure-u-11-12 pure-u-md-7-12">
@@ -430,8 +506,6 @@ body {
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
-        <a href="https://blog.derbuihan.xyz/tags/index.xml" class="pure-menu-link pull-right">RSS</a>
         
       </div>
       
