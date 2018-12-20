@@ -3,17 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.derbuihan.xyz/2018/12/20/start_blog_hugo/</loc>
+    <lastmod>2018-12-20T12:43:24+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.derbuihan.xyz/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://blog.derbuihan.xyz/tags/hugo/</loc>
+    <lastmod>2018-12-20T12:43:24+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.derbuihan.xyz/post/</loc>
+    <lastmod>2018-12-20T12:43:24+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.derbuihan.xyz/tags/</loc>
+    <lastmod>2018-12-20T12:43:24+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.derbuihan.xyz/</loc>
+    <lastmod>2018-12-20T12:43:24+09:00</lastmod>
     <priority>0</priority>
   </url>
   
