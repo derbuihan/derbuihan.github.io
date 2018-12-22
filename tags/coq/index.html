@@ -13,15 +13,6 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <meta property="og:url" content="https://blog.derbuihan.xyz" />
-  <meta property="og:title" content="Coq" />
-  <meta property="og:description" content="" />
-  <meta property="og:type" content="summary">
-  <meta property="og:site_name" content="derbuihan blog" />
-  <meta property="og:locale" content="ja_JP" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="@derbuihan" />
-  
   <noscript>
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://blog.derbuihan.xyz/css/fonts.css">
@@ -87,9 +78,8 @@ body {
 }
 
 .nav-menu {
-  margin-top: 5px;
-  padding-bottom: 5px;
-	border-bottom: 1px solid #e3e3e3;
+	padding: 10px 0;
+	border-bottom: 2px solid #e3e3e3;
 }
 
 .pure-menu-heading {
@@ -149,7 +139,9 @@ body {
 }
 
 .posts li {
-	margin-bottom: 1em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	border-bottom: solid 2px #d7d7d7;
 }
 
 .posts li a {
@@ -165,7 +157,8 @@ body {
 	font-family: verdana,arial,helvetica,sans-serif;
 	color:#888;
 	font-size:0.75em;
-	margin-bottom:0;
+	padding: 0;
+	margin: 0;
 }
 
 .footnote a {
@@ -263,7 +256,12 @@ body {
 }
 
 .post h1 {
-	font-size:28px;
+	font-size:27px;
+	padding: 0.4em 0.5em;
+	color: #494949;
+	background: #f4f4f4;
+	border-left: solid 5px #7db4e6;
+	border-bottom: solid 3px #d7d7d7;
 }
 
 .post h2 {
@@ -272,10 +270,17 @@ body {
 
 .post h3 {
 	font-size:23px;
+	padding: 0.25em 0.5em;
+	margin-left: 0em;
+	color: #494949;
+	background: transparent;
+	border-left: solid 5px #7db4e6;
 }
 
 .post h4 {
 	font-size:21px;
+	background: linear-gradient(transparent 70%, #DFF2FC 50%);
+	margin-left: 0.5em;
 }
 
 .post h5 {
@@ -286,17 +291,21 @@ body {
 	font-size:18px;
 }
 
+.post-content > p {
+	margin-left: 1.0em;
+}
+
 .post-title{
 		margin-top: 0;
-		margin-bottom: 2em;
+		margin-bottom: 0;
 }
 
 .post-title h1 {
 	font-weight:bold;
-	font-size:39px;
-	line-height: 40px;
-	margin-top: 0;
-	margin-bottom: 0;
+	font-size:27px;
+	line-height: 28px;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
 }
 
 @media screen and (max-width:767px){
@@ -357,6 +366,15 @@ body {
 
   
   
+<meta property="og:url" content="https://blog.derbuihan.xyz" />
+<meta property="og:title" content="Coq" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="summary">
+<meta property="og:site_name" content="derbuihan blog" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@derbuihan" />
+
 </head>
 <body>
 
@@ -394,7 +412,7 @@ body {
   <div class="pure-u-1-24 pure-u-md-5-24"></div>
   <div class="pure-u-11-12 pure-u-md-7-12">
     <div class="post-content">
-      <p class="posts-name">Coq:</p>
+      <p class="posts-name">Coq</p>
 
       <ul class="posts">
         

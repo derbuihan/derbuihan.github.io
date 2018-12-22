@@ -6,10 +6,19 @@
     <description>Recent content on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 20 Dec 2018 15:17:22 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 23 Dec 2018 02:29:09 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.derbuihan.xyz/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About</title>
+      <link>https://blog.derbuihan.xyz/about/</link>
+      <pubDate>Sun, 23 Dec 2018 02:29:09 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/about/</guid>
+      <description>自己紹介 物理勉強してます。 Monster飲むのやめます。 このブログの目的 未来の自分へのドキュメント HugoとGithub Pagesを試す。</description>
+    </item>
     
     <item>
       <title>Proof-Generalを用いたCoqの環境構築</title>
@@ -26,7 +35,7 @@
       <pubDate>Thu, 20 Dec 2018 12:43:24 +0900</pubDate>
       
       <guid>https://blog.derbuihan.xyz/posts/start_blog_hugo/</guid>
-      <description>Hugoとは オープンソースの軽量ブログジェジェネレーターです。 Markdownで書くことが出来て楽です。 インストール方法 brew install hugo ブログの作成 hugo</description>
+      <description>Hugoとは オープンソースの軽量ブログジェジェネレーターです。 Markdownで書くことが出来て楽です。 Hugoの使い方 インストール方法 brew install</description>
     </item>
     
   </channel>
