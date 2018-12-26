@@ -308,6 +308,65 @@ body {
 	margin-bottom: 0.5em;
 }
 
+table {
+	width:100%;
+	border-right:#000 solid 1px;
+	border-collapse: collapse;
+}
+
+table thead th {
+	background:#e0e0e0;
+	padding:10px 15px;
+	border-right:#000 solid 1px;
+	border-bottom:#000 solid 1px;
+}
+table thead th:first-child {
+	border-left:#000 solid 1px;
+}
+table thead:first-child {
+	border-top:#000 solid 1px;
+}
+table thead th:last-child {
+	border-right:#000 solid 1px;
+}
+table tbody th {
+	background:#e0e0e0;
+	padding:10px 15px;
+	border-bottom:#000 solid 1px;
+	vertical-align:top;
+}
+table tbody tr:last-child th {
+	border-bottom:#000 solid 1px;
+}
+table tbody td {
+	background:#FFF;
+	padding:10px 15px;
+	border-left:#000 solid 1px;
+	border-bottom:#000 solid 1px;
+	vertical-align:top;
+}
+
+@media screen and (max-width: 640px) {
+table.table01 thead {
+	display:none;
+}
+table.table01 tbody th {
+	display:block;
+}
+table.table01 tbody td {
+	display:block;
+}
+table.table01 tbody td::before {
+	content: attr(label);
+	float: left;
+	clear:both;
+	font-weight:bold;
+}
+table.table01 tbody td p {
+	padding-left:6em;
+}
+}
+
 @media screen and (max-width: 1023px){
 	.desktop {
 		display: none;
@@ -503,10 +562,42 @@ emacsを起動して、</p>
 
 <p>を追加すると良い。</p>
 
+<h3 id="proofgeneralの使い方">ProofGeneralの使い方</h3>
+
+<p>ProofGeneralで使うキーバインド</p>
+
+<table>
+<thead>
+<tr>
+<th>キー</th>
+<th>動作</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>C-c C-n</td>
+<td>次の.まで進む</td>
+</tr>
+
+<tr>
+<td>C-c C-u</td>
+<td>次の.まで進む</td>
+</tr>
+
+<tr>
+<td>C-c C-Enter</td>
+<td>カーソル位置まで進める</td>
+</tr>
+</tbody>
+</table>
+
+<p>参考: <a href="http://proofcafe.org/wiki/ProofGeneral/Keybinds">http://proofcafe.org/wiki/ProofGeneral/Keybinds</a></p>
+
 <h3 id="感想">感想</h3>
 
 <ul>
-<li>Proof-Generalの使いやすさよりも、company-coqの使いやすさのが上なのにProof-Generalのが有名なのはなんでだろう。</li>
+<li>CoqIDEもいいけど、Emacs + ProofGeneral + company-coqをやると最強になる。</li>
 </ul>
 
       </div>
