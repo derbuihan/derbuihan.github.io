@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>derbuihan blog</title>
+  <title>Coqで集合論 その1</title>
   <meta name="description"
     
-      content="未来の自分へのドキュメント"
+      content="はじめに Coqで集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のためauto.を使わないで証明を行います。 集合論 Section Ensembles. (* こ"
     
   >
   <meta name="author" content="derbuihan">
@@ -418,16 +418,14 @@ table.table01 tbody td p {
 
   
   
-  <link href="https://blog.derbuihan.xyz/index.xml" rel="alternate" type="application/rss+xml" title="derbuihan blog Feed" />
-  
 
   <meta name="generator" content="Hugo 0.52" />
 
   
   
 <meta property="og:url" content="https://blog.derbuihan.xyz" />
-<meta property="og:title" content="derbuihan blog" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="Coqで集合論 その1" />
+<meta property="og:description" content="はじめに Coqで集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のためauto.を使わないで証明を行います。 集合論 Section Ensembles. (* こ" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -468,99 +466,169 @@ table.table01 tbody td p {
 
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
-	<div class="pure-u-11-12 pure-u-lg-7-12">
-	<div class="post-content">
-	
+  <div class="pure-u-11-12 pure-u-lg-7-12">
+    <div class="post">
 
-	  <ul class="posts">
-		
-		
-		
-		<li>
-		  
-		  <a class="post-list" href="https://blog.derbuihan.xyz/posts/coq_set_theory/">Coqで集合論 その1</a>
-
-      <p class="footnote">
-        <time datetime="2018-12-27 04:42:41 &#43;0900 JST">
-          
-            2018-12-27
-          
-        </time>
-
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2018-12-27 04:42:41 &#43;0900 JST">
+            
+              2018-12-27
+            
+          </time>
+        
+        
         
 
         
 
         
+        </p>
+        <h1>Coqで集合論 その1</h1>
+      </div>
 
+      <div class="post-content">
         
 
-      </p>
-    </li>
-    
-    
-		
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://blog.derbuihan.xyz/posts/coq_install/">Proof-Generalを用いたCoqの環境構築</a>
+<h3 id="はじめに">はじめに</h3>
 
-      <p class="footnote">
-        <time datetime="2018-12-20 15:17:22 &#43;0900 JST">
-          
-            2018-12-20
-          
-        </time>
+<p>Coqで集合を扱う標準ライブラリ<a href="https://coq.inria.fr/library/Coq.Sets.Ensembles.html">Ensembles</a>の再開発を行います。
+勉強のためauto.を使わないで証明を行います。</p>
 
-        
-        |
-        
+<h3 id="集合論">集合論</h3>
 
-        
-        tags: [ <a href="https://blog.derbuihan.xyz/tags/coq">#Coq</a> <a href="https://blog.derbuihan.xyz/tags/emacs">#Emacs</a> ]
-        
+<pre><code>Section Ensembles.
 
-        
-        categories: [ <a href="https://blog.derbuihan.xyz/categories/coq">Coq</a> ]
-        
+  (* ここにコードを書く *)
 
-        
+End Ensembles.
+</code></pre>
 
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://blog.derbuihan.xyz/posts/start_blog_hugo/">hugoを使って軽量ブログを作る</a>
+<h4 id="集合とは">集合とは</h4>
 
-      <p class="footnote">
-        <time datetime="2018-12-20 12:43:24 &#43;0900 JST">
-          
-            2018-12-20
-          
-        </time>
+<p>1変数の述語を用いて集合論を定義する。</p>
 
-        
-        |
-        
+<pre><code>  Variable U : Type.
+  Definition Ensemble := U -&gt; Prop.
+</code></pre>
 
-        
-        tags: [ <a href="https://blog.derbuihan.xyz/tags/hugo">#Hugo</a> ]
-        
+<p>Uは述語の変数の型であり、EnsembleはUを受け取って命題を返す1変数の述語である。
+今回はEnsembleを集合とする。</p>
 
-        
+<h4 id="を定義">∈を定義</h4>
 
-        
+<p>元aが集合Aに含まれるということは、変数aと1変数の述語AについてA(a)ということである。</p>
 
-      </p>
-    </li>
-    
-    
-    </ul>
-  </div>
+<p>例): 「ソクラテスが人間という集合に含まれる。」は、「ソクラテスが人間ある。」ということである。</p>
+
+<pre><code>  Definition In (A : Ensemble) (a : U) : Prop := A a.
+  Notation &quot;a ∈ A&quot; := (In A a) (at level 55,no associativity).
+  Notation &quot;a ∉ A&quot; := (~ In A a) (at level 55,no associativity).
+</code></pre>
+
+<p>Notationを定義すると楽しくなってきますね。</p>
+
+<p>排中律を示す。
+その前に</p>
+
+<pre><code>Require Import Classical.
+</code></pre>
+
+<p>をSectionの一番最初に追加しましょう。
+(Coqは直観論理なのでClassicalをImportしないと排中律を示すことが出来ない。)</p>
+
+<pre><code>  Lemma excluded_middle : forall A : Ensemble , forall a : U, (a ∈ A) \/ (a ∉ A).
+  Proof.
+    unfold In.
+    intros.
+    apply classic.
+  Qed.
+</code></pre>
+
+<p>unfoldは定義を展開するTacticである。</p>
+
+<h4 id="を定義-1">⊆を定義</h4>
+
+<p>A ⊆ Bは任意のAの元はBに含まれることである。</p>
+
+<pre><code>  Definition Include (A : Ensemble) (B : Ensemble) : Prop := forall a : U, a ∈ A -&gt; a ∈ B.
+  Notation &quot;A ⊆ B&quot; := (Include A B) (at level 54, no associativity).
+</code></pre>
+
+<p>⊆の反射律と推移律を示す。</p>
+
+<pre><code>  Lemma reflexive : forall A : Ensemble, A ⊆ A.
+  Proof.
+    unfold Include.
+    intros.
+    trivial.
+  Qed.
+
+  Lemma transitive : forall A B C : Ensemble, A ⊆ B /\ B ⊆ C -&gt; A ⊆ C.
+  Proof.
+    unfold Include.
+    intros.
+    destruct H.
+    specialize (H a).
+    specialize (H1 a).
+    apply H1.
+    apply H.
+    trivial.
+  Qed.
+</code></pre>
+
+<p>auto.を使うと楽に証明できるけど、なんとなく全部書く。</p>
+
+<h4 id="を定義-2">≡を定義</h4>
+
+<p>「A ≡ B」は「A ⊆ B かつ B ⊆ A」ということである。</p>
+
+<pre><code>  Definition Same_set (A : Ensemble) (B : Ensemble) : Prop := A ⊆ B /\ B ⊆ A.
+  Notation &quot;A ≡ B&quot; := (Same_set A B) (at level 57, no associativity).
+</code></pre>
+
+<h4 id="空集合と全体集合を定義">空集合と全体集合を定義</h4>
+
+<p>空集合はどんな変数を取ってもFalseを返し、全体集合はどんな変数を取ってもTrueを返す。</p>
+
+<pre><code>  Definition Empty_set : Ensemble := fun a : U =&gt; False.
+  Notation &quot;∅&quot; := Empty_set.
+
+  Definition Full_set : Ensemble := fun a : U =&gt; True.
+  Notation Ω := Full_set.
+</code></pre>
+
+<p>空集合は任意の集合の部分集合であり、全体集合は任意の集合を部分集合にもつ。</p>
+
+<pre><code>Lemma empty_subset : forall A : Ensemble, ∅ ⊆ A.
+Proof.
+  unfold Include.
+  intros.
+  contradiction.
+Qed.
+
+Lemma subset_full : forall A : Ensemble, A ⊆ Ω.
+Proof.
+  unfold Include.
+  intros.
+  unfold Full_set.
+  unfold In.
+  trivial.
+Qed.
+</code></pre>
+
+<p>仮定にFalseがあるとき任意の命題を示すことができる。
+この時contradiction.を用いる。</p>
+
+<h3 id="感想">感想</h3>
+
+<ul>
+<li>ラッセルのパラドックスは型をつけると回避できるとかどっかで聞いたけどよくわからない。</li>
+<li>Coqで公理的集合論をやりたかったけどどうやれば良いのかよくわからない。</li>
+</ul>
+
+      </div>
+    </div>
   </div>
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
 </div>
@@ -593,8 +661,6 @@ table.table01 tbody td p {
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
-        <a href="https://blog.derbuihan.xyz/index.xml" class="pure-menu-link pull-right">RSS</a>
         
       </div>
       

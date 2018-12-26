@@ -6,10 +6,19 @@
     <description>Recent content in Posts on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 20 Dec 2018 15:17:22 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 27 Dec 2018 04:42:41 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.derbuihan.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Coqで集合論 その1</title>
+      <link>https://blog.derbuihan.xyz/posts/coq_set_theory/</link>
+      <pubDate>Thu, 27 Dec 2018 04:42:41 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/posts/coq_set_theory/</guid>
+      <description>はじめに Coqで集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のためauto.を使わないで証明を行います。 集合論 Section Ensembles. (* こ</description>
+    </item>
     
     <item>
       <title>Proof-Generalを用いたCoqの環境構築</title>
