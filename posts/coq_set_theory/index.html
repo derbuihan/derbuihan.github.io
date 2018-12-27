@@ -123,7 +123,7 @@ body {
 .posts-name {
 	text-transform: capitalize;
 	font-weight: bold;
-	padding-left: 1em;
+	padding-left: 0.5em;
 	margin-top: 1em;
 	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -141,7 +141,13 @@ body {
 .posts li {
 	padding-top: 1em;
 	padding-bottom: 1em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 	border-bottom: solid 2px #d7d7d7;
+}
+
+.posts li:first-child {
+	border-top: solid 2px #d7d7d7;
 }
 
 .posts li a {
@@ -224,12 +230,12 @@ body {
 }
 
 .post-content {
-	z-index:9;
-	overflow:auto;
-	padding:0;
-	padding-bottom:3em;
-	font-size:16px;
-	line-height:1.4;
+	z-index: 9;
+	overflow: auto;
+	padding: 0;
+	padding-bottom: 3em;
+	font-size: 16px;
+	line-height: 1.4;
 }
 
 .post-content img {
@@ -239,6 +245,11 @@ body {
 
 .post-content code {
   background-color: #EEE;
+}
+
+.post-content ul.posts {
+	margin: 0;
+	padding: 0;
 }
 
 .post code {
@@ -292,7 +303,7 @@ body {
 }
 
 .post-content > p {
-	margin-left: 1.0em;
+	margin-left: 0;
 }
 
 .post-title{
@@ -478,6 +489,10 @@ table.table01 tbody td p {
           </time>
         
         
+        |
+        
+        
+        tags: [ <a href="https://blog.derbuihan.xyz/tags/coq">#Coq</a> <a href="https://blog.derbuihan.xyz/tags/%E6%95%B0%E5%AD%A6">#数学</a> ]
         
 
         
@@ -577,7 +592,7 @@ End Ensembles.
   Qed.
 </code></pre>
 
-<p>auto.を使うと楽に証明できるけど、なんとなく全部書く。</p>
+<p>auto.を使うと楽に証明できる。</p>
 
 <h4 id="を定義-2">≡を定義</h4>
 
@@ -618,7 +633,7 @@ Qed.
 </code></pre>
 
 <p>仮定にFalseがあるとき任意の命題を示すことができる。
-この時contradiction.を用いる。</p>
+仮定にFalseがあったらcontradiction.を用いる。</p>
 
 <h3 id="感想">感想</h3>
 
