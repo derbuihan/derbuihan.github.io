@@ -604,7 +604,9 @@ End Ensembles.
 
 <h4 id="空集合と全体集合を定義">空集合と全体集合を定義</h4>
 
-<p>空集合はどんな変数を取ってもFalseを返し、全体集合はどんな変数を取ってもTrueを返す。</p>
+<p>空集合は元が一つもないので、どんな変数を取ってもFalseを返し、</p>
+
+<p>全体集合はすべてが元であるから、どんな変数を取ってもTrueを返す。</p>
 
 <pre><code>  Definition Empty_set : Ensemble := fun a : U =&gt; False.
   Notation &quot;∅&quot; := Empty_set.
@@ -613,7 +615,7 @@ End Ensembles.
   Notation Ω := Full_set.
 </code></pre>
 
-<p>空集合は任意の集合の部分集合であり、全体集合は任意の集合を部分集合にもつ。</p>
+<p>空集合は任意の集合の部分集合であり、全体集合は任意の集合を部分集合にもつことを示す。</p>
 
 <pre><code>Lemma empty_subset : forall A : Ensemble, ∅ ⊆ A.
 Proof.
@@ -688,7 +690,12 @@ Qed.
 
   <script src="https://blog.derbuihan.xyz/highlight/highlight.min.js"></script>
   
-  <script>hljs.initHighlighting();</script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/coq.min.js"></script>
+  
+  <script>
+    hljs.initHighlighting();
+    hljs.initLineNumbersOnLoad(); 
+  </script>
 
 
 <script type="text/javascript">
