@@ -430,7 +430,7 @@ table.table01 tbody td p {
   
   
 
-  <meta name="generator" content="Hugo 0.52" />
+  <meta name="generator" content="Hugo 0.53" />
 
   
   
@@ -523,8 +523,8 @@ End Ensembles.
 
 <p>1変数の述語を用いて集合論を定義する。</p>
 
-<pre><code>  Variable U : Type.
-  Definition Ensemble := U -&gt; Prop.
+<pre><code>Variable U : Type.
+Definition Ensemble := U -&gt; Prop.
 </code></pre>
 
 <p>Uは述語の変数の型であり、EnsembleはUを受け取って命題を返す1変数の述語である。
@@ -536,9 +536,9 @@ End Ensembles.
 
 <p>例): 「ソクラテスが人間という集合に含まれる。」は、「ソクラテスが人間ある。」ということである。</p>
 
-<pre><code>  Definition In (A : Ensemble) (a : U) : Prop := A a.
-  Notation &quot;a ∈ A&quot; := (In A a) (at level 55,no associativity).
-  Notation &quot;a ∉ A&quot; := (~ In A a) (at level 55,no associativity).
+<pre><code>Definition In (A : Ensemble) (a : U) : Prop := A a.
+Notation &quot;a ∈ A&quot; := (In A a) (at level 55,no associativity).
+Notation &quot;a ∉ A&quot; := (~ In A a) (at level 55,no associativity).
 </code></pre>
 
 <p>Notationを定義すると楽しくなってきますね。</p>
@@ -552,12 +552,12 @@ End Ensembles.
 <p>をSectionの一番最初に追加しましょう。
 (Coqは直観論理なのでClassicalをImportしないと排中律を示すことが出来ない。)</p>
 
-<pre><code>  Lemma excluded_middle : forall A : Ensemble , forall a : U, (a ∈ A) \/ (a ∉ A).
-  Proof.
-    unfold In.
-    intros.
-    apply classic.
-  Qed.
+<pre><code>Lemma excluded_middle : forall A : Ensemble , forall a : U, (a ∈ A) \/ (a ∉ A).
+Proof.
+  unfold In.
+  intros.
+  apply classic.
+Qed.
 </code></pre>
 
 <p>unfoldは定義を展開するTacticである。</p>
@@ -566,30 +566,30 @@ End Ensembles.
 
 <p>A ⊆ Bは任意のAの元はBに含まれることである。</p>
 
-<pre><code>  Definition Include (A : Ensemble) (B : Ensemble) : Prop := forall a : U, a ∈ A -&gt; a ∈ B.
-  Notation &quot;A ⊆ B&quot; := (Include A B) (at level 54, no associativity).
+<pre><code>Definition Include (A : Ensemble) (B : Ensemble) : Prop := forall a : U, a ∈ A -&gt; a ∈ B.
+Notation &quot;A ⊆ B&quot; := (Include A B) (at level 54, no associativity).
 </code></pre>
 
 <p>⊆の反射律と推移律を示す。</p>
 
-<pre><code>  Lemma reflexive : forall A : Ensemble, A ⊆ A.
-  Proof.
-    unfold Include.
-    intros.
-    trivial.
-  Qed.
+<pre><code>Lemma reflexive : forall A : Ensemble, A ⊆ A.
+Proof.
+  unfold Include.
+  intros.
+  trivial.
+Qed.
 
-  Lemma transitive : forall A B C : Ensemble, A ⊆ B /\ B ⊆ C -&gt; A ⊆ C.
-  Proof.
-    unfold Include.
-    intros.
-    destruct H.
-    specialize (H a).
-    specialize (H1 a).
-    apply H1.
-    apply H.
-    trivial.
-  Qed.
+Lemma transitive : forall A B C : Ensemble, A ⊆ B /\ B ⊆ C -&gt; A ⊆ C.
+Proof.
+  unfold Include.
+  intros.
+  destruct H.
+  specialize (H a).
+  specialize (H1 a).
+  apply H1.
+  apply H.
+  trivial.
+Qed.
 </code></pre>
 
 <p>auto.を使うと楽に証明できる。</p>
@@ -598,8 +598,8 @@ End Ensembles.
 
 <p>「A ≡ B」は「A ⊆ B かつ B ⊆ A」ということである。</p>
 
-<pre><code>  Definition Same_set (A : Ensemble) (B : Ensemble) : Prop := A ⊆ B /\ B ⊆ A.
-  Notation &quot;A ≡ B&quot; := (Same_set A B) (at level 57, no associativity).
+<pre><code>Definition Same_set (A : Ensemble) (B : Ensemble) : Prop := A ⊆ B /\ B ⊆ A.
+Notation &quot;A ≡ B&quot; := (Same_set A B) (at level 57, no associativity).
 </code></pre>
 
 <h4 id="空集合と全体集合を定義">空集合と全体集合を定義</h4>
@@ -608,11 +608,11 @@ End Ensembles.
 
 <p>全体集合はすべてが元であるから、どんな変数を取ってもTrueを返す。</p>
 
-<pre><code>  Definition Empty_set : Ensemble := fun a : U =&gt; False.
-  Notation &quot;∅&quot; := Empty_set.
+<pre><code>Definition Empty_set : Ensemble := fun a : U =&gt; False.
+Notation &quot;∅&quot; := Empty_set.
 
-  Definition Full_set : Ensemble := fun a : U =&gt; True.
-  Notation Ω := Full_set.
+Definition Full_set : Ensemble := fun a : U =&gt; True.
+Notation Ω := Full_set.
 </code></pre>
 
 <p>空集合は任意の集合の部分集合であり、全体集合は任意の集合を部分集合にもつことを示す。</p>
