@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tex on derbuihan blog</title>
+    <link>https://blog.derbuihan.xyz/tags/tex/</link>
+    <description>Recent content in Tex on derbuihan blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 29 Dec 2018 23:35:55 +0900</lastBuildDate>
+    
+	<atom:link href="https://blog.derbuihan.xyz/tags/tex/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Atomで入れるプラグイン一覧</title>
+      <link>https://blog.derbuihan.xyz/posts/atom_package/</link>
+      <pubDate>Sat, 29 Dec 2018 23:35:55 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/posts/atom_package/</guid>
+      <description>随時更新していきます。 通常編 とりあえずAtomをインストールしたら入れるプラグイン atomic-emacs AtomでEmacsのキーバインドを使う。 japanese-menu 設定を日本語</description>
+    </item>
+    
+  </channel>
+</rss>
