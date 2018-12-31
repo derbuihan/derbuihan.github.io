@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>Tags</title>
+  <title>Coqで外延性の公理</title>
   <meta name="description"
     
-      content="未来の自分へのドキュメント"
+      content="外延性の公理から集合の等号に対して同値関係を示します。(Coqで) 外延性の公理とは A, Bを任意の集合とするとき、もし任意の集合Xについて「Xが"
     
   >
   <meta name="author" content="derbuihan">
@@ -429,16 +429,14 @@ table.table01 tbody td p {
 
   
   
-  <link href="https://blog.derbuihan.xyz/tags/index.xml" rel="alternate" type="application/rss+xml" title="derbuihan blog Feed" />
-  
 
   <meta name="generator" content="Hugo 0.53" />
 
   
   
 <meta property="og:url" content="https://blog.derbuihan.xyz/" />
-<meta property="og:title" content="Tags" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="Coqで外延性の公理" />
+<meta property="og:description" content="外延性の公理から集合の等号に対して同値関係を示します。(Coqで) 外延性の公理とは A, Bを任意の集合とするとき、もし任意の集合Xについて「Xが" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -476,48 +474,192 @@ table.table01 tbody td p {
     <div class=" pure-u-lg-5-24"></div>
 </div>
 
+
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
   <div class="pure-u-11-12 pure-u-lg-7-12">
-    <p class="posts-name">Tags:</p>
-    <div class="post-content">
-      <ul class="posts">
+    <div class="post">
+
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2018-12-31 23:08:04 &#43;0900 JST">
+            
+              2018-12-31
+            
+          </time>
         
         
-        <li>
-          <a href="coq">#coq</a>
-          <span>&#40;3&#41;</span>
-        </li>
+        |
         
-        <li>
-          <a href="%E6%95%B0%E5%AD%A6">#数学</a>
-          <span>&#40;2&#41;</span>
-        </li>
         
-        <li>
-          <a href="atom">#atom</a>
-          <span>&#40;1&#41;</span>
-        </li>
+        tags: [ <a href="https://blog.derbuihan.xyz/tags/coq">#Coq</a> <a href="https://blog.derbuihan.xyz/tags/%E6%95%B0%E5%AD%A6">#数学</a> ]
         
-        <li>
-          <a href="emacs">#emacs</a>
-          <span>&#40;1&#41;</span>
-        </li>
+
         
-        <li>
-          <a href="hugo">#hugo</a>
-          <span>&#40;1&#41;</span>
-        </li>
+
         
-        <li>
-          <a href="tex">#tex</a>
-          <span>&#40;1&#41;</span>
-        </li>
+        </p>
+        <h1>Coqで外延性の公理</h1>
+      </div>
+
+      <div class="post-content">
         
-      </ul>
+
+<p><a href="https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86">外延性の公理</a>から集合の等号に対して<a href="https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82">同値関係</a>を示します。(Coqで)</p>
+
+<h3 id="外延性の公理とは">外延性の公理とは</h3>
+
+<blockquote>
+<p>A, Bを任意の集合とするとき、もし任意の集合Xについて「XがAの要素であるならば、そのときに限りXはBの要素である」が成り立つならば、AとBは等しい。</p>
+</blockquote>
+
+<p><a href="https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86">外延性の公理</a>から引用。</p>
+
+<h3 id="と-を定義する">∈と=を定義する</h3>
+
+<pre><code>Section Axiom_Of_Extensionality.
+
+  Variable Var : Type.
+  Variable In : Var -&gt; Var -&gt; Prop.
+  Variable Eq : Var -&gt; Var -&gt; Prop.
+
+  (* ここにコードを書く *)
+
+End Axiom_Of_Extensionality.
+</code></pre>
+
+<p>∈をIn、=をEqとした。</p>
+
+<h3 id="同値関係とは">同値関係とは</h3>
+
+<blockquote>
+<ol>
+<li>反射律: a = a</li>
+<li>対称律: a = b ⇒ b = a</li>
+<li>推移律: a = b ∧ b = c ⇒ a = c</li>
+</ol>
+</blockquote>
+
+<p><a href="https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82">同値関係</a>を参考。</p>
+
+<h3 id="証明する">証明する</h3>
+
+<p>まず、外延公理を入れる。</p>
+
+<pre><code>Axiom Extensionality: forall x y, Eq x y &lt;-&gt; forall z : Var, (In z x &lt;-&gt; In z y).
+</code></pre>
+
+<h4 id="反射律">反射律</h4>
+
+<pre><code>Lemma Equal_Reflexive : forall x : Var, Eq x x.
+Proof.
+  intros.
+  specialize (Extensionality x x).
+  intros.
+  destruct H.
+  apply H0.
+  intros.
+  split.
+  intros.
+  trivial.
+  intros.
+  trivial.
+Qed.
+</code></pre>
+
+<ul>
+<li>specialize.からintros.のパターンで公理を仮定における。</li>
+<li>specialize.からintros.のパターンってTacticないのかな。</li>
+</ul>
+
+<h4 id="対称律">対称律</h4>
+
+<pre><code>Lemma Equal_Symmetric : forall x y : Var, Eq x y -&gt; Eq y x.
+Proof.
+  intros.
+  specialize (Extensionality y x).
+  specialize (Extensionality x y).
+  intros.
+  destruct H0.
+  destruct H1.
+  apply H3.
+  intros.
+  specialize (H0 H).
+  specialize (H0 z).
+  destruct H0.
+  split.
+  trivial.
+  trivial.
+Qed.
+</code></pre>
+
+<ul>
+<li>&lt;-&gt;が対称律を満たすことを示すのと本質的にはあんまり変わらない。</li>
+<li>先に&lt;-&gt;の対称律を示したら置き換えて楽に示せたら良いのに。</li>
+</ul>
+
+<h4 id="推移律">推移律</h4>
+
+<pre><code>Lemma Equal_Transitive : forall x y z : Var, Eq x y /\ Eq y z -&gt; Eq x z.
+Proof.
+  intros.
+  specialize (Extensionality x y).
+  specialize (Extensionality y x).
+  specialize (Extensionality y z).
+  specialize (Extensionality z y).
+  specialize (Extensionality z x).
+  specialize (Extensionality x z).
+  intros.
+  destruct H0.
+  destruct H1.
+  destruct H2.
+  destruct H3.
+  destruct H4.
+  destruct H5.
+  destruct H.
+  apply H6.
+  intros.
+  split.
+  intros.
+  specialize (H3 H12).
+  specialize (H3 z0).
+  destruct H3.
+  apply H3.
+  specialize (H5 H).
+  specialize (H5 z0).
+  destruct H5.
+  apply H5.
+  trivial.
+  intros.
+  specialize (H5 H).
+  specialize (H5 z0).
+  destruct H5.
+  apply H14.
+  specialize (H3 H12).
+  specialize (H3 z0).
+  destruct H3.
+  apply H15.
+  trivial.
+Qed.
+</code></pre>
+
+<ul>
+<li>同じ公理を6回specialize.しないといけないもんなのかな。</li>
+<li>長すぎてもう見返したくない。</li>
+</ul>
+
+<h3 id="感想">感想</h3>
+
+<ul>
+<li>SSReflectを使えば良いんか。</li>
+</ul>
+
+      </div>
     </div>
   </div>
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
+</div>
+
 <div class="footer pure-g">
   <div class="pure-u-lg-5-24"></div>
   <div class="pure-u-1 pure-u-lg-7-12">
@@ -546,8 +688,6 @@ table.table01 tbody td p {
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
-        <a href="https://blog.derbuihan.xyz/tags/index.xml" class="pure-menu-link pull-right">RSS</a>
         
       </div>
       
