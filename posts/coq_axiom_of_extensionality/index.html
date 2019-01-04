@@ -648,6 +648,57 @@ Qed.
 <li>長すぎてもう見返したくない。</li>
 </ul>
 
+<h3 id="ssreflect">SSReflect</h3>
+
+<p><a href="https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86">外延性の公理</a>から集合の等号に対して<a href="https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82">同値関係</a>を示します。(SSReflectで)</p>
+
+<pre><code>From mathcomp
+     Require Import ssreflect.
+
+Section Axiom_Of_Extensionality.
+
+  Variable Var : Type.
+  Variable In : Var -&gt; Var -&gt; Prop.
+  Variable Eq : Var -&gt; Var -&gt; Prop.
+
+  Notation &quot;a ∈ A&quot; := (In A a) (at level 55,no associativity).
+
+  Notation &quot;A ≡ B&quot; := (Eq A B) (at level 57, no associativity).
+
+  Axiom Extensionality: forall x y : Var, x ≡ y &lt;-&gt; forall z : Var, (z ∈ x &lt;-&gt; z ∈ y).
+
+  Lemma Equal_Reflexive : forall x : Var, x ≡ x.
+  Proof.
+    move =&gt; x.
+    elim : (Extensionality x x) =&gt; H1 H2.
+    by apply : H2.
+  Qed.
+
+  Lemma Equal_Symmetric : forall x y : Var, x ≡ y -&gt; y ≡ x.
+  Proof.
+    move =&gt; x y.
+    elim : (Extensionality x y) =&gt; H1 H2.
+    elim : (Extensionality y x) =&gt; H3 H4 XeqY.
+    apply : H4 =&gt; z.
+    apply iff_sym.
+    by apply : (H1 XeqY).
+  Qed.
+
+  Lemma Equal_Transitive : forall x y z : Var, x ≡ y /\ y ≡ z -&gt; x ≡ z.
+  Proof.
+    move =&gt; x y z.
+    elim : (Extensionality x y) =&gt; H1 H2.
+    elim : (Extensionality y z) =&gt; H3 H4.
+    elim : (Extensionality x z) =&gt; H5 H6.    
+    case =&gt; XeqY YeqZ.
+    apply : H6 =&gt; z0.
+    move : (H1 XeqY z0) (H3 YeqZ z0).
+    by apply iff_trans.
+  Qed.
+
+End Axiom_Of_Extensionality.
+</code></pre>
+
 <h3 id="感想">感想</h3>
 
 <ul>
