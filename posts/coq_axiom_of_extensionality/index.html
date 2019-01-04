@@ -662,7 +662,6 @@ Section Axiom_Of_Extensionality.
   Variable Eq : Var -&gt; Var -&gt; Prop.
 
   Notation &quot;a ∈ A&quot; := (In A a) (at level 55,no associativity).
-
   Notation &quot;A ≡ B&quot; := (Eq A B) (at level 57, no associativity).
 
   Axiom Extensionality: forall x y : Var, x ≡ y &lt;-&gt; forall z : Var, (z ∈ x &lt;-&gt; z ∈ y).
