@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>Emacs</title>
+  <title>Coqは直観論理である。</title>
   <meta name="description"
     
-      content="未来の自分へのドキュメント"
+      content="直観論理とは Coqは直観論理で許される推論規則で演繹を行う。 直観論理の説明はWikipediaにある。 簡単に説明すると、私達が普通に数学で用"
     
   >
   <meta name="author" content="derbuihan">
@@ -429,16 +429,14 @@ table.table01 tbody td p {
 
   
   
-  <link href="https://blog.derbuihan.xyz/tags/emacs/index.xml" rel="alternate" type="application/rss+xml" title="derbuihan blog Feed" />
-  
 
   <meta name="generator" content="Hugo 0.53" />
 
   
   
 <meta property="og:url" content="https://blog.derbuihan.xyz/" />
-<meta property="og:title" content="Emacs" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="Coqは直観論理である。" />
+<meta property="og:description" content="直観論理とは Coqは直観論理で許される推論規則で演繹を行う。 直観論理の説明はWikipediaにある。 簡単に説明すると、私達が普通に数学で用" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -477,48 +475,137 @@ table.table01 tbody td p {
 </div>
 
 
-
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
   <div class="pure-u-11-12 pure-u-lg-7-12">
-    <div class="post-content">
-      
-      <p class="posts-name">#Emacs の記事一覧</p>
+    <div class="post">
 
-      <ul class="posts">
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2019-01-13 14:20:08 &#43;0900 JST">
+            
+              2019-01-13
+            
+          </time>
         
         
+        |
         
-        <li>
-          
-          <a class="post-list" href="https://blog.derbuihan.xyz/posts/coq_logic/">Coqは直観論理である。</a>
+        
+        tags: [ <a href="https://blog.derbuihan.xyz/tags/coq">#Coq</a> <a href="https://blog.derbuihan.xyz/tags/emacs">#Emacs</a> ]
+        
 
-          <p class="footnote">
-            <time datetime="2019-01-13 14:20:08 &#43;0900 JST">
-              
-                2019-01-13
-              
-            </time>
-          </p>
-        </li>
         
-        
-        
-        <li>
-          
-          <a class="post-list" href="https://blog.derbuihan.xyz/posts/coq_install/">Proof-Generalを用いたCoqの環境構築</a>
 
-          <p class="footnote">
-            <time datetime="2018-12-20 15:17:22 &#43;0900 JST">
-              
-                2018-12-20
-              
-            </time>
-          </p>
-        </li>
         
+        </p>
+        <h1>Coqは直観論理である。</h1>
+      </div>
+
+      <div class="post-content">
         
-      </ul>
+
+<h3 id="直観論理とは">直観論理とは</h3>
+
+<p>Coqは直観論理で許される推論規則で演繹を行う。
+直観論理の説明は<a href="https://ja.wikipedia.org/wiki/%E7%9B%B4%E8%A6%B3%E8%AB%96%E7%90%86">Wikipedia</a>にある。</p>
+
+<p>簡単に説明すると、私達が普通に数学で用いている論理は古典論理で、直観論理は古典論理から排中律を除いたものである。
+排中律を除くことで二重否定の除去など、古典論理では証明できるが直観論理では証明できないものがある。
+Coqでは<a href="https://coq.inria.fr/library/Coq.Logic.Classical_Prop.html">Classical</a>というライブラリをImportすると古典論理を使えるようになる。</p>
+
+<p>詳しい説明は<a href="https://www.amazon.co.jp/dp/4535608148">情報科学における論理</a>を読むと良い。</p>
+
+<h3 id="直感論理で示せる命題">直感論理で示せる命題</h3>
+
+<h4 id="二重否定をつける">二重否定をつける</h4>
+
+<pre><code>Lemma PPNN : forall p : Prop, p -&gt; ~~p.
+Proof.
+  intros.
+  intro.
+  apply H0.
+  trivial.
+Qed.
+</code></pre>
+
+<h4 id="三重否定を否定にする">三重否定を否定にする</h4>
+
+<pre><code>Lemma NNN : forall p : Prop, ~~~ p -&gt; ~p.
+Proof.
+  intros.
+  intro.
+  apply H.
+  intro.
+  contradiction.
+Qed.
+</code></pre>
+
+<h4 id="対偶の片方">対偶の片方</h4>
+
+<pre><code>Lemma Cont : forall p q : Prop, (p -&gt; q) -&gt; (~q -&gt; ~p).
+Proof.
+  intros.
+  intro.
+  apply H0.
+  apply H.
+  trivial.
+Qed.
+</code></pre>
+
+<h3 id="古典論理で示せる命題">古典論理で示せる命題</h3>
+
+<p>排中律を入れる。</p>
+
+<pre><code>Section Classical.
+  Axiom classic : forall P : Prop, P \/ ~P.
+  (* ここにコードを書く *)
+End Classical.
+</code></pre>
+
+<h4 id="二重否定の除去">二重否定の除去</h4>
+
+<pre><code>Lemma NNPP : forall p : Prop, ~~ p -&gt; p.
+Proof.
+  intros.
+  specialize (classic p).
+  intros.
+  destruct H0.
+  trivial.
+  contradiction.
+Qed.
+</code></pre>
+
+<h4 id="対偶のもう片方">対偶のもう片方</h4>
+
+<pre><code>Lemma Cont2 : forall p q : Prop, (~p -&gt; ~q) -&gt; (q -&gt; p).
+Proof.
+  intros.
+  specialize (classic p).
+  intros.
+  destruct H1.
+  trivial.
+  specialize (H H1).
+  contradiction.
+Qed.
+</code></pre>
+
+<h4 id="背理法">背理法</h4>
+
+<pre><code>apply NNPP; intros.
+</code></pre>
+
+<p>を実行することは背理法を行うことである。
+示すべき命題の否定を仮定に追加して矛盾を導くことだからである。</p>
+
+<h3 id="感想">感想</h3>
+
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/4535608148">情報科学における論理</a>にいろいろ書いてあった。</li>
+<li><code>Require Import Classical.</code>することで古典論理を扱うことができる。<a href="https://coq.inria.fr/library/Coq.Logic.Classical_Prop.html">Classical</a></li>
+</ul>
+
+      </div>
     </div>
   </div>
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
@@ -552,8 +639,6 @@ table.table01 tbody td p {
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
-        <a href="https://blog.derbuihan.xyz/tags/emacs/index.xml" class="pure-menu-link pull-right">RSS</a>
         
       </div>
       

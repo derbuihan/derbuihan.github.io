@@ -6,10 +6,19 @@
     <description>Recent content in Emacs on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 20 Dec 2018 15:17:22 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 13 Jan 2019 14:20:08 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.derbuihan.xyz/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Coqは直観論理である。</title>
+      <link>https://blog.derbuihan.xyz/posts/coq_logic/</link>
+      <pubDate>Sun, 13 Jan 2019 14:20:08 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/posts/coq_logic/</guid>
+      <description>直観論理とは Coqは直観論理で許される推論規則で演繹を行う。 直観論理の説明はWikipediaにある。 簡単に説明すると、私達が普通に数学で用</description>
+    </item>
     
     <item>
       <title>Proof-Generalを用いたCoqの環境構築</title>
