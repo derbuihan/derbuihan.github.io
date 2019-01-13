@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>derbuihan blog</title>
+  <title>Root権限がない環境で色々インストールする。</title>
   <meta name="description"
     
-      content="未来の自分へのドキュメント"
+      content="Rootなしで人権を得る方法です。 Tmuxをビルドする。 こんな素晴らしい記事がある。 これをコピペして実行。 linuxbrewを用いる。 以下を"
     
   >
   <meta name="author" content="derbuihan">
@@ -429,16 +429,14 @@ table.table01 tbody td p {
 
   
   
-  <link href="https://blog.derbuihan.xyz/index.xml" rel="alternate" type="application/rss+xml" title="derbuihan blog Feed" />
-  
 
   <meta name="generator" content="Hugo 0.53" />
 
   
   
 <meta property="og:url" content="https://blog.derbuihan.xyz/" />
-<meta property="og:title" content="derbuihan blog" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="Root権限がない環境で色々インストールする。" />
+<meta property="og:description" content="Rootなしで人権を得る方法です。 Tmuxをビルドする。 こんな素晴らしい記事がある。 これをコピペして実行。 linuxbrewを用いる。 以下を" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -479,57 +477,20 @@ table.table01 tbody td p {
 
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
-	<div class="pure-u-11-12 pure-u-lg-7-12">
-	<div class="post-content">
-	
+  <div class="pure-u-11-12 pure-u-lg-7-12">
+    <div class="post">
 
-	  <ul class="posts">
-		
-		
-		
-		<li>
-		  
-		  <a class="post-list" href="https://blog.derbuihan.xyz/posts/coq_logic/">Coqは直観論理である。</a>
-
-      <p class="footnote">
-        <time datetime="2019-01-13 14:20:08 &#43;0900 JST">
-          
-            2019-01-13
-          
-        </time>
-
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2019-01-12 19:26:34 &#43;0900 JST">
+            
+              2019-01-12
+            
+          </time>
+        
         
         |
         
-
-        
-        tags: [ <a href="https://blog.derbuihan.xyz/tags/coq">#Coq</a> ]
-        
-
-        
-
-        
-
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://blog.derbuihan.xyz/posts/without_root/">Root権限がない環境で色々インストールする。</a>
-
-      <p class="footnote">
-        <time datetime="2019-01-12 19:26:34 &#43;0900 JST">
-          
-            2019-01-12
-          
-        </time>
-
-        
-        |
-        
-
         
         tags: [ <a href="https://blog.derbuihan.xyz/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a> ]
         
@@ -537,155 +498,38 @@ table.table01 tbody td p {
         
 
         
+        </p>
+        <h1>Root権限がない環境で色々インストールする。</h1>
+      </div>
 
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://blog.derbuihan.xyz/posts/coq_axiom_of_extensionality/">Coqで外延性の公理</a>
-
-      <p class="footnote">
-        <time datetime="2018-12-31 23:08:04 &#43;0900 JST">
-          
-            2018-12-31
-          
-        </time>
-
-        
-        |
+      <div class="post-content">
         
 
-        
-        tags: [ <a href="https://blog.derbuihan.xyz/tags/coq">#Coq</a> <a href="https://blog.derbuihan.xyz/tags/%E6%95%B0%E5%AD%A6">#数学</a> ]
-        
+<p>Rootなしで人権を得る方法です。</p>
 
-        
+<h3 id="tmuxをビルドする">Tmuxをビルドする。</h3>
 
-        
+<p>こんな素晴らしい<a href="https://gist.github.com/ryin/3106801">記事</a>がある。
+<a href="https://gist.github.com/derbuihan/4f100cdabce545f80c5a48223c9c7057">これ</a>をコピペして実行。</p>
 
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://blog.derbuihan.xyz/posts/atom_package/">Atomで入れるプラグイン一覧</a>
+<h3 id="linuxbrew-http-linuxbrew-sh-を用いる"><a href="http://linuxbrew.sh/">linuxbrew</a>を用いる。</h3>
 
-      <p class="footnote">
-        <time datetime="2018-12-29 23:35:55 &#43;0900 JST">
-          
-            2018-12-29
-          
-        </time>
+<p>以下を<code>~/.bashrc</code>に追加して再度ログイン。</p>
 
-        
-        |
-        
+<pre><code>if [ ! -r ~/.linuxbrew ]; then
+  git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew
+fi
 
-        
-        tags: [ <a href="https://blog.derbuihan.xyz/tags/atom">#Atom</a> <a href="https://blog.derbuihan.xyz/tags/tex">#Tex</a> <a href="https://blog.derbuihan.xyz/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a> ]
-        
+if [ -r ~/.linuxbrew ]; then
+  export PATH=&quot;$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH&quot;
+  export MANPATH=&quot;$MANPATH:$HOME/.linuxbrew/share/man&quot;
+  export INFOPATH=&quot;$INFOPATH:$HOME/.linuxbrew/share/info&quot;
+  #export LD_LIBRARY_PATH=&quot;$LD_LIBRARY_PATH:$HOME/.linuxbrew/lib&quot;
+fi
+</code></pre>
 
-        
-
-        
-
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://blog.derbuihan.xyz/posts/coq_set_theory/">Coqで集合論 その1</a>
-
-      <p class="footnote">
-        <time datetime="2018-12-27 04:42:41 &#43;0900 JST">
-          
-            2018-12-27
-          
-        </time>
-
-        
-        |
-        
-
-        
-        tags: [ <a href="https://blog.derbuihan.xyz/tags/coq">#Coq</a> <a href="https://blog.derbuihan.xyz/tags/%E6%95%B0%E5%AD%A6">#数学</a> ]
-        
-
-        
-
-        
-
-      </p>
-    </li>
-    
-    
-		
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://blog.derbuihan.xyz/posts/coq_install/">Proof-Generalを用いたCoqの環境構築</a>
-
-      <p class="footnote">
-        <time datetime="2018-12-20 15:17:22 &#43;0900 JST">
-          
-            2018-12-20
-          
-        </time>
-
-        
-        |
-        
-
-        
-        tags: [ <a href="https://blog.derbuihan.xyz/tags/coq">#Coq</a> <a href="https://blog.derbuihan.xyz/tags/emacs">#Emacs</a> <a href="https://blog.derbuihan.xyz/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a> ]
-        
-
-        
-
-        
-
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://blog.derbuihan.xyz/posts/start_blog_hugo/">hugoを使って軽量ブログを作る</a>
-
-      <p class="footnote">
-        <time datetime="2018-12-20 12:43:24 &#43;0900 JST">
-          
-            2018-12-20
-          
-        </time>
-
-        
-        |
-        
-
-        
-        tags: [ <a href="https://blog.derbuihan.xyz/tags/hugo">#Hugo</a> ]
-        
-
-        
-
-        
-
-      </p>
-    </li>
-    
-    
-    </ul>
-  </div>
+      </div>
+    </div>
   </div>
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
 </div>
@@ -718,8 +562,6 @@ table.table01 tbody td p {
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
-        <a href="https://blog.derbuihan.xyz/index.xml" class="pure-menu-link pull-right">RSS</a>
         
       </div>
       

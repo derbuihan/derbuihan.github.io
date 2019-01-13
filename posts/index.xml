@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Root権限がない環境で色々インストールする。</title>
+      <link>https://blog.derbuihan.xyz/posts/without_root/</link>
+      <pubDate>Sat, 12 Jan 2019 19:26:34 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/posts/without_root/</guid>
+      <description>Rootなしで人権を得る方法です。 Tmuxをビルドする。 こんな素晴らしい記事がある。 これをコピペして実行。 linuxbrewを用いる。 以下を</description>
+    </item>
+    
+    <item>
       <title>Coqで外延性の公理</title>
       <link>https://blog.derbuihan.xyz/posts/coq_axiom_of_extensionality/</link>
       <pubDate>Mon, 31 Dec 2018 23:08:04 +0900</pubDate>
