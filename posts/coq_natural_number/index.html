@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>Tags</title>
+  <title>Coqで自然数が加法,乗法について可換モノイド</title>
   <meta name="description"
     
-      content="未来の自分へのドキュメント"
+      content="目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示"
     
   >
   <meta name="author" content="derbuihan">
@@ -429,16 +429,14 @@ table.table01 tbody td p {
 
   
   
-  <link href="https://blog.derbuihan.xyz/tags/index.xml" rel="alternate" type="application/rss+xml" title="derbuihan blog Feed" />
-  
 
   <meta name="generator" content="Hugo 0.53" />
 
   
   
 <meta property="og:url" content="https://blog.derbuihan.xyz/" />
-<meta property="og:title" content="Tags" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="Coqで自然数が加法,乗法について可換モノイド" />
+<meta property="og:description" content="目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -476,53 +474,254 @@ table.table01 tbody td p {
     <div class=" pure-u-lg-5-24"></div>
 </div>
 
+
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
   <div class="pure-u-11-12 pure-u-lg-7-12">
-    <p class="posts-name">Tags:</p>
-    <div class="post-content">
-      <ul class="posts">
+    <div class="post">
+
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2019-01-16 04:20:21 &#43;0900 JST">
+            
+              2019-01-16
+            
+          </time>
         
         
-        <li>
-          <a href="coq">#coq</a>
-          <span>&#40;5&#41;</span>
-        </li>
+        |
         
-        <li>
-          <a href="%E6%95%B0%E5%AD%A6">#数学</a>
-          <span>&#40;3&#41;</span>
-        </li>
         
-        <li>
-          <a href="%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a>
-          <span>&#40;3&#41;</span>
-        </li>
+        tags: [ <a href="https://blog.derbuihan.xyz/tags/coq">#Coq</a> <a href="https://blog.derbuihan.xyz/tags/%E6%95%B0%E5%AD%A6">#数学</a> ]
         
-        <li>
-          <a href="atom">#atom</a>
-          <span>&#40;1&#41;</span>
-        </li>
+
         
-        <li>
-          <a href="emacs">#emacs</a>
-          <span>&#40;1&#41;</span>
-        </li>
+
         
-        <li>
-          <a href="hugo">#hugo</a>
-          <span>&#40;1&#41;</span>
-        </li>
+        </p>
+        <h1>Coqで自然数が加法,乗法について可換モノイド</h1>
+      </div>
+
+      <div class="post-content">
         
-        <li>
-          <a href="tex">#tex</a>
-          <span>&#40;1&#41;</span>
-        </li>
-        
-      </ul>
+
+<h3 id="目的">目的</h3>
+
+<p><a href="https://www.amazon.co.jp/dp/4785314028">代数入門―群と加群 </a>を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示します。
+(実際は<a href="http://proofcafe.org/sf/Basics_J.html">Software Foundationsの第一章</a>をSSReflect使って解いただけ。)</p>
+
+<h3 id="可換モノイド">可換モノイド</h3>
+
+<p>可換モノイドとは</p>
+
+<ul>
+<li>結合律</li>
+<li>単位元の存在</li>
+<li>可換</li>
+</ul>
+
+<p>を満たすである。</p>
+
+<ul>
+<li>逆元の存在</li>
+</ul>
+
+<p>を加えると可換群になる。</p>
+
+<p>自然数は加法と乗法について可換モノイドであるが可換群ではない。</p>
+
+<h3 id="準備">準備</h3>
+
+<p>ssreflectをimportする。</p>
+
+<pre><code>From mathcomp
+     Require Import ssreflect.
+
+Section addition.
+  (* 自然数は加法に関して可換モノイド *)
+
+  (* ここにコードを書く *)
+
+End addition.
+
+Section multiplication.
+  (* 自然数は乗法に関して可換モノイド *)
+
+  (* ここにコードを書く *)
+
+End multiplication.
+</code></pre>
+
+<h3 id="加法">加法</h3>
+
+<h4 id="結合律">結合律</h4>
+
+<pre><code>Theorem plus_assoc:
+  forall n m l : nat, (n + m) + l = n + (m + l).
+Proof.
+  move =&gt; n m l.
+  elim n =&gt; [//= | n' H /=].
+  rewrite H =&gt; //=.
+Qed.
+</code></pre>
+
+<ul>
+<li><code>move =&gt; n m l.</code>は<code>intros n m l.</code>と同じ。</li>
+<li><code>elim n =&gt; X.</code>は<code>elim n; move =&gt; X.</code>と同じ。</li>
+<li><code>elim n.</code>は<code>induction n.</code>と同じ。</li>
+<li><code>[//= | n' H /=]</code>の部分は、それぞれのsubgoalに対して<code>move =&gt;</code>で実行する。</li>
+<li><code>move =&gt; //=.</code>は<code>reflexivity.</code>と同じ。<code>move =&gt; /=.</code>は<code>simpl.</code>と同じ。</li>
+<li><code>rewrite H =&gt; //=</code>は<code>rewrite H; move =&gt; //=.</code>と同じ。</li>
+</ul>
+
+<p>同じことをssreflectを使わずに書くと、</p>
+
+<pre><code>Theorem plus_assoc':
+  forall n m l : nat, (n + m) + l = n + (m + l).
+Proof.
+  intros n m l.
+  induction n as [|n'].
+    reflexivity.
+    simpl. rewrite IHn'. reflexivity.
+Qed.
+</code></pre>
+
+<p>となる。</p>
+
+<h4 id="単位元の存在">単位元の存在</h4>
+
+<p>0が加法の単位元である。</p>
+
+<pre><code>Theorem plus_iden1:
+  forall n : nat, 0 + n = n.
+Proof.
+  move=&gt; //=.
+Qed.
+
+Theorem plus_iden2:
+  forall n : nat, n + 0 = n.
+Proof.
+  move =&gt; n.
+  elim n =&gt; [//= | n' H /=].
+  rewrite H =&gt; //=.
+Qed.
+</code></pre>
+
+<h4 id="可換">可換</h4>
+
+<p>ここで必要になる補題</p>
+
+<pre><code>Lemma plus_n_Sm:
+  forall n m: nat, S (n + m) = n + S m.
+Proof.
+  move =&gt; n m.
+  elim n =&gt; [//= | n' H /=].
+  rewrite H =&gt; //=.
+Qed.
+</code></pre>
+
+<p>これを用いて示す。</p>
+
+<pre><code>Theorem plus_comm:
+  forall n m : nat, n + m = m + n.
+Proof.
+  move =&gt; n m.
+  elim n =&gt; [//= | n' H /=].
+  rewrite H plus_n_Sm =&gt; //.
+Qed.
+</code></pre>
+
+<h3 id="乗法">乗法</h3>
+
+<h4 id="右分配法則">右分配法則</h4>
+
+<pre><code>Lemma mult_plus_distr_r:
+  forall n m l : nat, (n + m) * l = n * l + m * l.
+Proof.
+  move =&gt; n m l.
+  elim n =&gt; [//= | n' H /=].
+  rewrite H plus_assoc =&gt; //.
+Qed.
+</code></pre>
+
+<h4 id="結合則">結合則</h4>
+
+<pre><code>Theorem mult_assoc:
+  forall n m l : nat, (n * m) * l = n * (m * l).
+Proof.
+  move =&gt; n m l.
+  elim n =&gt; [//= | n' H /=].
+  rewrite -H mult_plus_distr_r =&gt; //.
+Qed.
+</code></pre>
+
+<h4 id="単位元の存在-1">単位元の存在</h4>
+
+<p>0が乗法の単位元である。</p>
+
+<pre><code>Theorem mult_iden1:
+  forall n : nat, 1 * n = n.
+Proof.
+  move =&gt; n.
+  elim n =&gt; [//= | n' H /=].
+  rewrite plus_iden2 =&gt; //=.
+Qed.
+
+Theorem mult_iden2:
+  forall n : nat, n * 1 = n.
+Proof.
+  move =&gt; n.
+  elim n =&gt; [//= | n' H /=].
+  rewrite H =&gt; //=.
+Qed.
+</code></pre>
+
+<h4 id="可換-1">可換</h4>
+
+<p>ここで必要になる補題</p>
+
+<pre><code>Lemma mult_Sn:
+  forall n m : nat, n + n * m = n * S m.
+Proof.
+  move =&gt; n m.
+  elim n =&gt; [//= | n' H /=].
+  rewrite -H -2!plus_assoc (plus_comm n' m) =&gt; //.
+Qed.
+</code></pre>
+
+<p>これを用いて示す。</p>
+
+<pre><code>Theorem mult_comm:
+  forall n m : nat, n * m = m * n.
+Proof.
+  move =&gt; n m.
+  elim n =&gt; [//= | n' H /=].
+  rewrite H mult_Sn =&gt; //.
+Qed.
+</code></pre>
+
+<h4 id="左分配法則">左分配法則</h4>
+
+<pre><code>Lemma mult_plus_distr_l:
+  forall n m l : nat, n * (m + l) = n * m + n * l.
+Proof.
+  move =&gt; n m l.
+  rewrite (mult_comm n (m + l)) (mult_comm n m) (mult_comm n l) mult_plus_distr_r =&gt; //.
+Qed.
+</code></pre>
+
+<h3 id="感想">感想</h3>
+
+<ul>
+<li><a href="https://qiita.com/suharahiromichi/items/d16bebbe6f6c98f76d78">この記事</a>を見ながら書いた。</li>
+</ul>
+
+      </div>
     </div>
   </div>
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
+</div>
+
 <div class="footer pure-g">
   <div class="pure-u-lg-5-24"></div>
   <div class="pure-u-1 pure-u-lg-7-12">
@@ -551,8 +750,6 @@ table.table01 tbody td p {
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
-        <a href="https://blog.derbuihan.xyz/tags/index.xml" class="pure-menu-link pull-right">RSS</a>
         
       </div>
       

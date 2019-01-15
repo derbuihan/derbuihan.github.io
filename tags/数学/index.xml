@@ -6,10 +6,19 @@
     <description>Recent content in 数学 on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 31 Dec 2018 23:08:04 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 16 Jan 2019 04:20:21 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.derbuihan.xyz/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Coqで自然数が加法,乗法について可換モノイド</title>
+      <link>https://blog.derbuihan.xyz/posts/coq_natural_number/</link>
+      <pubDate>Wed, 16 Jan 2019 04:20:21 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/posts/coq_natural_number/</guid>
+      <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示</description>
+    </item>
     
     <item>
       <title>Coqで外延性の公理</title>

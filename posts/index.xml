@@ -6,10 +6,19 @@
     <description>Recent content in Posts on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 13 Jan 2019 14:20:08 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 16 Jan 2019 04:20:21 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.derbuihan.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Coqで自然数が加法,乗法について可換モノイド</title>
+      <link>https://blog.derbuihan.xyz/posts/coq_natural_number/</link>
+      <pubDate>Wed, 16 Jan 2019 04:20:21 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/posts/coq_natural_number/</guid>
+      <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示</description>
+    </item>
     
     <item>
       <title>Coqは直観論理である。</title>
