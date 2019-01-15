@@ -657,7 +657,7 @@ Qed.
 
 <h4 id="単位元の存在-1">単位元の存在</h4>
 
-<p>0が乗法の単位元である。</p>
+<p>1が乗法の単位元である。</p>
 
 <pre><code>Theorem mult_iden1:
   forall n : nat, 1 * n = n.
@@ -701,6 +701,8 @@ Qed.
 </code></pre>
 
 <h4 id="左分配法則">左分配法則</h4>
+
+<p>おまけ</p>
 
 <pre><code>Lemma mult_plus_distr_l:
   forall n m l : nat, n * (m + l) = n * m + n * l.

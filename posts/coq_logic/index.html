@@ -512,9 +512,10 @@ table.table01 tbody td p {
 
 <p>簡単に説明すると、私達が普通に数学で用いている論理は古典論理で、直観論理は古典論理から排中律を除いたものである。
 排中律を除くことで二重否定の除去など、古典論理では証明できるが直観論理では証明できないものがある。
-Coqでは<a href="https://coq.inria.fr/library/Coq.Logic.Classical_Prop.html">Classical</a>というライブラリをImportすると古典論理を使えるようになる。</p>
+Coqでは<a href="https://coq.inria.fr/library/Coq.Logic.Classical_Prop.html">Classical</a>というライブラリをImportすると古典論理を使えるようになる。
+詳しい説明は<a href="https://www.amazon.co.jp/dp/4535608148">情報科学における論理</a>を読むと良い。</p>
 
-<p>詳しい説明は<a href="https://www.amazon.co.jp/dp/4535608148">情報科学における論理</a>を読むと良い。</p>
+<p>この記事では、直感論理と古典論理論理の微妙な違いを集めて遊ぼうと思います。</p>
 
 <h3 id="直感論理で示せる命題">直感論理で示せる命題</h3>
 
@@ -554,6 +555,8 @@ Qed.
 </code></pre>
 
 <h3 id="古典論理で示せる命題">古典論理で示せる命題</h3>
+
+<p>古典論理で示せる命題と真理値表を用いて恒真になる命題は一致します。(命題論理の完全性と健全性で検索)</p>
 
 <p>排中律を入れる。</p>
 
@@ -603,6 +606,7 @@ Qed.
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/4535608148">情報科学における論理</a>にいろいろ書いてあった。</li>
 <li><code>Require Import Classical.</code>することで古典論理を扱うことができる。<a href="https://coq.inria.fr/library/Coq.Logic.Classical_Prop.html">Classical</a></li>
+<li>直感論理を考えることはなんかの役に立つのかな。</li>
 </ul>
 
       </div>
