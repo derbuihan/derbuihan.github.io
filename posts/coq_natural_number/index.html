@@ -512,18 +512,18 @@ table.table01 tbody td p {
 
 <h3 id="可換モノイド">可換モノイド</h3>
 
-<p>可換モノイドとは</p>
+<p>Sが可換モノイドとは</p>
 
 <ul>
-<li>結合律</li>
-<li>単位元の存在</li>
-<li>可換</li>
+<li>結合律 $$ \forall x, y, z \in S, (x \cdot y) \cdot z = x \cdot (y \cdot z) $$</li>
+<li>単位元の存在 $$ \exists e \in S, \forall x \in S , e \cdot x = x \cdot e = x $$</li>
+<li>可換 $$ \forall x, y \in S, x \cdot y = y \cdot x $$</li>
 </ul>
 
 <p>を満たすことである。</p>
 
 <ul>
-<li>逆元の存在</li>
+<li>逆元の存在 $$ \forall x \in S, \exists x&rsquo; \in S, x \cdot x&rsquo; = x&rsquo; \cdot x = e $$</li>
 </ul>
 
 <p>を加えると可換群になる。</p>
@@ -768,9 +768,17 @@ Qed.
   
   <script>
     hljs.initHighlighting();
-    hljs.initLineNumbersOnLoad(); 
+    hljs.initLineNumbersOnLoad();
   </script>
 
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script type="text/javascript">
   go();
