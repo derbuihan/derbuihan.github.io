@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.derbuihan.xyz/posts/haskell_primes/</loc>
+    <lastmod>2019-01-29T16:48:37+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.derbuihan.xyz/posts/coq_natural_number/</loc>
     <lastmod>2019-01-16T04:20:21+09:00</lastmod>
   </url>
@@ -66,6 +71,12 @@
   </url>
   
   <url>
+    <loc>https://blog.derbuihan.xyz/tags/haskell/</loc>
+    <lastmod>2019-01-29T16:48:37+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.derbuihan.xyz/tags/hugo/</loc>
     <lastmod>2018-12-20T12:43:24+09:00</lastmod>
     <priority>0</priority>
@@ -73,7 +84,7 @@
   
   <url>
     <loc>https://blog.derbuihan.xyz/posts/</loc>
-    <lastmod>2019-01-16T04:20:21+09:00</lastmod>
+    <lastmod>2019-01-29T16:48:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -91,19 +102,25 @@
   
   <url>
     <loc>https://blog.derbuihan.xyz/</loc>
-    <lastmod>2019-01-16T04:20:21+09:00</lastmod>
+    <lastmod>2019-01-29T16:48:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.derbuihan.xyz/tags/%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2019-01-16T04:20:21+09:00</lastmod>
+    <lastmod>2019-01-29T16:48:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.derbuihan.xyz/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/</loc>
     <lastmod>2019-01-12T19:26:34+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.derbuihan.xyz/tags/%E7%B4%A0%E6%95%B0/</loc>
+    <lastmod>2019-01-29T16:48:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   

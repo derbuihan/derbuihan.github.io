@@ -6,10 +6,19 @@
     <description>Recent content in Posts on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 16 Jan 2019 04:20:21 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 29 Jan 2019 16:48:37 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.derbuihan.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Haskellで素数を探そうと思った話</title>
+      <link>https://blog.derbuihan.xyz/posts/haskell_primes/</link>
+      <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/posts/haskell_primes/</guid>
+      <description>はじめに SICPを読んでたらフェルマーテストが書いてあって、ほんとにこれ速いのかやってみようと思った話です。 フェルマーテストとは フェルマーの</description>
+    </item>
     
     <item>
       <title>Coqで自然数が加法,乗法について可換モノイド</title>

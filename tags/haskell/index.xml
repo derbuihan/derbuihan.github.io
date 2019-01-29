@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Haskell on derbuihan blog</title>
+    <link>https://blog.derbuihan.xyz/tags/haskell/</link>
+    <description>Recent content in Haskell on derbuihan blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Tue, 29 Jan 2019 16:48:37 +0900</lastBuildDate>
+    
+	<atom:link href="https://blog.derbuihan.xyz/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Haskellで素数を探そうと思った話</title>
+      <link>https://blog.derbuihan.xyz/posts/haskell_primes/</link>
+      <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
+      
+      <guid>https://blog.derbuihan.xyz/posts/haskell_primes/</guid>
+      <description>はじめに SICPを読んでたらフェルマーテストが書いてあって、ほんとにこれ速いのかやってみようと思った話です。 フェルマーテストとは フェルマーの</description>
+    </item>
+    
+  </channel>
+</rss>
