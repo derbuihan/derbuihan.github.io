@@ -17,7 +17,7 @@
       <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
       
       <guid>https://blog.derbuihan.xyz/posts/haskell_primes/</guid>
-      <description>はじめに SICPを読んでたらフェルマーテストが書いてあって、ほんとにこれ速いのかやってみようと思った話です。 フェルマーテストとは フェルマーの</description>
+      <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_te</description>
     </item>
     
     <item>
