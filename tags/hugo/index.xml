@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on derbuihan blog</title>
-    <link>https://blog.derbuihan.xyz/tags/hugo/</link>
+    <link>https://derbuihan.github.io/tags/hugo/</link>
     <description>Recent content in Hugo on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Thu, 20 Dec 2018 12:43:24 +0900</lastBuildDate>
     
-	<atom:link href="https://blog.derbuihan.xyz/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://derbuihan.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>hugoを使って軽量ブログを作る</title>
-      <link>https://blog.derbuihan.xyz/posts/start_blog_hugo/</link>
+      <link>https://derbuihan.github.io/posts/start_blog_hugo/</link>
       <pubDate>Thu, 20 Dec 2018 12:43:24 +0900</pubDate>
       
-      <guid>https://blog.derbuihan.xyz/posts/start_blog_hugo/</guid>
+      <guid>https://derbuihan.github.io/posts/start_blog_hugo/</guid>
       <description>Hugoとは オープンソースの軽量ブログジェジェネレーターです。 Markdownで書くことが出来て楽です。 Hugoの使い方 インストール方法 brew install</description>
     </item>
     

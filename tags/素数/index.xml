@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>素数 on derbuihan blog</title>
-    <link>https://blog.derbuihan.xyz/tags/%E7%B4%A0%E6%95%B0/</link>
+    <link>https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0/</link>
     <description>Recent content in 素数 on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 29 Jan 2019 16:48:37 +0900</lastBuildDate>
     
-	<atom:link href="https://blog.derbuihan.xyz/tags/%E7%B4%A0%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Haskellで素数を探そうと思った話</title>
-      <link>https://blog.derbuihan.xyz/posts/haskell_primes/</link>
+      <link>https://derbuihan.github.io/posts/haskell_primes/</link>
       <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
       
-      <guid>https://blog.derbuihan.xyz/posts/haskell_primes/</guid>
+      <guid>https://derbuihan.github.io/posts/haskell_primes/</guid>
       <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_te</description>
     </item>
     

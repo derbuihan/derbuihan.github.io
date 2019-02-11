@@ -2,93 +2,93 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on derbuihan blog</title>
-    <link>https://blog.derbuihan.xyz/posts/</link>
+    <link>https://derbuihan.github.io/posts/</link>
     <description>Recent content in Posts on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 29 Jan 2019 16:48:37 +0900</lastBuildDate>
     
-	<atom:link href="https://blog.derbuihan.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://derbuihan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Haskellで素数を探そうと思った話</title>
-      <link>https://blog.derbuihan.xyz/posts/haskell_primes/</link>
+      <link>https://derbuihan.github.io/posts/haskell_primes/</link>
       <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
       
-      <guid>https://blog.derbuihan.xyz/posts/haskell_primes/</guid>
+      <guid>https://derbuihan.github.io/posts/haskell_primes/</guid>
       <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_te</description>
     </item>
     
     <item>
       <title>Coqで自然数が加法,乗法について可換モノイド</title>
-      <link>https://blog.derbuihan.xyz/posts/coq_natural_number/</link>
+      <link>https://derbuihan.github.io/posts/coq_natural_number/</link>
       <pubDate>Wed, 16 Jan 2019 04:20:21 +0900</pubDate>
       
-      <guid>https://blog.derbuihan.xyz/posts/coq_natural_number/</guid>
+      <guid>https://derbuihan.github.io/posts/coq_natural_number/</guid>
       <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示</description>
     </item>
     
     <item>
       <title>Coqは直観論理である。</title>
-      <link>https://blog.derbuihan.xyz/posts/coq_logic/</link>
+      <link>https://derbuihan.github.io/posts/coq_logic/</link>
       <pubDate>Sun, 13 Jan 2019 14:20:08 +0900</pubDate>
       
-      <guid>https://blog.derbuihan.xyz/posts/coq_logic/</guid>
+      <guid>https://derbuihan.github.io/posts/coq_logic/</guid>
       <description>直観論理とは Coqは直観論理で許される推論規則で演繹を行う。 直観論理の説明はWikipediaにある。 簡単に説明すると、私達が普通に数学で用</description>
     </item>
     
     <item>
       <title>Root権限がない環境で色々インストールする。</title>
-      <link>https://blog.derbuihan.xyz/posts/without_root/</link>
+      <link>https://derbuihan.github.io/posts/without_root/</link>
       <pubDate>Sat, 12 Jan 2019 19:26:34 +0900</pubDate>
       
-      <guid>https://blog.derbuihan.xyz/posts/without_root/</guid>
+      <guid>https://derbuihan.github.io/posts/without_root/</guid>
       <description>Rootなしで人権を得る方法です。 Tmuxをビルドする。 こんな素晴らしい記事がある。 これをコピペして実行。 linuxbrewを用いる。 以下を</description>
     </item>
     
     <item>
       <title>Coqで外延性の公理</title>
-      <link>https://blog.derbuihan.xyz/posts/coq_axiom_of_extensionality/</link>
+      <link>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</link>
       <pubDate>Mon, 31 Dec 2018 23:08:04 +0900</pubDate>
       
-      <guid>https://blog.derbuihan.xyz/posts/coq_axiom_of_extensionality/</guid>
+      <guid>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</guid>
       <description>外延性の公理から集合の等号に対して同値関係を示します。(Coqで) 外延性の公理とは A, Bを任意の集合とするとき、もし任意の集合Xについて「Xが</description>
     </item>
     
     <item>
       <title>Atomで入れるプラグイン一覧</title>
-      <link>https://blog.derbuihan.xyz/posts/atom_package/</link>
+      <link>https://derbuihan.github.io/posts/atom_package/</link>
       <pubDate>Sat, 29 Dec 2018 23:35:55 +0900</pubDate>
       
-      <guid>https://blog.derbuihan.xyz/posts/atom_package/</guid>
+      <guid>https://derbuihan.github.io/posts/atom_package/</guid>
       <description>随時更新していきます。 通常編 とりあえずAtomをインストールしたら入れるプラグイン atomic-emacs AtomでEmacsのキーバインドを使う。 japanese-menu 設定を日本語</description>
     </item>
     
     <item>
       <title>Coqで集合論 その1</title>
-      <link>https://blog.derbuihan.xyz/posts/coq_set_theory/</link>
+      <link>https://derbuihan.github.io/posts/coq_set_theory/</link>
       <pubDate>Thu, 27 Dec 2018 04:42:41 +0900</pubDate>
       
-      <guid>https://blog.derbuihan.xyz/posts/coq_set_theory/</guid>
+      <guid>https://derbuihan.github.io/posts/coq_set_theory/</guid>
       <description>はじめに Coqで集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のためauto.を使わないで証明を行います。 集合論 Section Ensembles. (* こ</description>
     </item>
     
     <item>
       <title>Proof-Generalを用いたCoqの環境構築</title>
-      <link>https://blog.derbuihan.xyz/posts/coq_install/</link>
+      <link>https://derbuihan.github.io/posts/coq_install/</link>
       <pubDate>Thu, 20 Dec 2018 15:17:22 +0900</pubDate>
       
-      <guid>https://blog.derbuihan.xyz/posts/coq_install/</guid>
+      <guid>https://derbuihan.github.io/posts/coq_install/</guid>
       <description>Mac編 brewとbrew caskを用いた環境構築を行います。 GUI版Emacsのインストール brew cask install emacs Coqのインストール brewでCoqを</description>
     </item>
     
     <item>
       <title>hugoを使って軽量ブログを作る</title>
-      <link>https://blog.derbuihan.xyz/posts/start_blog_hugo/</link>
+      <link>https://derbuihan.github.io/posts/start_blog_hugo/</link>
       <pubDate>Thu, 20 Dec 2018 12:43:24 +0900</pubDate>
       
-      <guid>https://blog.derbuihan.xyz/posts/start_blog_hugo/</guid>
+      <guid>https://derbuihan.github.io/posts/start_blog_hugo/</guid>
       <description>Hugoとは オープンソースの軽量ブログジェジェネレーターです。 Markdownで書くことが出来て楽です。 Hugoの使い方 インストール方法 brew install</description>
     </item>
     

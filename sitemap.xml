@@ -3,123 +3,123 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.derbuihan.xyz/posts/haskell_primes/</loc>
+    <loc>https://derbuihan.github.io/posts/haskell_primes/</loc>
     <lastmod>2019-01-29T16:48:37+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/posts/coq_natural_number/</loc>
+    <loc>https://derbuihan.github.io/posts/coq_natural_number/</loc>
     <lastmod>2019-01-16T04:20:21+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/posts/coq_logic/</loc>
+    <loc>https://derbuihan.github.io/posts/coq_logic/</loc>
     <lastmod>2019-01-13T14:20:08+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/posts/without_root/</loc>
+    <loc>https://derbuihan.github.io/posts/without_root/</loc>
     <lastmod>2019-01-12T19:26:34+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/posts/coq_axiom_of_extensionality/</loc>
+    <loc>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</loc>
     <lastmod>2018-12-31T23:08:04+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/posts/atom_package/</loc>
+    <loc>https://derbuihan.github.io/posts/atom_package/</loc>
     <lastmod>2018-12-29T23:35:55+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/posts/coq_set_theory/</loc>
+    <loc>https://derbuihan.github.io/posts/coq_set_theory/</loc>
     <lastmod>2018-12-27T04:42:41+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/about/</loc>
+    <loc>https://derbuihan.github.io/about/</loc>
     <lastmod>2018-12-23T02:29:09+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/posts/coq_install/</loc>
+    <loc>https://derbuihan.github.io/posts/coq_install/</loc>
     <lastmod>2018-12-20T15:17:22+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/posts/start_blog_hugo/</loc>
+    <loc>https://derbuihan.github.io/posts/start_blog_hugo/</loc>
     <lastmod>2018-12-20T12:43:24+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/tags/atom/</loc>
+    <loc>https://derbuihan.github.io/tags/atom/</loc>
     <lastmod>2018-12-29T23:35:55+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/tags/coq/</loc>
+    <loc>https://derbuihan.github.io/tags/coq/</loc>
     <lastmod>2019-01-16T04:20:21+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/tags/emacs/</loc>
+    <loc>https://derbuihan.github.io/tags/emacs/</loc>
     <lastmod>2018-12-20T15:17:22+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/tags/haskell/</loc>
+    <loc>https://derbuihan.github.io/tags/haskell/</loc>
     <lastmod>2019-01-29T16:48:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/tags/hugo/</loc>
+    <loc>https://derbuihan.github.io/tags/hugo/</loc>
     <lastmod>2018-12-20T12:43:24+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/posts/</loc>
+    <loc>https://derbuihan.github.io/posts/</loc>
     <lastmod>2019-01-29T16:48:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/tags/</loc>
+    <loc>https://derbuihan.github.io/tags/</loc>
     <lastmod>2018-12-29T23:35:55+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/tags/tex/</loc>
+    <loc>https://derbuihan.github.io/tags/tex/</loc>
     <lastmod>2018-12-29T23:35:55+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/</loc>
+    <loc>https://derbuihan.github.io/</loc>
     <lastmod>2019-01-29T16:48:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/tags/%E6%95%B0%E5%AD%A6/</loc>
+    <loc>https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6/</loc>
     <lastmod>2019-01-29T16:48:37+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/</loc>
+    <loc>https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/</loc>
     <lastmod>2019-01-12T19:26:34+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.derbuihan.xyz/tags/%E7%B4%A0%E6%95%B0/</loc>
+    <loc>https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0/</loc>
     <lastmod>2019-01-29T16:48:37+09:00</lastmod>
     <priority>0</priority>
   </url>
