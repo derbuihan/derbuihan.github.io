@@ -6,10 +6,19 @@
     <description>Recent content in 環境構築 on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 12 Jan 2019 19:26:34 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 14 Feb 2019 01:14:02 +0900</lastBuildDate>
     
 	<atom:link href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MacでCoqのバージョンを指定してインストール</title>
+      <link>https://derbuihan.github.io/posts/coq_downgrade/</link>
+      <pubDate>Thu, 14 Feb 2019 01:14:02 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/coq_downgrade/</guid>
+      <description>いつものように $ brew update &amp;amp;&amp;amp; brew upgrade してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのve</description>
+    </item>
     
     <item>
       <title>Root権限がない環境で色々インストールする。</title>

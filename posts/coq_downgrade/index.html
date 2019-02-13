@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>Tags</title>
+  <title>MacでCoqのバージョンを指定してインストール</title>
   <meta name="description"
     
-      content="未来の自分へのドキュメント"
+      content="いつものように $ brew update &amp;&amp; brew upgrade してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのve"
     
   >
   <meta name="author" content="derbuihan">
@@ -429,16 +429,14 @@ table.table01 tbody td p {
 
   
   
-  <link href="https://derbuihan.github.io/tags/index.xml" rel="alternate" type="application/rss+xml" title="derbuihan blog Feed" />
-  
 
   <meta name="generator" content="Hugo 0.54.0" />
 
   
   
 <meta property="og:url" content="https://derbuihan.github.io/" />
-<meta property="og:title" content="Tags" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="MacでCoqのバージョンを指定してインストール" />
+<meta property="og:description" content="いつものように $ brew update &amp;&amp; brew upgrade してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのve" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -476,63 +474,121 @@ table.table01 tbody td p {
     <div class=" pure-u-lg-5-24"></div>
 </div>
 
+
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
   <div class="pure-u-11-12 pure-u-lg-7-12">
-    <p class="posts-name">Tags:</p>
-    <div class="post-content">
-      <ul class="posts">
+    <div class="post">
+
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2019-02-14 01:14:02 &#43;0900 JST">
+            
+              2019-02-14
+            
+          </time>
         
         
-        <li>
-          <a href="coq">#coq</a>
-          <span>&#40;6&#41;</span>
-        </li>
+        |
         
-        <li>
-          <a href="%E6%95%B0%E5%AD%A6">#数学</a>
-          <span>&#40;4&#41;</span>
-        </li>
         
-        <li>
-          <a href="%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a>
-          <span>&#40;4&#41;</span>
-        </li>
+        tags: [ <a href="https://derbuihan.github.io/tags/coq">#Coq</a> <a href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a> ]
         
-        <li>
-          <a href="atom">#atom</a>
-          <span>&#40;1&#41;</span>
-        </li>
+
         
-        <li>
-          <a href="emacs">#emacs</a>
-          <span>&#40;1&#41;</span>
-        </li>
+
         
-        <li>
-          <a href="haskell">#haskell</a>
-          <span>&#40;1&#41;</span>
-        </li>
+        </p>
+        <h1>MacでCoqのバージョンを指定してインストール</h1>
+      </div>
+
+      <div class="post-content">
         
-        <li>
-          <a href="hugo">#hugo</a>
-          <span>&#40;1&#41;</span>
-        </li>
-        
-        <li>
-          <a href="tex">#tex</a>
-          <span>&#40;1&#41;</span>
-        </li>
-        
-        <li>
-          <a href="%E7%B4%A0%E6%95%B0">#素数</a>
-          <span>&#40;1&#41;</span>
-        </li>
-        
-      </ul>
+
+<p>いつものように</p>
+
+<pre><code>$ brew update &amp;&amp; brew upgrade
+</code></pre>
+
+<p>してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのversionを8.8.2にします。</p>
+
+<p>ほとんど↓の記事を見ながらやりました。</p>
+
+<p>参考: <a href="https://qiita.com/KyoheiG3/items/912bcc27462871487845">Homebrewで旧バージョンのパッケージをインストールしたい</a></p>
+
+<h3 id="brewでバージョン指定してインストールする方法">brewでバージョン指定してインストールする方法</h3>
+
+<h4 id="ローカルにcoqがある場合">ローカルにCoqがある場合</h4>
+
+<pre><code>$ brew info coq
+</code></pre>
+
+<p>を実行して8.8.1がローカルに残っているなと思ったら</p>
+
+<pre><code>$ brew switch coq 8.8.2
+</code></pre>
+
+<p>でcoqのversionを変えれるらしいです。</p>
+
+<h4 id="ローカルにcoqがない場合">ローカルにCoqがない場合</h4>
+
+<p>まず、</p>
+
+<pre><code>$ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
+$ git log coq.rb
+</code></pre>
+
+<p>で適当に指定のversionを見つける。</p>
+
+<pre><code>commit ef92c34e061cb99920f7ae05d3ba205fccc5f1b8
+Author: BrewTestBot &lt;homebrew-test-bot@lists.sfconservancy.org&gt;
+Date:   Wed Oct 31 17:08:20 2018 +0000
+
+    coq: update 8.8.2 bottle.
+</code></pre>
+
+<p>今回は、↑のversionにdowngradeしたいと思います。</p>
+
+<pre><code>$ git checkout ef92c34e061cb99920f7ae05d3ba205fccc5f1b8
+$ brew unlink coq
+$ HOMEBREW_NO_AUTO_UPDATE=1 brew install coq
+</code></pre>
+
+<p>を実行する。</p>
+
+<pre><code>$ brew info coq
+$ coq --version
+</code></pre>
+
+<p>等でversionを確認してください。</p>
+
+<p>最後に、</p>
+
+<pre><code>$ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
+$ git reset --hard
+</code></pre>
+
+<p>しときましょう。</p>
+
+<p>versionのを上げたいときは、</p>
+
+<pre><code>$ brew switch coq 8.9.0
+</code></pre>
+
+<p>とかすると良い。</p>
+
+<h3 id="感想">感想</h3>
+
+<ul>
+<li>Coq 8.9.0にしたら<code>Require Export qualid</code>が上手く動かなくなったけどなんで？</li>
+</ul>
+
+      </div>
     </div>
   </div>
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
+</div>
+
 <div class="footer pure-g">
   <div class="pure-u-lg-5-24"></div>
   <div class="pure-u-1 pure-u-lg-7-12">
@@ -561,8 +617,6 @@ table.table01 tbody td p {
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
-        <a href="https://derbuihan.github.io/tags/index.xml" class="pure-menu-link pull-right">RSS</a>
         
       </div>
       
