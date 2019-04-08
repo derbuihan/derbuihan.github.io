@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>derbuihan blog</title>
+  <title>Elmで作ったものをGitLab CI/CDをつかってGitLab Pagesに公開する</title>
   <meta name="description"
     
-      content="未来の自分へのドキュメント"
+      content="Elmでフーリエ級数展開やライフゲームを制作したのでCI/CDを試してみました。 この記事ではElmで作ったものをGitLab CI/CDを使っ"
     
   >
   <meta name="author" content="derbuihan">
@@ -429,16 +429,14 @@ table.table01 tbody td p {
 
   
   
-  <link href="https://derbuihan.github.io/index.xml" rel="alternate" type="application/rss+xml" title="derbuihan blog Feed" />
-  
 
   <meta name="generator" content="Hugo 0.54.0" />
 
   
   
 <meta property="og:url" content="https://derbuihan.github.io/" />
-<meta property="og:title" content="derbuihan blog" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="Elmで作ったものをGitLab CI/CDをつかってGitLab Pagesに公開する" />
+<meta property="og:description" content="Elmでフーリエ級数展開やライフゲームを制作したのでCI/CDを試してみました。 この記事ではElmで作ったものをGitLab CI/CDを使っ" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -479,29 +477,20 @@ table.table01 tbody td p {
 
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
-	<div class="pure-u-11-12 pure-u-lg-7-12">
-	<div class="post-content">
-	
+  <div class="pure-u-11-12 pure-u-lg-7-12">
+    <div class="post">
 
-	  <ul class="posts">
-		
-		
-		
-		<li>
-		  
-		  <a class="post-list" href="https://derbuihan.github.io/posts/elm_gitlab_cicd/">Elmで作ったものをGitLab CI/CDをつかってGitLab Pagesに公開する</a>
-
-      <p class="footnote">
-        <time datetime="2019-04-08 23:46:31 &#43;0900 JST">
-          
-            2019-04-08
-          
-        </time>
-
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2019-04-08 23:46:31 &#43;0900 JST">
+            
+              2019-04-08
+            
+          </time>
+        
         
         |
         
-
         
         tags: [ <a href="https://derbuihan.github.io/tags/">#</a> ]
         
@@ -509,295 +498,98 @@ table.table01 tbody td p {
         
 
         
+        </p>
+        <h1>Elmで作ったものをGitLab CI/CDをつかってGitLab Pagesに公開する</h1>
+      </div>
 
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://derbuihan.github.io/posts/coq_downgrade/">MacでCoqのバージョンを指定してインストール</a>
-
-      <p class="footnote">
-        <time datetime="2019-02-14 01:14:02 &#43;0900 JST">
-          
-            2019-02-14
-          
-        </time>
-
-        
-        |
+      <div class="post-content">
         
 
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/coq">#Coq</a> <a href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a> ]
-        
+<p>Elmで<a href="https://derbuihan.gitlab.io/fourier/">フーリエ級数展開</a>や<a href="https://derbuihan.gitlab.io/LifeGame/">ライフゲーム</a>を制作したのでCI/CDを試してみました。
+この記事ではElmで作ったものをGitLab CI/CDを使ってGitLab Pagesにdeployする方法を紹介します。</p>
 
-        
+<h3 id="コードを書く">コードを書く</h3>
 
-        
+<pre><code>$ elm init
+$ vim src/Main.elm
+</code></pre>
 
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://derbuihan.github.io/posts/haskell_primes/">Haskellで素数を探そうと思った話</a>
+<p>今回は<code>src/Main.elm</code>を変換して公開します。</p>
 
-      <p class="footnote">
-        <time datetime="2019-01-29 16:48:37 &#43;0900 JST">
-          
-            2019-01-29
-          
-        </time>
+<h3 id="git管理する">git管理する</h3>
 
-        
-        |
-        
+<p>GitLabのアカウントを持ってない人はアカウントを作ってください。</p>
 
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/haskell">#Haskell</a> <a href="https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6">#数学</a> <a href="https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0">#素数</a> ]
-        
+<pre><code>$ git init
+$ gibo dump elm &gt; .gitignore
+$ git add elm.json src/Main.elm .gitignore
+$ git commit -m &quot;first commit&quot;
+$ git remote add origin git@gitlab.com:&lt;username&gt;/&lt;reponame&gt;.git
+$ git push --set-upstream origin master
+</code></pre>
 
-        
+<ul>
+<li>giboは.gitignoreを自動生成するコマンドです。(<a href="https://qiita.com/tmknom/items/c4bcebe17d25381fa45d">参考</a>)</li>
+</ul>
 
-        
+<h3 id="gitlab-ci-ymlを作成">.gitlab-ci.ymlを作成</h3>
 
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://derbuihan.github.io/posts/coq_natural_number/">Coqで自然数が加法,乗法について可換モノイド</a>
+<pre><code>$ vim .gitlab-ci.yml
+</code></pre>
 
-      <p class="footnote">
-        <time datetime="2019-01-16 04:20:21 &#43;0900 JST">
-          
-            2019-01-16
-          
-        </time>
+<p>以下を.gitlab-ci.ymlにコピペする</p>
 
-        
-        |
-        
+<pre><code>image: node:alpine
 
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/coq">#Coq</a> <a href="https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6">#数学</a> ]
-        
+pages:
+  cache:
+    paths:
+      - node_modules/
+  stage: deploy
+  script:
+    - npm install -g --unsafe-perm elm
+    - elm make src/Main.elm --optimize --output=public/index.html
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+</code></pre>
 
-        
+<p>あとは</p>
 
-        
+<pre><code>$ git add .gitlab-ci.yml
+$ git commit -m &quot;add .gitlab-ci.yml&quot;
+$ git push
+</code></pre>
 
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://derbuihan.github.io/posts/coq_logic/">Coqは直観論理である。</a>
+<p><code>src/Main.elm</code>の内容が<code>index.html</code>に変換され、<code>https://&lt;username&gt;.gitlab.com/&lt;reponame&gt;/</code>に公開されます。</p>
 
-      <p class="footnote">
-        <time datetime="2019-01-13 14:20:08 &#43;0900 JST">
-          
-            2019-01-13
-          
-        </time>
+<ul>
+<li>公開されるまで少し時間がかかります。(10分ぐらい？)</li>
+</ul>
 
-        
-        |
-        
+<p>以降はmasterにcommitしてpushするだけで自動でGitLab Pagesにdeployされます。</p>
 
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/coq">#Coq</a> ]
-        
+<h3 id="感想">感想</h3>
 
-        
+<ul>
+<li>シェルスクリプト書いてやってたことがサーバー側のコンテナでできるのは便利。</li>
+<li>テストを書きながら開発するのもElmで試したい。</li>
+<li>Elmはアーキテクチャが決まってるから経験がなくても書きやすい。</li>
+<li>Haskellから難しさを取り除きつつ、Haskellの書きやすさを残したいい感じの言語だと思った。</li>
+</ul>
 
-        
+<h3 id="参考サイト">参考サイト</h3>
 
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://derbuihan.github.io/posts/without_root/">Root権限がない環境で色々インストールする。</a>
+<ul>
+<li>Elmの公式ガイド: <a href="https://guide.elm-lang.org/">An Introduction to Elm</a></li>
+<li>Elmの公式ガイド(和訳): <a href="https://guide.elm-lang.jp/">Elm について (はじめに)</a></li>
+<li>この記事の元ネタ: <a href="https://forum.gitlab.com/t/how-to-run-an-elm-project-from-gitlab/11662">How to run an elm project from gitlab?</a></li>
+</ul>
 
-      <p class="footnote">
-        <time datetime="2019-01-12 19:26:34 &#43;0900 JST">
-          
-            2019-01-12
-          
-        </time>
-
-        
-        |
-        
-
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a> ]
-        
-
-        
-
-        
-
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://derbuihan.github.io/posts/coq_axiom_of_extensionality/">Coqで外延性の公理</a>
-
-      <p class="footnote">
-        <time datetime="2018-12-31 23:08:04 &#43;0900 JST">
-          
-            2018-12-31
-          
-        </time>
-
-        
-        |
-        
-
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/coq">#Coq</a> <a href="https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6">#数学</a> ]
-        
-
-        
-
-        
-
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://derbuihan.github.io/posts/atom_package/">Atomで入れるプラグイン一覧</a>
-
-      <p class="footnote">
-        <time datetime="2018-12-29 23:35:55 &#43;0900 JST">
-          
-            2018-12-29
-          
-        </time>
-
-        
-        |
-        
-
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/atom">#Atom</a> <a href="https://derbuihan.github.io/tags/tex">#Tex</a> <a href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a> ]
-        
-
-        
-
-        
-
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://derbuihan.github.io/posts/coq_set_theory/">Coqで集合論 その1</a>
-
-      <p class="footnote">
-        <time datetime="2018-12-27 04:42:41 &#43;0900 JST">
-          
-            2018-12-27
-          
-        </time>
-
-        
-        |
-        
-
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/coq">#Coq</a> <a href="https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6">#数学</a> ]
-        
-
-        
-
-        
-
-      </p>
-    </li>
-    
-    
-		
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://derbuihan.github.io/posts/coq_install/">Proof-Generalを用いたCoqの環境構築</a>
-
-      <p class="footnote">
-        <time datetime="2018-12-20 15:17:22 &#43;0900 JST">
-          
-            2018-12-20
-          
-        </time>
-
-        
-        |
-        
-
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/coq">#Coq</a> <a href="https://derbuihan.github.io/tags/emacs">#Emacs</a> <a href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a> ]
-        
-
-        
-
-        
-
-      </p>
-    </li>
-    
-    
-		
-		<li>
-		  
-		  <a class="post-list" href="https://derbuihan.github.io/posts/start_blog_hugo/">hugoを使って軽量ブログを作る</a>
-
-      <p class="footnote">
-        <time datetime="2018-12-20 12:43:24 &#43;0900 JST">
-          
-            2018-12-20
-          
-        </time>
-
-        
-        |
-        
-
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/hugo">#Hugo</a> ]
-        
-
-        
-
-        
-
-      </p>
-    </li>
-    
-    
-    </ul>
-  </div>
+      </div>
+    </div>
   </div>
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
 </div>
@@ -830,8 +622,6 @@ table.table01 tbody td p {
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
-        <a href="https://derbuihan.github.io/index.xml" class="pure-menu-link pull-right">RSS</a>
         
       </div>
       
