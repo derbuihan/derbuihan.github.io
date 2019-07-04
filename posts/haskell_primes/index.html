@@ -430,7 +430,7 @@ table.table01 tbody td p {
   
   
 
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.55.6" />
 
   
   
@@ -752,12 +752,13 @@ is_carmichael n = and $ ((not . isPrime) n):(map (\a -&gt; test n a) [2..(n-1)])
 
 <ul>
 <li><code>not . isPrime</code>を追加して素数でない数から探します。</li>
-<li><code>is_prime</code>を<code>otherwise = True</code>とするだけで良い。(フェルマーテストのみを通過できる数を探せる。)</li>
-</ul>
+
+<li><p><code>is_prime</code>を<code>otherwise = True</code>とするだけで良い。(フェルマーテストのみを通過できる数を探せる。)</p>
 
 <pre><code>ghci&gt; filter is_carmichael [2..]
 [561,1105,1729,2465,2821,6601,8911,10585,15841,29341,41041,46657,52633,62745,63973,75361,101101
-</code></pre>
+</code></pre></li>
+</ul>
 
 <p>10万以下に16個あった。</p>
 
