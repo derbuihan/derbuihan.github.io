@@ -6,10 +6,19 @@
     <description>Recent content on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 09 Apr 2019 21:34:05 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jul 2019 01:37:56 +0900</lastBuildDate>
     
 	<atom:link href="https://derbuihan.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>物理学科が半年ぐらい真面目に数学を独学で勉強した話</title>
+      <link>https://derbuihan.github.io/posts/study_math/</link>
+      <pubDate>Sun, 07 Jul 2019 01:37:56 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/study_math/</guid>
+      <description>はじめに 物理を勉強していくうちに数学にも興味をもったので、学部3年生の後半から学部4年生になるまでの約半年間ひとりで数学を勉強しました。 数学</description>
+    </item>
     
     <item>
       <title>Works</title>
