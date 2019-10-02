@@ -6,10 +6,28 @@
     <description>Recent content in Posts on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 07 Jul 2019 01:37:56 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 03 Oct 2019 04:47:58 +0900</lastBuildDate>
     
 	<atom:link href="https://derbuihan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>tensorflow-gpuをDockerで動かしたときにIllegal instructionと出たときの対処法</title>
+      <link>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</link>
+      <pubDate>Thu, 03 Oct 2019 04:47:58 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</guid>
+      <description>はじめに Docker 19.03以降からDockerのコンテナからNvidia GPUを使いやすくなりました。 tensorflow-gpuをDockerで</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu上でNvidiaのGPUの環境構築</title>
+      <link>https://derbuihan.github.io/posts/nvidia_gpu_setting/</link>
+      <pubDate>Tue, 01 Oct 2019 13:59:01 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/nvidia_gpu_setting/</guid>
+      <description>はじめに 最近、 GPUによるボードゲームAIの高速化 three.jsでGPGPUライフゲーム を見たり、これをGPU(GTX 750Ti)で実行し</description>
+    </item>
     
     <item>
       <title>物理学科が半年ぐらい数学を独学で勉強した話</title>

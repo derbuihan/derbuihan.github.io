@@ -3,27 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://derbuihan.github.io/</loc>
+    <lastmod>2019-10-03T04:47:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://derbuihan.github.io/tags/docker/</loc>
+    <lastmod>2019-10-03T04:47:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://derbuihan.github.io/tags/gpu/</loc>
+    <lastmod>2019-10-03T04:47:58+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://derbuihan.github.io/posts/</loc>
-    <lastmod>2019-07-07T01:37:56+09:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-10-03T04:47:58+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://derbuihan.github.io/tags/</loc>
-    <lastmod>2019-07-07T01:37:56+09:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-10-03T04:47:58+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://derbuihan.github.io/</loc>
-    <lastmod>2019-07-07T01:37:56+09:00</lastmod>
-    <priority>0</priority>
+    <loc>https://derbuihan.github.io/tags/tensorflow/</loc>
+    <lastmod>2019-10-03T04:47:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</loc>
+    <lastmod>2019-10-03T04:47:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://derbuihan.github.io/posts/nvidia_gpu_setting/</loc>
+    <lastmod>2019-10-01T13:59:01+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6/</loc>
     <lastmod>2019-07-07T01:37:56+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -39,7 +60,6 @@
   <url>
     <loc>https://derbuihan.github.io/tags/elm/</loc>
     <lastmod>2019-04-08T23:46:31+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -50,13 +70,11 @@
   <url>
     <loc>https://derbuihan.github.io/tags/gitlab/</loc>
     <lastmod>2019-04-08T23:46:31+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://derbuihan.github.io/tags/coq/</loc>
     <lastmod>2019-02-14T01:14:02+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -67,13 +85,11 @@
   <url>
     <loc>https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/</loc>
     <lastmod>2019-02-14T01:14:02+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://derbuihan.github.io/tags/haskell/</loc>
     <lastmod>2019-01-29T16:48:37+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -84,7 +100,6 @@
   <url>
     <loc>https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0/</loc>
     <lastmod>2019-01-29T16:48:37+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -110,7 +125,6 @@
   <url>
     <loc>https://derbuihan.github.io/tags/atom/</loc>
     <lastmod>2018-12-29T23:35:55+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -121,7 +135,6 @@
   <url>
     <loc>https://derbuihan.github.io/tags/tex/</loc>
     <lastmod>2018-12-29T23:35:55+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -137,7 +150,6 @@
   <url>
     <loc>https://derbuihan.github.io/tags/emacs/</loc>
     <lastmod>2018-12-20T15:17:22+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -148,7 +160,6 @@
   <url>
     <loc>https://derbuihan.github.io/tags/hugo/</loc>
     <lastmod>2018-12-20T12:43:24+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
