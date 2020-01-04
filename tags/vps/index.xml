@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VPS on derbuihan blog</title>
+    <link>https://derbuihan.github.io/tags/vps/</link>
+    <description>Recent content in VPS on derbuihan blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 04 Jan 2020 10:09:03 +0900</lastBuildDate>
+    
+	<atom:link href="https://derbuihan.github.io/tags/vps/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>これまでに使ってきたVPSのレビュー</title>
+      <link>https://derbuihan.github.io/posts/vps_review/</link>
+      <pubDate>Sat, 04 Jan 2020 10:09:03 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/vps_review/</guid>
+      <description>私はこれまでにいくつかVPSを借りて運用してきました。 実際に借りて運用したVPSのレビューを書きます。 Scaleway CPU: 2Core x86 64bit メモリ: 2G SSD: 50GB 値段: 月3ユー</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -430,7 +430,7 @@ table.table01 tbody td p {
   
   
 
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.62.1" />
 
   
   
@@ -509,20 +509,13 @@ table.table01 tbody td p {
       </div>
 
       <div class="post-content">
-        
-
-<p><a href="https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86">外延性の公理</a>から集合の等号に対して<a href="https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82">同値関係</a>を示します。(Coqで)</p>
-
-<h3 id="外延性の公理とは">外延性の公理とは</h3>
-
+        <p><a href="https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86">外延性の公理</a>から集合の等号に対して<a href="https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82">同値関係</a>を示します。(Coqで)</p>
+<h3 id="heading">外延性の公理とは</h3>
 <blockquote>
 <p>A, Bを任意の集合とするとき、もし任意の集合Xについて「XがAの要素であるならば、そのときに限りXはBの要素である」が成り立つならば、AとBは等しい。</p>
 </blockquote>
-
 <p><a href="https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86">外延性の公理</a>から引用。</p>
-
-<h3 id="と-を定義する">∈と=を定義する</h3>
-
+<h3 id="heading-1">∈と=を定義する</h3>
 <pre><code>Section Axiom_Of_Extensionality.
 
   Variable Var : Type.
@@ -532,12 +525,8 @@ table.table01 tbody td p {
   (* ここにコードを書く *)
 
 End Axiom_Of_Extensionality.
-</code></pre>
-
-<p>∈をIn、=をEqとした。</p>
-
-<h3 id="同値関係とは">同値関係とは</h3>
-
+</code></pre><p>∈をIn、=をEqとした。</p>
+<h3 id="heading-2">同値関係とは</h3>
 <blockquote>
 <ol>
 <li>反射律: a = a</li>
@@ -545,18 +534,11 @@ End Axiom_Of_Extensionality.
 <li>推移律: a = b ∧ b = c ⇒ a = c</li>
 </ol>
 </blockquote>
-
 <p><a href="https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82">同値関係</a>を参考。</p>
-
-<h3 id="証明する">証明する</h3>
-
+<h3 id="heading-3">証明する</h3>
 <p>まず、外延公理を入れる。</p>
-
 <pre><code>Axiom Extensionality: forall x y, Eq x y &lt;-&gt; forall z : Var, (In z x &lt;-&gt; In z y).
-</code></pre>
-
-<h4 id="反射律">反射律</h4>
-
+</code></pre><h4 id="heading-4">反射律</h4>
 <pre><code>Lemma Equal_Reflexive : forall x : Var, Eq x x.
 Proof.
   intros.
@@ -571,15 +553,11 @@ Proof.
   intros.
   trivial.
 Qed.
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>specialize.からintros.のパターンで公理を仮定における。</li>
 <li>specialize.からintros.のパターンってTacticないのかな。</li>
 </ul>
-
-<h4 id="対称律">対称律</h4>
-
+<h4 id="heading-5">対称律</h4>
 <pre><code>Lemma Equal_Symmetric : forall x y : Var, Eq x y -&gt; Eq y x.
 Proof.
   intros.
@@ -597,15 +575,11 @@ Proof.
   trivial.
   trivial.
 Qed.
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>&lt;-&gt;が対称律を満たすことを示すのと本質的にはあんまり変わらない。</li>
 <li>先に&lt;-&gt;の対称律を示したら置き換えて楽に示せたら良いのに。</li>
 </ul>
-
-<h4 id="推移律">推移律</h4>
-
+<h4 id="heading-6">推移律</h4>
 <pre><code>Lemma Equal_Transitive : forall x y z : Var, Eq x y /\ Eq y z -&gt; Eq x z.
 Proof.
   intros.
@@ -647,17 +621,12 @@ Proof.
   apply H15.
   trivial.
 Qed.
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>同じ公理を6回specialize.しないといけないもんなのかな。</li>
 <li>長すぎてもう見返したくない。</li>
 </ul>
-
 <h3 id="ssreflect">SSReflect</h3>
-
 <p><a href="https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86">外延性の公理</a>から集合の等号に対して<a href="https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82">同値関係</a>を示します。(SSReflectで)</p>
-
 <pre><code>From mathcomp
      Require Import ssreflect.
 
@@ -702,14 +671,10 @@ Section Axiom_Of_Extensionality.
   Qed.
 
 End Axiom_Of_Extensionality.
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>すごく短くなった</li>
 </ul>
-
-<h3 id="感想">感想</h3>
-
+<h3 id="heading-7">感想</h3>
 <ul>
 <li>SSReflectを使おう!</li>
 </ul>

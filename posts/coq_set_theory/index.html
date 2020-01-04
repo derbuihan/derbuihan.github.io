@@ -430,7 +430,7 @@ table.table01 tbody td p {
   
   
 
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.62.1" />
 
   
   
@@ -509,75 +509,45 @@ table.table01 tbody td p {
       </div>
 
       <div class="post-content">
-        
-
-<h3 id="はじめに">はじめに</h3>
-
+        <h3 id="heading">はじめに</h3>
 <p>Coqで集合を扱う標準ライブラリ<a href="https://coq.inria.fr/library/Coq.Sets.Ensembles.html">Ensembles</a>の再開発を行います。
 勉強のためauto.を使わないで証明を行います。</p>
-
-<h3 id="集合論">集合論</h3>
-
+<h3 id="heading-1">集合論</h3>
 <pre><code>Section Ensembles.
 
   (* ここにコードを書く *)
 
 End Ensembles.
-</code></pre>
-
-<h4 id="集合とは">集合とは</h4>
-
+</code></pre><h4 id="heading-2">集合とは</h4>
 <p>1変数の述語を用いて集合論を定義する。</p>
-
 <pre><code>Variable U : Type.
 Definition Ensemble := U -&gt; Prop.
-</code></pre>
-
-<p>Uは述語の変数の型であり、EnsembleはUを受け取って命題を返す1変数の述語である。
+</code></pre><p>Uは述語の変数の型であり、EnsembleはUを受け取って命題を返す1変数の述語である。
 今回はEnsembleを集合とする。</p>
-
-<h4 id="を定義">∈を定義</h4>
-
+<h4 id="heading-3">∈を定義</h4>
 <p>元aが集合Aに含まれるということは、変数aと1変数の述語AについてA(a)ということである。</p>
-
 <p>例): 「ソクラテスが人間という集合に含まれる。」は、「ソクラテスが人間ある。」ということである。</p>
-
 <pre><code>Definition In (A : Ensemble) (a : U) : Prop := A a.
 Notation &quot;a ∈ A&quot; := (In A a) (at level 55,no associativity).
 Notation &quot;a ∉ A&quot; := (~ In A a) (at level 55,no associativity).
-</code></pre>
-
-<p>Notationを定義すると楽しくなってきますね。</p>
-
+</code></pre><p>Notationを定義すると楽しくなってきますね。</p>
 <p>排中律を示す。
 その前に</p>
-
 <pre><code>Require Import Classical.
-</code></pre>
-
-<p>をSectionの一番最初に追加しましょう。
+</code></pre><p>をSectionの一番最初に追加しましょう。
 (Coqは直観論理なのでClassicalをImportしないと排中律を示すことが出来ない。)</p>
-
 <pre><code>Lemma excluded_middle : forall A : Ensemble , forall a : U, (a ∈ A) \/ (a ∉ A).
 Proof.
   unfold In.
   intros.
   apply classic.
 Qed.
-</code></pre>
-
-<p>unfoldは定義を展開するTacticである。</p>
-
-<h4 id="を定義-1">⊆を定義</h4>
-
+</code></pre><p>unfoldは定義を展開するTacticである。</p>
+<h4 id="heading-4">⊆を定義</h4>
 <p>A ⊆ Bは任意のAの元はBに含まれることである。</p>
-
 <pre><code>Definition Include (A : Ensemble) (B : Ensemble) : Prop := forall a : U, a ∈ A -&gt; a ∈ B.
 Notation &quot;A ⊆ B&quot; := (Include A B) (at level 54, no associativity).
-</code></pre>
-
-<p>⊆の反射律と推移律を示す。</p>
-
+</code></pre><p>⊆の反射律と推移律を示す。</p>
 <pre><code>Lemma reflexive : forall A : Ensemble, A ⊆ A.
 Proof.
   unfold Include.
@@ -596,33 +566,20 @@ Proof.
   apply H.
   trivial.
 Qed.
-</code></pre>
-
-<p>auto.を使うと楽に証明できる。</p>
-
-<h4 id="を定義-2">≡を定義</h4>
-
+</code></pre><p>auto.を使うと楽に証明できる。</p>
+<h4 id="heading-5">≡を定義</h4>
 <p>「A ≡ B」は「A ⊆ B かつ B ⊆ A」ということである。</p>
-
 <pre><code>Definition Same_set (A : Ensemble) (B : Ensemble) : Prop := A ⊆ B /\ B ⊆ A.
 Notation &quot;A ≡ B&quot; := (Same_set A B) (at level 57, no associativity).
-</code></pre>
-
-<h4 id="空集合と全体集合を定義">空集合と全体集合を定義</h4>
-
+</code></pre><h4 id="heading-6">空集合と全体集合を定義</h4>
 <p>空集合は元が一つもないので、どんな変数を取ってもFalseを返し、</p>
-
 <p>全体集合はすべてが元であるから、どんな変数を取ってもTrueを返す。</p>
-
 <pre><code>Definition Empty_set : Ensemble := fun a : U =&gt; False.
 Notation &quot;∅&quot; := Empty_set.
 
 Definition Full_set : Ensemble := fun a : U =&gt; True.
 Notation Ω := Full_set.
-</code></pre>
-
-<p>空集合は任意の集合の部分集合であり、全体集合は任意の集合を部分集合にもつことを示す。</p>
-
+</code></pre><p>空集合は任意の集合の部分集合であり、全体集合は任意の集合を部分集合にもつことを示す。</p>
 <pre><code>Lemma empty_subset : forall A : Ensemble, ∅ ⊆ A.
 Proof.
   unfold Include.
@@ -638,13 +595,9 @@ Proof.
   unfold In.
   trivial.
 Qed.
-</code></pre>
-
-<p>仮定にFalseがあるとき任意の命題を示すことができる。
+</code></pre><p>仮定にFalseがあるとき任意の命題を示すことができる。
 仮定にFalseがあったらcontradiction.を用いる。</p>
-
-<h3 id="感想">感想</h3>
-
+<h3 id="heading-7">感想</h3>
 <ul>
 <li>ラッセルのパラドックスは型をつけると回避できるとかどっかで聞いたけどよくわからない。</li>
 <li>Coqで公理的集合論をやりたかったけどどうやれば良いのかよくわからない。</li>

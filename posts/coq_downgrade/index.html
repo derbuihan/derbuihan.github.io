@@ -430,7 +430,7 @@ table.table01 tbody td p {
   
   
 
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.62.1" />
 
   
   
@@ -509,82 +509,43 @@ table.table01 tbody td p {
       </div>
 
       <div class="post-content">
-        
-
-<p>いつものように</p>
-
+        <p>いつものように</p>
 <pre><code>$ brew update &amp;&amp; brew upgrade
-</code></pre>
-
-<p>してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのversionを8.8.2にします。</p>
-
+</code></pre><p>してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのversionを8.8.2にします。</p>
 <p>ほとんど↓の記事を見ながらやりました。</p>
-
 <p>参考: <a href="https://qiita.com/KyoheiG3/items/912bcc27462871487845">Homebrewで旧バージョンのパッケージをインストールしたい</a></p>
-
-<h3 id="brewでバージョン指定してインストールする方法">brewでバージョン指定してインストールする方法</h3>
-
-<h4 id="ローカルにcoqがある場合">ローカルにCoqがある場合</h4>
-
+<h3 id="brew">brewでバージョン指定してインストールする方法</h3>
+<h4 id="coq">ローカルにCoqがある場合</h4>
 <pre><code>$ brew info coq
-</code></pre>
-
-<p>を実行してversion 8.8.2がローカルに残っているなと思ったら</p>
-
+</code></pre><p>を実行してversion 8.8.2がローカルに残っているなと思ったら</p>
 <pre><code>$ brew switch coq 8.8.2
-</code></pre>
-
-<p>でcoqのversionを変えれるらしいです。</p>
-
-<h4 id="ローカルにcoqがない場合">ローカルにCoqがない場合</h4>
-
+</code></pre><p>でcoqのversionを変えれるらしいです。</p>
+<h4 id="coq-1">ローカルにCoqがない場合</h4>
 <p>まず、</p>
-
 <pre><code>$ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
 $ git log coq.rb
-</code></pre>
-
-<p>で適当に指定のversionを見つける。</p>
-
+</code></pre><p>で適当に指定のversionを見つける。</p>
 <pre><code>commit ef92c34e061cb99920f7ae05d3ba205fccc5f1b8
 Author: BrewTestBot &lt;homebrew-test-bot@lists.sfconservancy.org&gt;
 Date:   Wed Oct 31 17:08:20 2018 +0000
 
     coq: update 8.8.2 bottle.
-</code></pre>
-
-<p>今回は、↑のversionにdowngradeしたいと思います。</p>
-
+</code></pre><p>今回は、↑のversionにdowngradeしたいと思います。</p>
 <pre><code>$ git checkout ef92c34e061cb99920f7ae05d3ba205fccc5f1b8
 $ brew unlink coq
 $ HOMEBREW_NO_AUTO_UPDATE=1 brew install coq
-</code></pre>
-
-<p>を実行する。</p>
-
+</code></pre><p>を実行する。</p>
 <pre><code>$ brew info coq
 $ coq --version
-</code></pre>
-
-<p>等でversionを確認してください。</p>
-
+</code></pre><p>等でversionを確認してください。</p>
 <p>最後に、</p>
-
 <pre><code>$ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
 $ git reset --hard
-</code></pre>
-
-<p>しときましょう。</p>
-
+</code></pre><p>しときましょう。</p>
 <p>versionのを上げたいときは、</p>
-
 <pre><code>$ brew switch coq 8.9.0
-</code></pre>
-
-<p>とかすると良い。</p>
-
-<h3 id="感想">感想</h3>
-
+</code></pre><p>とかすると良い。</p>
+<h3 id="heading">感想</h3>
 <ul>
 <li>Coq 8.9.0にしたら<code>Require Export qualid</code>が上手く動かなくなったけどなんで？</li>
 </ul>

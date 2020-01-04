@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GitLab on derbuihan blog</title>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 08 Apr 2019 23:46:31 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/elm_gitlab_cicd/</guid>
-      <description>Elmでフーリエ級数展開やライフゲームを制作したのでCI/CDを試してみました。 この記事ではElmで作ったものをGitLab CI/CDを使っ</description>
+      <description>Elmで[フーリエ級数展開] (https://derbuihan.gitlab.io/fourier/)や[ライフゲーム] (https://</description>
     </item>
     
   </channel>

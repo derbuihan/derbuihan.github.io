@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>Tex</title>
+  <title>これまでに使ってきたVPSのレビュー</title>
   <meta name="description"
     
-      content="未来の自分へのドキュメント"
+      content="私はこれまでにいくつかVPSを借りて運用してきました。 実際に借りて運用したVPSのレビューを書きます。 Scaleway CPU: 2Core x86 64bit メモリ: 2G SSD: 50GB 値段: 月3ユー"
     
   >
   <meta name="author" content="derbuihan">
@@ -429,16 +429,14 @@ table.table01 tbody td p {
 
   
   
-  <link href="https://derbuihan.github.io/tags/tex/index.xml" rel="alternate" type="application/rss+xml" title="derbuihan blog Feed" />
-  
 
   <meta name="generator" content="Hugo 0.62.1" />
 
   
   
 <meta property="og:url" content="https://derbuihan.github.io/" />
-<meta property="og:title" content="Tex" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="これまでに使ってきたVPSのレビュー" />
+<meta property="og:description" content="私はこれまでにいくつかVPSを借りて運用してきました。 実際に借りて運用したVPSのレビューを書きます。 Scaleway CPU: 2Core x86 64bit メモリ: 2G SSD: 50GB 値段: 月3ユー" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -483,33 +481,69 @@ table.table01 tbody td p {
 </div>
 
 
-
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
   <div class="pure-u-11-12 pure-u-lg-7-12">
-    <div class="post-content">
-      
-      <p class="posts-name">#Tex の記事一覧</p>
+    <div class="post">
 
-      <ul class="posts">
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2020-01-04 10:09:03 &#43;0900 JST">
+            
+              2020-01-04
+            
+          </time>
         
         
+        |
         
-        <li>
-          
-          <a class="post-list" href="https://derbuihan.github.io/posts/atom_package/">Atomで入れるプラグイン一覧</a>
+        
+        tags: [ <a href="https://derbuihan.github.io/tags/vps">#VPS</a> <a href="https://derbuihan.github.io/tags/review">#review</a> ]
+        
 
-          <p class="footnote">
-            <time datetime="2018-12-29 23:35:55 &#43;0900 JST">
-              
-                2018-12-29
-              
-            </time>
-          </p>
-        </li>
         
+
         
-      </ul>
+        </p>
+        <h1>これまでに使ってきたVPSのレビュー</h1>
+      </div>
+
+      <div class="post-content">
+        <p>私はこれまでにいくつかVPSを借りて運用してきました。
+実際に借りて運用したVPSのレビューを書きます。</p>
+<h4 id="scaleway">Scaleway</h4>
+<ul>
+<li>CPU: 2Core x86 64bit</li>
+<li>メモリ: 2G</li>
+<li>SSD: 50GB</li>
+<li>値段: 月3ユーロ (約400円)</li>
+<li>場所: ヨーロッパ</li>
+</ul>
+<p>のプランを2017年 ~ 2019年にかけて2年近く借りてました。
+初めて自ら借りたVPSということもあり長く借りていましたが、あんまり使っていないことに気づき解約しました。
+場所がヨーロッパということもあり、SSHしてコマンドを入力すると遅さを感じますが、Webサービスを運用する分には問題ないと思います。
+この価格帯でメモリ2GB、ストレージがSSD、通信が無制限なVPSは安いと思います。
+mastodonやGitLabみたいなメモリをいっぱい使うサービスを運用するのにはオススメです。
+ScalewayではCPUがARMのVPSも貸していて、それも短い期間借りていた事がありますが、dockerでサービスを運用したい場合はimageが動かないので苦労したのでやめました。</p>
+<h4 id="gce">GCE</h4>
+<ul>
+<li>CPU: 2Core x86 64bit</li>
+<li>メモリ: 0.6GB</li>
+<li>HDD: 30GB</li>
+<li>値段: 無料</li>
+<li>場所: アメリカ西海岸</li>
+</ul>
+<p>のプランを一年前から現在まで借りてます。
+このプランはGoogleが無料でVPSを貸しているということで有名です。
+私はwordpressでブログを運用しています。
+メモリが0.6GBということで少ないと感じるかもしれませんが、Swapをきちんと確保すれば安定して運用できます。
+通信は月に1GBまでしか無料にならないですが、CDN等を活用することでなんとかなってます。
+2020年からGlobal IPを取るとお金がかかるようになるらしいので、無料じゃなくなるかもしれません。</p>
+<h4 id="heading">まとめ</h4>
+<p>メモリがなくても、通信が制限されててもなんとかなります。
+お金があるなら、さくらVPSを借りるのがいいと思います。</p>
+
+      </div>
     </div>
   </div>
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
@@ -543,8 +577,6 @@ table.table01 tbody td p {
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
-        <a href="https://derbuihan.github.io/tags/tex/index.xml" class="pure-menu-link pull-right">RSS</a>
         
       </div>
       
