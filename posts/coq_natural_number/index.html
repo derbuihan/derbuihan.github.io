@@ -430,7 +430,7 @@ table.table01 tbody td p {
   
   
 
-  <meta name="generator" content="Hugo 0.62.1" />
+  <meta name="generator" content="Hugo 0.75.1" />
 
   
   
@@ -509,10 +509,10 @@ table.table01 tbody td p {
       </div>
 
       <div class="post-content">
-        <h3 id="heading">目的</h3>
+        <h3 id="目的">目的</h3>
 <p><a href="https://www.amazon.co.jp/dp/4785314028">代数入門―群と加群 </a>を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示します。
 (実際は<a href="http://proofcafe.org/sf/Basics_J.html">Software Foundationsの第一章</a>をSSReflect使って解いただけ。)</p>
-<h3 id="heading-1">可換モノイド</h3>
+<h3 id="可換モノイド">可換モノイド</h3>
 <p>Sが可換モノイドとは</p>
 <ul>
 <li>結合律 $$ \forall x, y, z \in S, (x \cdot y) \cdot z = x \cdot (y \cdot z) $$</li>
@@ -521,11 +521,11 @@ table.table01 tbody td p {
 </ul>
 <p>を満たすことである。</p>
 <ul>
-<li>逆元の存在 $$ \forall x \in S, \exists x&rsquo; \in S, x \cdot x&rsquo; = x&rsquo; \cdot x = e $$</li>
+<li>逆元の存在 $$ \forall x \in S, \exists x' \in S, x \cdot x' = x' \cdot x = e $$</li>
 </ul>
 <p>を加えると可換群になる。</p>
 <p>自然数は加法と乗法について可換モノイドであるが可換群ではない。</p>
-<h3 id="heading-2">準備</h3>
+<h3 id="準備">準備</h3>
 <p>ssreflectをimportする。</p>
 <pre><code>From mathcomp
      Require Import ssreflect.
@@ -543,8 +543,8 @@ Section multiplication.
   (* ここにコードを書く *)
 
 End multiplication.
-</code></pre><h3 id="heading-3">加法</h3>
-<h4 id="heading-4">結合律</h4>
+</code></pre><h3 id="加法">加法</h3>
+<h4 id="結合律">結合律</h4>
 <pre><code>Theorem plus_assoc:
   forall n m l : nat, (n + m) + l = n + (m + l).
 Proof.
@@ -570,7 +570,7 @@ Proof.
     simpl. rewrite IHn'. reflexivity.
 Qed.
 </code></pre><p>となる。</p>
-<h4 id="heading-5">単位元の存在</h4>
+<h4 id="単位元の存在">単位元の存在</h4>
 <p>0が加法の単位元である。</p>
 <pre><code>Theorem plus_iden1:
   forall n : nat, 0 + n = n.
@@ -585,7 +585,7 @@ Proof.
   elim n =&gt; [//= | n' H /=].
   rewrite H =&gt; //=.
 Qed.
-</code></pre><h4 id="heading-6">可換</h4>
+</code></pre><h4 id="可換">可換</h4>
 <p>ここで必要になる補題</p>
 <pre><code>Lemma plus_n_Sm:
   forall n m: nat, S (n + m) = n + S m.
@@ -602,8 +602,8 @@ Proof.
   elim n =&gt; [//= | n' H /=].
   rewrite H plus_n_Sm =&gt; //.
 Qed.
-</code></pre><h3 id="heading-7">乗法</h3>
-<h4 id="heading-8">右分配法則</h4>
+</code></pre><h3 id="乗法">乗法</h3>
+<h4 id="右分配法則">右分配法則</h4>
 <pre><code>Lemma mult_plus_distr_r:
   forall n m l : nat, (n + m) * l = n * l + m * l.
 Proof.
@@ -611,7 +611,7 @@ Proof.
   elim n =&gt; [//= | n' H /=].
   rewrite H plus_assoc =&gt; //.
 Qed.
-</code></pre><h4 id="heading-9">結合則</h4>
+</code></pre><h4 id="結合則">結合則</h4>
 <pre><code>Theorem mult_assoc:
   forall n m l : nat, (n * m) * l = n * (m * l).
 Proof.
@@ -619,7 +619,7 @@ Proof.
   elim n =&gt; [//= | n' H /=].
   rewrite -H mult_plus_distr_r =&gt; //.
 Qed.
-</code></pre><h4 id="heading-10">単位元の存在</h4>
+</code></pre><h4 id="単位元の存在-1">単位元の存在</h4>
 <p>1が乗法の単位元である。</p>
 <pre><code>Theorem mult_iden1:
   forall n : nat, 1 * n = n.
@@ -636,7 +636,7 @@ Proof.
   elim n =&gt; [//= | n' H /=].
   rewrite H =&gt; //=.
 Qed.
-</code></pre><h4 id="heading-11">可換</h4>
+</code></pre><h4 id="可換-1">可換</h4>
 <p>ここで必要になる補題</p>
 <pre><code>Lemma mult_Sn:
   forall n m : nat, n + n * m = n * S m.
@@ -653,7 +653,7 @@ Proof.
   elim n =&gt; [//= | n' H /=].
   rewrite H mult_Sn =&gt; //.
 Qed.
-</code></pre><h4 id="heading-12">左分配法則</h4>
+</code></pre><h4 id="左分配法則">左分配法則</h4>
 <p>おまけ</p>
 <pre><code>Lemma mult_plus_distr_l:
   forall n m l : nat, n * (m + l) = n * m + n * l.
@@ -661,7 +661,7 @@ Proof.
   move =&gt; n m l.
   rewrite (mult_comm n (m + l)) (mult_comm n m) (mult_comm n l) mult_plus_distr_r =&gt; //.
 Qed.
-</code></pre><h3 id="heading-13">感想</h3>
+</code></pre><h3 id="感想">感想</h3>
 <ul>
 <li><a href="https://qiita.com/suharahiromichi/items/d16bebbe6f6c98f76d78">この記事</a>を見ながら書いた。</li>
 </ul>

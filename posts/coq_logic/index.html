@@ -430,7 +430,7 @@ table.table01 tbody td p {
   
   
 
-  <meta name="generator" content="Hugo 0.62.1" />
+  <meta name="generator" content="Hugo 0.75.1" />
 
   
   
@@ -509,7 +509,7 @@ table.table01 tbody td p {
       </div>
 
       <div class="post-content">
-        <h3 id="heading">直観論理とは</h3>
+        <h3 id="直観論理とは">直観論理とは</h3>
 <p>Coqは直観論理で許される推論規則で演繹を行う。
 直観論理の説明は<a href="https://ja.wikipedia.org/wiki/%E7%9B%B4%E8%A6%B3%E8%AB%96%E7%90%86">Wikipedia</a>にある。</p>
 <p>簡単に説明すると、私達が普通に数学で用いている論理は古典論理で、直観論理は古典論理から排中律を除いたものである。
@@ -517,8 +517,8 @@ table.table01 tbody td p {
 Coqでは<a href="https://coq.inria.fr/library/Coq.Logic.Classical_Prop.html">Classical</a>というライブラリをImportすると古典論理を使えるようになる。
 詳しい説明は<a href="https://www.amazon.co.jp/dp/4535608148">情報科学における論理</a>を読むと良い。</p>
 <p>この記事では、直感論理と古典論理の微妙な違いを集めて遊ぼうと思います。</p>
-<h3 id="heading-1">直感論理で示せる命題</h3>
-<h4 id="heading-2">二重否定をつける</h4>
+<h3 id="直感論理で示せる命題">直感論理で示せる命題</h3>
+<h4 id="二重否定をつける">二重否定をつける</h4>
 <pre><code>Lemma PPNN : forall p : Prop, p -&gt; ~~p.
 Proof.
   intros.
@@ -526,7 +526,7 @@ Proof.
   apply H0.
   trivial.
 Qed.
-</code></pre><h4 id="heading-3">三重否定を否定にする</h4>
+</code></pre><h4 id="三重否定を否定にする">三重否定を否定にする</h4>
 <pre><code>Lemma NNN : forall p : Prop, ~~~ p -&gt; ~p.
 Proof.
   intros.
@@ -535,7 +535,7 @@ Proof.
   intro.
   contradiction.
 Qed.
-</code></pre><h4 id="heading-4">対偶の片方</h4>
+</code></pre><h4 id="対偶の片方">対偶の片方</h4>
 <pre><code>Lemma Cont : forall p q : Prop, (p -&gt; q) -&gt; (~q -&gt; ~p).
 Proof.
   intros.
@@ -544,14 +544,14 @@ Proof.
   apply H.
   trivial.
 Qed.
-</code></pre><h3 id="heading-5">古典論理で示せる命題</h3>
+</code></pre><h3 id="古典論理で示せる命題">古典論理で示せる命題</h3>
 <p>古典論理で示せる命題と真理値表を用いて恒真になる命題は一致します。(命題論理の完全性と健全性で検索)</p>
 <p>排中律を入れる。</p>
 <pre><code>Section Classical.
   Axiom classic : forall P : Prop, P \/ ~P.
   (* ここにコードを書く *)
 End Classical.
-</code></pre><h4 id="heading-6">二重否定の除去</h4>
+</code></pre><h4 id="二重否定の除去">二重否定の除去</h4>
 <pre><code>Lemma NNPP : forall p : Prop, ~~ p -&gt; p.
 Proof.
   intros.
@@ -561,7 +561,7 @@ Proof.
   trivial.
   contradiction.
 Qed.
-</code></pre><h4 id="heading-7">対偶のもう片方</h4>
+</code></pre><h4 id="対偶のもう片方">対偶のもう片方</h4>
 <pre><code>Lemma Cont2 : forall p q : Prop, (~p -&gt; ~q) -&gt; (q -&gt; p).
 Proof.
   intros.
@@ -572,11 +572,11 @@ Proof.
   specialize (H H1).
   contradiction.
 Qed.
-</code></pre><h4 id="heading-8">背理法</h4>
+</code></pre><h4 id="背理法">背理法</h4>
 <pre><code>apply NNPP; intros.
 </code></pre><p>を実行することは背理法を行うことである。
 示すべき命題の否定を仮定に追加して矛盾を導くことだからである。</p>
-<h3 id="heading-9">感想</h3>
+<h3 id="感想">感想</h3>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/4535608148">情報科学における論理</a>にいろいろ書いてあった。</li>
 <li><code>Require Import Classical.</code>することで古典論理を扱うことができる。<a href="https://coq.inria.fr/library/Coq.Logic.Classical_Prop.html">Classical</a></li>

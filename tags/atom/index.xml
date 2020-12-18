@@ -6,11 +6,7 @@
     <description>Recent content in Atom on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 29 Dec 2018 23:35:55 +0900</lastBuildDate>
-    
-	<atom:link href="https://derbuihan.github.io/tags/atom/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 29 Dec 2018 23:35:55 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/atom/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Atomで入れるプラグイン一覧</title>
       <link>https://derbuihan.github.io/posts/atom_package/</link>

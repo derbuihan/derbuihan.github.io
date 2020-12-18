@@ -430,7 +430,7 @@ table.table01 tbody td p {
   
   
 
-  <meta name="generator" content="Hugo 0.62.1" />
+  <meta name="generator" content="Hugo 0.75.1" />
 
   
   
@@ -509,15 +509,15 @@ table.table01 tbody td p {
       </div>
 
       <div class="post-content">
-        <h3 id="heading">はじめに</h3>
+        <h3 id="はじめに">はじめに</h3>
 <p>Docker 19.03以降からDockerのコンテナからNvidia GPUを使いやすくなりました。
 tensorflow-gpuをDockerで使う場合は、公式の<a href="https://hub.docker.com/r/tensorflow/tensorflow">tensorflow/tensorflow:latest-gpu-py3</a>があります。</p>
-<h4 id="heading-1">エラーの内容</h4>
+<h4 id="エラーの内容">エラーの内容</h4>
 <p>このコンテナをSandy Bridge以前のCPUで使うと</p>
 <pre><code>Illegal instruction (core dumped)
 </code></pre><p>というエラーが出ます。
 これはAVXという命令が古すぎるCPUにはないために起こるエラーです。</p>
-<h4 id="heading-2">解決方法</h4>
+<h4 id="解決方法">解決方法</h4>
 <p>解決方法は</p>
 <ol>
 <li>tensorflowをコンテナ内でビルドする</li>
@@ -525,15 +525,15 @@ tensorflow-gpuをDockerで使う場合は、公式の<a href="https://hub.docker
 </ol>
 <p>の二種類があります。</p>
 <p>この記事では2.を使い、Anacondaのリポジトリから取ってきたtensorflow-gpuを用いた<a href="https://github.com/derbuihan/docker-tensorflow-gpu">Dockerfile</a>を書いたので紹介します。</p>
-<h3 id="heading-3">使い方</h3>
+<h3 id="使い方">使い方</h3>
 <p><a href="https://github.com/derbuihan/docker-tensorflow-gpu">Dockerfile</a>を使ってください。</p>
-<h4 id="heading-4">動作環境</h4>
+<h4 id="動作環境">動作環境</h4>
 <ul>
 <li>Ubuntu 18.04</li>
 <li>docker 19.03 以降</li>
 <li>nvidia-driver-435</li>
 </ul>
-<h4 id="heading-5">遊び方</h4>
+<h4 id="遊び方">遊び方</h4>
 <p>環境がきちんと整っていれば次で動作すると思います。</p>
 <pre><code>$ git clone https://github.com/derbuihan/docker-tensorflow-gpu
 $ cd docker-tensorflow-gpu

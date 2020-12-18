@@ -430,7 +430,7 @@ table.table01 tbody td p {
   
   
 
-  <meta name="generator" content="Hugo 0.62.1" />
+  <meta name="generator" content="Hugo 0.75.1" />
 
   
   
@@ -509,14 +509,14 @@ table.table01 tbody td p {
       </div>
 
       <div class="post-content">
-        <h3 id="mac">Mac編</h3>
+        <h3 id="mac編">Mac編</h3>
 <p>brewとbrew caskを用いた環境構築を行います。</p>
-<h4 id="guiemacs">GUI版Emacsのインストール</h4>
+<h4 id="gui版emacsのインストール">GUI版Emacsのインストール</h4>
 <pre><code>brew cask install emacs
-</code></pre><h4 id="coq">Coqのインストール</h4>
+</code></pre><h4 id="coqのインストール">Coqのインストール</h4>
 <p>brewでCoqをインストールします。</p>
 <pre><code>brew install coq
-</code></pre><h4 id="emacs">Emacsの設定</h4>
+</code></pre><h4 id="emacsの設定">Emacsの設定</h4>
 <p>最近のEmacsはパッケージマネージャも付属しているので、それを用いてProof-Generalもインストールします。</p>
 <pre><code>(require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -536,7 +536,7 @@ table.table01 tbody td p {
 <p>brewを用いてインストールして、No such file or directory, coqtopと出た時は、</p>
 <pre><code>(custom-set-variables '(coq-prog-name &quot;/usr/local/bin/coqtop&quot;) '(proof-three-window-enable t))
 </code></pre><p>を~/.emacs.d/init.elを追加すれば解決する。</p>
-<h4 id="heading">補完のパッケージの追加</h4>
+<h4 id="補完のパッケージの追加">補完のパッケージの追加</h4>
 <p>company-coqは最強なのでこれも入れましょう。
 emacsを起動して、</p>
 <ol>
@@ -546,9 +546,9 @@ emacsを起動して、</p>
 <p>~/.emacs.d/init.elに</p>
 <pre><code>(add-hook 'coq-mode-hook #'company-coq-mode)
 </code></pre><p>を追加すると良い。</p>
-<h4 id="ssreflect">ssreflectのインストール</h4>
+<h4 id="ssreflectのインストール">ssreflectのインストール</h4>
 <pre><code>brew install ssreflect
-</code></pre><h3 id="proofgeneral">ProofGeneralの使い方</h3>
+</code></pre><h3 id="proofgeneralの使い方">ProofGeneralの使い方</h3>
 <p>ProofGeneralで使うキーバインド</p>
 <table>
 <thead>
@@ -573,7 +573,7 @@ emacsを起動して、</p>
 </tbody>
 </table>
 <p>参考: <a href="http://proofcafe.org/wiki/ProofGeneral/Keybinds">ProofGeneral/Keybinds</a></p>
-<h3 id="heading-1">感想</h3>
+<h3 id="感想">感想</h3>
 <ul>
 <li>CoqIDEもいいけど、Emacs + ProofGeneral + company-coqをやると最強になる。</li>
 <li>brewのパッケージって新しい。</li>

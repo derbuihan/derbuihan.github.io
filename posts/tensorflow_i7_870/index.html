@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>Haskell</title>
+  <title>i7 870にTensorflowの環境構築方法</title>
   <meta name="description"
     
-      content="未来の自分へのドキュメント"
+      content="はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用パソコンを作りました。 この情報は2020年12月で出来た環境の方法です"
     
   >
   <meta name="author" content="derbuihan">
@@ -429,16 +429,14 @@ table.table01 tbody td p {
 
   
   
-  <link href="https://derbuihan.github.io/tags/haskell/index.xml" rel="alternate" type="application/rss+xml" title="derbuihan blog Feed" />
-  
 
   <meta name="generator" content="Hugo 0.75.1" />
 
   
   
 <meta property="og:url" content="https://derbuihan.github.io/" />
-<meta property="og:title" content="Haskell" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="i7 870にTensorflowの環境構築方法" />
+<meta property="og:description" content="はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用パソコンを作りました。 この情報は2020年12月で出来た環境の方法です" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -483,33 +481,89 @@ table.table01 tbody td p {
 </div>
 
 
-
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
   <div class="pure-u-11-12 pure-u-lg-7-12">
-    <div class="post-content">
-      
-      <p class="posts-name">#Haskell の記事一覧</p>
+    <div class="post">
 
-      <ul class="posts">
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2020-12-18 12:05:33 &#43;0900 JST">
+            
+              2020-12-18
+            
+          </time>
         
         
+        |
         
-        <li>
-          
-          <a class="post-list" href="https://derbuihan.github.io/posts/haskell_primes/">Haskellで素数を探そうと思った話</a>
+        
+        tags: [ <a href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a> <a href="https://derbuihan.github.io/tags/tensorflow">#tensorflow</a> ]
+        
 
-          <p class="footnote">
-            <time datetime="2019-01-29 16:48:37 &#43;0900 JST">
-              
-                2019-01-29
-              
-            </time>
-          </p>
-        </li>
         
+
         
-      </ul>
+        </p>
+        <h1>i7 870にTensorflowの環境構築方法</h1>
+      </div>
+
+      <div class="post-content">
+        <h1 id="はじめに">はじめに</h1>
+<p>落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用パソコンを作りました。
+この情報は2020年12月で出来た環境の方法です。</p>
+<h1 id="前提">前提</h1>
+<ul>
+<li>CUDA 10.2</li>
+<li>Nvidia Driver Version: 440.100</li>
+<li>Anacondaをインストール</li>
+</ul>
+<h1 id="tensorflow-v150のインストール方法">tensorflow v1.5.0のインストール方法</h1>
+<p>はじめに、仮想環境の作成</p>
+<pre><code class="language-[Bash]" data-lang="[Bash]">$ conda create -n tf1 python==3.7 anaconda
+$ conda activate tf1
+</code></pre><p>tensorflow-gpu v1.15.0を指定してインストール</p>
+<pre><code class="language-[Bash]" data-lang="[Bash]">$ conda install -c anaconda tensorflow-gpu==1.15.0
+$ conda install -c anaconda keras
+</code></pre><p>ついでに、tensorflow-datasetsをインストール(condaで入るのはバージョンが古いのでpipでインストール)</p>
+<pre><code class="language-[Bash]" data-lang="[Bash]">$ conda install tqdm
+$ pip install tensorflow-datasets==3.2.1
+</code></pre><h1 id="tensorflow-v200のインストール方法">tensorflow v2.0.0のインストール方法</h1>
+<p>はじめに、仮想環境の作成</p>
+<pre><code class="language-[Bash]" data-lang="[Bash]">$ conda create -n tf2 python==3.7 anaconda
+$ conda activate tf2
+</code></pre><p>tensorflow-gpu v2.0.0を指定してインストール(これより新しいバージョンは入らなかった)</p>
+<pre><code class="language-[Bash]" data-lang="[Bash]">$ conda install -c anaconda tensorflow-gpu==2.0.0
+$ conda install -c anaconda keras
+</code></pre><p>ついでに、tensorflow-datasetsをインストール(condaで入るのはバージョンが古いのでpipでインストール)</p>
+<pre><code class="language-[Bash]" data-lang="[Bash]">$ conda install tqdm
+$ pip install tensorflow-datasets==3.2.1
+</code></pre><h1 id="mnistのサンプルコード">MNISTのサンプルコード</h1>
+<pre><code class="language-[Python]" data-lang="[Python]">import tensorflow as tf
+import tensorflow_datasets as tfds
+
+print(tf.__version__)
+
+mnist = tfds.load('MNIST', data_dir=&quot;./data&quot;, shuffle_files=True, as_supervised=True)
+train, test = mnist['train'].shuffle(buffer_size=1024).batch(64), mnist['test'].batch(64)
+
+model = tf.keras.models.Sequential([
+  tf.keras.layers.Flatten(),
+  tf.keras.layers.Dense(512, activation=tf.nn.relu),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(10, activation=tf.nn.softmax)
+])
+
+model.compile(optimizer='adam',loss='sparse_categorical_crossentropy',metrics=['accuracy'])
+
+model.fit(train, epochs=5)
+result = model.evaluate(test)
+dict(zip(model.metrics_names, result))
+
+</code></pre><h1 id="感想">感想</h1>
+<p>最新のTensorflowをソースからビルドしたほうがいいかもしれない。</p>
+
+      </div>
     </div>
   </div>
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
@@ -543,8 +597,6 @@ table.table01 tbody td p {
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
-        <a href="https://derbuihan.github.io/tags/haskell/index.xml" class="pure-menu-link pull-right">RSS</a>
         
       </div>
       

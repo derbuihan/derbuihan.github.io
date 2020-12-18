@@ -430,7 +430,7 @@ table.table01 tbody td p {
   
   
 
-  <meta name="generator" content="Hugo 0.62.1" />
+  <meta name="generator" content="Hugo 0.75.1" />
 
   
   
@@ -509,10 +509,10 @@ table.table01 tbody td p {
       </div>
 
       <div class="post-content">
-        <h3 id="heading">はじめに</h3>
+        <h3 id="はじめに">はじめに</h3>
 <p><a href="https://ja.wikipedia.org/wiki/%E8%A8%88%E7%AE%97%E6%A9%9F%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E8%A7%A3%E9%87%88">SICP</a>を読んでたら<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9E%E3%83%BC%E3%81%AE%E5%B0%8F%E5%AE%9A%E7%90%86#%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9E%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88">フェルマーテスト</a>について書いてあって、ほんとにこれ速いのかやってみようと思った話です。</p>
 <p>ソースは<a href="https://gist.github.com/derbuihan/af3a8b7fac7dbfeee9d90887f8bd51df">fermat_test.hs</a>からダウンロード!</p>
-<h3 id="heading-1">フェルマーテストとは</h3>
+<h3 id="フェルマーテストとは">フェルマーテストとは</h3>
 <p>フェルマーの小定理はご存知ですよね？</p>
 <blockquote>
 <p>$p$を素数のとき、$a$を$p$と互いに素な整数に対して、
@@ -526,9 +526,9 @@ $$ a ^ n \not \equiv a \pmod{n} $$
 が成り立つとき、整数$n$は合成数である。</p>
 </blockquote>
 <p>これによって、ある数が素数であることは示せないが合成数であることを速く示すことはできます。</p>
-<h3 id="heading-2">実装</h3>
+<h3 id="実装">実装</h3>
 <p>部品を1つ1つ揃えていきます。</p>
-<h4 id="heading-3">互いに素</h4>
+<h4 id="互いに素">互いに素</h4>
 <p>最小公倍数を求める関数を考えます。</p>
 <pre><code>gcd' :: Integer -&gt; Integer -&gt; Integer
 gcd' n 0 = n
@@ -537,7 +537,7 @@ gcd' n m = gcd' m (n `mod` m)
 <pre><code>gcd' n m == 1
 </code></pre><p>とすれば$n, m$は互いに素です。
 (Haskellには標準でgcdがあるのでそれを使っても良い)</p>
-<h4 id="an-1-pmodn">$a^{n-1} \pmod{n}$を求める</h4>
+<h4 id="an-1-pmodnを求める">$a^{n-1} \pmod{n}$を求める</h4>
 <p>いわゆる、$a^7 = a * (a^3)^2 = a * (a * a^2)^2$として計算量をへらすやつを使います。
 途中で$\pmod{n}$を挟みます。</p>
 <pre><code>exp_mod :: Integer -&gt; Integer -&gt; Integer
@@ -550,7 +550,7 @@ exp_mod a n = iter a (n-1) n
 </code></pre><p>これを用いて、</p>
 <pre><code>exp_mod a n
 </code></pre><p>を計算することで、$a^{n-1} \pmod{n}$が計算できる。</p>
-<h4 id="heading-4">素数判定</h4>
+<h4 id="素数判定">素数判定</h4>
 <p>素数判定を実装すると次のようになります。</p>
 <pre><code>is_prime' :: Integer -&gt; Bool
 is_prime' n = and $ map (\a -&gt; test n a) [2..(n-1)]
@@ -566,7 +566,7 @@ is_prime' n = and $ map (\a -&gt; test n a) [2..(n-1)]
 <p>この実装では$n$未満のすべての自然数に対して、フェルマーテストを実行しています。
 この方法では素数$p$に対しては、$2 \sim (p-1)$で割っているので完全に素数を判定することが出来ています。
 <code>[2..(n-1)]</code>の部分をランダムな自然数に変更することで、フェルマーテストになります。(Haskellの乱数めんどくさいのでやりません。)</p>
-<h4 id="heading-5">まとめると</h4>
+<h4 id="まとめると">まとめると</h4>
 <p>これまでのコードをまとめると</p>
 <pre><code>gcd' :: Integer -&gt; Integer -&gt; Integer
 gcd' n 0 = n
@@ -587,10 +587,10 @@ is_prime' n = and $ map (\a -&gt; test n a) [2..(n-1)]
       | gcd' n a == 1 = (1 == exp_mod a n)
       | otherwise = False
 </code></pre><p>となる。</p>
-<h3 id="heading-6">遊ぶ</h3>
+<h3 id="遊ぶ">遊ぶ</h3>
 <p>Haskellの<a href="http://hackage.haskell.org/package/primes-0.2.1.0/docs/Data-Numbers-Primes.html">素数ライブラリ</a>をinstallする。</p>
 <pre><code>cabal install primes
-</code></pre><h4 id="267-1">$2^{67}-1$を判定</h4>
+</code></pre><h4 id="267-1を判定">$2^{67}-1$を判定</h4>
 <p>さて、$ 2^{67} - 1 = 147573952589676412927$は素数ではありません。
 (参考:<a href="https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%82%BB%E3%83%B3%E3%83%8C%E6%95%B0">メルセンヌ数</a>)</p>
 <p>Haskellのライブラリで素数か確認すると</p>
@@ -608,7 +608,7 @@ $$
 2^{n-1}, 3^{n-1} \cdots \pmod{n}
 $$
 を計算するしていって1にならないのを一つ見つけるだけで良い。</p>
-<h4 id="heading-7">メルセンヌ数探し</h4>
+<h4 id="メルセンヌ数探し">メルセンヌ数探し</h4>
 <pre><code>primes' :: [Integer]
 primes' = 2: filter is_prime' [3,5..]
 
@@ -637,7 +637,7 @@ is_prime'' n = and $ map (\a -&gt; test n a) $ takeWhile (&lt; n) [2,3,5]
 [2,3,5,7,13,17,19,31
 </code></pre><p>となり、31までしか探せません。</p>
 <p>メルセンヌ数はリュカ・テストで速くきちんとした素数判定ができるらしい。</p>
-<h4 id="heading-8">カーマイケル数</h4>
+<h4 id="カーマイケル数">カーマイケル数</h4>
 <p>少し気になるのが<code>is_prime''</code>を通過するけど、実際に素数でない数はどんなかずなのか？ですよね。
 実際に探してみましょう。</p>
 <pre><code>ghci&gt; filter (not . isPrime) $ filter is_prime'' [2..]
@@ -672,7 +672,7 @@ is_carmichael n = and $ ((not . isPrime) n):(map (\a -&gt; test n a) [2..(n-1)])
 [561,1105,1729,2465,2821,6601,8911,10585,15841,29341,41041,46657,52633,62745,63973,75361,101101
 </code></pre><p>10万以下に16個あった。</p>
 <p>これらの数はたまたま約数でテストしない限りフェルマーテストで弾くことができない。(憎い)</p>
-<h3 id="heading-9">並列化</h3>
+<h3 id="並列化">並列化</h3>
 <p>Haskellの並列計算については、あんまりわかってないけど適当に実装してみた。</p>
 <pre><code>import Control.Parallel.Strategies
 </code></pre><p>これ以降、コンパイルは</p>
@@ -684,7 +684,7 @@ is_carmichael n = and $ ((not . isPrime) n):(map (\a -&gt; test n a) [2..(n-1)])
 <li>-sをつけると詳細が見れる。</li>
 <li>-N4はスレッド数</li>
 </ul>
-<h4 id="heading-10">実装</h4>
+<h4 id="実装-1">実装</h4>
 <p>filterの部分で並列にする。</p>
 <pre><code>parFilter :: (a -&gt; Bool) -&gt; [a] -&gt; Eval [a]
 parFilter f [] = return []
@@ -711,7 +711,7 @@ sys     0m0.313s
 user    0m28.602s
 sys     0m3.278s
 </code></pre><p>となり、だいたい4倍も速くなった。(すごい)</p>
-<h4 id="heading-11">憎きカーマイケル数を探す</h4>
+<h4 id="憎きカーマイケル数を探す">憎きカーマイケル数を探す</h4>
 <p><code>is_carmichael</code>では調べたい合成数$n$について、互いに素な全ての整数$m$に対して、
 $$
 m^{n-1} \equiv 1 \pmod{n}
@@ -753,7 +753,7 @@ sys     0m1.567s
 </code></pre><p>となり、だいたい2倍も速くなった。</p>
 <p>(計算しかしてないからユーザーモードの実行時間とリアルの実行時間を見るだけで、
 並列化の効率を見ることができるかも？)</p>
-<h3 id="heading-12">感想</h3>
+<h3 id="感想">感想</h3>
 <ul>
 <li>素因数をみつけるという方法以外で合成数かどうか判断できるのがすごいを思った($M_{67}$を判定できたのはすごい)。 大きな素数と大きな素数の積についてフェルマーテストを行い合成数であることがわかっても、その約数はぜんぜんわかりませんっていう不思議な状態になる。</li>
 <li>1回フェルマーテストで弾ける合成数の割合とかは気になる。また、どの数でフェルマーテストをすると弾きやすいのかとかが気になる。</li>

@@ -6,10 +6,15 @@
     <description>Recent content in 環境構築 on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 14 Feb 2019 01:14:02 +0900</lastBuildDate>
-    
-	<atom:link href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Fri, 18 Dec 2020 12:05:33 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>i7 870にTensorflowの環境構築方法</title>
+      <link>https://derbuihan.github.io/posts/tensorflow_i7_870/</link>
+      <pubDate>Fri, 18 Dec 2020 12:05:33 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/tensorflow_i7_870/</guid>
+      <description>はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用パソコンを作りました。 この情報は2020年12月で出来た環境の方法です</description>
+    </item>
     
     <item>
       <title>MacでCoqのバージョンを指定してインストール</title>

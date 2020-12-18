@@ -430,7 +430,7 @@ table.table01 tbody td p {
   
   
 
-  <meta name="generator" content="Hugo 0.62.1" />
+  <meta name="generator" content="Hugo 0.75.1" />
 
   
   
@@ -511,11 +511,11 @@ table.table01 tbody td p {
       <div class="post-content">
         <p>Elmで[フーリエ級数展開] (<a href="https://derbuihan.gitlab.io/fourier/">https://derbuihan.gitlab.io/fourier/</a>)や[ライフゲーム] (<a href="https://derbuihan.gitlab.io/LifeGame/">https://derbuihan.gitlab.io/LifeGame/</a>)を制作したのでCI/CDを試してみました。
 この記事ではElmで作ったものをGitLab CI/CDを使ってGitLab Pagesにdeployする方法を紹介します。</p>
-<h3 id="heading">コードを書く</h3>
+<h3 id="コードを書く">コードを書く</h3>
 <pre><code>$ elm init
 $ vim src/Main.elm
 </code></pre><p>今回は<code>src/Main.elm</code>を変換して公開します。</p>
-<h3 id="git">git管理する</h3>
+<h3 id="git管理する">git管理する</h3>
 <p>GitLabのアカウントを持ってない人はアカウントを作ってください。</p>
 <pre><code>$ git init
 $ gibo dump elm &gt; .gitignore
@@ -526,7 +526,7 @@ $ git push --set-upstream origin master
 </code></pre><ul>
 <li>giboは.gitignoreを自動生成するコマンドです。(<a href="https://qiita.com/tmknom/items/c4bcebe17d25381fa45d">参考</a>)</li>
 </ul>
-<h3 id="gitlab-ciyml">.gitlab-ci.ymlを作成</h3>
+<h3 id="gitlab-ciymlを作成">.gitlab-ci.ymlを作成</h3>
 <pre><code>$ vim .gitlab-ci.yml
 </code></pre><p>以下を.gitlab-ci.ymlにコピペする</p>
 <pre><code>image: node:alpine
@@ -555,14 +555,14 @@ $ git push
 <li>公開されるまで少し時間がかかります。(10分ぐらい？)</li>
 </ul>
 <p>以降はmasterにcommitしてpushするだけで自動でGitLab Pagesにdeployされます。</p>
-<h3 id="heading-1">感想</h3>
+<h3 id="感想">感想</h3>
 <ul>
 <li>シェルスクリプト書いてやってたことがサーバー側のコンテナでできるのは便利。</li>
 <li>テストを書きながら開発するのもElmで試したい。</li>
 <li>Elmはアーキテクチャが決まってるから経験がなくても書きやすい。</li>
 <li>Haskellから難しさを取り除きつつ、Haskellの書きやすさを残したいい感じの言語だと思った。</li>
 </ul>
-<h3 id="heading-2">参考サイト</h3>
+<h3 id="参考サイト">参考サイト</h3>
 <ul>
 <li>Elmの公式ガイド: <a href="https://guide.elm-lang.org/">An Introduction to Elm</a></li>
 <li>Elmの公式ガイド(和訳): <a href="https://guide.elm-lang.jp/">Elm について (はじめに)</a></li>

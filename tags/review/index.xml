@@ -6,11 +6,7 @@
     <description>Recent content in review on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 04 Jan 2020 10:09:03 +0900</lastBuildDate>
-    
-	<atom:link href="https://derbuihan.github.io/tags/review/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 04 Jan 2020 10:09:03 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/review/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>これまでに使ってきたVPSのレビュー</title>
       <link>https://derbuihan.github.io/posts/vps_review/</link>
