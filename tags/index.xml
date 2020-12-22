@@ -6,11 +6,20 @@
     <description>Recent content in Tags on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 18 Dec 2020 12:05:33 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Dec 2020 02:42:40 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Datasets</title>
+      <link>https://derbuihan.github.io/tags/datasets/</link>
+      <pubDate>Wed, 23 Dec 2020 02:42:40 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/tags/datasets/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>tensorflow</title>
       <link>https://derbuihan.github.io/tags/tensorflow/</link>
-      <pubDate>Fri, 18 Dec 2020 12:05:33 +0900</pubDate>
+      <pubDate>Wed, 23 Dec 2020 02:42:40 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/tags/tensorflow/</guid>
       <description></description>
