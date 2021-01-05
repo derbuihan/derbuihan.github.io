@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>Tensorflow Datasetsにある英語の巨大なテキストのデータセット</title>
+  <title>機械学習</title>
   <meta name="description"
     
-      content="Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。 データの一覧の取得 以下のコマンドでtensorflow_datasetsから"
+      content="未来の自分へのドキュメント"
     
   >
   <meta name="author" content="derbuihan">
@@ -429,14 +429,16 @@ table.table01 tbody td p {
 
   
   
+  <link href="https://derbuihan.github.io/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/index.xml" rel="alternate" type="application/rss+xml" title="derbuihan blog Feed" />
+  
 
   <meta name="generator" content="Hugo 0.75.1" />
 
   
   
 <meta property="og:url" content="https://derbuihan.github.io/" />
-<meta property="og:title" content="Tensorflow Datasetsにある英語の巨大なテキストのデータセット" />
-<meta property="og:description" content="Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。 データの一覧の取得 以下のコマンドでtensorflow_datasetsから" />
+<meta property="og:title" content="機械学習" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -481,66 +483,78 @@ table.table01 tbody td p {
 </div>
 
 
+
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
   <div class="pure-u-11-12 pure-u-lg-7-12">
-    <div class="post">
+    <div class="post-content">
+      
+      <p class="posts-name">#機械学習 の記事一覧</p>
 
-      <div class="post-title">
-        <p class="footnote">
-          <time datetime="2020-12-23 02:42:40 &#43;0900 JST">
-            
-              2020-12-23
-            
-          </time>
+      <ul class="posts">
         
         
-        |
         
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/tensorflow">#Tensorflow</a> <a href="https://derbuihan.github.io/tags/datasets">#Datasets</a> <a href="https://derbuihan.github.io/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92">#機械学習</a> ]
-        
+        <li>
+          
+          <a class="post-list" href="https://derbuihan.github.io/posts/mnist_experiment/">MNIST画像認識の実験</a>
 
+          <p class="footnote">
+            <time datetime="2021-01-03 06:16:50 &#43;0900 JST">
+              
+                2021-01-03
+              
+            </time>
+          </p>
+        </li>
         
-
         
-        </p>
-        <h1>Tensorflow Datasetsにある英語の巨大なテキストのデータセット</h1>
-      </div>
+        
+        <li>
+          
+          <a class="post-list" href="https://derbuihan.github.io/posts/tensorflow_datasets_text/">Tensorflow Datasetsにある英語の巨大なテキストのデータセット</a>
 
-      <div class="post-content">
-        <p>Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。</p>
-<h3 id="データの一覧の取得">データの一覧の取得</h3>
-<p>以下のコマンドで<code>tensorflow_datasets</code>から取得出来るデータセットの一覧がわかります。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">import</span> tensorflow_datasets <span style="color:#f92672">as</span> tfds
-<span style="color:#f92672">&gt;&gt;&gt;</span> tfds<span style="color:#f92672">.</span>list_builders()
-</code></pre></div><h3 id="英語のデータセット">英語のデータセット</h3>
-<p>大量のテキストのデータセット</p>
-<h4 id="c4httpswwwtensorfloworgdatasetscatalogc4"><a href="https://www.tensorflow.org/datasets/catalog/c4">c4</a></h4>
-<p>Webクロールで集めた巨大なデータセット。英語のは約1TBある。
-英語以外の言語もデータがあり、すべての言語合わせると26.76TBあるらしい。</p>
-<h4 id="librispeech_lmhttpswwwtensorfloworgdatasetscataloglibrispeech_lm"><a href="https://www.tensorflow.org/datasets/catalog/librispeech_lm">librispeech_lm</a></h4>
-<p>5GBのデータセット</p>
-<h4 id="lm1bhttpswwwtensorfloworgdatasetscataloglm1b"><a href="https://www.tensorflow.org/datasets/catalog/lm1b">lm1b</a></h4>
-<p>5GBのデータセット</p>
-<h4 id="pg19httpswwwtensorfloworgdatasetscatalogpg19"><a href="https://www.tensorflow.org/datasets/catalog/pg19">pg19</a></h4>
-<p>古い本のデータセット。10GBぐらい。</p>
-<h4 id="reddit_disentanglementhttpswwwtensorfloworgdatasetscatalogreddit_disentanglement"><a href="https://www.tensorflow.org/datasets/catalog/reddit_disentanglement">reddit_disentanglement</a></h4>
-<p>redditのデータセット。</p>
-<h4 id="wiki40bhttpswwwtensorfloworgdatasetscatalogwiki40b"><a href="https://www.tensorflow.org/datasets/catalog/wiki40b">wiki40b</a></h4>
-<p>wikipediaのデータセット。きれいになってる。</p>
-<h4 id="wikipediahttpswwwtensorfloworgdatasetscatalogwikipedia"><a href="https://www.tensorflow.org/datasets/catalog/wikipedia">wikipedia</a></h4>
-<p>wikipediaのデータセット。きれいになってない。</p>
-<h3 id="その他データセット">その他データセット</h3>
-<p>その他の使えそうなデータセット</p>
-<h4 id="ag_news_subsethttpswwwtensorfloworgdatasetscatalogag_news_subset"><a href="https://www.tensorflow.org/datasets/catalog/ag_news_subset">ag_news_subset</a></h4>
-<p>ニュース記事のタイトルと説明文が、その記事の種類にラベル付けされたデータセット。</p>
-<h4 id="math_datasethttpswwwtensorfloworgdatasetscatalogmath_dataset"><a href="https://www.tensorflow.org/datasets/catalog/math_dataset">math_dataset</a></h4>
-<p>数学に関する英語の問題とその答えのデータセット</p>
-<h4 id="tiny_shakespearehttpswwwtensorfloworgdatasetscatalogtiny_shakespeare"><a href="https://www.tensorflow.org/datasets/catalog/tiny_shakespeare">tiny_shakespeare</a></h4>
-<p>シェイクスピアの文章</p>
+          <p class="footnote">
+            <time datetime="2020-12-23 02:42:40 &#43;0900 JST">
+              
+                2020-12-23
+              
+            </time>
+          </p>
+        </li>
+        
+        
+        
+        <li>
+          
+          <a class="post-list" href="https://derbuihan.github.io/posts/tensorflow_i7_870/">i7 870にTensorflowの環境構築方法</a>
 
-      </div>
+          <p class="footnote">
+            <time datetime="2020-12-18 12:05:33 &#43;0900 JST">
+              
+                2020-12-18
+              
+            </time>
+          </p>
+        </li>
+        
+        
+        
+        <li>
+          
+          <a class="post-list" href="https://derbuihan.github.io/posts/docker_tensorflow_gpu/">tensorflow-gpuをDockerで動かしたときにIllegal instructionと出たときの対処法</a>
+
+          <p class="footnote">
+            <time datetime="2019-10-03 04:47:58 &#43;0900 JST">
+              
+                2019-10-03
+              
+            </time>
+          </p>
+        </li>
+        
+        
+      </ul>
     </div>
   </div>
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
@@ -574,6 +588,8 @@ table.table01 tbody td p {
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
+        
+        <a href="https://derbuihan.github.io/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/index.xml" class="pure-menu-link pull-right">RSS</a>
         
       </div>
       

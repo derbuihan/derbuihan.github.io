@@ -6,7 +6,16 @@
     <description>Recent content on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 23 Dec 2020 02:42:40 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Jan 2021 06:16:50 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MNIST画像認識の実験</title>
+      <link>https://derbuihan.github.io/posts/mnist_experiment/</link>
+      <pubDate>Sun, 03 Jan 2021 06:16:50 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/mnist_experiment/</guid>
+      <description>全結合層のネットワークやCNNを用いてMNIST画像認識の実験をした。 実験環境 tensorflow v2.4.0 optimizer=&amp;lsquo;adam&amp;rsquo;, loss=&amp;lsquo;sparse_categorical_crossentropy&amp;rsquo; MNISTのデータの中身 MNISTは0~9の手書き文字</description>
+    </item>
+    
     <item>
       <title>Tensorflow Datasetsにある英語の巨大なテキストのデータセット</title>
       <link>https://derbuihan.github.io/posts/tensorflow_datasets_text/</link>
@@ -22,7 +31,7 @@
       <pubDate>Fri, 18 Dec 2020 12:05:33 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/tensorflow_i7_870/</guid>
-      <description>はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用パソコンを作りました。 この情報は2020年12月で出来た環境の方法です</description>
+      <description>はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用サーバーを作りました。 このとき、最新のTensorflowをインストー</description>
     </item>
     
     <item>
@@ -32,6 +41,15 @@
       
       <guid>https://derbuihan.github.io/posts/vps_review/</guid>
       <description>私はこれまでにいくつかVPSを借りて運用してきました。 実際に借りて運用したVPSのレビューを書きます。 Scaleway CPU: 2Core x86 64bit メモリ: 2G SSD: 50GB 値段: 月3ユー</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://derbuihan.github.io/about/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/about/</guid>
+      <description>自己紹介 大学院で物性理論の研究室にいます。 数学とか物理とかプログラミングに興味あります。</description>
     </item>
     
     <item>
@@ -140,15 +158,6 @@
       
       <guid>https://derbuihan.github.io/posts/coq_set_theory/</guid>
       <description>はじめに Coqで集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のためauto.を使わないで証明を行います。 集合論 Section Ensembles. (* こ</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://derbuihan.github.io/about/</link>
-      <pubDate>Sun, 23 Dec 2018 02:29:09 +0900</pubDate>
-      
-      <guid>https://derbuihan.github.io/about/</guid>
-      <description>自己紹介 大学で物性理論の研究室にいます。 数学とか物理とかプログラミングに興味あります。</description>
     </item>
     
     <item>

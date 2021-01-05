@@ -6,7 +6,7 @@
   <title>i7 870にTensorflowの環境構築方法</title>
   <meta name="description"
     
-      content="はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用パソコンを作りました。 この情報は2020年12月で出来た環境の方法です"
+      content="はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用サーバーを作りました。 このとき、最新のTensorflowをインストー"
     
   >
   <meta name="author" content="derbuihan">
@@ -436,7 +436,7 @@ table.table01 tbody td p {
   
 <meta property="og:url" content="https://derbuihan.github.io/" />
 <meta property="og:title" content="i7 870にTensorflowの環境構築方法" />
-<meta property="og:description" content="はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用パソコンを作りました。 この情報は2020年12月で出来た環境の方法です" />
+<meta property="og:description" content="はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用サーバーを作りました。 このとき、最新のTensorflowをインストー" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -498,7 +498,7 @@ table.table01 tbody td p {
         |
         
         
-        tags: [ <a href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a> <a href="https://derbuihan.github.io/tags/tensorflow">#tensorflow</a> ]
+        tags: [ <a href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">#環境構築</a> <a href="https://derbuihan.github.io/tags/tensorflow">#tensorflow</a> <a href="https://derbuihan.github.io/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92">#機械学習</a> ]
         
 
         
@@ -510,8 +510,11 @@ table.table01 tbody td p {
 
       <div class="post-content">
         <h1 id="はじめに">はじめに</h1>
-<p>落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用パソコンを作りました。
-この情報は2020年12月で出来た環境の方法です。</p>
+<p>落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用サーバーを作りました。
+このとき、最新のTensorflowをインストールしても使えないので苦労しました。
+これはi7 870はSandy Bridge以前のCPUなのでAVX命令がないのが原因です。
+この記事ではi7 870でも機械学習が出来るように、少し古めのTensorflowの環境を構築する方法を解説します。</p>
+<p>この情報は2020年12月に出来た方法です。</p>
 <h1 id="前提">前提</h1>
 <ul>
 <li>CUDA 10.2</li>
@@ -561,7 +564,8 @@ result = model.evaluate(test)
 dict(zip(model.metrics_names, result))
 
 </code></pre><h1 id="感想">感想</h1>
-<p>最新のTensorflowをソースからビルドしたほうがいいかもしれない。</p>
+<p>最新のTensorflowをソースからビルドしたほうがいいかもしれない。
+あと、Google Colab使ったほうがよい。</p>
 
       </div>
     </div>

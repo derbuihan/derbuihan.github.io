@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>Tensorflow Datasetsにある英語の巨大なテキストのデータセット</title>
+  <title>MNIST画像認識の実験</title>
   <meta name="description"
     
-      content="Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。 データの一覧の取得 以下のコマンドでtensorflow_datasetsから"
+      content="全結合層のネットワークやCNNを用いてMNIST画像認識の実験をした。 実験環境 tensorflow v2.4.0 optimizer=&lsquo;adam&rsquo;, loss=&lsquo;sparse_categorical_crossentropy&rsquo; MNISTのデータの中身 MNISTは0~9の手書き文字"
     
   >
   <meta name="author" content="derbuihan">
@@ -435,8 +435,8 @@ table.table01 tbody td p {
   
   
 <meta property="og:url" content="https://derbuihan.github.io/" />
-<meta property="og:title" content="Tensorflow Datasetsにある英語の巨大なテキストのデータセット" />
-<meta property="og:description" content="Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。 データの一覧の取得 以下のコマンドでtensorflow_datasetsから" />
+<meta property="og:title" content="MNIST画像認識の実験" />
+<meta property="og:description" content="全結合層のネットワークやCNNを用いてMNIST画像認識の実験をした。 実験環境 tensorflow v2.4.0 optimizer=&lsquo;adam&rsquo;, loss=&lsquo;sparse_categorical_crossentropy&rsquo; MNISTのデータの中身 MNISTは0~9の手書き文字" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -488,9 +488,9 @@ table.table01 tbody td p {
 
       <div class="post-title">
         <p class="footnote">
-          <time datetime="2020-12-23 02:42:40 &#43;0900 JST">
+          <time datetime="2021-01-03 06:16:50 &#43;0900 JST">
             
-              2020-12-23
+              2021-01-03
             
           </time>
         
@@ -498,47 +498,269 @@ table.table01 tbody td p {
         |
         
         
-        tags: [ <a href="https://derbuihan.github.io/tags/tensorflow">#Tensorflow</a> <a href="https://derbuihan.github.io/tags/datasets">#Datasets</a> <a href="https://derbuihan.github.io/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92">#機械学習</a> ]
+        tags: [ <a href="https://derbuihan.github.io/tags/tensorflow">#tensorflow</a> <a href="https://derbuihan.github.io/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92">#機械学習</a> ]
         
 
         
 
         
         </p>
-        <h1>Tensorflow Datasetsにある英語の巨大なテキストのデータセット</h1>
+        <h1>MNIST画像認識の実験</h1>
       </div>
 
       <div class="post-content">
-        <p>Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。</p>
-<h3 id="データの一覧の取得">データの一覧の取得</h3>
-<p>以下のコマンドで<code>tensorflow_datasets</code>から取得出来るデータセットの一覧がわかります。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">import</span> tensorflow_datasets <span style="color:#f92672">as</span> tfds
-<span style="color:#f92672">&gt;&gt;&gt;</span> tfds<span style="color:#f92672">.</span>list_builders()
-</code></pre></div><h3 id="英語のデータセット">英語のデータセット</h3>
-<p>大量のテキストのデータセット</p>
-<h4 id="c4httpswwwtensorfloworgdatasetscatalogc4"><a href="https://www.tensorflow.org/datasets/catalog/c4">c4</a></h4>
-<p>Webクロールで集めた巨大なデータセット。英語のは約1TBある。
-英語以外の言語もデータがあり、すべての言語合わせると26.76TBあるらしい。</p>
-<h4 id="librispeech_lmhttpswwwtensorfloworgdatasetscataloglibrispeech_lm"><a href="https://www.tensorflow.org/datasets/catalog/librispeech_lm">librispeech_lm</a></h4>
-<p>5GBのデータセット</p>
-<h4 id="lm1bhttpswwwtensorfloworgdatasetscataloglm1b"><a href="https://www.tensorflow.org/datasets/catalog/lm1b">lm1b</a></h4>
-<p>5GBのデータセット</p>
-<h4 id="pg19httpswwwtensorfloworgdatasetscatalogpg19"><a href="https://www.tensorflow.org/datasets/catalog/pg19">pg19</a></h4>
-<p>古い本のデータセット。10GBぐらい。</p>
-<h4 id="reddit_disentanglementhttpswwwtensorfloworgdatasetscatalogreddit_disentanglement"><a href="https://www.tensorflow.org/datasets/catalog/reddit_disentanglement">reddit_disentanglement</a></h4>
-<p>redditのデータセット。</p>
-<h4 id="wiki40bhttpswwwtensorfloworgdatasetscatalogwiki40b"><a href="https://www.tensorflow.org/datasets/catalog/wiki40b">wiki40b</a></h4>
-<p>wikipediaのデータセット。きれいになってる。</p>
-<h4 id="wikipediahttpswwwtensorfloworgdatasetscatalogwikipedia"><a href="https://www.tensorflow.org/datasets/catalog/wikipedia">wikipedia</a></h4>
-<p>wikipediaのデータセット。きれいになってない。</p>
-<h3 id="その他データセット">その他データセット</h3>
-<p>その他の使えそうなデータセット</p>
-<h4 id="ag_news_subsethttpswwwtensorfloworgdatasetscatalogag_news_subset"><a href="https://www.tensorflow.org/datasets/catalog/ag_news_subset">ag_news_subset</a></h4>
-<p>ニュース記事のタイトルと説明文が、その記事の種類にラベル付けされたデータセット。</p>
-<h4 id="math_datasethttpswwwtensorfloworgdatasetscatalogmath_dataset"><a href="https://www.tensorflow.org/datasets/catalog/math_dataset">math_dataset</a></h4>
-<p>数学に関する英語の問題とその答えのデータセット</p>
-<h4 id="tiny_shakespearehttpswwwtensorfloworgdatasetscatalogtiny_shakespeare"><a href="https://www.tensorflow.org/datasets/catalog/tiny_shakespeare">tiny_shakespeare</a></h4>
-<p>シェイクスピアの文章</p>
+        <p>全結合層のネットワークやCNNを用いてMNIST画像認識の実験をした。</p>
+<h3 id="実験環境">実験環境</h3>
+<ul>
+<li>tensorflow v2.4.0</li>
+<li>optimizer=&lsquo;adam&rsquo;, loss=&lsquo;sparse_categorical_crossentropy&rsquo;</li>
+</ul>
+<h3 id="mnistのデータの中身">MNISTのデータの中身</h3>
+<p>MNISTは0~9の手書き文字とそのラベルのデータセットである。
+6万枚のtrainデータと1万枚のtestデータに分かれている。</p>
+<p><img src="/images/mnist_experiment/mnist_data.png" alt="MNISTのデータ"></p>
+<p>この記事では、次のように前処理を行った。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> tensorflow <span style="color:#f92672">as</span> tf
+
+(X_train, y_train), (X_test, y_test) <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>datasets<span style="color:#f92672">.</span>mnist<span style="color:#f92672">.</span>load_data()
+X_train <span style="color:#f92672">=</span> X_train<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>
+X_test <span style="color:#f92672">=</span> X_test<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>
+</code></pre></div><p>0~255の値を255で割ることで0~1の値にすることによって、勾配消失を防ぐことが出来る。</p>
+<h1 id="普通に学習">普通に学習</h1>
+<h3 id="全結合のモデル-その1">全結合のモデル (その1)</h3>
+<p>下記のような全結合が2層のモデルを作った。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Sequential([
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>,)),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">512</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
+])
+</code></pre></div><p>全パラメータの数は407,050。</p>
+<p>学習条件はこんな感じ</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model<span style="color:#f92672">.</span>fit(X_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
+</code></pre></div><p>学習履歴と最終的な正解率と損失関数の値は次のようになった。</p>
+<p><img src="/images/mnist_experiment/dense_history.png" alt="学習履歴"></p>
+<ul>
+<li>Train, loss: 0.0102, accuracy: 0.9975</li>
+<li>Test, loss: 0.1410, accuracy: 0.9847</li>
+</ul>
+<p>Testデータに対する正解率は98.47%になった。
+validationの損失関数が<code>epoch=5</code>で最小になり、<code>epoch=50</code>はその2倍ぐらいになっている。</p>
+<h3 id="全結合のモデル-その2">全結合のモデル (その2)</h3>
+<p>中間層512から2048に増やした。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Sequential([
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>,)),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">2048</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
+])
+</code></pre></div><p>全パラメータの数は1,628,170。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model<span style="color:#f92672">.</span>fit(X_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> )
+</code></pre></div><p>学習結果は次のようになった。</p>
+<p><img src="/images/mnist_experiment/dense2_history.png" alt="学習履歴"></p>
+<ul>
+<li>Train, loss: 0.0144, accuracy: 0.9975</li>
+<li>Test, loss: 0.2275, accuracy: 0.9833</li>
+</ul>
+<p>パラメータ数を増やしても正解率は上がっておらず、むしろtestデータに対する正解率は下がっている。
+過剰適合していることが考えられる。</p>
+<h3 id="畳み込みのモデル-その1">畳み込みのモデル (その1)</h3>
+<p>下記のように全結合層の前にConvとMaxPool層を入れたモデルを作成した。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Sequential([
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">16</span>, (<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">1</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
+
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">512</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
+])
+</code></pre></div><p>全パラメータの数は1,611,690。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model<span style="color:#f92672">.</span>fit(X_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> )
+</code></pre></div><p>学習結果は次のようになった。</p>
+<p><img src="/images/mnist_experiment/cnn_history.png" alt="学習履歴"></p>
+<ul>
+<li>Train, loss: 0.0027, accuracy: 0.9994</li>
+<li>Test, loss: 0.1221, accuracy: 0.9879</li>
+</ul>
+<p>損失関数の収束速度が全結合に比べて速くなった。
+また、損失関数が良く小さくなった。</p>
+<h3 id="畳み込みのモデル-その2">畳み込みのモデル (その2)</h3>
+<p>下記のように全結合層の前にConvとMaxPool層を複数積み重ねた入れたモデルを作成した。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Sequential([
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">32</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">1</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">32</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">64</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">64</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">64</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">128</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">128</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">128</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">512</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
+])
+</code></pre></div><p>全パラメータの数は1,066,410。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model<span style="color:#f92672">.</span>fit(X_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> )
+</code></pre></div><p>学習結果は次のようになった。</p>
+<p><img src="/images/mnist_experiment/cnn2_history.png" alt="学習履歴"></p>
+<ul>
+<li>Train, loss: 0.0374, accuracy: 0.9899</li>
+<li>Test, loss: 0.0138, accuracy: 0.9934</li>
+</ul>
+<p>Dropout層が多いからなのかTrainのaccがValのaccより低くなっている。
+またなぜか、学習を進めると微妙にtrainデータの損失関数の値が上昇してる気がする。</p>
+<h3 id="結果まとめ">結果まとめ</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">モデル</th>
+<th style="text-align:center">パラメータ数</th>
+<th style="text-align:center">train loss</th>
+<th style="text-align:center">train acc</th>
+<th style="text-align:center">test loss</th>
+<th style="text-align:center">test acc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">全結合1</td>
+<td style="text-align:center">407,050</td>
+<td style="text-align:center">0.0102</td>
+<td style="text-align:center">0.9975</td>
+<td style="text-align:center">0.1410</td>
+<td style="text-align:center">0.9847</td>
+</tr>
+<tr>
+<td style="text-align:center">全結合2</td>
+<td style="text-align:center">1,628,170</td>
+<td style="text-align:center">0.0144</td>
+<td style="text-align:center">0.9975</td>
+<td style="text-align:center">0.2275</td>
+<td style="text-align:center">0.9833</td>
+</tr>
+<tr>
+<td style="text-align:center">畳み込み1</td>
+<td style="text-align:center">1,611,690</td>
+<td style="text-align:center">0.0027</td>
+<td style="text-align:center">0.9994</td>
+<td style="text-align:center">0.1221</td>
+<td style="text-align:center">0.9879</td>
+</tr>
+<tr>
+<td style="text-align:center">畳み込み2</td>
+<td style="text-align:center">1,066,410</td>
+<td style="text-align:center">0.0374</td>
+<td style="text-align:center">0.9899</td>
+<td style="text-align:center">0.0138</td>
+<td style="text-align:center">0.9934</td>
+</tr>
+</tbody>
+</table>
+<h1 id="ラベルをシャッフル">ラベルをシャッフル</h1>
+<p>さて、ラベルをシャッフルして学習してみる。
+Tensorflowでは次のようにすることでモデルをシャッフル出来る。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">y_train_shuffle <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>shuffle(y_train)
+</code></pre></div><p>こんな感じでシャッフル出来た。</p>
+<p><img src="/images/mnist_experiment/mnist_data_shuffle.png" alt="ラベルがシャッフルされたMNISTのデータ"></p>
+<h3 id="全結合のモデル-その1-1">全結合のモデル (その1)</h3>
+<p>今回は学習に時間がかかるのでepoch数を増やした。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model<span style="color:#f92672">.</span>fit(X_train, y_train_shuffle, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
+</code></pre></div><p>学習履歴と最終的な正解率と損失関数の値は次のようになりました。</p>
+<p><img src="/images/mnist_experiment/dense_shuffle_history.png" alt="学習履歴"></p>
+<ul>
+<li>Train, loss: 1.2545, accuracy: 0.5025</li>
+<li>Test, loss: 8.9777, accuracy: 0.1138</li>
+</ul>
+<p>結果としてtrainデータに関しては50%で当てられるぐらいまで学習出来ました。
+これは、すべてのtrainデータ(5.4万)の画像とラベルの対応をすべて覚えるという作業を50%ぐらいこなせるぐらい自由度の高いモデルであるということを意味しています。
+また、画像とラベルに関係はないので、validationデータに関する正解率が10%になっています。
+さらに、validationデータの損失関数がepochに伴って大きくなっています。</p>
+<h3 id="全結合のモデル-その2-1">全結合のモデル (その2)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model<span style="color:#f92672">.</span>fit(X_train, y_train_shuffle, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
+</code></pre></div><p>学習結果は次のようになった。</p>
+<p><img src="/images/mnist_experiment/dense2_shuffle_history.png" alt="学習履歴"></p>
+<ul>
+<li>Train, loss: 0.7056, accuracy: 0.7322</li>
+<li>Test, loss: 8.0285, accuracy: 0.1152</li>
+</ul>
+<h3 id="畳み込みのモデル-その1-1">畳み込みのモデル (その1)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model<span style="color:#f92672">.</span>fit(X_train, y_train_shuffle, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
+</code></pre></div><p>学習結果は次のようになった。</p>
+<p><img src="/images/mnist_experiment/cnn_shuffle_history.png" alt="学習履歴"></p>
+<ul>
+<li>Train, loss: 0.0328, accuracy: 0.9918</li>
+<li>Test, loss: 13.3561, accuracy: 0.1016</li>
+</ul>
+<p>全結合のモデルに比べて学習が速い。
+さらに全部の画像を暗記するという問題に関しても99.18%で成功している。</p>
+<h3 id="畳み込みのモデル-その2-1">畳み込みのモデル (その2)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model<span style="color:#f92672">.</span>fit(X_train, y_train_shuffle, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
+</code></pre></div><p>学習結果は次のようになった。</p>
+<p><img src="/images/mnist_experiment/cnn2_shuffle_history.png" alt="学習履歴"></p>
+<ul>
+<li>Train, loss: 2.3015, accuracy: 0.1102</li>
+<li>Test, loss: 2.3010, accuracy: 0.1135</li>
+</ul>
+<p>ほぼ学習が進んでない。
+Dropout層を消しても学習は進まなかった。</p>
+<h3 id="結果まとめ-1">結果まとめ</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">モデル</th>
+<th style="text-align:center">パラメータ数</th>
+<th style="text-align:center">train loss</th>
+<th style="text-align:center">train acc</th>
+<th style="text-align:center">test loss</th>
+<th style="text-align:center">test acc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">全結合1</td>
+<td style="text-align:center">407,050</td>
+<td style="text-align:center">1.2545</td>
+<td style="text-align:center">0.5025</td>
+<td style="text-align:center">8.9777</td>
+<td style="text-align:center">0.1138</td>
+</tr>
+<tr>
+<td style="text-align:center">全結合2</td>
+<td style="text-align:center">1,628,170</td>
+<td style="text-align:center">0.7056</td>
+<td style="text-align:center">0.7322</td>
+<td style="text-align:center">8.0285</td>
+<td style="text-align:center">0.1152</td>
+</tr>
+<tr>
+<td style="text-align:center">畳み込み1</td>
+<td style="text-align:center">1,611,690</td>
+<td style="text-align:center">0.0328</td>
+<td style="text-align:center">0.9918</td>
+<td style="text-align:center">13.3561</td>
+<td style="text-align:center">0.1016</td>
+</tr>
+<tr>
+<td style="text-align:center">畳み込み2</td>
+<td style="text-align:center">1,066,410</td>
+<td style="text-align:center">2.3015</td>
+<td style="text-align:center">0.1102</td>
+<td style="text-align:center">2.3010</td>
+<td style="text-align:center">0.1135</td>
+</tr>
+</tbody>
+</table>
 
       </div>
     </div>

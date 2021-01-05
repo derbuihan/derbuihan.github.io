@@ -6,7 +6,16 @@
     <description>Recent content in Posts on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 23 Dec 2020 02:42:40 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Jan 2021 06:16:50 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MNIST画像認識の実験</title>
+      <link>https://derbuihan.github.io/posts/mnist_experiment/</link>
+      <pubDate>Sun, 03 Jan 2021 06:16:50 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/mnist_experiment/</guid>
+      <description>全結合層のネットワークやCNNを用いてMNIST画像認識の実験をした。 実験環境 tensorflow v2.4.0 optimizer=&amp;lsquo;adam&amp;rsquo;, loss=&amp;lsquo;sparse_categorical_crossentropy&amp;rsquo; MNISTのデータの中身 MNISTは0~9の手書き文字</description>
+    </item>
+    
     <item>
       <title>Tensorflow Datasetsにある英語の巨大なテキストのデータセット</title>
       <link>https://derbuihan.github.io/posts/tensorflow_datasets_text/</link>
@@ -22,7 +31,7 @@
       <pubDate>Fri, 18 Dec 2020 12:05:33 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/tensorflow_i7_870/</guid>
-      <description>はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用パソコンを作りました。 この情報は2020年12月で出来た環境の方法です</description>
+      <description>はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用サーバーを作りました。 このとき、最新のTensorflowをインストー</description>
     </item>
     
     <item>
