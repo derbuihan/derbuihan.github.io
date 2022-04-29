@@ -13,7 +13,7 @@
       <pubDate>Fri, 29 Apr 2022 17:07:28 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/rust_petgraph_sample/</guid>
-      <description>Rustのグラフ構造を扱うライブラリで一番流行っているのはpetgraph</description>
+      <description>Rustのグラフ構造を扱うライブラリ:petgraphのサンプルを示す。 グラフの作成方法 use retworkx_core::petgraph::graph::Graph; fn main() { let mut h = Graph::&amp;lt;char, ()&amp;gt;::new(); h.add_node(&amp;#39;a&amp;#39;); h.add_node(&amp;#39;b&amp;#39;); h.add_node(&amp;#39;c&amp;#39;); } Graph::&amp;lt;char, ()&amp;gt;::ne</description>
     </item>
     
   </channel>

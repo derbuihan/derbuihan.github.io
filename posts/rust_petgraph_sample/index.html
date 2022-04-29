@@ -6,7 +6,7 @@
   <title>Rustのグラフライブラリを動かすときのサンプル</title>
   <meta name="description"
     
-      content="Rustのグラフ構造を扱うライブラリで一番流行っているのはpetgraph"
+      content="Rustのグラフ構造を扱うライブラリ:petgraphのサンプルを示す。 グラフの作成方法 use retworkx_core::petgraph::graph::Graph; fn main() { let mut h = Graph::&lt;char, ()&gt;::new(); h.add_node(&#39;a&#39;); h.add_node(&#39;b&#39;); h.add_node(&#39;c&#39;); } Graph::&lt;char, ()&gt;::ne"
     
   >
   <meta name="author" content="derbuihan">
@@ -433,7 +433,7 @@ table.table01 tbody td p {
   
 <meta property="og:url" content="https://derbuihan.github.io/" />
 <meta property="og:title" content="Rustのグラフライブラリを動かすときのサンプル" />
-<meta property="og:description" content="Rustのグラフ構造を扱うライブラリで一番流行っているのはpetgraph" />
+<meta property="og:description" content="Rustのグラフ構造を扱うライブラリ:petgraphのサンプルを示す。 グラフの作成方法 use retworkx_core::petgraph::graph::Graph; fn main() { let mut h = Graph::&lt;char, ()&gt;::new(); h.add_node(&#39;a&#39;); h.add_node(&#39;b&#39;); h.add_node(&#39;c&#39;); } Graph::&lt;char, ()&gt;::ne" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -506,7 +506,19 @@ table.table01 tbody td p {
       </div>
 
       <div class="post-content">
-        <p>Rustのグラフ構造を扱うライブラリで一番流行っているのは<a href="https://github.com/petgraph/petgraph">petgraph</a></p>
+        <p>Rustのグラフ構造を扱うライブラリ:<a href="https://github.com/petgraph/petgraph">petgraph</a>のサンプルを示す。</p>
+<h3 id="グラフの作成方法">グラフの作成方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Rust" data-lang="Rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> retworkx_core::petgraph::graph::Graph;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> h <span style="color:#f92672">=</span> Graph::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span>, ()<span style="color:#f92672">&gt;</span>::new();
+</span></span><span style="display:flex;"><span>    h.add_node(<span style="color:#e6db74">&#39;a&#39;</span>);
+</span></span><span style="display:flex;"><span>    h.add_node(<span style="color:#e6db74">&#39;b&#39;</span>);
+</span></span><span style="display:flex;"><span>    h.add_node(<span style="color:#e6db74">&#39;c&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>Graph::&lt;char, ()&gt;::new()</code>でグラフを生成出来る。
+<code>char</code>はnodeの値の型を示す。
+<code>add_node('a')</code>で&rsquo;a&rsquo;という値を持ったnodeを追加出来る。</p>
 
       </div>
     </div>
