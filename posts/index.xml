@@ -6,7 +6,16 @@
     <description>Recent content in Posts on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 03 Jan 2021 06:16:50 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Apr 2022 17:07:28 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rustのグラフライブラリを動かすときのサンプル</title>
+      <link>https://derbuihan.github.io/posts/rust_petgraph_sample/</link>
+      <pubDate>Fri, 29 Apr 2022 17:07:28 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/rust_petgraph_sample/</guid>
+      <description>Rustのグラフ構造を扱うライブラリで一番流行っているのはpetgraph</description>
+    </item>
+    
     <item>
       <title>MNIST画像認識の実験</title>
       <link>https://derbuihan.github.io/posts/mnist_experiment/</link>
@@ -67,7 +76,7 @@
       <pubDate>Mon, 08 Apr 2019 23:46:31 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/elm_gitlab_cicd/</guid>
-      <description>Elmで[フーリエ級数展開] (https://derbuihan.gitlab.io/fourier/)や[ライフゲーム] (https://</description>
+      <description>Elmでフーリエ級数展開やライフゲームを制作したのでCI/CDを試してみました。 この記事ではElmで作ったものをGitLab CI/CDを使っ</description>
     </item>
     
     <item>
