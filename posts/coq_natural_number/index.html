@@ -427,10 +427,7 @@ table.table01 tbody td p {
   
   type="image/x-icon">
 
-  
-  
-
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.98.0" />
 
   
   
@@ -521,13 +518,13 @@ table.table01 tbody td p {
 </ul>
 <p>を満たすことである。</p>
 <ul>
-<li>逆元の存在 $$ \forall x \in S, \exists x' \in S, x \cdot x' = x' \cdot x = e $$</li>
+<li>逆元の存在 $$ \forall x \in S, \exists x&rsquo; \in S, x \cdot x&rsquo; = x&rsquo; \cdot x = e $$</li>
 </ul>
 <p>を加えると可換群になる。</p>
 <p>自然数は加法と乗法について可換モノイドであるが可換群ではない。</p>
 <h3 id="準備">準備</h3>
 <p>ssreflectをimportする。</p>
-<pre><code>From mathcomp
+<pre tabindex="0"><code>From mathcomp
      Require Import ssreflect.
 
 Section addition.
@@ -545,11 +542,11 @@ Section multiplication.
 End multiplication.
 </code></pre><h3 id="加法">加法</h3>
 <h4 id="結合律">結合律</h4>
-<pre><code>Theorem plus_assoc:
+<pre tabindex="0"><code>Theorem plus_assoc:
   forall n m l : nat, (n + m) + l = n + (m + l).
 Proof.
   move =&gt; n m l.
-  elim n =&gt; [//= | n' H /=].
+  elim n =&gt; [//= | n&#39; H /=].
   rewrite H =&gt; //=.
 Qed.
 </code></pre><ul>
@@ -561,18 +558,18 @@ Qed.
 <li><code>rewrite H =&gt; //=</code>は<code>rewrite H; move =&gt; //=.</code>と同じ。</li>
 </ul>
 <p>同じことをssreflectを使わずに書くと、</p>
-<pre><code>Theorem plus_assoc':
+<pre tabindex="0"><code>Theorem plus_assoc&#39;:
   forall n m l : nat, (n + m) + l = n + (m + l).
 Proof.
   intros n m l.
-  induction n as [|n'].
+  induction n as [|n&#39;].
     reflexivity.
-    simpl. rewrite IHn'. reflexivity.
+    simpl. rewrite IHn&#39;. reflexivity.
 Qed.
 </code></pre><p>となる。</p>
 <h4 id="単位元の存在">単位元の存在</h4>
 <p>0が加法の単位元である。</p>
-<pre><code>Theorem plus_iden1:
+<pre tabindex="0"><code>Theorem plus_iden1:
   forall n : nat, 0 + n = n.
 Proof.
   move=&gt; //=.
@@ -582,50 +579,50 @@ Theorem plus_iden2:
   forall n : nat, n + 0 = n.
 Proof.
   move =&gt; n.
-  elim n =&gt; [//= | n' H /=].
+  elim n =&gt; [//= | n&#39; H /=].
   rewrite H =&gt; //=.
 Qed.
 </code></pre><h4 id="可換">可換</h4>
 <p>ここで必要になる補題</p>
-<pre><code>Lemma plus_n_Sm:
+<pre tabindex="0"><code>Lemma plus_n_Sm:
   forall n m: nat, S (n + m) = n + S m.
 Proof.
   move =&gt; n m.
-  elim n =&gt; [//= | n' H /=].
+  elim n =&gt; [//= | n&#39; H /=].
   rewrite H =&gt; //=.
 Qed.
 </code></pre><p>これを用いて示す。</p>
-<pre><code>Theorem plus_comm:
+<pre tabindex="0"><code>Theorem plus_comm:
   forall n m : nat, n + m = m + n.
 Proof.
   move =&gt; n m.
-  elim n =&gt; [//= | n' H /=].
+  elim n =&gt; [//= | n&#39; H /=].
   rewrite H plus_n_Sm =&gt; //.
 Qed.
 </code></pre><h3 id="乗法">乗法</h3>
 <h4 id="右分配法則">右分配法則</h4>
-<pre><code>Lemma mult_plus_distr_r:
+<pre tabindex="0"><code>Lemma mult_plus_distr_r:
   forall n m l : nat, (n + m) * l = n * l + m * l.
 Proof.
   move =&gt; n m l.
-  elim n =&gt; [//= | n' H /=].
+  elim n =&gt; [//= | n&#39; H /=].
   rewrite H plus_assoc =&gt; //.
 Qed.
 </code></pre><h4 id="結合則">結合則</h4>
-<pre><code>Theorem mult_assoc:
+<pre tabindex="0"><code>Theorem mult_assoc:
   forall n m l : nat, (n * m) * l = n * (m * l).
 Proof.
   move =&gt; n m l.
-  elim n =&gt; [//= | n' H /=].
+  elim n =&gt; [//= | n&#39; H /=].
   rewrite -H mult_plus_distr_r =&gt; //.
 Qed.
 </code></pre><h4 id="単位元の存在-1">単位元の存在</h4>
 <p>1が乗法の単位元である。</p>
-<pre><code>Theorem mult_iden1:
+<pre tabindex="0"><code>Theorem mult_iden1:
   forall n : nat, 1 * n = n.
 Proof.
   move =&gt; n.
-  elim n =&gt; [//= | n' H /=].
+  elim n =&gt; [//= | n&#39; H /=].
   rewrite plus_iden2 =&gt; //=.
 Qed.
 
@@ -633,29 +630,29 @@ Theorem mult_iden2:
   forall n : nat, n * 1 = n.
 Proof.
   move =&gt; n.
-  elim n =&gt; [//= | n' H /=].
+  elim n =&gt; [//= | n&#39; H /=].
   rewrite H =&gt; //=.
 Qed.
 </code></pre><h4 id="可換-1">可換</h4>
 <p>ここで必要になる補題</p>
-<pre><code>Lemma mult_Sn:
+<pre tabindex="0"><code>Lemma mult_Sn:
   forall n m : nat, n + n * m = n * S m.
 Proof.
   move =&gt; n m.
-  elim n =&gt; [//= | n' H /=].
-  rewrite -H -2!plus_assoc (plus_comm n' m) =&gt; //.
+  elim n =&gt; [//= | n&#39; H /=].
+  rewrite -H -2!plus_assoc (plus_comm n&#39; m) =&gt; //.
 Qed.
 </code></pre><p>これを用いて示す。</p>
-<pre><code>Theorem mult_comm:
+<pre tabindex="0"><code>Theorem mult_comm:
   forall n m : nat, n * m = m * n.
 Proof.
   move =&gt; n m.
-  elim n =&gt; [//= | n' H /=].
+  elim n =&gt; [//= | n&#39; H /=].
   rewrite H mult_Sn =&gt; //.
 Qed.
 </code></pre><h4 id="左分配法則">左分配法則</h4>
 <p>おまけ</p>
-<pre><code>Lemma mult_plus_distr_l:
+<pre tabindex="0"><code>Lemma mult_plus_distr_l:
   forall n m l : nat, n * (m + l) = n * m + n * l.
 Proof.
   move =&gt; n m l.
@@ -700,7 +697,6 @@ Qed.
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
       </div>
       
     </div>

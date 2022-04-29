@@ -427,10 +427,7 @@ table.table01 tbody td p {
   
   type="image/x-icon">
 
-  
-  
-
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.98.0" />
 
   
   
@@ -516,7 +513,7 @@ table.table01 tbody td p {
 </blockquote>
 <p><a href="https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86">外延性の公理</a>から引用。</p>
 <h3 id="とを定義する">∈と=を定義する</h3>
-<pre><code>Section Axiom_Of_Extensionality.
+<pre tabindex="0"><code>Section Axiom_Of_Extensionality.
 
   Variable Var : Type.
   Variable In : Var -&gt; Var -&gt; Prop.
@@ -537,9 +534,9 @@ End Axiom_Of_Extensionality.
 <p><a href="https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82">同値関係</a>を参考。</p>
 <h3 id="証明する">証明する</h3>
 <p>まず、外延公理を入れる。</p>
-<pre><code>Axiom Extensionality: forall x y, Eq x y &lt;-&gt; forall z : Var, (In z x &lt;-&gt; In z y).
+<pre tabindex="0"><code>Axiom Extensionality: forall x y, Eq x y &lt;-&gt; forall z : Var, (In z x &lt;-&gt; In z y).
 </code></pre><h4 id="反射律">反射律</h4>
-<pre><code>Lemma Equal_Reflexive : forall x : Var, Eq x x.
+<pre tabindex="0"><code>Lemma Equal_Reflexive : forall x : Var, Eq x x.
 Proof.
   intros.
   specialize (Extensionality x x).
@@ -558,7 +555,7 @@ Qed.
 <li>specialize.からintros.のパターンってTacticないのかな。</li>
 </ul>
 <h4 id="対称律">対称律</h4>
-<pre><code>Lemma Equal_Symmetric : forall x y : Var, Eq x y -&gt; Eq y x.
+<pre tabindex="0"><code>Lemma Equal_Symmetric : forall x y : Var, Eq x y -&gt; Eq y x.
 Proof.
   intros.
   specialize (Extensionality y x).
@@ -580,7 +577,7 @@ Qed.
 <li>先に&lt;-&gt;の対称律を示したら置き換えて楽に示せたら良いのに。</li>
 </ul>
 <h4 id="推移律">推移律</h4>
-<pre><code>Lemma Equal_Transitive : forall x y z : Var, Eq x y /\ Eq y z -&gt; Eq x z.
+<pre tabindex="0"><code>Lemma Equal_Transitive : forall x y z : Var, Eq x y /\ Eq y z -&gt; Eq x z.
 Proof.
   intros.
   specialize (Extensionality x y).
@@ -627,7 +624,7 @@ Qed.
 </ul>
 <h3 id="ssreflect">SSReflect</h3>
 <p><a href="https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86">外延性の公理</a>から集合の等号に対して<a href="https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82">同値関係</a>を示します。(SSReflectで)</p>
-<pre><code>From mathcomp
+<pre tabindex="0"><code>From mathcomp
      Require Import ssreflect.
 
 Section Axiom_Of_Extensionality.
@@ -636,8 +633,8 @@ Section Axiom_Of_Extensionality.
   Variable In : Var -&gt; Var -&gt; Prop.
   Variable Eq : Var -&gt; Var -&gt; Prop.
 
-  Notation &quot;a ∈ A&quot; := (In A a) (at level 55,no associativity).
-  Notation &quot;A ≡ B&quot; := (Eq A B) (at level 57, no associativity).
+  Notation &#34;a ∈ A&#34; := (In A a) (at level 55,no associativity).
+  Notation &#34;A ≡ B&#34; := (Eq A B) (at level 57, no associativity).
 
   Axiom Extensionality: forall x y : Var, x ≡ y &lt;-&gt; forall z : Var, (z ∈ x &lt;-&gt; z ∈ y).
 
@@ -713,7 +710,6 @@ End Axiom_Of_Extensionality.
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
       </div>
       
     </div>

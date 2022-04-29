@@ -427,10 +427,7 @@ table.table01 tbody td p {
   
   type="image/x-icon">
 
-  
-  
-
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.98.0" />
 
   
   
@@ -519,7 +516,7 @@ Coqでは<a href="https://coq.inria.fr/library/Coq.Logic.Classical_Prop.html">Cl
 <p>この記事では、直感論理と古典論理の微妙な違いを集めて遊ぼうと思います。</p>
 <h3 id="直感論理で示せる命題">直感論理で示せる命題</h3>
 <h4 id="二重否定をつける">二重否定をつける</h4>
-<pre><code>Lemma PPNN : forall p : Prop, p -&gt; ~~p.
+<pre tabindex="0"><code>Lemma PPNN : forall p : Prop, p -&gt; ~~p.
 Proof.
   intros.
   intro.
@@ -527,7 +524,7 @@ Proof.
   trivial.
 Qed.
 </code></pre><h4 id="三重否定を否定にする">三重否定を否定にする</h4>
-<pre><code>Lemma NNN : forall p : Prop, ~~~ p -&gt; ~p.
+<pre tabindex="0"><code>Lemma NNN : forall p : Prop, ~~~ p -&gt; ~p.
 Proof.
   intros.
   intro.
@@ -536,7 +533,7 @@ Proof.
   contradiction.
 Qed.
 </code></pre><h4 id="対偶の片方">対偶の片方</h4>
-<pre><code>Lemma Cont : forall p q : Prop, (p -&gt; q) -&gt; (~q -&gt; ~p).
+<pre tabindex="0"><code>Lemma Cont : forall p q : Prop, (p -&gt; q) -&gt; (~q -&gt; ~p).
 Proof.
   intros.
   intro.
@@ -547,12 +544,12 @@ Qed.
 </code></pre><h3 id="古典論理で示せる命題">古典論理で示せる命題</h3>
 <p>古典論理で示せる命題と真理値表を用いて恒真になる命題は一致します。(命題論理の完全性と健全性で検索)</p>
 <p>排中律を入れる。</p>
-<pre><code>Section Classical.
+<pre tabindex="0"><code>Section Classical.
   Axiom classic : forall P : Prop, P \/ ~P.
   (* ここにコードを書く *)
 End Classical.
 </code></pre><h4 id="二重否定の除去">二重否定の除去</h4>
-<pre><code>Lemma NNPP : forall p : Prop, ~~ p -&gt; p.
+<pre tabindex="0"><code>Lemma NNPP : forall p : Prop, ~~ p -&gt; p.
 Proof.
   intros.
   specialize (classic p).
@@ -562,7 +559,7 @@ Proof.
   contradiction.
 Qed.
 </code></pre><h4 id="対偶のもう片方">対偶のもう片方</h4>
-<pre><code>Lemma Cont2 : forall p q : Prop, (~p -&gt; ~q) -&gt; (q -&gt; p).
+<pre tabindex="0"><code>Lemma Cont2 : forall p q : Prop, (~p -&gt; ~q) -&gt; (q -&gt; p).
 Proof.
   intros.
   specialize (classic p).
@@ -573,7 +570,7 @@ Proof.
   contradiction.
 Qed.
 </code></pre><h4 id="背理法">背理法</h4>
-<pre><code>apply NNPP; intros.
+<pre tabindex="0"><code>apply NNPP; intros.
 </code></pre><p>を実行することは背理法を行うことである。
 示すべき命題の否定を仮定に追加して矛盾を導くことだからである。</p>
 <h3 id="感想">感想</h3>
@@ -617,7 +614,6 @@ Qed.
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
       </div>
       
     </div>

@@ -427,10 +427,7 @@ table.table01 tbody td p {
   
   type="image/x-icon">
 
-  
-  
-
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.98.0" />
 
   
   
@@ -510,40 +507,40 @@ table.table01 tbody td p {
 
       <div class="post-content">
         <p>いつものように</p>
-<pre><code>$ brew update &amp;&amp; brew upgrade
+<pre tabindex="0"><code>$ brew update &amp;&amp; brew upgrade
 </code></pre><p>してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのversionを8.8.2にします。</p>
 <p>ほとんど↓の記事を見ながらやりました。</p>
 <p>参考: <a href="https://qiita.com/KyoheiG3/items/912bcc27462871487845">Homebrewで旧バージョンのパッケージをインストールしたい</a></p>
 <h3 id="brewでバージョン指定してインストールする方法">brewでバージョン指定してインストールする方法</h3>
 <h4 id="ローカルにcoqがある場合">ローカルにCoqがある場合</h4>
-<pre><code>$ brew info coq
+<pre tabindex="0"><code>$ brew info coq
 </code></pre><p>を実行してversion 8.8.2がローカルに残っているなと思ったら</p>
-<pre><code>$ brew switch coq 8.8.2
+<pre tabindex="0"><code>$ brew switch coq 8.8.2
 </code></pre><p>でcoqのversionを変えれるらしいです。</p>
 <h4 id="ローカルにcoqがない場合">ローカルにCoqがない場合</h4>
 <p>まず、</p>
-<pre><code>$ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
+<pre tabindex="0"><code>$ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
 $ git log coq.rb
 </code></pre><p>で適当に指定のversionを見つける。</p>
-<pre><code>commit ef92c34e061cb99920f7ae05d3ba205fccc5f1b8
+<pre tabindex="0"><code>commit ef92c34e061cb99920f7ae05d3ba205fccc5f1b8
 Author: BrewTestBot &lt;homebrew-test-bot@lists.sfconservancy.org&gt;
 Date:   Wed Oct 31 17:08:20 2018 +0000
 
     coq: update 8.8.2 bottle.
 </code></pre><p>今回は、↑のversionにdowngradeしたいと思います。</p>
-<pre><code>$ git checkout ef92c34e061cb99920f7ae05d3ba205fccc5f1b8
+<pre tabindex="0"><code>$ git checkout ef92c34e061cb99920f7ae05d3ba205fccc5f1b8
 $ brew unlink coq
 $ HOMEBREW_NO_AUTO_UPDATE=1 brew install coq
 </code></pre><p>を実行する。</p>
-<pre><code>$ brew info coq
+<pre tabindex="0"><code>$ brew info coq
 $ coq --version
 </code></pre><p>等でversionを確認してください。</p>
 <p>最後に、</p>
-<pre><code>$ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
+<pre tabindex="0"><code>$ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
 $ git reset --hard
 </code></pre><p>しときましょう。</p>
 <p>versionのを上げたいときは、</p>
-<pre><code>$ brew switch coq 8.9.0
+<pre tabindex="0"><code>$ brew switch coq 8.9.0
 </code></pre><p>とかすると良い。</p>
 <h3 id="感想">感想</h3>
 <ul>
@@ -584,7 +581,6 @@ $ git reset --hard
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
       </div>
       
     </div>

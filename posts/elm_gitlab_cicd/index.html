@@ -427,10 +427,7 @@ table.table01 tbody td p {
   
   type="image/x-icon">
 
-  
-  
-
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.98.0" />
 
   
   
@@ -512,24 +509,24 @@ table.table01 tbody td p {
         <p>Elmで[フーリエ級数展開] (<a href="https://derbuihan.gitlab.io/fourier/">https://derbuihan.gitlab.io/fourier/</a>)や[ライフゲーム] (<a href="https://derbuihan.gitlab.io/LifeGame/">https://derbuihan.gitlab.io/LifeGame/</a>)を制作したのでCI/CDを試してみました。
 この記事ではElmで作ったものをGitLab CI/CDを使ってGitLab Pagesにdeployする方法を紹介します。</p>
 <h3 id="コードを書く">コードを書く</h3>
-<pre><code>$ elm init
+<pre tabindex="0"><code>$ elm init
 $ vim src/Main.elm
 </code></pre><p>今回は<code>src/Main.elm</code>を変換して公開します。</p>
 <h3 id="git管理する">git管理する</h3>
 <p>GitLabのアカウントを持ってない人はアカウントを作ってください。</p>
-<pre><code>$ git init
+<pre tabindex="0"><code>$ git init
 $ gibo dump elm &gt; .gitignore
 $ git add elm.json src/Main.elm .gitignore
-$ git commit -m &quot;first commit&quot;
+$ git commit -m &#34;first commit&#34;
 $ git remote add origin git@gitlab.com:&lt;username&gt;/&lt;reponame&gt;.git
 $ git push --set-upstream origin master
 </code></pre><ul>
 <li>giboは.gitignoreを自動生成するコマンドです。(<a href="https://qiita.com/tmknom/items/c4bcebe17d25381fa45d">参考</a>)</li>
 </ul>
 <h3 id="gitlab-ciymlを作成">.gitlab-ci.ymlを作成</h3>
-<pre><code>$ vim .gitlab-ci.yml
+<pre tabindex="0"><code>$ vim .gitlab-ci.yml
 </code></pre><p>以下を.gitlab-ci.ymlにコピペする</p>
-<pre><code>image: node:alpine
+<pre tabindex="0"><code>image: node:alpine
 
 pages:
   cache:
@@ -545,11 +542,11 @@ pages:
   only:
     - master
 </code></pre><p>あとは</p>
-<pre><code>$ git add .gitlab-ci.yml
-$ git commit -m &quot;add .gitlab-ci.yml&quot;
+<pre tabindex="0"><code>$ git add .gitlab-ci.yml
+$ git commit -m &#34;add .gitlab-ci.yml&#34;
 $ git push
 </code></pre><p><code>src/Main.elm</code>の内容が<code>index.html</code>に変換され、</p>
-<pre><code>https://&lt;username&gt;.gitlab.com/&lt;reponame&gt;/
+<pre tabindex="0"><code>https://&lt;username&gt;.gitlab.com/&lt;reponame&gt;/
 </code></pre><p>に公開されます。</p>
 <ul>
 <li>公開されるまで少し時間がかかります。(10分ぐらい？)</li>
@@ -603,7 +600,6 @@ $ git push
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
       </div>
       
     </div>

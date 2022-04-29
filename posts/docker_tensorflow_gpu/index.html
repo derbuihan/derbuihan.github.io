@@ -427,10 +427,7 @@ table.table01 tbody td p {
   
   type="image/x-icon">
 
-  
-  
-
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.98.0" />
 
   
   
@@ -514,7 +511,7 @@ table.table01 tbody td p {
 tensorflow-gpuをDockerで使う場合は、公式の<a href="https://hub.docker.com/r/tensorflow/tensorflow">tensorflow/tensorflow:latest-gpu-py3</a>があります。</p>
 <h4 id="エラーの内容">エラーの内容</h4>
 <p>このコンテナをSandy Bridge以前のCPUで使うと</p>
-<pre><code>Illegal instruction (core dumped)
+<pre tabindex="0"><code>Illegal instruction (core dumped)
 </code></pre><p>というエラーが出ます。
 これはAVXという命令が古すぎるCPUにはないために起こるエラーです。</p>
 <h4 id="解決方法">解決方法</h4>
@@ -535,7 +532,7 @@ tensorflow-gpuをDockerで使う場合は、公式の<a href="https://hub.docker
 </ul>
 <h4 id="遊び方">遊び方</h4>
 <p>環境がきちんと整っていれば次で動作すると思います。</p>
-<pre><code>$ git clone https://github.com/derbuihan/docker-tensorflow-gpu
+<pre tabindex="0"><code>$ git clone https://github.com/derbuihan/docker-tensorflow-gpu
 $ cd docker-tensorflow-gpu
 $ docker build -t mnist_sample .
 $ docker run --gpus device=0 -it --rm mnist_sample /bin/bash
@@ -577,7 +574,6 @@ $ docker run --gpus device=0 -it --rm mnist_sample /bin/bash
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
       </div>
       
     </div>

@@ -427,10 +427,7 @@ table.table01 tbody td p {
   
   type="image/x-icon">
 
-  
-  
-
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.98.0" />
 
   
   
@@ -512,18 +509,18 @@ table.table01 tbody td p {
         <h3 id="mac編">Mac編</h3>
 <p>brewとbrew caskを用いた環境構築を行います。</p>
 <h4 id="gui版emacsのインストール">GUI版Emacsのインストール</h4>
-<pre><code>brew cask install emacs
+<pre tabindex="0"><code>brew cask install emacs
 </code></pre><h4 id="coqのインストール">Coqのインストール</h4>
 <p>brewでCoqをインストールします。</p>
-<pre><code>brew install coq
+<pre tabindex="0"><code>brew install coq
 </code></pre><h4 id="emacsの設定">Emacsの設定</h4>
 <p>最近のEmacsはパッケージマネージャも付属しているので、それを用いてProof-Generalもインストールします。</p>
-<pre><code>(require 'package)
-(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+<pre tabindex="0"><code>(require &#39;package)
+(let* ((no-ssl (and (memq system-type &#39;(windows-nt ms-dos))
                     (not (gnutls-available-p))))
-       (proto (if no-ssl &quot;http&quot; &quot;https&quot;)))
-  (add-to-list 'package-archives
-               (cons &quot;melpa&quot; (concat proto &quot;://melpa.org/packages/&quot;)) t))
+       (proto (if no-ssl &#34;http&#34; &#34;https&#34;)))
+  (add-to-list &#39;package-archives
+               (cons &#34;melpa&#34; (concat proto &#34;://melpa.org/packages/&#34;)) t))
 (package-initialize)
 </code></pre><p>を~/.emacs.d/init.elに追加する。
 これでemacsでpackage managerを使うことができる。</p>
@@ -534,7 +531,7 @@ table.table01 tbody td p {
 </ol>
 <p>でproof-generalをインストールすることができる。</p>
 <p>brewを用いてインストールして、No such file or directory, coqtopと出た時は、</p>
-<pre><code>(custom-set-variables '(coq-prog-name &quot;/usr/local/bin/coqtop&quot;) '(proof-three-window-enable t))
+<pre tabindex="0"><code>(custom-set-variables &#39;(coq-prog-name &#34;/usr/local/bin/coqtop&#34;) &#39;(proof-three-window-enable t))
 </code></pre><p>を~/.emacs.d/init.elを追加すれば解決する。</p>
 <h4 id="補完のパッケージの追加">補完のパッケージの追加</h4>
 <p>company-coqは最強なのでこれも入れましょう。
@@ -544,10 +541,10 @@ emacsを起動して、</p>
 </ol>
 <p>を実行。</p>
 <p>~/.emacs.d/init.elに</p>
-<pre><code>(add-hook 'coq-mode-hook #'company-coq-mode)
+<pre tabindex="0"><code>(add-hook &#39;coq-mode-hook #&#39;company-coq-mode)
 </code></pre><p>を追加すると良い。</p>
 <h4 id="ssreflectのインストール">ssreflectのインストール</h4>
-<pre><code>brew install ssreflect
+<pre tabindex="0"><code>brew install ssreflect
 </code></pre><h3 id="proofgeneralの使い方">ProofGeneralの使い方</h3>
 <p>ProofGeneralで使うキーバインド</p>
 <table>
@@ -613,7 +610,6 @@ emacsを起動して、</p>
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
       </div>
       
     </div>

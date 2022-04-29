@@ -427,10 +427,7 @@ table.table01 tbody td p {
   
   type="image/x-icon">
 
-  
-  
-
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.98.0" />
 
   
   
@@ -530,17 +527,17 @@ $$ a ^ n \not \equiv a \pmod{n} $$
 <p>部品を1つ1つ揃えていきます。</p>
 <h4 id="互いに素">互いに素</h4>
 <p>最小公倍数を求める関数を考えます。</p>
-<pre><code>gcd' :: Integer -&gt; Integer -&gt; Integer
-gcd' n 0 = n
-gcd' n m = gcd' m (n `mod` m)
+<pre tabindex="0"><code>gcd&#39; :: Integer -&gt; Integer -&gt; Integer
+gcd&#39; n 0 = n
+gcd&#39; n m = gcd&#39; m (n `mod` m)
 </code></pre><p>これを用いて、</p>
-<pre><code>gcd' n m == 1
+<pre tabindex="0"><code>gcd&#39; n m == 1
 </code></pre><p>とすれば$n, m$は互いに素です。
 (Haskellには標準でgcdがあるのでそれを使っても良い)</p>
 <h4 id="an-1-pmodnを求める">$a^{n-1} \pmod{n}$を求める</h4>
 <p>いわゆる、$a^7 = a * (a^3)^2 = a * (a * a^2)^2$として計算量をへらすやつを使います。
 途中で$\pmod{n}$を挟みます。</p>
-<pre><code>exp_mod :: Integer -&gt; Integer -&gt; Integer
+<pre tabindex="0"><code>exp_mod :: Integer -&gt; Integer -&gt; Integer
 exp_mod a n = iter a (n-1) n
   where
     iter a n base
@@ -548,15 +545,15 @@ exp_mod a n = iter a (n-1) n
       | even n = (iter a (n `div` 2) base) ^ 2 `mod` base
       | otherwise = a * (iter a ((n-1) `div` 2) base) ^ 2 `mod` base
 </code></pre><p>これを用いて、</p>
-<pre><code>exp_mod a n
+<pre tabindex="0"><code>exp_mod a n
 </code></pre><p>を計算することで、$a^{n-1} \pmod{n}$が計算できる。</p>
 <h4 id="素数判定">素数判定</h4>
 <p>素数判定を実装すると次のようになります。</p>
-<pre><code>is_prime' :: Integer -&gt; Bool
-is_prime' n = and $ map (\a -&gt; test n a) [2..(n-1)]
+<pre tabindex="0"><code>is_prime&#39; :: Integer -&gt; Bool
+is_prime&#39; n = and $ map (\a -&gt; test n a) [2..(n-1)]
   where
     test n a
-      | gcd' n a == 1 = (1 == exp_mod a n)
+      | gcd&#39; n a == 1 = (1 == exp_mod a n)
       | otherwise = False
 </code></pre><ul>
 <li>最小公倍数が1でない整数が見つかったとき、すぐに素数でないことがわかります。</li>
@@ -568,9 +565,9 @@ is_prime' n = and $ map (\a -&gt; test n a) [2..(n-1)]
 <code>[2..(n-1)]</code>の部分をランダムな自然数に変更することで、フェルマーテストになります。(Haskellの乱数めんどくさいのでやりません。)</p>
 <h4 id="まとめると">まとめると</h4>
 <p>これまでのコードをまとめると</p>
-<pre><code>gcd' :: Integer -&gt; Integer -&gt; Integer
-gcd' n 0 = n
-gcd' n m = gcd' m (n `mod` m)
+<pre tabindex="0"><code>gcd&#39; :: Integer -&gt; Integer -&gt; Integer
+gcd&#39; n 0 = n
+gcd&#39; n m = gcd&#39; m (n `mod` m)
 
 exp_mod :: Integer -&gt; Integer -&gt; Integer
 exp_mod a n = iter a (n-1) n
@@ -580,26 +577,25 @@ exp_mod a n = iter a (n-1) n
       | even n = (iter a (n `div` 2) base) ^ 2 `mod` base
       | otherwise = a * (iter a ((n-1) `div` 2) base) ^ 2 `mod` base
 
-is_prime' :: Integer -&gt; Bool
-is_prime' n = and $ map (\a -&gt; test n a) [2..(n-1)]
+is_prime&#39; :: Integer -&gt; Bool
+is_prime&#39; n = and $ map (\a -&gt; test n a) [2..(n-1)]
   where
     test n a
-      | gcd' n a == 1 = (1 == exp_mod a n)
+      | gcd&#39; n a == 1 = (1 == exp_mod a n)
       | otherwise = False
 </code></pre><p>となる。</p>
 <h3 id="遊ぶ">遊ぶ</h3>
 <p>Haskellの<a href="http://hackage.haskell.org/package/primes-0.2.1.0/docs/Data-Numbers-Primes.html">素数ライブラリ</a>をinstallする。</p>
-<pre><code>cabal install primes
+<pre tabindex="0"><code>cabal install primes
 </code></pre><h4 id="267-1を判定">$2^{67}-1$を判定</h4>
 <p>さて、$ 2^{67} - 1 = 147573952589676412927$は素数ではありません。
 (参考:<a href="https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%82%BB%E3%83%B3%E3%83%8C%E6%95%B0">メルセンヌ数</a>)</p>
 <p>Haskellのライブラリで素数か確認すると</p>
-<pre><code>ghci&gt; import Date.Numbers.Primes
+<pre tabindex="0"><code>ghci&gt; import Date.Numbers.Primes
 ghci&gt; isPrime $ 2^67 - 1
-
 </code></pre><p>処理が終わりません。($\sqrt{n}$まで<code>primes</code>で割っていく実装と<a href="http://hackage.haskell.org/package/primes-0.2.1.0/docs/Data-Numbers-Primes.html">ここ</a>に書いてある)</p>
 <p>しかし、今回つくった<code>is_prime'</code>では</p>
-<pre><code>ghci&gt; is_prime' $ 2^67 - 1
+<pre tabindex="0"><code>ghci&gt; is_prime&#39; $ 2^67 - 1
 False
 </code></pre><p>一瞬で処理が終わり合成数であることがわかります。(すごい)</p>
 <p>このアルゴリズムのすごいところは、素因数分解は出来ないけど合成数であることはすぐに分かるところですね。
@@ -609,14 +605,14 @@ $$
 $$
 を計算するしていって1にならないのを一つ見つけるだけで良い。</p>
 <h4 id="メルセンヌ数探し">メルセンヌ数探し</h4>
-<pre><code>primes' :: [Integer]
-primes' = 2: filter is_prime' [3,5..]
+<pre tabindex="0"><code>primes&#39; :: [Integer]
+primes&#39; = 2: filter is_prime&#39; [3,5..]
 
-is_prime'' :: Integer -&gt; Bool
-is_prime'' n = and $ map (\a -&gt; test n a) $ takeWhile (&lt; n) [2,3,5]
+is_prime&#39;&#39; :: Integer -&gt; Bool
+is_prime&#39;&#39; n = and $ map (\a -&gt; test n a) $ takeWhile (&lt; n) [2,3,5]
   where
     test n a
-      | gcd' n a == 1 = (1 == exp_mod a n)
+      | gcd&#39; n a == 1 = (1 == exp_mod a n)
       | otherwise = False
 </code></pre><p>を追加します。この関数は<code>2,3,5</code>の倍数でない数に対して、</p>
 <p>$$ 2^{n-1}, 3^{n-1}, 5^{n-1} \pmod{n} $$</p>
@@ -627,20 +623,20 @@ is_prime'' n = and $ map (\a -&gt; test n a) $ takeWhile (&lt; n) [2,3,5]
 <p>pを素数とし$M_p = 2^p-1$もまた素数になる場合、素数$p$をメルセンヌ数といいます。</p>
 </blockquote>
 <p>早速探してみましょう。(1分程度動かしました。)</p>
-<pre><code>ghci&gt; filter (\p -&gt; is_prime'' $ 2^p -1) primes'
+<pre tabindex="0"><code>ghci&gt; filter (\p -&gt; is_prime&#39;&#39; $ 2^p -1) primes&#39;
 [2,3,5,7,13,17,19,31,61,89,107,127,521,607,1279,2203,2281,3217,4253,4423
 </code></pre><p>実際のメルセンヌ数は次の通りです。(参考:<a href="https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%82%BB%E3%83%B3%E3%83%8C%E6%95%B0">メルセンヌ数</a>)</p>
-<pre><code>p = 2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, ..
+<pre tabindex="0"><code>p = 2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, ..
 </code></pre><p>今回探した範囲では完全に一致してますね。(すごい)</p>
 <p>ちなみに、Haskellの素数ライブラリで1分程度探すと</p>
-<pre><code>ghci&gt; filter (\p -&gt; isPrime $ 2^p -1) primes
+<pre tabindex="0"><code>ghci&gt; filter (\p -&gt; isPrime $ 2^p -1) primes
 [2,3,5,7,13,17,19,31
 </code></pre><p>となり、31までしか探せません。</p>
 <p>メルセンヌ数はリュカ・テストで速くきちんとした素数判定ができるらしい。</p>
 <h4 id="カーマイケル数">カーマイケル数</h4>
 <p>少し気になるのが<code>is_prime''</code>を通過するけど、実際に素数でない数はどんなかずなのか？ですよね。
 実際に探してみましょう。</p>
-<pre><code>ghci&gt; filter (not . isPrime) $ filter is_prime'' [2..]
+<pre tabindex="0"><code>ghci&gt; filter (not . isPrime) $ filter is_prime&#39;&#39; [2..]
 [1729,2821,6601,8911,15841,29341,41041,46657,52633,63973,75361,101101
 </code></pre><p>となり、10万以下に11個あります。(結構少ない)</p>
 <p>これらの数$n$は、$2, 3, 5$と互いに素であり、
@@ -656,29 +652,29 @@ $$
 (このような合成数$n$をカーマイケル数といいます。)</p>
 <p>このような数はフェルマーテストでは弾くことは出来なくて、実際に素因数を見つけて弾くしかありません。</p>
 <p>カーマイケル数を実際に探してみましょう。</p>
-<pre><code>import Data.Numbers.Primes hiding (primes') -- プログラムの最初に追加
+<pre tabindex="0"><code>import Data.Numbers.Primes hiding (primes&#39;) -- プログラムの最初に追加
 
 is_carmichael :: Integer -&gt; Bool
 is_carmichael n = and $ ((not . isPrime) n):(map (\a -&gt; test n a) [2..(n-1)])
   where
     test n a
-      | gcd' n a == 1 = (1 == exp_mod a n)
+      | gcd&#39; n a == 1 = (1 == exp_mod a n)
       | otherwise = True
 </code></pre><ul>
 <li><code>not . isPrime</code>を追加して素数でない数から探します。</li>
 <li><code>is_prime</code>を<code>otherwise = True</code>とするだけで良い。(フェルマーテストのみを通過できる数を探せる。)</li>
 </ul>
-<pre><code>ghci&gt; filter is_carmichael [2..]
+<pre tabindex="0"><code>ghci&gt; filter is_carmichael [2..]
 [561,1105,1729,2465,2821,6601,8911,10585,15841,29341,41041,46657,52633,62745,63973,75361,101101
 </code></pre><p>10万以下に16個あった。</p>
 <p>これらの数はたまたま約数でテストしない限りフェルマーテストで弾くことができない。(憎い)</p>
 <h3 id="並列化">並列化</h3>
 <p>Haskellの並列計算については、あんまりわかってないけど適当に実装してみた。</p>
-<pre><code>import Control.Parallel.Strategies
+<pre tabindex="0"><code>import Control.Parallel.Strategies
 </code></pre><p>これ以降、コンパイルは</p>
-<pre><code>ghc -O2 fermat_test.hs -threaded -rtsopts
+<pre tabindex="0"><code>ghc -O2 fermat_test.hs -threaded -rtsopts
 </code></pre><p>で行い、実行は</p>
-<pre><code>time ./fermat_test +RTS -N4
+<pre tabindex="0"><code>time ./fermat_test +RTS -N4
 </code></pre><p>で行う。</p>
 <ul>
 <li>-sをつけると詳細が見れる。</li>
@@ -686,7 +682,7 @@ is_carmichael n = and $ ((not . isPrime) n):(map (\a -&gt; test n a) [2..(n-1)])
 </ul>
 <h4 id="実装-1">実装</h4>
 <p>filterの部分で並列にする。</p>
-<pre><code>parFilter :: (a -&gt; Bool) -&gt; [a] -&gt; Eval [a]
+<pre tabindex="0"><code>parFilter :: (a -&gt; Bool) -&gt; [a] -&gt; Eval [a]
 parFilter f [] = return []
 parFilter f (a:as) = do
         b &lt;- rpar (f a)
@@ -695,19 +691,19 @@ parFilter f (a:as) = do
 
 main :: IO ()
 main = do
-  let ps = takeWhile (&lt; 5000) primes'
-      mersenne = runEval $ parFilter (\n -&gt; is_prime'' (2^n - 1)) ps
+  let ps = takeWhile (&lt; 5000) primes&#39;
+      mersenne = runEval $ parFilter (\n -&gt; is_prime&#39;&#39; (2^n - 1)) ps
   print mersenne
 </code></pre><ul>
 <li><code>rpar</code>でタスクが作られるらしい。(タスクの振り分けはHaskellが勝手にやってくれるらしい。)</li>
 </ul>
 <p>実行結果は</p>
-<pre><code>real    0m7.037s
+<pre tabindex="0"><code>real    0m7.037s
 user    0m27.018s
 sys     0m0.313s
 </code></pre><p>となった。</p>
 <p>普通の<code>filter</code>で実行すると</p>
-<pre><code>real    0m27.217s
+<pre tabindex="0"><code>real    0m27.217s
 user    0m28.602s
 sys     0m3.278s
 </code></pre><p>となり、だいたい4倍も速くなった。(すごい)</p>
@@ -726,28 +722,28 @@ $$
 p^{n-1} \equiv 1 \pmod{n}
 $$
 を計算すれば良いことになる。</p>
-<pre><code>is_carmichael' :: Integer -&gt; Bool
-is_carmichael' n = and $ map (\a -&gt; test n a) $ takeWhile (&lt; n) primes
+<pre tabindex="0"><code>is_carmichael&#39; :: Integer -&gt; Bool
+is_carmichael&#39; n = and $ map (\a -&gt; test n a) $ takeWhile (&lt; n) primes
   where
     test n a
-      | gcd' n a == 1 = (1 == exp_mod a n)
+      | gcd&#39; n a == 1 = (1 == exp_mod a n)
       | otherwise = True
 
 main :: IO ()
 main = do
-  let carmichael = runEval $ parFilter is_carmichael' $ filter (not . isPrime) $ takeWhile (&lt;1000000) [2..]
+  let carmichael = runEval $ parFilter is_carmichael&#39; $ filter (not . isPrime) $ takeWhile (&lt;1000000) [2..]
   print carmichael
 </code></pre><ul>
 <li>並列化を行う際には<code>rpar</code>で生成されるタスクが少ない方が良いので、parFilterに通す前に素数は弾いてしまっています。</li>
 <li>上の考察から素数のみでテストするのは<code>is_carmichael'</code>で実装。(これだけで約4倍速くなった。)</li>
 </ul>
 <p>実行結果は</p>
-<pre><code>real    0m5.806s
+<pre tabindex="0"><code>real    0m5.806s
 user    0m10.653s
 sys     0m1.572s
 </code></pre><p>となった。
 普通の<code>filter</code>で実行すると</p>
-<pre><code>real    0m9.437s
+<pre tabindex="0"><code>real    0m9.437s
 user    0m9.912s
 sys     0m1.567s
 </code></pre><p>となり、だいたい2倍も速くなった。</p>
@@ -761,7 +757,7 @@ sys     0m1.567s
 <li>カーマイケル数を効率的に探す方法とか、フェルマーテストの亜種とか、ぜんぜん違う素数判定のアルゴリズムとかを調べたら面白そうだなとおもった。</li>
 </ul>
 <p>つづく&hellip;</p>
-<pre><code>561,1105,1729,2465,2821,6601,8911,10585,15841,29341,41041,46657,52633,62745,63973,75361,101101,115921,126217,162401,172081,188461,252601,278545,294409,314821,334153,340561,399001,410041,449065,488881,512461,530881,552721,656601,658801,670033,748657,825265,838201,852841,997633,1024651,1033669,1050985,1082809,1152271,1193221,1461241,1569457,1615681,1773289,1857241,1909001,2100901,2113921,2433601,2455921,2508013,2531845,2628073,2704801,3057601,3146221,3224065,3581761,3664585,3828001,4335241,4463641,4767841,4903921,4909177,5031181,5049001,5148001,5310721,5444489,5481451,5632705,5968873,6049681,6054985,6189121,6313681,6733693,6840001,6868261,7207201,7519441,7995169,8134561,8341201,8355841,8719309,8719921,8830801,8927101,9439201,9494101,9582145,9585541,9613297,9890881
+<pre tabindex="0"><code>561,1105,1729,2465,2821,6601,8911,10585,15841,29341,41041,46657,52633,62745,63973,75361,101101,115921,126217,162401,172081,188461,252601,278545,294409,314821,334153,340561,399001,410041,449065,488881,512461,530881,552721,656601,658801,670033,748657,825265,838201,852841,997633,1024651,1033669,1050985,1082809,1152271,1193221,1461241,1569457,1615681,1773289,1857241,1909001,2100901,2113921,2433601,2455921,2508013,2531845,2628073,2704801,3057601,3146221,3224065,3581761,3664585,3828001,4335241,4463641,4767841,4903921,4909177,5031181,5049001,5148001,5310721,5444489,5481451,5632705,5968873,6049681,6054985,6189121,6313681,6733693,6840001,6868261,7207201,7519441,7995169,8134561,8341201,8355841,8719309,8719921,8830801,8927101,9439201,9494101,9582145,9585541,9613297,9890881
 </code></pre>
       </div>
     </div>
@@ -797,7 +793,6 @@ sys     0m1.567s
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
       </div>
       
     </div>

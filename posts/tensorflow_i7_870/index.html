@@ -427,10 +427,7 @@ table.table01 tbody td p {
   
   type="image/x-icon">
 
-  
-  
-
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.98.0" />
 
   
   
@@ -523,32 +520,32 @@ table.table01 tbody td p {
 </ul>
 <h1 id="tensorflow-v150のインストール方法">tensorflow v1.5.0のインストール方法</h1>
 <p>はじめに、仮想環境の作成</p>
-<pre><code class="language-[Bash]" data-lang="[Bash]">$ conda create -n tf1 python==3.7 anaconda
+<pre tabindex="0"><code class="language-[Bash]" data-lang="[Bash]">$ conda create -n tf1 python==3.7 anaconda
 $ conda activate tf1
 </code></pre><p>tensorflow-gpu v1.15.0を指定してインストール</p>
-<pre><code class="language-[Bash]" data-lang="[Bash]">$ conda install -c anaconda tensorflow-gpu==1.15.0
+<pre tabindex="0"><code class="language-[Bash]" data-lang="[Bash]">$ conda install -c anaconda tensorflow-gpu==1.15.0
 $ conda install -c anaconda keras
 </code></pre><p>ついでに、tensorflow-datasetsをインストール(condaで入るのはバージョンが古いのでpipでインストール)</p>
-<pre><code class="language-[Bash]" data-lang="[Bash]">$ conda install tqdm
+<pre tabindex="0"><code class="language-[Bash]" data-lang="[Bash]">$ conda install tqdm
 $ pip install tensorflow-datasets==3.2.1
 </code></pre><h1 id="tensorflow-v200のインストール方法">tensorflow v2.0.0のインストール方法</h1>
 <p>はじめに、仮想環境の作成</p>
-<pre><code class="language-[Bash]" data-lang="[Bash]">$ conda create -n tf2 python==3.7 anaconda
+<pre tabindex="0"><code class="language-[Bash]" data-lang="[Bash]">$ conda create -n tf2 python==3.7 anaconda
 $ conda activate tf2
 </code></pre><p>tensorflow-gpu v2.0.0を指定してインストール(これより新しいバージョンは入らなかった)</p>
-<pre><code class="language-[Bash]" data-lang="[Bash]">$ conda install -c anaconda tensorflow-gpu==2.0.0
+<pre tabindex="0"><code class="language-[Bash]" data-lang="[Bash]">$ conda install -c anaconda tensorflow-gpu==2.0.0
 $ conda install -c anaconda keras
 </code></pre><p>ついでに、tensorflow-datasetsをインストール(condaで入るのはバージョンが古いのでpipでインストール)</p>
-<pre><code class="language-[Bash]" data-lang="[Bash]">$ conda install tqdm
+<pre tabindex="0"><code class="language-[Bash]" data-lang="[Bash]">$ conda install tqdm
 $ pip install tensorflow-datasets==3.2.1
 </code></pre><h1 id="mnistのサンプルコード">MNISTのサンプルコード</h1>
-<pre><code class="language-[Python]" data-lang="[Python]">import tensorflow as tf
+<pre tabindex="0"><code class="language-[Python]" data-lang="[Python]">import tensorflow as tf
 import tensorflow_datasets as tfds
 
 print(tf.__version__)
 
-mnist = tfds.load('MNIST', data_dir=&quot;./data&quot;, shuffle_files=True, as_supervised=True)
-train, test = mnist['train'].shuffle(buffer_size=1024).batch(64), mnist['test'].batch(64)
+mnist = tfds.load(&#39;MNIST&#39;, data_dir=&#34;./data&#34;, shuffle_files=True, as_supervised=True)
+train, test = mnist[&#39;train&#39;].shuffle(buffer_size=1024).batch(64), mnist[&#39;test&#39;].batch(64)
 
 model = tf.keras.models.Sequential([
   tf.keras.layers.Flatten(),
@@ -557,12 +554,11 @@ model = tf.keras.models.Sequential([
   tf.keras.layers.Dense(10, activation=tf.nn.softmax)
 ])
 
-model.compile(optimizer='adam',loss='sparse_categorical_crossentropy',metrics=['accuracy'])
+model.compile(optimizer=&#39;adam&#39;,loss=&#39;sparse_categorical_crossentropy&#39;,metrics=[&#39;accuracy&#39;])
 
 model.fit(train, epochs=5)
 result = model.evaluate(test)
 dict(zip(model.metrics_names, result))
-
 </code></pre><h1 id="感想">感想</h1>
 <p>最新のTensorflowをソースからビルドしたほうがいいかもしれない。
 あと、Google Colab使ったほうがよい。</p>
@@ -601,7 +597,6 @@ dict(zip(model.metrics_names, result))
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
       </div>
       
     </div>

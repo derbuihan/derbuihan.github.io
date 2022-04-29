@@ -427,10 +427,7 @@ table.table01 tbody td p {
   
   type="image/x-icon">
 
-  
-  
-
-  <meta name="generator" content="Hugo 0.75.1" />
+  <meta name="generator" content="Hugo 0.98.0" />
 
   
   
@@ -520,25 +517,25 @@ table.table01 tbody td p {
 6万枚のtrainデータと1万枚のtestデータに分かれている。</p>
 <p><img src="/images/mnist_experiment/mnist_data.png" alt="MNISTのデータ"></p>
 <p>この記事では、次のように前処理を行った。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> tensorflow <span style="color:#f92672">as</span> tf
-
-(X_train, y_train), (X_test, y_test) <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>datasets<span style="color:#f92672">.</span>mnist<span style="color:#f92672">.</span>load_data()
-X_train <span style="color:#f92672">=</span> X_train<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>
-X_test <span style="color:#f92672">=</span> X_test<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>
-</code></pre></div><p>0~255の値を255で割ることで0~1の値にすることによって、勾配消失を防ぐことが出来る。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(X_train, y_train), (X_test, y_test) <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>datasets<span style="color:#f92672">.</span>mnist<span style="color:#f92672">.</span>load_data()
+</span></span><span style="display:flex;"><span>X_train <span style="color:#f92672">=</span> X_train<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>
+</span></span><span style="display:flex;"><span>X_test <span style="color:#f92672">=</span> X_test<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>
+</span></span></code></pre></div><p>0~255の値を255で割ることで0~1の値にすることによって、勾配消失を防ぐことが出来る。</p>
 <h1 id="普通に学習">普通に学習</h1>
 <h3 id="全結合のモデル-その1">全結合のモデル (その1)</h3>
 <p>下記のような全結合が2層のモデルを作った。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Sequential([
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>,)),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">512</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
-])
-</code></pre></div><p>全パラメータの数は407,050。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Sequential([
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>,)),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">512</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
+</span></span><span style="display:flex;"><span>])
+</span></span></code></pre></div><p>全パラメータの数は407,050。</p>
 <p>学習条件はこんな感じ</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model<span style="color:#f92672">.</span>fit(X_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
-</code></pre></div><p>学習履歴と最終的な正解率と損失関数の値は次のようになった。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(X_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
+</span></span></code></pre></div><p>学習履歴と最終的な正解率と損失関数の値は次のようになった。</p>
 <p><img src="/images/mnist_experiment/dense_history.png" alt="学習履歴"></p>
 <ul>
 <li>Train, loss: 0.0102, accuracy: 0.9975</li>
@@ -548,15 +545,15 @@ X_test <span style="color:#f92672">=</span> X_test<span style="color:#f92672">.<
 validationの損失関数が<code>epoch=5</code>で最小になり、<code>epoch=50</code>はその2倍ぐらいになっている。</p>
 <h3 id="全結合のモデル-その2">全結合のモデル (その2)</h3>
 <p>中間層512から2048に増やした。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Sequential([
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>,)),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">2048</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
-])
-</code></pre></div><p>全パラメータの数は1,628,170。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model<span style="color:#f92672">.</span>fit(X_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> )
-</code></pre></div><p>学習結果は次のようになった。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Sequential([
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>,)),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">2048</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
+</span></span><span style="display:flex;"><span>])
+</span></span></code></pre></div><p>全パラメータの数は1,628,170。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(X_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> )
+</span></span></code></pre></div><p>学習結果は次のようになった。</p>
 <p><img src="/images/mnist_experiment/dense2_history.png" alt="学習履歴"></p>
 <ul>
 <li>Train, loss: 0.0144, accuracy: 0.9975</li>
@@ -566,18 +563,18 @@ validationの損失関数が<code>epoch=5</code>で最小になり、<code>epoch
 過剰適合していることが考えられる。</p>
 <h3 id="畳み込みのモデル-その1">畳み込みのモデル (その1)</h3>
 <p>下記のように全結合層の前にConvとMaxPool層を入れたモデルを作成した。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Sequential([
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">16</span>, (<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">1</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
-
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">512</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
-])
-</code></pre></div><p>全パラメータの数は1,611,690。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model<span style="color:#f92672">.</span>fit(X_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> )
-</code></pre></div><p>学習結果は次のようになった。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Sequential([
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">16</span>, (<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">1</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">512</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
+</span></span><span style="display:flex;"><span>])
+</span></span></code></pre></div><p>全パラメータの数は1,611,690。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(X_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> )
+</span></span></code></pre></div><p>学習結果は次のようになった。</p>
 <p><img src="/images/mnist_experiment/cnn_history.png" alt="学習履歴"></p>
 <ul>
 <li>Train, loss: 0.0027, accuracy: 0.9994</li>
@@ -587,32 +584,32 @@ validationの損失関数が<code>epoch=5</code>で最小になり、<code>epoch
 また、損失関数が良く小さくなった。</p>
 <h3 id="畳み込みのモデル-その2">畳み込みのモデル (その2)</h3>
 <p>下記のように全結合層の前にConvとMaxPool層を複数積み重ねた入れたモデルを作成した。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Sequential([
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">32</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">1</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">32</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
-
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">64</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">64</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">64</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
-
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">128</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">128</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">128</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
-
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">512</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
-  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
-])
-</code></pre></div><p>全パラメータの数は1,066,410。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model<span style="color:#f92672">.</span>fit(X_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> )
-</code></pre></div><p>学習結果は次のようになった。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Sequential([
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">32</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">1</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">32</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">64</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">64</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">64</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">128</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">128</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">128</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">512</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.25</span>),
+</span></span><span style="display:flex;"><span>  tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
+</span></span><span style="display:flex;"><span>])
+</span></span></code></pre></div><p>全パラメータの数は1,066,410。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(X_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> )
+</span></span></code></pre></div><p>学習結果は次のようになった。</p>
 <p><img src="/images/mnist_experiment/cnn2_history.png" alt="学習履歴"></p>
 <ul>
 <li>Train, loss: 0.0374, accuracy: 0.9899</li>
@@ -670,13 +667,13 @@ validationの損失関数が<code>epoch=5</code>で最小になり、<code>epoch
 <h1 id="ラベルをシャッフル">ラベルをシャッフル</h1>
 <p>さて、ラベルをシャッフルして学習してみる。
 Tensorflowでは次のようにすることでモデルをシャッフル出来る。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">y_train_shuffle <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>shuffle(y_train)
-</code></pre></div><p>こんな感じでシャッフル出来た。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>y_train_shuffle <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>shuffle(y_train)
+</span></span></code></pre></div><p>こんな感じでシャッフル出来た。</p>
 <p><img src="/images/mnist_experiment/mnist_data_shuffle.png" alt="ラベルがシャッフルされたMNISTのデータ"></p>
 <h3 id="全結合のモデル-その1-1">全結合のモデル (その1)</h3>
 <p>今回は学習に時間がかかるのでepoch数を増やした。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model<span style="color:#f92672">.</span>fit(X_train, y_train_shuffle, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
-</code></pre></div><p>学習履歴と最終的な正解率と損失関数の値は次のようになりました。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(X_train, y_train_shuffle, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
+</span></span></code></pre></div><p>学習履歴と最終的な正解率と損失関数の値は次のようになりました。</p>
 <p><img src="/images/mnist_experiment/dense_shuffle_history.png" alt="学習履歴"></p>
 <ul>
 <li>Train, loss: 1.2545, accuracy: 0.5025</li>
@@ -687,16 +684,16 @@ Tensorflowでは次のようにすることでモデルをシャッフル出来�
 また、画像とラベルに関係はないので、validationデータに関する正解率が10%になっています。
 さらに、validationデータの損失関数がepochに伴って大きくなっています。</p>
 <h3 id="全結合のモデル-その2-1">全結合のモデル (その2)</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model<span style="color:#f92672">.</span>fit(X_train, y_train_shuffle, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
-</code></pre></div><p>学習結果は次のようになった。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(X_train, y_train_shuffle, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
+</span></span></code></pre></div><p>学習結果は次のようになった。</p>
 <p><img src="/images/mnist_experiment/dense2_shuffle_history.png" alt="学習履歴"></p>
 <ul>
 <li>Train, loss: 0.7056, accuracy: 0.7322</li>
 <li>Test, loss: 8.0285, accuracy: 0.1152</li>
 </ul>
 <h3 id="畳み込みのモデル-その1-1">畳み込みのモデル (その1)</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model<span style="color:#f92672">.</span>fit(X_train, y_train_shuffle, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
-</code></pre></div><p>学習結果は次のようになった。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(X_train, y_train_shuffle, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
+</span></span></code></pre></div><p>学習結果は次のようになった。</p>
 <p><img src="/images/mnist_experiment/cnn_shuffle_history.png" alt="学習履歴"></p>
 <ul>
 <li>Train, loss: 0.0328, accuracy: 0.9918</li>
@@ -705,8 +702,8 @@ Tensorflowでは次のようにすることでモデルをシャッフル出来�
 <p>全結合のモデルに比べて学習が速い。
 さらに全部の画像を暗記するという問題に関しても99.18%で成功している。</p>
 <h3 id="畳み込みのモデル-その2-1">畳み込みのモデル (その2)</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">model<span style="color:#f92672">.</span>fit(X_train, y_train_shuffle, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
-</code></pre></div><p>学習結果は次のようになった。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(X_train, y_train_shuffle, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, validation_split<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>)
+</span></span></code></pre></div><p>学習結果は次のようになった。</p>
 <p><img src="/images/mnist_experiment/cnn2_shuffle_history.png" alt="学習履歴"></p>
 <ul>
 <li>Train, loss: 2.3015, accuracy: 0.1102</li>
@@ -796,7 +793,6 @@ Dropout層を消しても学習は進まなかった。</p>
 
         </ul>
         <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-        
       </div>
       
     </div>
