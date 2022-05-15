@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on derbuihan blog</title>
+    <link>https://derbuihan.github.io/tags/python/</link>
+    <description>Recent content in python on derbuihan blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sun, 15 May 2022 14:59:38 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PyTorchを用いて三角ゲームを解いてみた。</title>
+      <link>https://derbuihan.github.io/posts/pytorch_triangle_game/</link>
+      <pubDate>Sun, 15 May 2022 14:59:38 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/pytorch_triangle_game/</guid>
+      <description>先日、三角ゲームというゲームを知った。 今回はこのゲームをPytorchを用いて解いてみた。 三角ゲームの説明 はじめに三角ゲームについて説明する</description>
+    </item>
+    
+  </channel>
+</rss>

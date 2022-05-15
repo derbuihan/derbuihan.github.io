@@ -2,19 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://derbuihan.github.io/</loc>
+    <lastmod>2022-05-15T14:59:38+09:00</lastmod>
+  </url><url>
+    <loc>https://derbuihan.github.io/posts/</loc>
+    <lastmod>2022-05-15T14:59:38+09:00</lastmod>
+  </url><url>
+    <loc>https://derbuihan.github.io/tags/python/</loc>
+    <lastmod>2022-05-15T14:59:38+09:00</lastmod>
+  </url><url>
+    <loc>https://derbuihan.github.io/tags/pytorch/</loc>
+    <lastmod>2022-05-15T14:59:38+09:00</lastmod>
+  </url><url>
+    <loc>https://derbuihan.github.io/posts/pytorch_triangle_game/</loc>
+    <lastmod>2022-05-15T14:59:38+09:00</lastmod>
+  </url><url>
+    <loc>https://derbuihan.github.io/tags/</loc>
+    <lastmod>2022-05-15T14:59:38+09:00</lastmod>
+  </url><url>
     <loc>https://derbuihan.github.io/about/</loc>
     <lastmod>2022-04-29T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://derbuihan.github.io/</loc>
-    <lastmod>2021-01-03T06:16:50+09:00</lastmod>
-  </url><url>
     <loc>https://derbuihan.github.io/posts/mnist_experiment/</loc>
-    <lastmod>2021-01-03T06:16:50+09:00</lastmod>
-  </url><url>
-    <loc>https://derbuihan.github.io/posts/</loc>
-    <lastmod>2021-01-03T06:16:50+09:00</lastmod>
-  </url><url>
-    <loc>https://derbuihan.github.io/tags/</loc>
     <lastmod>2021-01-03T06:16:50+09:00</lastmod>
   </url><url>
     <loc>https://derbuihan.github.io/tags/tensorflow/</loc>
