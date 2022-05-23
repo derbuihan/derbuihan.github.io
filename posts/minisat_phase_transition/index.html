@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>VPS</title>
+  <title>充足可能性問題の相転移の実験</title>
   <meta name="description"
     
-      content="未来の自分へのドキュメント"
+      content="充足可能性問題 (satisfiability problem, SAT) 「与えられた論理式を真にする真偽値$x_1, x_2 \dots$が存在するか？」という問題を充足可能性問題という。 この問題の最"
     
   >
   <meta name="author" content="derbuihan">
@@ -432,8 +432,8 @@ table.table01 tbody td p {
   
   
 <meta property="og:url" content="https://derbuihan.github.io/" />
-<meta property="og:title" content="VPS" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="充足可能性問題の相転移の実験" />
+<meta property="og:description" content="充足可能性問題 (satisfiability problem, SAT) 「与えられた論理式を真にする真偽値$x_1, x_2 \dots$が存在するか？」という問題を充足可能性問題という。 この問題の最" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -478,33 +478,165 @@ table.table01 tbody td p {
 </div>
 
 
-
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
   <div class="pure-u-11-12 pure-u-lg-7-12">
-    <div class="post-content">
-      
-      <p class="posts-name">#VPS の記事一覧</p>
+    <div class="post">
 
-      <ul class="posts">
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2022-05-23 17:02:35 &#43;0900 JST">
+            
+              2022-05-23
+            
+          </time>
         
         
+        |
         
-        <li>
-          
-          <a class="post-list" href="https://derbuihan.github.io/posts/vps_review/">これまでに使ってきたVPSのレビュー</a>
+        
+        tags: [ <a href="https://derbuihan.github.io/tags/sat">#SAT</a> <a href="https://derbuihan.github.io/tags/%E7%9B%B8%E8%BB%A2%E7%A7%BB">#相転移</a> <a href="https://derbuihan.github.io/tags/minisat">#MiniSat</a> ]
+        
 
-          <p class="footnote">
-            <time datetime="2020-01-04 10:09:03 &#43;0900 JST">
-              
-                2020-01-04
-              
-            </time>
-          </p>
-        </li>
         
+
         
-      </ul>
+        </p>
+        <h1>充足可能性問題の相転移の実験</h1>
+      </div>
+
+      <div class="post-content">
+        <h3 id="充足可能性問題-satisfiability-problem-sat">充足可能性問題 (satisfiability problem, SAT)</h3>
+<p>「与えられた論理式を真にする真偽値$x_1, x_2 \dots$が存在するか？」という問題を充足可能性問題という。</p>
+<p>この問題の最も一般的な形は、NP完全であることが知られている。</p>
+<p>例: $(x_1 \lor x_2) \land (x_1 \lor \bar{x_2}) \land (\bar{x_1} \lor \bar{x_2})$</p>
+<p>解: $x_1=\text{True}$, $x_2=\text{False}$</p>
+<p>この例のように$\bigwedge_i \bigvee_j x_{i,j}$で表される論理式を連言標準形といい、その各項の変数の数が2以下であるとき2-SATと呼ばれる。
+2-SATは多項式時間で解けるアルゴリズムが存在する。
+一方で項の変数の数が3以下の3-SATはNP完全であることが知られている。</p>
+<h3 id="問題の生成">問題の生成</h3>
+<p>3-SAT問題はDIMACS CNFで記述される。</p>
+<pre tabindex="0"><code> c example DIMACS-CNF 3-SAT
+ p cnf 3 5
+ -1 -2 -3 0
+ 1 -2 3 0
+ 1 2 -3 0
+ 1 -2 -3 0
+ -1 2 3 0
+</code></pre><p>行頭が<code>c</code>の行はコメントである。
+行頭が<code>p</code>の行には変数が3つで項数が5項である。
+また、 <code>-1 -2 -3 0</code>は$\bar{x_1} \lor \bar{x_2} \lor \bar{x_3}$を示している。</p>
+<p>つぎに、この形式の問題を機械的に作る方法を説明する。
+Pythonの場合は次のようになる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">from</span> numpy.random <span style="color:#f92672">import</span> randint, choice
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate_3sat_sample</span>(vn, cn):
+</span></span><span style="display:flex;"><span>    output <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;p cnf &#34;</span> <span style="color:#f92672">+</span> str(vn) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> str(cn) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(cn):
+</span></span><span style="display:flex;"><span>        a, b, c <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">1</span>, vn<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, (<span style="color:#ae81ff">3</span>,))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> a <span style="color:#f92672">==</span> b <span style="color:#f92672">or</span> b <span style="color:#f92672">==</span> c <span style="color:#f92672">or</span> c <span style="color:#f92672">==</span> a:
+</span></span><span style="display:flex;"><span>            a, b, c <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">1</span>, vn<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, (<span style="color:#ae81ff">3</span>,))
+</span></span><span style="display:flex;"><span>        s1, s2, s3 <span style="color:#f92672">=</span> choice([<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>], (<span style="color:#ae81ff">3</span>,))
+</span></span><span style="display:flex;"><span>        a, b, c <span style="color:#f92672">=</span> s1 <span style="color:#f92672">*</span> a, s2 <span style="color:#f92672">*</span> b, s3 <span style="color:#f92672">*</span> c
+</span></span><span style="display:flex;"><span>        output <span style="color:#f92672">+=</span> str(a) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> str(b) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> str(c) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; 0</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> output
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">=</span> generate_3sat_sample(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">42</span>)
+</span></span><span style="display:flex;"><span>filepath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;input.txt&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(filepath, mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>    f<span style="color:#f92672">.</span>write(output)
+</span></span></code></pre></div><p><code>vn</code>が変数の数を表し、<code>cn</code>が項の数を表す。</p>
+<p>Bashの場合は次のようになる。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>vn<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>cn<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> tmp in <span style="color:#e6db74">`</span>seq <span style="color:#ae81ff">0</span> $cn<span style="color:#e6db74">`</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $tmp <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;p cnf&#34;</span> <span style="color:#e6db74">${</span>vn<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>cn<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  a<span style="color:#f92672">=</span> b<span style="color:#f92672">=</span> c<span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> <span style="color:#f92672">[[</span> $a <span style="color:#f92672">==</span> $b  <span style="color:#f92672">]]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[[</span> $b <span style="color:#f92672">==</span> $c <span style="color:#f92672">]]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[[</span> $a <span style="color:#f92672">==</span> $c <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    a<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span>$RANDOM <span style="color:#f92672">%</span> $vn <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>    b<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span>$RANDOM <span style="color:#f92672">%</span> $vn <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>    c<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span>$RANDOM <span style="color:#f92672">%</span> $vn <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  a<span style="color:#f92672">=</span><span style="color:#e6db74">`</span><span style="color:#f92672">[[</span> <span style="color:#66d9ef">$((</span>$RANDOM<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">))</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> echo $a <span style="color:#f92672">||</span> echo <span style="color:#66d9ef">$((</span><span style="color:#f92672">-</span> $a<span style="color:#66d9ef">))</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  b<span style="color:#f92672">=</span><span style="color:#e6db74">`</span><span style="color:#f92672">[[</span> <span style="color:#66d9ef">$((</span>$RANDOM<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">))</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> echo $b <span style="color:#f92672">||</span> echo <span style="color:#66d9ef">$((</span><span style="color:#f92672">-</span> $b<span style="color:#66d9ef">))</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  c<span style="color:#f92672">=</span><span style="color:#e6db74">`</span><span style="color:#f92672">[[</span> <span style="color:#66d9ef">$((</span>$RANDOM<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">))</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> echo $c <span style="color:#f92672">||</span> echo <span style="color:#66d9ef">$((</span><span style="color:#f92672">-</span> $c<span style="color:#66d9ef">))</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  echo $a $b $c <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span> &gt; input.txt
+</span></span></code></pre></div><p>これで大量に問題が生成出来る。</p>
+<h3 id="問題を解く">問題を解く</h3>
+<p>SATは何十年も研究されている重要な問題であるため、この問題を解くためのコマンドが公開されている。
+今回は<a href="http://minisat.se/">minisat</a>を用いる。
+Macの場合は<code>brew install minisat</code>で簡単にインストールが可能である。</p>
+<p>使い方は、</p>
+<pre tabindex="0"><code>$ minisat input.txt output.txt
+</code></pre><p>である。
+output.txtに結果が書き込まれる。</p>
+<p>以上を組み合わせて次のようなスクリプトを作成した。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>vn<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>N<span style="color:#f92672">=</span><span style="color:#ae81ff">9</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;vn&#34;</span> <span style="color:#e6db74">&#34;cn&#34;</span> <span style="color:#e6db74">&#34;i&#34;</span> <span style="color:#e6db74">&#34;sat&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> cn in <span style="color:#e6db74">`</span>seq <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">10</span> 1000<span style="color:#e6db74">`</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> i in <span style="color:#e6db74">`</span>seq <span style="color:#ae81ff">0</span> $N<span style="color:#e6db74">`</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> tmp in <span style="color:#e6db74">`</span>seq <span style="color:#ae81ff">0</span> $cn<span style="color:#e6db74">`</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $tmp <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#e6db74">&#34;p cnf&#34;</span> <span style="color:#e6db74">${</span>vn<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>cn<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      a<span style="color:#f92672">=</span> b<span style="color:#f92672">=</span> c<span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">while</span> <span style="color:#f92672">[[</span> $a <span style="color:#f92672">==</span> $b  <span style="color:#f92672">]]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[[</span> $b <span style="color:#f92672">==</span> $c <span style="color:#f92672">]]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[[</span> $a <span style="color:#f92672">==</span> $c <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>        a<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span>$RANDOM <span style="color:#f92672">%</span> $vn <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>        b<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span>$RANDOM <span style="color:#f92672">%</span> $vn <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>        c<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span>$RANDOM <span style="color:#f92672">%</span> $vn <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      a<span style="color:#f92672">=</span><span style="color:#e6db74">`</span><span style="color:#f92672">[[</span> <span style="color:#66d9ef">$((</span>$RANDOM<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">))</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> echo $a <span style="color:#f92672">||</span> echo <span style="color:#66d9ef">$((</span><span style="color:#f92672">-</span> $a<span style="color:#66d9ef">))</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>      b<span style="color:#f92672">=</span><span style="color:#e6db74">`</span><span style="color:#f92672">[[</span> <span style="color:#66d9ef">$((</span>$RANDOM<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">))</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> echo $b <span style="color:#f92672">||</span> echo <span style="color:#66d9ef">$((</span><span style="color:#f92672">-</span> $b<span style="color:#66d9ef">))</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>      c<span style="color:#f92672">=</span><span style="color:#e6db74">`</span><span style="color:#f92672">[[</span> <span style="color:#66d9ef">$((</span>$RANDOM<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">))</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> echo $c <span style="color:#f92672">||</span> echo <span style="color:#66d9ef">$((</span><span style="color:#f92672">-</span> $c<span style="color:#66d9ef">))</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      echo $a $b $c <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">done</span> &gt; tmp/input.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    minisat tmp/input.txt tmp/output.txt &amp;&gt; /dev/null
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>head -n <span style="color:#ae81ff">1</span> tmp/output.txt<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>    echo $vn $cn $i $s
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>これを<code>bash main.sh | tee stat.txt</code>で実行し実験を行った。</p>
+<h3 id="結果">結果</h3>
+<p>変数の数(<code>vn</code>)が<code>100</code>の3-SATについて、条件の数(cn)を$10, 20, \cdots, 1000$と変化させて解が存在するか実験を行った。</p>
+<p><img src="/images/minisat_phase_transition/stat.png" alt="stat"></p>
+<p>横軸は項の数(cn)であり、縦軸は解が存在する確率を表す。(分母は10)
+解の存在する確率は条件の数が400から500にかけて一気に下がることが読み取れる。
+さらに詳細な実験を行った。
+<code>vn=100</code>の場合に、<code>cn</code>を$400, 401, \cdots, 450$と変化させて解が存在する確率を測定した。</p>
+<p><img src="/images/minisat_phase_transition/stat2.png" alt="stat2"></p>
+<p>実は3-SATは変数の数(<code>vn</code>)に対して、条件の数(<code>cn</code>)が<code>4.26</code>倍のときに解ける確率が50%になることと、その付近で最もこの問題を解くことが難しいことが知られている。
+したがってこの実験結果はそれを確かにそれを反映していることがわかる。</p>
+<p>更に、変数の数(<code>vn</code>)が<code>10</code>の3-SATについて、条件の数(cn)を$1, 2, \cdots, 100$と変化させて解が存在するか実験を行った。</p>
+<p><img src="/images/minisat_phase_transition/stat3.png" alt="stat3"></p>
+<p><code>vn=100</code>の場合とあまり形が変わらず、条件の数(<code>cn</code>)が<code>4.26</code>倍のときに解ける確率が50%となっている傾向が読み取れる。
+また、</p>
+<h3 id="まとめ">まとめ</h3>
+<ul>
+<li>充足可能性問題の相転移の実験をした。</li>
+<li>Bashの<code>$RANDOM</code>が遅すぎるので、実験にかなり時間がかかった。</li>
+<li>確かに、条件が少なすぎるときには解が存在することはすぐにわかり、条件が多すぎるときには矛盾を一つ見つければ解が存在しないことがすぐにわかる。そのため、その間ぐらいが一番難しいというのは普通なことな気がする。</li>
+<li><code>4.26</code>倍というマジックナンバーを導出する方法はないのかな。</li>
+</ul>
+
+      </div>
     </div>
   </div>
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
