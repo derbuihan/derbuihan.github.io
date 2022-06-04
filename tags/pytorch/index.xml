@@ -6,7 +6,16 @@
     <description>Recent content in pytorch on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 15 May 2022 14:59:38 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Jun 2022 21:43:29 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PyTorchの自動微分を使った1次元のイジング模型の分配関数の計算</title>
+      <link>https://derbuihan.github.io/posts/pytorch_1d_ising/</link>
+      <pubDate>Fri, 03 Jun 2022 21:43:29 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/pytorch_1d_ising/</guid>
+      <description>1次元のイジング模型 周期的境界条件のもとで1次元のイジング模型のハミルトニアンは $$ H\left(\sigma_{1}, \cdots, \sigma_{N} \right) = -J \sum_{i} \sigma_{i} \sigma_{i+1} - h \sum_{i} \sigma_{i} $$ である。 ここで、$\sigma</description>
+    </item>
+    
     <item>
       <title>PyTorchを用いて三角ゲームを解いてみた。</title>
       <link>https://derbuihan.github.io/posts/pytorch_triangle_game/</link>
