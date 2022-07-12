@@ -6,7 +6,16 @@
     <description>Recent content in Posts on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 03 Jun 2022 21:43:29 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Jul 2022 00:27:26 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Digest認証の仕組みをBashとJavaScriptで理解したい。</title>
+      <link>https://derbuihan.github.io/posts/digest_auth_bash_js/</link>
+      <pubDate>Wed, 13 Jul 2022 00:27:26 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/digest_auth_bash_js/</guid>
+      <description>Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 Basic認証とDigest認証 Basic認証 はじ</description>
+    </item>
+    
     <item>
       <title>PyTorchの自動微分を使った1次元のイジング模型の分配関数の計算</title>
       <link>https://derbuihan.github.io/posts/pytorch_1d_ising/</link>

@@ -3,10 +3,10 @@
 <head>
   
   <meta charset="utf-8">
-  <title>gpu</title>
+  <title>Digest認証の仕組みをBashとJavaScriptで理解したい。</title>
   <meta name="description"
     
-      content="未来の自分へのドキュメント"
+      content="Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 Basic認証とDigest認証 Basic認証 はじ"
     
   >
   <meta name="author" content="derbuihan">
@@ -432,8 +432,8 @@ table.table01 tbody td p {
   
   
 <meta property="og:url" content="https://derbuihan.github.io/" />
-<meta property="og:title" content="gpu" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="Digest認証の仕組みをBashとJavaScriptで理解したい。" />
+<meta property="og:description" content="Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 Basic認証とDigest認証 Basic認証 はじ" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -478,33 +478,132 @@ table.table01 tbody td p {
 </div>
 
 
-
 <div class="pure-g">
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
   <div class="pure-u-11-12 pure-u-lg-7-12">
-    <div class="post-content">
-      
-      <p class="posts-name">#gpu の記事一覧</p>
+    <div class="post">
 
-      <ul class="posts">
+      <div class="post-title">
+        <p class="footnote">
+          <time datetime="2022-07-13 00:27:26 &#43;0900 JST">
+            
+              2022-07-13
+            
+          </time>
         
         
+        |
         
-        <li>
-          
-          <a class="post-list" href="https://derbuihan.github.io/posts/docker_tensorflow_gpu/">tensorflow-gpuをDockerで動かしたときにIllegal instructionと出たときの対処法</a>
+        
+        tags: [ <a href="https://derbuihan.github.io/tags/digestauth">#DigestAuth</a> <a href="https://derbuihan.github.io/tags/js">#JS</a> <a href="https://derbuihan.github.io/tags/bash">#Bash</a> ]
+        
 
-          <p class="footnote">
-            <time datetime="2019-10-03 04:47:58 &#43;0900 JST">
-              
-                2019-10-03
-              
-            </time>
-          </p>
-        </li>
         
+
         
-      </ul>
+        </p>
+        <h1>Digest認証の仕組みをBashとJavaScriptで理解したい。</h1>
+      </div>
+
+      <div class="post-content">
+        <p>Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。</p>
+<h3 id="basic認証とdigest認証">Basic認証とDigest認証</h3>
+<h4 id="basic認証">Basic認証</h4>
+<p>はじめにBasic認証の仕組みにを解説する。</p>
+<p>Basic認証においてクライアントが初めてhttpリクエストを送ったときは、Status Codeが<code>401 Unauthorized</code>でヘッダーに</p>
+<pre tabindex="0"><code>www-authenticate: Basic realm=&#34;secure&#34;
+</code></pre><p>が付与されたレスポンスがサーバーから帰ってくる。
+ちなみにrealmは認証領域を表す。</p>
+<p>クライアントがユーザーとパスワードをuser:passのように入力したときは</p>
+<pre tabindex="0"><code>Authorization: Basic dXNlcjpwYXNz
+</code></pre><p>を付与してレスポンスを返す仕組みになっている。
+このような動作はBasic認証を用いたサイトにChromeで接続し、デベロッパーツールで通信を監視することで確かめることが出来る。</p>
+<p>次に、<code>dXNlcjpwYXNz</code>の計算方法について確認しておく。
+結論から言うと<code>dXNlcjpwYXNz</code>は<code>user:pass</code>をbase64でエンコードしたものである。
+Bashでは</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>$ echo -n <span style="color:#e6db74">&#34;user:pass&#34;</span> | base64
+</span></span><span style="display:flex;"><span>dXNlcjpwYXNz
+</span></span></code></pre></div><p>JavaScriptでは</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">btoa</span>(<span style="color:#e6db74">&#34;user:pass&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;dXNlcjpwYXNz&#39;</span>
+</span></span></code></pre></div><p>のように計算出来る。</p>
+<p>ただ、Base64はハッシュ関数でもなんでもなくて文字列を単純な方法で変換しているだけなので、簡単に戻すことが出来る。
+Bashでは</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>❯ echo -n <span style="color:#e6db74">&#34;dXNlcjpwYXNz&#34;</span> | base64 -d
+</span></span><span style="display:flex;"><span>user:pass
+</span></span></code></pre></div><p>JavaScriptでは</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">atob</span>(<span style="color:#e6db74">&#34;dXNlcjpwYXNz&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;user:pass&#39;</span>
+</span></span></code></pre></div><p>のように計算出来る。
+これはBasic認証において通信経路でhttpのヘッダーを覗かれるとユーザー名もパスワードもすべて筒抜けになることを示している。
+つまりBasic認証を使う際はhttpsなどを用いて暗号化するなど対策が必要になる。</p>
+<h4 id="digest認証">Digest認証</h4>
+<p>次にDigest認証について説明を行う。
+Basic認証の欠点である通信経路をユーザー名とパスワードがそのまま流れてしまうという欠点を補ったのがDigest認証である。</p>
+<p>Digest認証においてクライアントがサーバーにhttpリクエストを送ったときは、Status Codeが<code>401 Unauthorized</code>でヘッダーに</p>
+<pre tabindex="0"><code>www-authenticate: Digest realm=&#34;secure&#34;, nonce=&#34;9HYa-V1Mba3QOk6f&#34;, algorithm=MD5, qop=&#34;auth&#34;
+</code></pre><p>を付与したレスポンスがサーバーから帰ってくる。
+realmは認証領域、nonceは認証情報を隠すための乱数、algorithmは用いるハッシュ関数のアルゴリズムを表している。</p>
+<p>クライアントがユーザーとパスワードをuser:passのように入力したときは</p>
+<pre tabindex="0"><code>authorization: Digest username=&#34;user&#34;, realm=&#34;secure&#34;, nonce=&#34;9HYa-V1Mba3QOk6f&#34;, uri=&#34;/&#34;, algorithm=MD5, response=&#34;f11fd3424129e2f27546ce0fc1fd995a&#34;, qop=auth, nc=00000002, cnonce=&#34;59f367b44815ac37&#34;
+</code></pre><p>を付与してレスポンスを返す仕組みになっている。
+ここで、uriはコンテンツのURI、responseはハッシュ値であり認証に用いられる値、ncは同じnonceを用いてリクエストするたびに増えてく値、cnonceはクライアント側で作られる乱数である。
+responseはユーザー名とパスワードとnonceやcnonceなどを用いて作られる。
+この値が毎回異なるハッシュ値のため、ここからユーザー名とパスワードを導くことは不可能である。</p>
+<p>次に、responseを計算する方法について説明する。
+wikipediaにはresponseは</p>
+<pre tabindex="0"><code>A1 = ユーザ名 &#34;:&#34; realm &#34;:&#34; パスワード
+A2 = HTTPのメソッド &#34;:&#34; コンテンツのURI
+response = MD5( MD5(A1) &#34;:&#34; nonce &#34;:&#34; nc &#34;:&#34; cnonce &#34;:&#34; qop &#34;:&#34; MD5(A2) )
+</code></pre><p>で計算されると書いてある。</p>
+<p>これを参考にBashでresponseを計算すると、</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>$ HA1<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo -n <span style="color:#e6db74">&#34;user:secure:pass&#34;</span> | md5<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>$ HA2<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo -n <span style="color:#e6db74">&#34;GET:/&#34;</span> | md5<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>$ nonce<span style="color:#f92672">=</span>9HYa-V1Mba3QOk6f
+</span></span><span style="display:flex;"><span>$ nc<span style="color:#f92672">=</span><span style="color:#ae81ff">00000002</span>
+</span></span><span style="display:flex;"><span>$ cnonce<span style="color:#f92672">=</span>59f367b44815ac37
+</span></span><span style="display:flex;"><span>$ qop<span style="color:#f92672">=</span>auth
+</span></span><span style="display:flex;"><span>$ echo -n <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HA1<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>nonce<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>nc<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>cnonce<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>qop<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>HA2<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | md5
+</span></span><span style="display:flex;"><span>f11fd3424129e2f27546ce0fc1fd995a
+</span></span></code></pre></div><p>となる。</p>
+<p>JavaScriptでは</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">crypto</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;crypto&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">md5</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">md5</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">crypto</span>.<span style="color:#a6e22e">createHash</span>(<span style="color:#e6db74">&#39;md5&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">md5</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">data</span>, <span style="color:#e6db74">&#39;binary&#39;</span>).<span style="color:#a6e22e">digest</span>(<span style="color:#e6db74">&#39;hex&#39;</span>)
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;user&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pass&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">realm</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;secure&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">HA1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">md5</span>([<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">realm</span>, <span style="color:#a6e22e">password</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">method</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;GET&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">uri</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">HA2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">md5</span>([<span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">uri</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nonce</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;9HYa-V1Mba3QOk6f&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nc</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;00000002&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cnonce</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;59f367b44815ac37&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">qop</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;auth&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">md5</span>([<span style="color:#a6e22e">HA1</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">nc</span>, <span style="color:#a6e22e">cnonce</span>, <span style="color:#a6e22e">qop</span>, <span style="color:#a6e22e">HA2</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">response</span>); <span style="color:#75715e">// f11fd3424129e2f27546ce0fc1fd995a
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>})();
+</span></span></code></pre></div><p>で計算できる。</p>
+<h3 id="まとめ">まとめ</h3>
+<ul>
+<li>Digest認証のハッシュ値の計算をBashとJavaScriptを用いて計算を行った。</li>
+<li>Digest認証はサーバー側で生成したnonceとnonceを使った回数であるncを状態を保持して管理しないと、httpのリクエストを盗聴された際にそのHeaderをコピーしてリクエストすれば認証を突破出来てしまうと思った。（クライアントからサーバーへの二回目のアクセスの際にnonceやncを付与して送信しているが、このnonceがきちんとサーバーから生成されたものであり、このnonceを用いたnc回目の通信が以前に行われていないことを確認する必要がある。）</li>
+<li>Basic認証はサーバー側で状態を保持しなくていい分、圧倒的に実装が楽だからよく利用されているんだなぁと思った。</li>
+<li>Digest認証はサーバー側で状態を保持して毎回検索するので、メモリやCPUのリソースを結構食うのかもしれない。</li>
+<li>Digest認証でもhttpsにしなければ中間者攻撃に弱いという話があるが、勝手にBasic認証に変えちゃう以外の攻撃方法ってあるのかな。サーバー側でnonceとncを管理しとけば、ヘッダー情報取られてもリクエスト1回しか認証突破できないし、その攻撃範囲もmethodとuriが限られる。実は意外とDigest認証って安全な気がするので、ブラウザでもBasic認証と表示を変えてくれればいいのに。</li>
+<li>一つ懸念として、nonceとcnonceとresponseが同時に流れてくるのでこの情報を集めておいて、スパコンとか使って頑張って計算してHA1を割り出すことは可能なんじゃないかな？HA1さえ割り出してしまえばそれで認証突破は出来る気がする。cnonceをHA1に含めてハッシュ化とかしたらいいのにって思ってしまった。なんか勘違いしてるのかな。</li>
+</ul>
+
+      </div>
     </div>
   </div>
   <div class="pure-u-1-24 pure-u-lg-5-24"></div>
