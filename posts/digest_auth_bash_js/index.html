@@ -6,7 +6,7 @@
   <title>Digest認証の仕組みをBashとJavaScriptで理解したい。</title>
   <meta name="description"
     
-      content="Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 Basic認証とDigest認証 Basic認証 はじ"
+      content="Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事のnodeはすべてv18である。 Basic認"
     
   >
   <meta name="author" content="derbuihan">
@@ -433,7 +433,7 @@ table.table01 tbody td p {
   
 <meta property="og:url" content="https://derbuihan.github.io/" />
 <meta property="og:title" content="Digest認証の仕組みをBashとJavaScriptで理解したい。" />
-<meta property="og:description" content="Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 Basic認証とDigest認証 Basic認証 はじ" />
+<meta property="og:description" content="Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事のnodeはすべてv18である。 Basic認" />
 <meta property="og:type" content="summary">
 <meta property="og:site_name" content="derbuihan blog" />
 <meta property="og:locale" content="ja_JP" />
@@ -506,7 +506,8 @@ table.table01 tbody td p {
       </div>
 
       <div class="post-content">
-        <p>Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。</p>
+        <p>Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。
+本記事のnodeはすべてv18である。</p>
 <h3 id="basic認証とdigest認証">Basic認証とDigest認証</h3>
 <h4 id="basic認証">Basic認証</h4>
 <p>はじめにBasic認証の仕組みにを解説する。</p>
@@ -602,6 +603,96 @@ response = MD5( MD5(A1) &#34;:&#34; nonce &#34;:&#34; nc &#34;:&#34; cnonce &#34
 <li>Digest認証でもhttpsにしなければ中間者攻撃に弱いという話があるが、勝手にBasic認証に変えちゃう以外の攻撃方法ってあるのかな。サーバー側でnonceとncを管理しとけば、ヘッダー情報取られてもリクエスト1回しか認証突破できないし、その攻撃範囲もmethodとuriが限られる。実は意外とDigest認証って安全な気がするので、ブラウザでもBasic認証と表示を変えてくれればいいのに。</li>
 <li>一つ懸念として、nonceとcnonceとresponseが同時に流れてくるのでこの情報を集めておいて、スパコンとか使って頑張って計算してHA1を割り出すことは可能なんじゃないかな？HA1さえ割り出してしまえばそれで認証突破は出来る気がする。cnonceをHA1に含めてハッシュ化とかしたらいいのにって思ってしまった。なんか勘違いしてるのかな。</li>
 </ul>
+<h3 id="追記">追記</h3>
+<p>Digest認証において、リバースプロキシが状態を保持しているのか確認したかったので、ncが重複するリクエストを送りつける実験を行う。
+今回は私が普段から使っている<a href="https://github.com/traefik/traefik">traefik</a>を用いて試験を行う。</p>
+<p>まずtraefikのドキュメントを確認しながら、<code>http://localhost</code>にtraefikを立ててdigest認証を有効化する。
+そして次のコードを書く。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">crypto</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;crypto&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">KD</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">realm</span>, <span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">uri</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">nc</span>, <span style="color:#a6e22e">cnonce</span>, <span style="color:#a6e22e">qop</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">HA1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">md5</span>([<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">realm</span>, <span style="color:#a6e22e">password</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">HA2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">md5</span>([<span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">uri</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">md5</span>([<span style="color:#a6e22e">HA1</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">nc</span>, <span style="color:#a6e22e">cnonce</span>, <span style="color:#a6e22e">qop</span>, <span style="color:#a6e22e">HA2</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">parse</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">credentials</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">credentials</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">credentials</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">undefined</span>) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">credentials</span>
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">substr</span>(<span style="color:#ae81ff">7</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;, &#34;</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">param</span>) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">val</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">param</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;=&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">c</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/&#34;/g</span>, <span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">realm</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">opaque</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">algorithm</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">qop</span>];
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;user&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pass&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">method</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;GET&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">uri</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// const nc = &#34;00000002&#34;; 二度目の実験ではこのコメントを外す
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cnonce</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2b93895fec6ce68d&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost/&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">credentials</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res1</span>.<span style="color:#a6e22e">headers</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;www-authenticate&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res1</span>.<span style="color:#a6e22e">status</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">realm</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">opaque</span>, <span style="color:#a6e22e">algorithm</span>, <span style="color:#a6e22e">qop</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">credentials</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nc</span> <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;00000000&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span>).<span style="color:#a6e22e">slice</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>); <span style="color:#75715e">// 二度目の実験ではコメントアウト
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">KD</span>(<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">realm</span>, <span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">uri</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">nc</span>, <span style="color:#a6e22e">cnonce</span>, <span style="color:#a6e22e">qop</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;method&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;GET&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;headers&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;Authorization&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Digest &#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;username=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;, realm=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">realm</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;, nonce=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">nonce</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;, uri=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">uri</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;, algorithm=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">algorithm</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;, response=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;, opaque=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">opaque</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;, qop=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">qop</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;, nc=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">nc</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;, cnonce=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">cnonce</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">options</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res2</span>.<span style="color:#a6e22e">status</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><p>このコードをmain.jsで保存して実行すると、</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>$ node main.js
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
+</span></span></code></pre></div><p>となり、最初以外全て認証突破している。
+一方で、二度目の実験(ncを変化させない)を行うと、</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>$ node main.js
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
+</span></span></code></pre></div><p>となる。
+最初の401はサーバーがnonceを返す。
+二度目の200はncが初めて使われるので認証突破。
+それ移行はncがすでに使われているので認証を突破できない。
+このことからtraefikのDigest認証は真面目に状態を保持していることがわかった。
+さらに、サーバーで作ったnonceを無視して、クライアント側で勝手にnonceを作って認証情報を送るなどの実験もしたが、それでは突破出来なかった。
+またcnonceは毎回同じでも認証には関係なかった。</p>
+<p>traefikの実装を見てみると、digest認証の部分には<a href="https://github.com/abbot/go-http-auth">abbot/go-http-auth</a>が使われている。
+このリポジトリを見ると内部でメモリのMapやArrayなどのデータ構造を用いてncやnonceを管理している様子。</p>
 
       </div>
     </div>

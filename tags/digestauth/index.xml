@@ -13,7 +13,7 @@
       <pubDate>Wed, 13 Jul 2022 00:27:26 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/digest_auth_bash_js/</guid>
-      <description>Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 Basic認証とDigest認証 Basic認証 はじ</description>
+      <description>Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事のnodeはすべてv18である。 Basic認</description>
     </item>
     
   </channel>
