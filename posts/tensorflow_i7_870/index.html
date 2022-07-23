@@ -138,32 +138,32 @@
 </ul>
 <h1 id="tensorflow-v150のインストール方法">tensorflow v1.5.0のインストール方法</h1>
 <p>はじめに、仮想環境の作成</p>
-<pre><code class="language-[Bash]">$ conda create -n tf1 python==3.7 anaconda
+<pre><code class="language-Bash">$ conda create -n tf1 python==3.7 anaconda
 $ conda activate tf1
 </code></pre>
 <p>tensorflow-gpu v1.15.0を指定してインストール</p>
-<pre><code class="language-[Bash]">$ conda install -c anaconda tensorflow-gpu==1.15.0
+<pre><code class="language-Bash">$ conda install -c anaconda tensorflow-gpu==1.15.0
 $ conda install -c anaconda keras
 </code></pre>
 <p>ついでに、tensorflow-datasetsをインストール(condaで入るのはバージョンが古いのでpipでインストール)</p>
-<pre><code class="language-[Bash]">$ conda install tqdm
+<pre><code class="language-Bash">$ conda install tqdm
 $ pip install tensorflow-datasets==3.2.1
 </code></pre>
 <h1 id="tensorflow-v200のインストール方法">tensorflow v2.0.0のインストール方法</h1>
 <p>はじめに、仮想環境の作成</p>
-<pre><code class="language-[Bash]">$ conda create -n tf2 python==3.7 anaconda
+<pre><code class="language-Bash">$ conda create -n tf2 python==3.7 anaconda
 $ conda activate tf2
 </code></pre>
 <p>tensorflow-gpu v2.0.0を指定してインストール(これより新しいバージョンは入らなかった)</p>
-<pre><code class="language-[Bash]">$ conda install -c anaconda tensorflow-gpu==2.0.0
+<pre><code class="language-Bash">$ conda install -c anaconda tensorflow-gpu==2.0.0
 $ conda install -c anaconda keras
 </code></pre>
 <p>ついでに、tensorflow-datasetsをインストール(condaで入るのはバージョンが古いのでpipでインストール)</p>
-<pre><code class="language-[Bash]">$ conda install tqdm
+<pre><code class="language-Bash">$ conda install tqdm
 $ pip install tensorflow-datasets==3.2.1
 </code></pre>
 <h1 id="mnistのサンプルコード">MNISTのサンプルコード</h1>
-<pre><code class="language-[Python]">import tensorflow as tf
+<pre><code class="language-Python">import tensorflow as tf
 import tensorflow_datasets as tfds
 
 print(tf.__version__)
