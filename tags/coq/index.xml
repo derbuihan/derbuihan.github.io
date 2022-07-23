@@ -5,7 +5,7 @@
     <link>https://derbuihan.github.io/tags/coq/</link>
     <description>Recent content in Coq on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Thu, 14 Feb 2019 01:14:02 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/coq/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MacでCoqのバージョンを指定してインストール</title>
@@ -13,7 +13,7 @@
       <pubDate>Thu, 14 Feb 2019 01:14:02 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_downgrade/</guid>
-      <description>いつものように $ brew update &amp;amp;&amp;amp; brew upgrade してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのve</description>
+      <description>いつものように $ brew update &amp;amp;&amp;amp; brew upgrade してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのversionを8.8.2にします。 ほとんど↓の記事を見ながらや</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Wed, 16 Jan 2019 04:20:21 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_natural_number/</guid>
-      <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示</description>
+      <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示します。 (実際はSoftware Foundationsの第一</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Sun, 13 Jan 2019 14:20:08 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_logic/</guid>
-      <description>直観論理とは Coqは直観論理で許される推論規則で演繹を行う。 直観論理の説明はWikipediaにある。 簡単に説明すると、私達が普通に数学で用</description>
+      <description>直観論理とは Coqは直観論理で許される推論規則で演繹を行う。 直観論理の説明はWikipediaにある。 簡単に説明すると、私達が普通に数学で用いている論理は古典論理で、直観論理は古典論理から排中律を除い</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@
       <pubDate>Mon, 31 Dec 2018 23:08:04 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</guid>
-      <description>外延性の公理から集合の等号に対して同値関係を示します。(Coqで) 外延性の公理とは A, Bを任意の集合とするとき、もし任意の集合Xについて「Xが</description>
+      <description>外延性の公理から集合の等号に対して同値関係を示します。(Coqで) 外延性の公理とは A, Bを任意の集合とするとき、もし任意の集合Xについて「XがAの要素であるならば、そのときに限りXはBの要素である」が成</description>
     </item>
     
     <item>
@@ -49,7 +49,7 @@
       <pubDate>Thu, 27 Dec 2018 04:42:41 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_set_theory/</guid>
-      <description>はじめに Coqで集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のためauto.を使わないで証明を行います。 集合論 Section Ensembles. (* こ</description>
+      <description>はじめに Coqで集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のためauto.を使わないで証明を行います。 集合論 Section Ensembles. (* ここにコードを書く *) End Ensembles. 集合とは 1変数の述語を用いて集合論を定</description>
     </item>
     
     <item>
@@ -58,7 +58,7 @@
       <pubDate>Thu, 20 Dec 2018 15:17:22 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_install/</guid>
-      <description>Mac編 brewとbrew caskを用いた環境構築を行います。 GUI版Emacsのインストール brew cask install emacs Coqのインストール brewでCoqを</description>
+      <description>Mac編 brewとbrew caskを用いた環境構築を行います。 GUI版Emacsのインストール brew cask install emacs Coqのインストール brewでCoqをインストールします。 brew install coq Emacsの設定 最近のEmacsは</description>
     </item>
     
   </channel>

@@ -5,7 +5,7 @@
     <link>https://derbuihan.github.io/tags/python/</link>
     <description>Recent content in Python on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Fri, 03 Jun 2022 21:43:29 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PyTorchの自動微分を使った1次元のイジング模型の分配関数の計算</title>
@@ -13,7 +13,7 @@
       <pubDate>Fri, 03 Jun 2022 21:43:29 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/pytorch_1d_ising/</guid>
-      <description>1次元のイジング模型 周期的境界条件のもとで1次元のイジング模型のハミルトニアンは $$ H\left(\sigma_{1}, \cdots, \sigma_{N} \right) = -J \sum_{i} \sigma_{i} \sigma_{i+1} - h \sum_{i} \sigma_{i} $$ である。 ここで、$\sigma</description>
+      <description>1次元のイジング模型 周期的境界条件のもとで1次元のイジング模型のハミルトニアンは $$ H\left(\sigma_{1}, \cdots, \sigma_{N} \right) = -J \sum_{i} \sigma_{i} \sigma_{i+1} - h \sum_{i} \sigma_{i} $$ である。 ここで、$\sigma_{i}=\pm 1$はスピンを表し、周期的境界条件から$\s</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Sun, 15 May 2022 14:59:38 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/pytorch_triangle_game/</guid>
-      <description>先日、三角ゲームというゲームを知った。 今回はこのゲームをPytorchを用いて解いてみた。 三角ゲームの説明 はじめに三角ゲームについて説明する</description>
+      <description>先日、三角ゲームというゲームを知った。 今回はこのゲームをPytorchを用いて解いてみた。 三角ゲームの説明 はじめに三角ゲームについて説明する。 例として$n=5$人($A, B, C, D, E$)で遊ぶ場合を説明す</description>
     </item>
     
   </channel>

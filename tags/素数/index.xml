@@ -5,7 +5,7 @@
     <link>https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0/</link>
     <description>Recent content in 素数 on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Tue, 29 Jan 2019 16:48:37 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Haskellで素数を探そうと思った話</title>
@@ -13,7 +13,7 @@
       <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/haskell_primes/</guid>
-      <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_te</description>
+      <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_test.hsからダウンロード! フェルマーテストとは フェルマーの</description>
     </item>
     
   </channel>

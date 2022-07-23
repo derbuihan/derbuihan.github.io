@@ -1,4 +1,3 @@
-User-Agent:*
-Disallow:
+User-agent: *
 
-Sitemap:https://blog.derbuihan.xyz/sitemap.xml
+Sitemap: https://derbuihan.github.io/sitemap.xml

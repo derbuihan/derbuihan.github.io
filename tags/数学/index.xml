@@ -5,7 +5,7 @@
     <link>https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6/</link>
     <description>Recent content in 数学 on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Sun, 07 Jul 2019 01:37:56 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>物理学科が半年ぐらい数学を独学で勉強した話</title>
@@ -13,7 +13,7 @@
       <pubDate>Sun, 07 Jul 2019 01:37:56 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/study_math/</guid>
-      <description>はじめに 物理を勉強していくうちに数学にも興味をもったので、学部3年生の後半から学部4年生になるまでの約半年間ひとりで数学を勉強しました。 数学</description>
+      <description>はじめに 物理を勉強していくうちに数学にも興味をもったので、学部3年生の後半から学部4年生になるまでの約半年間ひとりで数学を勉強しました。 数学科の人からすればまだ入門したてのペーペーでしょうが、独学で数</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/haskell_primes/</guid>
-      <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_te</description>
+      <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_test.hsからダウンロード! フェルマーテストとは フェルマーの</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Wed, 16 Jan 2019 04:20:21 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_natural_number/</guid>
-      <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示</description>
+      <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示します。 (実際はSoftware Foundationsの第一</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@
       <pubDate>Mon, 31 Dec 2018 23:08:04 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</guid>
-      <description>外延性の公理から集合の等号に対して同値関係を示します。(Coqで) 外延性の公理とは A, Bを任意の集合とするとき、もし任意の集合Xについて「Xが</description>
+      <description>外延性の公理から集合の等号に対して同値関係を示します。(Coqで) 外延性の公理とは A, Bを任意の集合とするとき、もし任意の集合Xについて「XがAの要素であるならば、そのときに限りXはBの要素である」が成</description>
     </item>
     
     <item>
@@ -49,7 +49,7 @@
       <pubDate>Thu, 27 Dec 2018 04:42:41 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_set_theory/</guid>
-      <description>はじめに Coqで集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のためauto.を使わないで証明を行います。 集合論 Section Ensembles. (* こ</description>
+      <description>はじめに Coqで集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のためauto.を使わないで証明を行います。 集合論 Section Ensembles. (* ここにコードを書く *) End Ensembles. 集合とは 1変数の述語を用いて集合論を定</description>
     </item>
     
   </channel>

@@ -5,7 +5,7 @@
     <link>https://derbuihan.github.io/</link>
     <description>Recent content on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Wed, 13 Jul 2022 00:27:26 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Digest認証の仕組みをBashとJavaScriptで理解したい。</title>
@@ -13,7 +13,7 @@
       <pubDate>Wed, 13 Jul 2022 00:27:26 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/digest_auth_bash_js/</guid>
-      <description>Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事のnodeはすべてv18である。 Basic認</description>
+      <description>Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事のnodeはすべてv18である。 Basic認証とDigest認証 Basic認証 はじめにBasic認証の仕</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Fri, 03 Jun 2022 21:43:29 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/pytorch_1d_ising/</guid>
-      <description>1次元のイジング模型 周期的境界条件のもとで1次元のイジング模型のハミルトニアンは $$ H\left(\sigma_{1}, \cdots, \sigma_{N} \right) = -J \sum_{i} \sigma_{i} \sigma_{i+1} - h \sum_{i} \sigma_{i} $$ である。 ここで、$\sigma</description>
+      <description>1次元のイジング模型 周期的境界条件のもとで1次元のイジング模型のハミルトニアンは $$ H\left(\sigma_{1}, \cdots, \sigma_{N} \right) = -J \sum_{i} \sigma_{i} \sigma_{i+1} - h \sum_{i} \sigma_{i} $$ である。 ここで、$\sigma_{i}=\pm 1$はスピンを表し、周期的境界条件から$\s</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Mon, 23 May 2022 17:02:35 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/minisat_phase_transition/</guid>
-      <description>充足可能性問題 (satisfiability problem, SAT) 「与えられた論理式を真にする真偽値$x_1, x_2 \dots$が存在するか？」という問題を充足可能性問題という。 この問題の最</description>
+      <description>充足可能性問題 (satisfiability problem, SAT) 「与えられた論理式を真にする真偽値$x_1, x_2 \dots$が存在するか？」という問題を充足可能性問題という。 この問題の最も一般的な形は、NP完全であることが知られている。 例: $(x_1 \lor x_2)</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@
       <pubDate>Sun, 15 May 2022 14:59:38 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/pytorch_triangle_game/</guid>
-      <description>先日、三角ゲームというゲームを知った。 今回はこのゲームをPytorchを用いて解いてみた。 三角ゲームの説明 はじめに三角ゲームについて説明する</description>
+      <description>先日、三角ゲームというゲームを知った。 今回はこのゲームをPytorchを用いて解いてみた。 三角ゲームの説明 はじめに三角ゲームについて説明する。 例として$n=5$人($A, B, C, D, E$)で遊ぶ場合を説明す</description>
     </item>
     
     <item>
@@ -58,7 +58,7 @@
       <pubDate>Sun, 03 Jan 2021 06:16:50 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/mnist_experiment/</guid>
-      <description>全結合層のネットワークやCNNを用いてMNIST画像認識の実験をした。 実験環境 tensorflow v2.4.0 optimizer=&amp;lsquo;adam&amp;rsquo;, loss=&amp;lsquo;sparse_categorical_crossentropy&amp;rsquo; MNISTのデータの中身 MNISTは0~9の手書き文字</description>
+      <description>全結合層のネットワークやCNNを用いてMNIST画像認識の実験をした。 実験環境 tensorflow v2.4.0 optimizer=&amp;lsquo;adam&amp;rsquo;, loss=&amp;lsquo;sparse_categorical_crossentropy&amp;rsquo; MNISTのデータの中身 MNISTは0~9の手書き文字とそのラベルのデータセットである。 6万枚のtrainデータと</description>
     </item>
     
     <item>
@@ -67,7 +67,7 @@
       <pubDate>Wed, 23 Dec 2020 02:42:40 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/tensorflow_datasets_text/</guid>
-      <description>Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。 データの一覧の取得 以下のコマンドでtensorflow_datasetsから</description>
+      <description>Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。 データの一覧の取得 以下のコマンドでtensorflow_datasetsから取得出来るデータセットの一覧がわかります。 &amp;gt;&amp;gt;&amp;gt; import tensorflow_datasets as tfds &amp;gt;&amp;gt;&amp;gt; tfds.list_builders() 英語</description>
     </item>
     
     <item>
@@ -76,7 +76,7 @@
       <pubDate>Fri, 18 Dec 2020 12:05:33 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/tensorflow_i7_870/</guid>
-      <description>はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用サーバーを作りました。 このとき、最新のTensorflowをインストー</description>
+      <description>はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用サーバーを作りました。 このとき、最新のTensorflowをインストールしても使えないので苦労しました。 これはi7 870はSand</description>
     </item>
     
     <item>
@@ -85,7 +85,7 @@
       <pubDate>Sat, 04 Jan 2020 10:09:03 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/vps_review/</guid>
-      <description>私はこれまでにいくつかVPSを借りて運用してきました。 実際に借りて運用したVPSのレビューを書きます。 Scaleway CPU: 2Core x86 64bit メモリ: 2G SSD: 50GB 値段: 月3ユー</description>
+      <description>私はこれまでにいくつかVPSを借りて運用してきました。 実際に借りて運用したVPSのレビューを書きます。 Scaleway CPU: 2Core x86 64bit メモリ: 2G SSD: 50GB 値段: 月3ユーロ (約400円) 場所: ヨーロッパ のプランを2017年 ~ 201</description>
     </item>
     
     <item>
@@ -94,7 +94,7 @@
       <pubDate>Thu, 03 Oct 2019 04:47:58 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</guid>
-      <description>はじめに Docker 19.03以降からDockerのコンテナからNvidia GPUを使いやすくなりました。 tensorflow-gpuをDockerで</description>
+      <description>はじめに Docker 19.03以降からDockerのコンテナからNvidia GPUを使いやすくなりました。 tensorflow-gpuをDockerで使う場合は、公式のtensorflow/tensorflow</description>
     </item>
     
     <item>
@@ -103,7 +103,7 @@
       <pubDate>Sun, 07 Jul 2019 01:37:56 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/study_math/</guid>
-      <description>はじめに 物理を勉強していくうちに数学にも興味をもったので、学部3年生の後半から学部4年生になるまでの約半年間ひとりで数学を勉強しました。 数学</description>
+      <description>はじめに 物理を勉強していくうちに数学にも興味をもったので、学部3年生の後半から学部4年生になるまでの約半年間ひとりで数学を勉強しました。 数学科の人からすればまだ入門したてのペーペーでしょうが、独学で数</description>
     </item>
     
     <item>
@@ -121,7 +121,7 @@
       <pubDate>Mon, 08 Apr 2019 23:46:31 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/elm_gitlab_cicd/</guid>
-      <description>Elmでフーリエ級数展開やライフゲームを制作したのでCI/CDを試してみました。 この記事ではElmで作ったものをGitLab CI/CDを使っ</description>
+      <description>Elmでフーリエ級数展開やライフゲームを制作したのでCI/CDを試してみました。 この記事ではElmで作ったものをGitLab CI/CDを使ってGitLab Pagesにdeployする方法を紹介します。</description>
     </item>
     
     <item>
@@ -130,7 +130,7 @@
       <pubDate>Thu, 14 Feb 2019 01:14:02 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_downgrade/</guid>
-      <description>いつものように $ brew update &amp;amp;&amp;amp; brew upgrade してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのve</description>
+      <description>いつものように $ brew update &amp;amp;&amp;amp; brew upgrade してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのversionを8.8.2にします。 ほとんど↓の記事を見ながらや</description>
     </item>
     
     <item>
@@ -139,7 +139,7 @@
       <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/haskell_primes/</guid>
-      <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_te</description>
+      <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_test.hsからダウンロード! フェルマーテストとは フェルマーの</description>
     </item>
     
     <item>
@@ -148,7 +148,7 @@
       <pubDate>Wed, 16 Jan 2019 04:20:21 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_natural_number/</guid>
-      <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示</description>
+      <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それをCoq/SSReflectで示します。 (実際はSoftware Foundationsの第一</description>
     </item>
     
     <item>
@@ -157,7 +157,7 @@
       <pubDate>Sun, 13 Jan 2019 14:20:08 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_logic/</guid>
-      <description>直観論理とは Coqは直観論理で許される推論規則で演繹を行う。 直観論理の説明はWikipediaにある。 簡単に説明すると、私達が普通に数学で用</description>
+      <description>直観論理とは Coqは直観論理で許される推論規則で演繹を行う。 直観論理の説明はWikipediaにある。 簡単に説明すると、私達が普通に数学で用いている論理は古典論理で、直観論理は古典論理から排中律を除い</description>
     </item>
     
     <item>
@@ -166,7 +166,7 @@
       <pubDate>Sat, 12 Jan 2019 19:26:34 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/without_root/</guid>
-      <description>Rootなしで人権を得る方法です。 Tmuxをビルドする。 こんな素晴らしい記事がある。 これをコピペして実行。 linuxbrewを用いる。 以下を</description>
+      <description>Rootなしで人権を得る方法です。 Tmuxをビルドする。 こんな素晴らしい記事がある。 これをコピペして実行。 linuxbrewを用いる。 以下を~/.bashrcに追加して再度ログイン。 if [ ! -r ~/.linuxbrew ]; then git clone</description>
     </item>
     
     <item>
@@ -175,7 +175,7 @@
       <pubDate>Mon, 31 Dec 2018 23:08:04 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</guid>
-      <description>外延性の公理から集合の等号に対して同値関係を示します。(Coqで) 外延性の公理とは A, Bを任意の集合とするとき、もし任意の集合Xについて「Xが</description>
+      <description>外延性の公理から集合の等号に対して同値関係を示します。(Coqで) 外延性の公理とは A, Bを任意の集合とするとき、もし任意の集合Xについて「XがAの要素であるならば、そのときに限りXはBの要素である」が成</description>
     </item>
     
     <item>
@@ -184,7 +184,7 @@
       <pubDate>Sat, 29 Dec 2018 23:35:55 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/atom_package/</guid>
-      <description>随時更新していきます。 通常編 とりあえずAtomをインストールしたら入れるプラグイン atomic-emacs AtomでEmacsのキーバインドを使う。 japanese-menu 設定を日本語</description>
+      <description>随時更新していきます。 通常編 とりあえずAtomをインストールしたら入れるプラグイン atomic-emacs AtomでEmacsのキーバインドを使う。 japanese-menu 設定を日本語化 platformio-ide-terminal Ctrl-`で下からターミナルが出てくるようになる。 project-manager p</description>
     </item>
     
     <item>
@@ -193,7 +193,7 @@
       <pubDate>Thu, 27 Dec 2018 04:42:41 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_set_theory/</guid>
-      <description>はじめに Coqで集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のためauto.を使わないで証明を行います。 集合論 Section Ensembles. (* こ</description>
+      <description>はじめに Coqで集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のためauto.を使わないで証明を行います。 集合論 Section Ensembles. (* ここにコードを書く *) End Ensembles. 集合とは 1変数の述語を用いて集合論を定</description>
     </item>
     
     <item>
@@ -202,7 +202,7 @@
       <pubDate>Thu, 20 Dec 2018 15:17:22 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_install/</guid>
-      <description>Mac編 brewとbrew caskを用いた環境構築を行います。 GUI版Emacsのインストール brew cask install emacs Coqのインストール brewでCoqを</description>
+      <description>Mac編 brewとbrew caskを用いた環境構築を行います。 GUI版Emacsのインストール brew cask install emacs Coqのインストール brewでCoqをインストールします。 brew install coq Emacsの設定 最近のEmacsは</description>
     </item>
     
     <item>
@@ -211,7 +211,7 @@
       <pubDate>Thu, 20 Dec 2018 12:43:24 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/start_blog_hugo/</guid>
-      <description>Hugoとは オープンソースの軽量ブログジェジェネレーターです。 Markdownで書くことが出来て楽です。 Hugoの使い方 インストール方法 brew install</description>
+      <description>Hugoとは オープンソースの軽量ブログジェジェネレーターです。 Markdownで書くことが出来て楽です。 Hugoの使い方 インストール方法 brew install hugo ブログの作成 hugo new site hugo 記事の作成 hugo new post/fuga.md localhostでテ</description>
     </item>
     
   </channel>

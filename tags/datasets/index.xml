@@ -5,7 +5,7 @@
     <link>https://derbuihan.github.io/tags/datasets/</link>
     <description>Recent content in Datasets on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Wed, 23 Dec 2020 02:42:40 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/datasets/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tensorflow Datasetsにある英語の巨大なテキストのデータセット</title>
@@ -13,7 +13,7 @@
       <pubDate>Wed, 23 Dec 2020 02:42:40 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/tensorflow_datasets_text/</guid>
-      <description>Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。 データの一覧の取得 以下のコマンドでtensorflow_datasetsから</description>
+      <description>Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。 データの一覧の取得 以下のコマンドでtensorflow_datasetsから取得出来るデータセットの一覧がわかります。 &amp;gt;&amp;gt;&amp;gt; import tensorflow_datasets as tfds &amp;gt;&amp;gt;&amp;gt; tfds.list_builders() 英語</description>
     </item>
     
   </channel>

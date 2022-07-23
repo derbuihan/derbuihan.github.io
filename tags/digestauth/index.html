@@ -1,597 +1,513 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
-  
-  <meta charset="utf-8">
-  <title>DigestAuth</title>
-  <meta name="description"
     
-      content="未来の自分へのドキュメント"
-    
-  >
-  <meta name="author" content="derbuihan">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <noscript>
-    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://derbuihan.github.io/css/fonts.css">
-  </noscript>
-  
-  
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-/*!
-normalize.css v^3.0 | MIT License | git.io/normalize
-Copyright (c) Nicolas Gallagher and Jonathan Neal
-*/
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */img,legend{border:0}legend,td,th{padding:0}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,optgroup,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre,textarea{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}table{border-collapse:collapse;border-spacing:0}.hidden,[hidden]{display:none!important}.pure-img{max-width:100%;height:auto;display:block}
-  </style>
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-.pure-menu{box-sizing:border-box}.pure-menu-fixed{position:fixed;left:0;top:0;z-index:3}.pure-menu-item,.pure-menu-list{position:relative}.pure-menu-list{list-style:none;margin:0;padding:0}.pure-menu-item{padding:0;margin:0;height:100%}.pure-menu-heading,.pure-menu-link{display:block;text-decoration:none;white-space:nowrap}.pure-menu-horizontal{width:100%;white-space:normal}.pure-menu-horizontal .pure-menu-list{display:inline-block}.pure-menu-horizontal .pure-menu-heading,.pure-menu-horizontal .pure-menu-item,.pure-menu-horizontal .pure-menu-separator{display:inline-block;zoom:1;vertical-align:middle}.pure-menu-item .pure-menu-item{display:block}.pure-menu-children{display:none;position:absolute;left:100%;top:0;margin:0;padding:0;z-index:3}.pure-menu-horizontal .pure-menu-children{left:0;top:auto;width:inherit}.pure-menu-active>.pure-menu-children,.pure-menu-allow-hover:hover>.pure-menu-children{display:block;position:absolute}.pure-menu-has-children>.pure-menu-link:after{padding-left:.5em;content:"\25B8";font-size:small}.pure-menu-horizontal .pure-menu-has-children>.pure-menu-link:after{content:"\25BE"}.pure-menu-scrollable{overflow-y:scroll;overflow-x:hidden}.pure-menu-scrollable .pure-menu-list{display:block}.pure-menu-horizontal.pure-menu-scrollable .pure-menu-list{display:inline-block}.pure-menu-horizontal.pure-menu-scrollable{white-space:nowrap;overflow-y:hidden;overflow-x:auto;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding:.5em 0}.pure-menu-horizontal.pure-menu-scrollable::-webkit-scrollbar{display:none}.pure-menu-horizontal .pure-menu-children .pure-menu-separator,.pure-menu-separator{background-color:#ccc;height:1px;margin:.3em 0}.pure-menu-horizontal .pure-menu-separator{width:1px;height:1.3em;margin:0 .3em}.pure-menu-horizontal .pure-menu-children .pure-menu-separator{display:block;width:auto}.pure-menu-heading{text-transform:uppercase;color:#565d64}.pure-menu-link{color:#777}.pure-menu-children{background-color:#fff}.pure-menu-disabled,.pure-menu-heading,.pure-menu-link{padding:.5em 1em}.pure-menu-disabled{opacity:.5}.pure-menu-disabled .pure-menu-link:hover{background-color:transparent}.pure-menu-active>.pure-menu-link,.pure-menu-link:focus,.pure-menu-link:hover{background-color:#eee}.pure-menu-selected .pure-menu-link,.pure-menu-selected .pure-menu-link:visited{color:#000}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.101.0" />
 
-  </style>
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-.pure-g{letter-spacing:-.31em;text-rendering:optimizespeed;font-family:FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:flex-start;-ms-flex-line-pack:start;align-content:flex-start}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){table .pure-g{display:block}}.opera-only :-o-prefocus,.pure-g{word-spacing:-.43em}.pure-u,.pure-u-1,.pure-u-1-1,.pure-u-1-12,.pure-u-1-2,.pure-u-1-24,.pure-u-1-3,.pure-u-1-4,.pure-u-1-5,.pure-u-1-6,.pure-u-1-8,.pure-u-10-24,.pure-u-11-12,.pure-u-11-24,.pure-u-12-24,.pure-u-13-24,.pure-u-14-24,.pure-u-15-24,.pure-u-16-24,.pure-u-17-24,.pure-u-18-24,.pure-u-19-24,.pure-u-2-24,.pure-u-2-3,.pure-u-2-5,.pure-u-20-24,.pure-u-21-24,.pure-u-22-24,.pure-u-23-24,.pure-u-24-24,.pure-u-3-24,.pure-u-3-4,.pure-u-3-5,.pure-u-3-8,.pure-u-4-24,.pure-u-4-5,.pure-u-5-12,.pure-u-5-24,.pure-u-5-5,.pure-u-5-6,.pure-u-5-8,.pure-u-6-24,.pure-u-7-12,.pure-u-7-24,.pure-u-7-8,.pure-u-8-24,.pure-u-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-g [class*=pure-u]{font-family:sans-serif}.pure-u-1-24{width:4.1667%}.pure-u-1-12,.pure-u-2-24{width:8.3333%}.pure-u-1-8,.pure-u-3-24{width:12.5%}.pure-u-1-6,.pure-u-4-24{width:16.6667%}.pure-u-1-5{width:20%}.pure-u-5-24{width:20.8333%}.pure-u-1-4,.pure-u-6-24{width:25%}.pure-u-7-24{width:29.1667%}.pure-u-1-3,.pure-u-8-24{width:33.3333%}.pure-u-3-8,.pure-u-9-24{width:37.5%}.pure-u-2-5{width:40%}.pure-u-10-24,.pure-u-5-12{width:41.6667%}.pure-u-11-24{width:45.8333%}.pure-u-1-2,.pure-u-12-24{width:50%}.pure-u-13-24{width:54.1667%}.pure-u-14-24,.pure-u-7-12{width:58.3333%}.pure-u-3-5{width:60%}.pure-u-15-24,.pure-u-5-8{width:62.5%}.pure-u-16-24,.pure-u-2-3{width:66.6667%}.pure-u-17-24{width:70.8333%}.pure-u-18-24,.pure-u-3-4{width:75%}.pure-u-19-24{width:79.1667%}.pure-u-4-5{width:80%}.pure-u-20-24,.pure-u-5-6{width:83.3333%}.pure-u-21-24,.pure-u-7-8{width:87.5%}.pure-u-11-12,.pure-u-22-24{width:91.6667%}.pure-u-23-24{width:95.8333%}.pure-u-1,.pure-u-1-1,.pure-u-24-24,.pure-u-5-5{width:100%}
-  </style>
-  
-  
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-@media screen and (min-width:35.5em){.pure-u-sm-1,.pure-u-sm-1-1,.pure-u-sm-1-12,.pure-u-sm-1-2,.pure-u-sm-1-24,.pure-u-sm-1-3,.pure-u-sm-1-4,.pure-u-sm-1-5,.pure-u-sm-1-6,.pure-u-sm-1-8,.pure-u-sm-10-24,.pure-u-sm-11-12,.pure-u-sm-11-24,.pure-u-sm-12-24,.pure-u-sm-13-24,.pure-u-sm-14-24,.pure-u-sm-15-24,.pure-u-sm-16-24,.pure-u-sm-17-24,.pure-u-sm-18-24,.pure-u-sm-19-24,.pure-u-sm-2-24,.pure-u-sm-2-3,.pure-u-sm-2-5,.pure-u-sm-20-24,.pure-u-sm-21-24,.pure-u-sm-22-24,.pure-u-sm-23-24,.pure-u-sm-24-24,.pure-u-sm-3-24,.pure-u-sm-3-4,.pure-u-sm-3-5,.pure-u-sm-3-8,.pure-u-sm-4-24,.pure-u-sm-4-5,.pure-u-sm-5-12,.pure-u-sm-5-24,.pure-u-sm-5-5,.pure-u-sm-5-6,.pure-u-sm-5-8,.pure-u-sm-6-24,.pure-u-sm-7-12,.pure-u-sm-7-24,.pure-u-sm-7-8,.pure-u-sm-8-24,.pure-u-sm-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-sm-1-24{width:4.1667%}.pure-u-sm-1-12,.pure-u-sm-2-24{width:8.3333%}.pure-u-sm-1-8,.pure-u-sm-3-24{width:12.5%}.pure-u-sm-1-6,.pure-u-sm-4-24{width:16.6667%}.pure-u-sm-1-5{width:20%}.pure-u-sm-5-24{width:20.8333%}.pure-u-sm-1-4,.pure-u-sm-6-24{width:25%}.pure-u-sm-7-24{width:29.1667%}.pure-u-sm-1-3,.pure-u-sm-8-24{width:33.3333%}.pure-u-sm-3-8,.pure-u-sm-9-24{width:37.5%}.pure-u-sm-2-5{width:40%}.pure-u-sm-10-24,.pure-u-sm-5-12{width:41.6667%}.pure-u-sm-11-24{width:45.8333%}.pure-u-sm-1-2,.pure-u-sm-12-24{width:50%}.pure-u-sm-13-24{width:54.1667%}.pure-u-sm-14-24,.pure-u-sm-7-12{width:58.3333%}.pure-u-sm-3-5{width:60%}.pure-u-sm-15-24,.pure-u-sm-5-8{width:62.5%}.pure-u-sm-16-24,.pure-u-sm-2-3{width:66.6667%}.pure-u-sm-17-24{width:70.8333%}.pure-u-sm-18-24,.pure-u-sm-3-4{width:75%}.pure-u-sm-19-24{width:79.1667%}.pure-u-sm-4-5{width:80%}.pure-u-sm-20-24,.pure-u-sm-5-6{width:83.3333%}.pure-u-sm-21-24,.pure-u-sm-7-8{width:87.5%}.pure-u-sm-11-12,.pure-u-sm-22-24{width:91.6667%}.pure-u-sm-23-24{width:95.8333%}.pure-u-sm-1,.pure-u-sm-1-1,.pure-u-sm-24-24,.pure-u-sm-5-5{width:100%}}@media screen and (min-width:48em){.pure-u-md-1,.pure-u-md-1-1,.pure-u-md-1-12,.pure-u-md-1-2,.pure-u-md-1-24,.pure-u-md-1-3,.pure-u-md-1-4,.pure-u-md-1-5,.pure-u-md-1-6,.pure-u-md-1-8,.pure-u-md-10-24,.pure-u-md-11-12,.pure-u-md-11-24,.pure-u-md-12-24,.pure-u-md-13-24,.pure-u-md-14-24,.pure-u-md-15-24,.pure-u-md-16-24,.pure-u-md-17-24,.pure-u-md-18-24,.pure-u-md-19-24,.pure-u-md-2-24,.pure-u-md-2-3,.pure-u-md-2-5,.pure-u-md-20-24,.pure-u-md-21-24,.pure-u-md-22-24,.pure-u-md-23-24,.pure-u-md-24-24,.pure-u-md-3-24,.pure-u-md-3-4,.pure-u-md-3-5,.pure-u-md-3-8,.pure-u-md-4-24,.pure-u-md-4-5,.pure-u-md-5-12,.pure-u-md-5-24,.pure-u-md-5-5,.pure-u-md-5-6,.pure-u-md-5-8,.pure-u-md-6-24,.pure-u-md-7-12,.pure-u-md-7-24,.pure-u-md-7-8,.pure-u-md-8-24,.pure-u-md-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-md-1-24{width:4.1667%}.pure-u-md-1-12,.pure-u-md-2-24{width:8.3333%}.pure-u-md-1-8,.pure-u-md-3-24{width:12.5%}.pure-u-md-1-6,.pure-u-md-4-24{width:16.6667%}.pure-u-md-1-5{width:20%}.pure-u-md-5-24{width:20.8333%}.pure-u-md-1-4,.pure-u-md-6-24{width:25%}.pure-u-md-7-24{width:29.1667%}.pure-u-md-1-3,.pure-u-md-8-24{width:33.3333%}.pure-u-md-3-8,.pure-u-md-9-24{width:37.5%}.pure-u-md-2-5{width:40%}.pure-u-md-10-24,.pure-u-md-5-12{width:41.6667%}.pure-u-md-11-24{width:45.8333%}.pure-u-md-1-2,.pure-u-md-12-24{width:50%}.pure-u-md-13-24{width:54.1667%}.pure-u-md-14-24,.pure-u-md-7-12{width:58.3333%}.pure-u-md-3-5{width:60%}.pure-u-md-15-24,.pure-u-md-5-8{width:62.5%}.pure-u-md-16-24,.pure-u-md-2-3{width:66.6667%}.pure-u-md-17-24{width:70.8333%}.pure-u-md-18-24,.pure-u-md-3-4{width:75%}.pure-u-md-19-24{width:79.1667%}.pure-u-md-4-5{width:80%}.pure-u-md-20-24,.pure-u-md-5-6{width:83.3333%}.pure-u-md-21-24,.pure-u-md-7-8{width:87.5%}.pure-u-md-11-12,.pure-u-md-22-24{width:91.6667%}.pure-u-md-23-24{width:95.8333%}.pure-u-md-1,.pure-u-md-1-1,.pure-u-md-24-24,.pure-u-md-5-5{width:100%}}@media screen and (min-width:64em){.pure-u-lg-1,.pure-u-lg-1-1,.pure-u-lg-1-12,.pure-u-lg-1-2,.pure-u-lg-1-24,.pure-u-lg-1-3,.pure-u-lg-1-4,.pure-u-lg-1-5,.pure-u-lg-1-6,.pure-u-lg-1-8,.pure-u-lg-10-24,.pure-u-lg-11-12,.pure-u-lg-11-24,.pure-u-lg-12-24,.pure-u-lg-13-24,.pure-u-lg-14-24,.pure-u-lg-15-24,.pure-u-lg-16-24,.pure-u-lg-17-24,.pure-u-lg-18-24,.pure-u-lg-19-24,.pure-u-lg-2-24,.pure-u-lg-2-3,.pure-u-lg-2-5,.pure-u-lg-20-24,.pure-u-lg-21-24,.pure-u-lg-22-24,.pure-u-lg-23-24,.pure-u-lg-24-24,.pure-u-lg-3-24,.pure-u-lg-3-4,.pure-u-lg-3-5,.pure-u-lg-3-8,.pure-u-lg-4-24,.pure-u-lg-4-5,.pure-u-lg-5-12,.pure-u-lg-5-24,.pure-u-lg-5-5,.pure-u-lg-5-6,.pure-u-lg-5-8,.pure-u-lg-6-24,.pure-u-lg-7-12,.pure-u-lg-7-24,.pure-u-lg-7-8,.pure-u-lg-8-24,.pure-u-lg-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-lg-1-24{width:4.1667%}.pure-u-lg-1-12,.pure-u-lg-2-24{width:8.3333%}.pure-u-lg-1-8,.pure-u-lg-3-24{width:12.5%}.pure-u-lg-1-6,.pure-u-lg-4-24{width:16.6667%}.pure-u-lg-1-5{width:20%}.pure-u-lg-5-24{width:20.8333%}.pure-u-lg-1-4,.pure-u-lg-6-24{width:25%}.pure-u-lg-7-24{width:29.1667%}.pure-u-lg-1-3,.pure-u-lg-8-24{width:33.3333%}.pure-u-lg-3-8,.pure-u-lg-9-24{width:37.5%}.pure-u-lg-2-5{width:40%}.pure-u-lg-10-24,.pure-u-lg-5-12{width:41.6667%}.pure-u-lg-11-24{width:45.8333%}.pure-u-lg-1-2,.pure-u-lg-12-24{width:50%}.pure-u-lg-13-24{width:54.1667%}.pure-u-lg-14-24,.pure-u-lg-7-12{width:58.3333%}.pure-u-lg-3-5{width:60%}.pure-u-lg-15-24,.pure-u-lg-5-8{width:62.5%}.pure-u-lg-16-24,.pure-u-lg-2-3{width:66.6667%}.pure-u-lg-17-24{width:70.8333%}.pure-u-lg-18-24,.pure-u-lg-3-4{width:75%}.pure-u-lg-19-24{width:79.1667%}.pure-u-lg-4-5{width:80%}.pure-u-lg-20-24,.pure-u-lg-5-6{width:83.3333%}.pure-u-lg-21-24,.pure-u-lg-7-8{width:87.5%}.pure-u-lg-11-12,.pure-u-lg-22-24{width:91.6667%}.pure-u-lg-23-24{width:95.8333%}.pure-u-lg-1,.pure-u-lg-1-1,.pure-u-lg-24-24,.pure-u-lg-5-5{width:100%}}@media screen and (min-width:80em){.pure-u-xl-1,.pure-u-xl-1-1,.pure-u-xl-1-12,.pure-u-xl-1-2,.pure-u-xl-1-24,.pure-u-xl-1-3,.pure-u-xl-1-4,.pure-u-xl-1-5,.pure-u-xl-1-6,.pure-u-xl-1-8,.pure-u-xl-10-24,.pure-u-xl-11-12,.pure-u-xl-11-24,.pure-u-xl-12-24,.pure-u-xl-13-24,.pure-u-xl-14-24,.pure-u-xl-15-24,.pure-u-xl-16-24,.pure-u-xl-17-24,.pure-u-xl-18-24,.pure-u-xl-19-24,.pure-u-xl-2-24,.pure-u-xl-2-3,.pure-u-xl-2-5,.pure-u-xl-20-24,.pure-u-xl-21-24,.pure-u-xl-22-24,.pure-u-xl-23-24,.pure-u-xl-24-24,.pure-u-xl-3-24,.pure-u-xl-3-4,.pure-u-xl-3-5,.pure-u-xl-3-8,.pure-u-xl-4-24,.pure-u-xl-4-5,.pure-u-xl-5-12,.pure-u-xl-5-24,.pure-u-xl-5-5,.pure-u-xl-5-6,.pure-u-xl-5-8,.pure-u-xl-6-24,.pure-u-xl-7-12,.pure-u-xl-7-24,.pure-u-xl-7-8,.pure-u-xl-8-24,.pure-u-xl-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-xl-1-24{width:4.1667%}.pure-u-xl-1-12,.pure-u-xl-2-24{width:8.3333%}.pure-u-xl-1-8,.pure-u-xl-3-24{width:12.5%}.pure-u-xl-1-6,.pure-u-xl-4-24{width:16.6667%}.pure-u-xl-1-5{width:20%}.pure-u-xl-5-24{width:20.8333%}.pure-u-xl-1-4,.pure-u-xl-6-24{width:25%}.pure-u-xl-7-24{width:29.1667%}.pure-u-xl-1-3,.pure-u-xl-8-24{width:33.3333%}.pure-u-xl-3-8,.pure-u-xl-9-24{width:37.5%}.pure-u-xl-2-5{width:40%}.pure-u-xl-10-24,.pure-u-xl-5-12{width:41.6667%}.pure-u-xl-11-24{width:45.8333%}.pure-u-xl-1-2,.pure-u-xl-12-24{width:50%}.pure-u-xl-13-24{width:54.1667%}.pure-u-xl-14-24,.pure-u-xl-7-12{width:58.3333%}.pure-u-xl-3-5{width:60%}.pure-u-xl-15-24,.pure-u-xl-5-8{width:62.5%}.pure-u-xl-16-24,.pure-u-xl-2-3{width:66.6667%}.pure-u-xl-17-24{width:70.8333%}.pure-u-xl-18-24,.pure-u-xl-3-4{width:75%}.pure-u-xl-19-24{width:79.1667%}.pure-u-xl-4-5{width:80%}.pure-u-xl-20-24,.pure-u-xl-5-6{width:83.3333%}.pure-u-xl-21-24,.pure-u-xl-7-8{width:87.5%}.pure-u-xl-11-12,.pure-u-xl-22-24{width:91.6667%}.pure-u-xl-23-24{width:95.8333%}.pure-u-xl-1,.pure-u-xl-1-1,.pure-u-xl-24-24,.pure-u-xl-5-5{width:100%}}
-  </style>
-  
 
-  
-  <style type="text/css" media="screen">
-    html {
-	min-height:100%;
-	width:100%;
-	position:relative;
-}
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-cdn-main@1/images/favicons/dsrca.ico" />
 
-body {
-	background-color: rgb(252,252,252);
-	color: #484848;
-}
 
-.nav-menu {
-	padding: 10px 0;
-	border-bottom: 2px solid #e3e3e3;
-}
 
-.pure-menu-heading {
-  text-transform: none;
-  font-size: large;
-}
+<title>DigestAuth - derbuihan blog</title>
 
-.header {
-	text-align: left;
-	color: #484848;
-	margin-bottom: .5em;
-}
 
-.header ul li {
-		height: auto;
-}
+<meta name="author" content="derbuihan" />
 
-.header ul li a {
-	font-weight: bold;
-	color: #484848;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 
-.header {
-	font-weight: bold;
-	color: #484848;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+<meta name="description" content="derbuihan blog" />
 
-.site-title {
-	color: #484848;
-  text-transform: none;
-  font-weight: normal;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 
-.pull-right {
-	float: right;
-}
+<link rel="alternate" type="application/rss+xml" href="https://derbuihan.github.io/tags/digestauth/index.xml" title="derbuihan blog" />
 
-.posts-name {
-	text-transform: capitalize;
-	font-weight: bold;
-	padding-left: 0.5em;
-	margin-top: 1em;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.posts {
-	font-family: verdana,arial,helvetica,sans-serif;
-	list-style-type:none;
-	padding-left: 0;
-}
-
-.posts li p {
-	margin-top: 0;
-}
-
-.posts li {
-	padding-top: 1em;
-	padding-bottom: 1em;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-	border-bottom: solid 2px #d7d7d7;
-}
-
-.posts li:first-child {
-	border-top: solid 2px #d7d7d7;
-}
-
-.posts li a {
-	color:#369;
-	text-decoration:none;
-}
-
-.post-list {
-  font-size: large;
-}
-
-.footnote {
-	font-family: verdana,arial,helvetica,sans-serif;
-	color:#888;
-	font-size:0.75em;
-	padding: 0;
-	margin: 0;
-}
-
-.footnote a {
-	color: #888 !important
-}
-
-.footnote a:hover{
-	text-decoration:underline;
-	color:#369;
-}
-
-.footer {
-	position:absolute;
-	z-index:2;
-	height:auto;
-	width:100%;
-	bottom:0;
-}
-
-.footer-content {
-	border-top: 1px solid #e3e3e3;
-	font-size: 80%;
-	color: #bbb;
-}
-
-.footer-content a {
-	color: #bbb;
-}
-
-.footer-content ul {
-	height: auto;
-	margin-top: 0;
-	margin-bottom: 0;
-	display: inline-block;
-	padding-left: 1em;
-}
-
-#gototop-btn {
-	display: inline-block;
-}
-
-#foot-name {
-  color: #484848;
-	text-transform: none;
-}
-
-#foot-copyright {
-	padding-left: 1em;
-	padding-bottom: 0.5em;
-	margin: 0;
-}
-
-.post {
-	font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
-	color:#484848;
-	letter-spacing:normal;
-	padding-left: 0;
-}
-
-.post h1,h2,h3,h4,h5,h6 {
-	font-weight: bold;
-	letter-spacing:normal;
-}
-
-.post-content {
-	z-index: 9;
-	overflow: auto;
-	padding: 0;
-	padding-bottom: 3em;
-	font-size: 16px;
-	line-height: 1.4;
-}
-
-.post-content img {
-	max-width: 100%;
-	height: auto;
-}
-
-.post-content code {
-  background-color: #EEE;
-}
-
-.post-content ul.posts {
-	margin: 0;
-	padding: 0;
-}
-
-.post code {
-  background-color: #EEE;
-}
-
-.post a {
-	color:#c05b4d;
-	text-decoration: none;
-}
-
-.post a:hover {
-	color:#a5473a;
-	text-decoration: underline;
-}
-
-.post h1 {
-	font-size:27px;
-	padding: 0.4em 0.5em;
-	color: #494949;
-	background: #f4f4f4;
-	border-left: solid 5px #7db4e6;
-	border-bottom: solid 3px #d7d7d7;
-}
-
-.post h2 {
-	font-size:25px;
-}
-
-.post h3 {
-	font-size:23px;
-	padding: 0.25em 0.5em;
-	margin-left: 0em;
-	color: #494949;
-	background: transparent;
-	border-left: solid 5px #7db4e6;
-}
-
-.post h4 {
-	font-size:21px;
-	background: linear-gradient(transparent 70%, #DFF2FC 50%);
-	margin-left: 0.5em;
-}
-
-.post h5 {
-	font-size:19px;
-}
-
-.post h6 {
-	font-size:18px;
-}
-
-.post-content > p {
-	margin-left: 1em;
-}
-
-.post-title{
-		margin-top: 0;
-		margin-bottom: 0;
-}
-
-.post-title h1 {
-	font-weight:bold;
-	font-size:27px;
-	line-height: 28px;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-table {
-	width:100%;
-	border-right:#000 solid 1px;
-	border-collapse: collapse;
-}
-
-table thead th {
-	background:#e0e0e0;
-	padding:10px 15px;
-	border-right:#000 solid 1px;
-	border-bottom:#000 solid 1px;
-}
-table thead th:first-child {
-	border-left:#000 solid 1px;
-}
-table thead:first-child {
-	border-top:#000 solid 1px;
-}
-table thead th:last-child {
-	border-right:#000 solid 1px;
-}
-table tbody th {
-	background:#e0e0e0;
-	padding:10px 15px;
-	border-bottom:#000 solid 1px;
-	vertical-align:top;
-}
-table tbody tr:last-child th {
-	border-bottom:#000 solid 1px;
-}
-table tbody td {
-	background:#FFF;
-	padding:10px 15px;
-	border-left:#000 solid 1px;
-	border-bottom:#000 solid 1px;
-	vertical-align:top;
-}
-
-@media screen and (max-width: 640px) {
-table.table01 thead {
-	display:none;
-}
-table.table01 tbody th {
-	display:block;
-}
-table.table01 tbody td {
-	display:block;
-}
-table.table01 tbody td::before {
-	content: attr(label);
-	float: left;
-	clear:both;
-	font-weight:bold;
-}
-table.table01 tbody td p {
-	padding-left:6em;
-}
-}
-
-@media screen and (max-width: 1023px){
-	.desktop {
-		display: none;
-	}
-	.mobile {
-		display: block;
-	}
-	#toggle-btn {
-		display: inline-block;
-		float: right;
-		padding: .5em 1em;
-		text-decoration: none;
-		color: #484848;
-		font-weight: bold;
-	}
-	#toggle-content li {
-		clear: both;
-		height: auto;
-		background-color: rgb(249,249,249);
-	}
-	#toggle-home {
-		display: inline-block;
-	}
-}
-
-@media screen and (min-width: 1023px){
-	.mobile {
-		display:none;
-	}
-	.desktop {
-		display: block;
-	}
-}
-
-  </style>
-  
-  <style type="text/css" media="screen">
-    
-      .hljs{display:block;overflow-x:auto;padding:0.5em;color:#000;background:#f8f8ff}.hljs-comment,.hljs-quote{color:#408080;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-literal,.hljs-subst{color:#954121}.hljs-number{color:#40a070}.hljs-string,.hljs-doctag{color:#219161}.hljs-selector-id,.hljs-selector-class,.hljs-section,.hljs-type{color:#19469d}.hljs-params{color:#00f}.hljs-title{color:#458;font-weight:bold}.hljs-tag,.hljs-name,.hljs-attribute{color:#000080;font-weight:normal}.hljs-variable,.hljs-template-variable{color:#008080}.hljs-regexp,.hljs-link{color:#b68}.hljs-symbol,.hljs-bullet{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:bold}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}
-    
-  </style>
-
-  
-  <link rel="shortcut icon"
-  
-    href="https://derbuihan.github.io/img/favicon.ico"
-  
-  type="image/x-icon">
-
-  <meta name="generator" content="Hugo 0.101.0" />
-
-  
-  
-<meta property="og:url" content="https://derbuihan.github.io/" />
 <meta property="og:title" content="DigestAuth" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="summary">
-<meta property="og:site_name" content="derbuihan blog" />
-<meta property="og:locale" content="ja_JP" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="@derbuihan" />
-
-</head>
-<body>
-
-<div class="header pure-g">
-    <div class=" pure-u-lg-5-24"></div>
-    <div class="pure-u-1 pure-u-lg-7-12">
-        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
-            
-            <a href="https://derbuihan.github.io/" class="site-title pure-menu-heading">derbuihan blog</a>
-            <ul class="pure-menu-list pull-right">
-				
-                <li class="pure-menu-item">
-                  <a href="https://derbuihan.github.io/works" class="pure-menu-link">Works</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="https://derbuihan.github.io/about" class="pure-menu-link">About</a>
-                </li>
-            </ul>
-        </div>
-        <div class="mobile pure-menu nav-menu">
-            <a href="/" class="site-title pure-menu-heading" id="toggle-home">derbuihan blog</a>
-            <a href="#" id="toggle-btn">&#9776;</a>
-            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
-                
-				
-                <li class="pure-menu-item">
-                  <a href="https://derbuihan.github.io/works" class="pure-menu-link">Works</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="https://derbuihan.github.io/about" class="pure-menu-link">About</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class=" pure-u-lg-5-24"></div>
-</div>
+<meta name="twitter:title" content="DigestAuth" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://derbuihan.github.io/tags/digestauth/" /><meta property="og:image" content="https://derbuihan.github.io/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://derbuihan.github.io/img/og.png" /><meta property="og:updated_time" content="2022-07-13T00:27:26+09:00" />
 
 
-
-<div class="pure-g">
-  <div class="pure-u-1-24 pure-u-lg-5-24"></div>
-  <div class="pure-u-11-12 pure-u-lg-7-12">
-    <div class="post-content">
-      
-      <p class="posts-name">#DigestAuth の記事一覧</p>
-
-      <ul class="posts">
-        
-        
-        
-        <li>
-          
-          <a class="post-list" href="https://derbuihan.github.io/posts/digest_auth_bash_js/">Digest認証の仕組みをBashとJavaScriptで理解したい。</a>
-
-          <p class="footnote">
-            <time datetime="2022-07-13 00:27:26 &#43;0900 JST">
-              
-                2022-07-13
-              
-            </time>
-          </p>
-        </li>
-        
-        
-      </ul>
-    </div>
-  </div>
-  <div class="pure-u-1-24 pure-u-lg-5-24"></div>
-</div>
-
-<div class="footer pure-g">
-  <div class="pure-u-lg-5-24"></div>
-  <div class="pure-u-1 pure-u-lg-7-12">
-    <div class="footer-content">
-      <div class="pure-menu pure-menu-horizontal">
-        <ul>
-          
-          <li class="pure-menu-item" id="foot-name">© derbuihan</li>
-          
-
-          
-
-          
-          <li class="pure-menu-item">
-            <a href="https://github.com/derbuihan" class="pure-menu-link">GitHub</a>
-          </li>
-          
-
-          
-          <li class="pure-menu-item">
-            <a href="https://twitter.com/derbuihan" class="pure-menu-link">Twitter</a>
-          </li>
-          
-
-          
-
-        </ul>
-        <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-      </div>
-      
-    </div>
-  </div>
-  <div class="pure-u-lg-5-24"></div>
-</div>
-
-
-
-  <script src="https://derbuihan.github.io/highlight/highlight.min.js"></script>
-  
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/coq.min.js"></script>
-  
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>
-  
-  <script>
-    hljs.initHighlighting();
-    hljs.initLineNumbersOnLoad();
-  </script>
-
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-    });
-</script>
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-<script type="text/javascript">
-  go();
-  window.addEventListener('resize', go);
-  function go(){
-    var d=document.querySelector(".desktop")
-    if(document.documentElement.clientWidth > 768) {
-      d.style.display="";
-    } else {
-      d.style.display="none";
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
     }
-  }
-</script>
-<script type="text/javascript">
-  var a=document.querySelector("#toggle-btn"),b=document.querySelector("#toggle-content");a.addEventListener("click",function(){""==b.style.display?(b.style.display="none",a.innerHTML="☰"):(b.style.display="",a.innerHTML="X")});</script>
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://derbuihan.github.io/assets/css/fuji.min.css" />
+
+
+
 
 
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-106862529-8', 'auto');
-  ga('send', 'pageview');
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-106862529-8');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106862529-8"></script>
+
+
+
+
+
+</head>
+
+<body
+  data-theme="light"
+  data-theme-auto='false'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
 </script>
 
-</body>
-</html>
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://derbuihan.github.io/">derbuihan blog</a>
+            
+            <span class="title-sub">derbuihan blog</span>
+            
+        </div>
+    </div>
+</header>
 
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+
+<div class="page-info">
+  <span>タグ DigestAuth を持つ記事：</span>
+</div>
+
+
+
+<div class="post">
+  <h2 class="post-item post-title">
+    <a href="https://derbuihan.github.io/posts/digest_auth_bash_js/">Digest認証の仕組みをBashとJavaScriptで理解したい。</a>
+  </h2>
+  <div class="post-item post-meta">
+    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-07-13</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;3111 字</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/digestauth">DigestAuth</a>&nbsp;<a href="/tags/js">JS</a>&nbsp;<a href="/tags/bash">Bash</a>&nbsp;</span>
+
+  </div>
+  <div class="post-item post-summary markdown-body">
+    Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事のnodeはすべてv18である。 Basic認証とDigest認証 Basic認証 はじめにBasic認証の仕
+  </div>
+</div>
+
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>ページ</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/works/">Works</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>リンク</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/derbuihan" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/derbuihan" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>タグ</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/atom/">Atom</a>
+            </span>
+            
+            <span>
+                <a href="/tags/bash/">Bash</a>
+            </span>
+            
+            <span>
+                <a href="/tags/coq/">Coq</a>
+            </span>
+            
+            <span>
+                <a href="/tags/datasets/">Datasets</a>
+            </span>
+            
+            <span>
+                <a href="/tags/digestauth/">DigestAuth</a>
+            </span>
+            
+            <span>
+                <a href="/tags/docker/">docker</a>
+            </span>
+            
+            <span>
+                <a href="/tags/elm/">Elm</a>
+            </span>
+            
+            <span>
+                <a href="/tags/emacs/">Emacs</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gitlab/">GitLab</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gpu/">gpu</a>
+            </span>
+            
+            <span>
+                <a href="/tags/haskell/">Haskell</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/js/">JS</a>
+            </span>
+            
+            <span>
+                <a href="/tags/minisat/">MiniSat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/python/">Python</a>
+            </span>
+            
+            <span>
+                <a href="/tags/pytorch/">pytorch</a>
+            </span>
+            
+            <span>
+                <a href="/tags/review/">review</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sat/">SAT</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tensorflow/">tensorflow</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tex/">Tex</a>
+            </span>
+            
+            <span>
+                <a href="/tags/vps/">VPS</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/">機械学習</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/">環境構築</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%9B%B8%E8%BB%A2%E7%A7%BB/">相転移</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%B4%A0%E6%95%B0/">素数</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>ページ</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/works/">Works</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>リンク</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/derbuihan" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/derbuihan" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>タグ</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/atom/">Atom</a>
+            </span>
+            
+            <span>
+                <a href="/tags/bash/">Bash</a>
+            </span>
+            
+            <span>
+                <a href="/tags/coq/">Coq</a>
+            </span>
+            
+            <span>
+                <a href="/tags/datasets/">Datasets</a>
+            </span>
+            
+            <span>
+                <a href="/tags/digestauth/">DigestAuth</a>
+            </span>
+            
+            <span>
+                <a href="/tags/docker/">docker</a>
+            </span>
+            
+            <span>
+                <a href="/tags/elm/">Elm</a>
+            </span>
+            
+            <span>
+                <a href="/tags/emacs/">Emacs</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gitlab/">GitLab</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gpu/">gpu</a>
+            </span>
+            
+            <span>
+                <a href="/tags/haskell/">Haskell</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/js/">JS</a>
+            </span>
+            
+            <span>
+                <a href="/tags/minisat/">MiniSat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/python/">Python</a>
+            </span>
+            
+            <span>
+                <a href="/tags/pytorch/">pytorch</a>
+            </span>
+            
+            <span>
+                <a href="/tags/review/">review</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sat/">SAT</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tensorflow/">tensorflow</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tex/">Tex</a>
+            </span>
+            
+            <span>
+                <a href="/tags/vps/">VPS</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/">機械学習</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/">環境構築</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%9B%B8%E8%BB%A2%E7%A7%BB/">相転移</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%B4%A0%E6%95%B0/">素数</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2022-2022
+                <a href="https://derbuihan.github.io/">derbuihan</a>
+                 | <a href="https://github.com/derbuihan/">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script>
+<script>
+  renderMathInElement(document.querySelector('div.content'), {
+    delimiters: [
+      { left: '$$', right: '$$', display: true },
+      { left: '\\[', right: '\\]', display: true },
+      { left: '$', right: '$', display: false },
+      { left: '\\(', right: '\\)', display: false },
+    ],
+  });
+</script>
+
+
+
+
+</body>
+
+</html>

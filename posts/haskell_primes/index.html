@@ -1,514 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
-  
-  <meta charset="utf-8">
-  <title>Haskellで素数を探そうと思った話</title>
-  <meta name="description"
     
-      content="はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_te"
-    
-  >
-  <meta name="author" content="derbuihan">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <noscript>
-    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://derbuihan.github.io/css/fonts.css">
-  </noscript>
-  
-  
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-/*!
-normalize.css v^3.0 | MIT License | git.io/normalize
-Copyright (c) Nicolas Gallagher and Jonathan Neal
-*/
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */img,legend{border:0}legend,td,th{padding:0}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,optgroup,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre,textarea{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}table{border-collapse:collapse;border-spacing:0}.hidden,[hidden]{display:none!important}.pure-img{max-width:100%;height:auto;display:block}
-  </style>
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-.pure-menu{box-sizing:border-box}.pure-menu-fixed{position:fixed;left:0;top:0;z-index:3}.pure-menu-item,.pure-menu-list{position:relative}.pure-menu-list{list-style:none;margin:0;padding:0}.pure-menu-item{padding:0;margin:0;height:100%}.pure-menu-heading,.pure-menu-link{display:block;text-decoration:none;white-space:nowrap}.pure-menu-horizontal{width:100%;white-space:normal}.pure-menu-horizontal .pure-menu-list{display:inline-block}.pure-menu-horizontal .pure-menu-heading,.pure-menu-horizontal .pure-menu-item,.pure-menu-horizontal .pure-menu-separator{display:inline-block;zoom:1;vertical-align:middle}.pure-menu-item .pure-menu-item{display:block}.pure-menu-children{display:none;position:absolute;left:100%;top:0;margin:0;padding:0;z-index:3}.pure-menu-horizontal .pure-menu-children{left:0;top:auto;width:inherit}.pure-menu-active>.pure-menu-children,.pure-menu-allow-hover:hover>.pure-menu-children{display:block;position:absolute}.pure-menu-has-children>.pure-menu-link:after{padding-left:.5em;content:"\25B8";font-size:small}.pure-menu-horizontal .pure-menu-has-children>.pure-menu-link:after{content:"\25BE"}.pure-menu-scrollable{overflow-y:scroll;overflow-x:hidden}.pure-menu-scrollable .pure-menu-list{display:block}.pure-menu-horizontal.pure-menu-scrollable .pure-menu-list{display:inline-block}.pure-menu-horizontal.pure-menu-scrollable{white-space:nowrap;overflow-y:hidden;overflow-x:auto;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding:.5em 0}.pure-menu-horizontal.pure-menu-scrollable::-webkit-scrollbar{display:none}.pure-menu-horizontal .pure-menu-children .pure-menu-separator,.pure-menu-separator{background-color:#ccc;height:1px;margin:.3em 0}.pure-menu-horizontal .pure-menu-separator{width:1px;height:1.3em;margin:0 .3em}.pure-menu-horizontal .pure-menu-children .pure-menu-separator{display:block;width:auto}.pure-menu-heading{text-transform:uppercase;color:#565d64}.pure-menu-link{color:#777}.pure-menu-children{background-color:#fff}.pure-menu-disabled,.pure-menu-heading,.pure-menu-link{padding:.5em 1em}.pure-menu-disabled{opacity:.5}.pure-menu-disabled .pure-menu-link:hover{background-color:transparent}.pure-menu-active>.pure-menu-link,.pure-menu-link:focus,.pure-menu-link:hover{background-color:#eee}.pure-menu-selected .pure-menu-link,.pure-menu-selected .pure-menu-link:visited{color:#000}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.101.0" />
 
-  </style>
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-.pure-g{letter-spacing:-.31em;text-rendering:optimizespeed;font-family:FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:flex-start;-ms-flex-line-pack:start;align-content:flex-start}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){table .pure-g{display:block}}.opera-only :-o-prefocus,.pure-g{word-spacing:-.43em}.pure-u,.pure-u-1,.pure-u-1-1,.pure-u-1-12,.pure-u-1-2,.pure-u-1-24,.pure-u-1-3,.pure-u-1-4,.pure-u-1-5,.pure-u-1-6,.pure-u-1-8,.pure-u-10-24,.pure-u-11-12,.pure-u-11-24,.pure-u-12-24,.pure-u-13-24,.pure-u-14-24,.pure-u-15-24,.pure-u-16-24,.pure-u-17-24,.pure-u-18-24,.pure-u-19-24,.pure-u-2-24,.pure-u-2-3,.pure-u-2-5,.pure-u-20-24,.pure-u-21-24,.pure-u-22-24,.pure-u-23-24,.pure-u-24-24,.pure-u-3-24,.pure-u-3-4,.pure-u-3-5,.pure-u-3-8,.pure-u-4-24,.pure-u-4-5,.pure-u-5-12,.pure-u-5-24,.pure-u-5-5,.pure-u-5-6,.pure-u-5-8,.pure-u-6-24,.pure-u-7-12,.pure-u-7-24,.pure-u-7-8,.pure-u-8-24,.pure-u-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-g [class*=pure-u]{font-family:sans-serif}.pure-u-1-24{width:4.1667%}.pure-u-1-12,.pure-u-2-24{width:8.3333%}.pure-u-1-8,.pure-u-3-24{width:12.5%}.pure-u-1-6,.pure-u-4-24{width:16.6667%}.pure-u-1-5{width:20%}.pure-u-5-24{width:20.8333%}.pure-u-1-4,.pure-u-6-24{width:25%}.pure-u-7-24{width:29.1667%}.pure-u-1-3,.pure-u-8-24{width:33.3333%}.pure-u-3-8,.pure-u-9-24{width:37.5%}.pure-u-2-5{width:40%}.pure-u-10-24,.pure-u-5-12{width:41.6667%}.pure-u-11-24{width:45.8333%}.pure-u-1-2,.pure-u-12-24{width:50%}.pure-u-13-24{width:54.1667%}.pure-u-14-24,.pure-u-7-12{width:58.3333%}.pure-u-3-5{width:60%}.pure-u-15-24,.pure-u-5-8{width:62.5%}.pure-u-16-24,.pure-u-2-3{width:66.6667%}.pure-u-17-24{width:70.8333%}.pure-u-18-24,.pure-u-3-4{width:75%}.pure-u-19-24{width:79.1667%}.pure-u-4-5{width:80%}.pure-u-20-24,.pure-u-5-6{width:83.3333%}.pure-u-21-24,.pure-u-7-8{width:87.5%}.pure-u-11-12,.pure-u-22-24{width:91.6667%}.pure-u-23-24{width:95.8333%}.pure-u-1,.pure-u-1-1,.pure-u-24-24,.pure-u-5-5{width:100%}
-  </style>
-  
-  
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-@media screen and (min-width:35.5em){.pure-u-sm-1,.pure-u-sm-1-1,.pure-u-sm-1-12,.pure-u-sm-1-2,.pure-u-sm-1-24,.pure-u-sm-1-3,.pure-u-sm-1-4,.pure-u-sm-1-5,.pure-u-sm-1-6,.pure-u-sm-1-8,.pure-u-sm-10-24,.pure-u-sm-11-12,.pure-u-sm-11-24,.pure-u-sm-12-24,.pure-u-sm-13-24,.pure-u-sm-14-24,.pure-u-sm-15-24,.pure-u-sm-16-24,.pure-u-sm-17-24,.pure-u-sm-18-24,.pure-u-sm-19-24,.pure-u-sm-2-24,.pure-u-sm-2-3,.pure-u-sm-2-5,.pure-u-sm-20-24,.pure-u-sm-21-24,.pure-u-sm-22-24,.pure-u-sm-23-24,.pure-u-sm-24-24,.pure-u-sm-3-24,.pure-u-sm-3-4,.pure-u-sm-3-5,.pure-u-sm-3-8,.pure-u-sm-4-24,.pure-u-sm-4-5,.pure-u-sm-5-12,.pure-u-sm-5-24,.pure-u-sm-5-5,.pure-u-sm-5-6,.pure-u-sm-5-8,.pure-u-sm-6-24,.pure-u-sm-7-12,.pure-u-sm-7-24,.pure-u-sm-7-8,.pure-u-sm-8-24,.pure-u-sm-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-sm-1-24{width:4.1667%}.pure-u-sm-1-12,.pure-u-sm-2-24{width:8.3333%}.pure-u-sm-1-8,.pure-u-sm-3-24{width:12.5%}.pure-u-sm-1-6,.pure-u-sm-4-24{width:16.6667%}.pure-u-sm-1-5{width:20%}.pure-u-sm-5-24{width:20.8333%}.pure-u-sm-1-4,.pure-u-sm-6-24{width:25%}.pure-u-sm-7-24{width:29.1667%}.pure-u-sm-1-3,.pure-u-sm-8-24{width:33.3333%}.pure-u-sm-3-8,.pure-u-sm-9-24{width:37.5%}.pure-u-sm-2-5{width:40%}.pure-u-sm-10-24,.pure-u-sm-5-12{width:41.6667%}.pure-u-sm-11-24{width:45.8333%}.pure-u-sm-1-2,.pure-u-sm-12-24{width:50%}.pure-u-sm-13-24{width:54.1667%}.pure-u-sm-14-24,.pure-u-sm-7-12{width:58.3333%}.pure-u-sm-3-5{width:60%}.pure-u-sm-15-24,.pure-u-sm-5-8{width:62.5%}.pure-u-sm-16-24,.pure-u-sm-2-3{width:66.6667%}.pure-u-sm-17-24{width:70.8333%}.pure-u-sm-18-24,.pure-u-sm-3-4{width:75%}.pure-u-sm-19-24{width:79.1667%}.pure-u-sm-4-5{width:80%}.pure-u-sm-20-24,.pure-u-sm-5-6{width:83.3333%}.pure-u-sm-21-24,.pure-u-sm-7-8{width:87.5%}.pure-u-sm-11-12,.pure-u-sm-22-24{width:91.6667%}.pure-u-sm-23-24{width:95.8333%}.pure-u-sm-1,.pure-u-sm-1-1,.pure-u-sm-24-24,.pure-u-sm-5-5{width:100%}}@media screen and (min-width:48em){.pure-u-md-1,.pure-u-md-1-1,.pure-u-md-1-12,.pure-u-md-1-2,.pure-u-md-1-24,.pure-u-md-1-3,.pure-u-md-1-4,.pure-u-md-1-5,.pure-u-md-1-6,.pure-u-md-1-8,.pure-u-md-10-24,.pure-u-md-11-12,.pure-u-md-11-24,.pure-u-md-12-24,.pure-u-md-13-24,.pure-u-md-14-24,.pure-u-md-15-24,.pure-u-md-16-24,.pure-u-md-17-24,.pure-u-md-18-24,.pure-u-md-19-24,.pure-u-md-2-24,.pure-u-md-2-3,.pure-u-md-2-5,.pure-u-md-20-24,.pure-u-md-21-24,.pure-u-md-22-24,.pure-u-md-23-24,.pure-u-md-24-24,.pure-u-md-3-24,.pure-u-md-3-4,.pure-u-md-3-5,.pure-u-md-3-8,.pure-u-md-4-24,.pure-u-md-4-5,.pure-u-md-5-12,.pure-u-md-5-24,.pure-u-md-5-5,.pure-u-md-5-6,.pure-u-md-5-8,.pure-u-md-6-24,.pure-u-md-7-12,.pure-u-md-7-24,.pure-u-md-7-8,.pure-u-md-8-24,.pure-u-md-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-md-1-24{width:4.1667%}.pure-u-md-1-12,.pure-u-md-2-24{width:8.3333%}.pure-u-md-1-8,.pure-u-md-3-24{width:12.5%}.pure-u-md-1-6,.pure-u-md-4-24{width:16.6667%}.pure-u-md-1-5{width:20%}.pure-u-md-5-24{width:20.8333%}.pure-u-md-1-4,.pure-u-md-6-24{width:25%}.pure-u-md-7-24{width:29.1667%}.pure-u-md-1-3,.pure-u-md-8-24{width:33.3333%}.pure-u-md-3-8,.pure-u-md-9-24{width:37.5%}.pure-u-md-2-5{width:40%}.pure-u-md-10-24,.pure-u-md-5-12{width:41.6667%}.pure-u-md-11-24{width:45.8333%}.pure-u-md-1-2,.pure-u-md-12-24{width:50%}.pure-u-md-13-24{width:54.1667%}.pure-u-md-14-24,.pure-u-md-7-12{width:58.3333%}.pure-u-md-3-5{width:60%}.pure-u-md-15-24,.pure-u-md-5-8{width:62.5%}.pure-u-md-16-24,.pure-u-md-2-3{width:66.6667%}.pure-u-md-17-24{width:70.8333%}.pure-u-md-18-24,.pure-u-md-3-4{width:75%}.pure-u-md-19-24{width:79.1667%}.pure-u-md-4-5{width:80%}.pure-u-md-20-24,.pure-u-md-5-6{width:83.3333%}.pure-u-md-21-24,.pure-u-md-7-8{width:87.5%}.pure-u-md-11-12,.pure-u-md-22-24{width:91.6667%}.pure-u-md-23-24{width:95.8333%}.pure-u-md-1,.pure-u-md-1-1,.pure-u-md-24-24,.pure-u-md-5-5{width:100%}}@media screen and (min-width:64em){.pure-u-lg-1,.pure-u-lg-1-1,.pure-u-lg-1-12,.pure-u-lg-1-2,.pure-u-lg-1-24,.pure-u-lg-1-3,.pure-u-lg-1-4,.pure-u-lg-1-5,.pure-u-lg-1-6,.pure-u-lg-1-8,.pure-u-lg-10-24,.pure-u-lg-11-12,.pure-u-lg-11-24,.pure-u-lg-12-24,.pure-u-lg-13-24,.pure-u-lg-14-24,.pure-u-lg-15-24,.pure-u-lg-16-24,.pure-u-lg-17-24,.pure-u-lg-18-24,.pure-u-lg-19-24,.pure-u-lg-2-24,.pure-u-lg-2-3,.pure-u-lg-2-5,.pure-u-lg-20-24,.pure-u-lg-21-24,.pure-u-lg-22-24,.pure-u-lg-23-24,.pure-u-lg-24-24,.pure-u-lg-3-24,.pure-u-lg-3-4,.pure-u-lg-3-5,.pure-u-lg-3-8,.pure-u-lg-4-24,.pure-u-lg-4-5,.pure-u-lg-5-12,.pure-u-lg-5-24,.pure-u-lg-5-5,.pure-u-lg-5-6,.pure-u-lg-5-8,.pure-u-lg-6-24,.pure-u-lg-7-12,.pure-u-lg-7-24,.pure-u-lg-7-8,.pure-u-lg-8-24,.pure-u-lg-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-lg-1-24{width:4.1667%}.pure-u-lg-1-12,.pure-u-lg-2-24{width:8.3333%}.pure-u-lg-1-8,.pure-u-lg-3-24{width:12.5%}.pure-u-lg-1-6,.pure-u-lg-4-24{width:16.6667%}.pure-u-lg-1-5{width:20%}.pure-u-lg-5-24{width:20.8333%}.pure-u-lg-1-4,.pure-u-lg-6-24{width:25%}.pure-u-lg-7-24{width:29.1667%}.pure-u-lg-1-3,.pure-u-lg-8-24{width:33.3333%}.pure-u-lg-3-8,.pure-u-lg-9-24{width:37.5%}.pure-u-lg-2-5{width:40%}.pure-u-lg-10-24,.pure-u-lg-5-12{width:41.6667%}.pure-u-lg-11-24{width:45.8333%}.pure-u-lg-1-2,.pure-u-lg-12-24{width:50%}.pure-u-lg-13-24{width:54.1667%}.pure-u-lg-14-24,.pure-u-lg-7-12{width:58.3333%}.pure-u-lg-3-5{width:60%}.pure-u-lg-15-24,.pure-u-lg-5-8{width:62.5%}.pure-u-lg-16-24,.pure-u-lg-2-3{width:66.6667%}.pure-u-lg-17-24{width:70.8333%}.pure-u-lg-18-24,.pure-u-lg-3-4{width:75%}.pure-u-lg-19-24{width:79.1667%}.pure-u-lg-4-5{width:80%}.pure-u-lg-20-24,.pure-u-lg-5-6{width:83.3333%}.pure-u-lg-21-24,.pure-u-lg-7-8{width:87.5%}.pure-u-lg-11-12,.pure-u-lg-22-24{width:91.6667%}.pure-u-lg-23-24{width:95.8333%}.pure-u-lg-1,.pure-u-lg-1-1,.pure-u-lg-24-24,.pure-u-lg-5-5{width:100%}}@media screen and (min-width:80em){.pure-u-xl-1,.pure-u-xl-1-1,.pure-u-xl-1-12,.pure-u-xl-1-2,.pure-u-xl-1-24,.pure-u-xl-1-3,.pure-u-xl-1-4,.pure-u-xl-1-5,.pure-u-xl-1-6,.pure-u-xl-1-8,.pure-u-xl-10-24,.pure-u-xl-11-12,.pure-u-xl-11-24,.pure-u-xl-12-24,.pure-u-xl-13-24,.pure-u-xl-14-24,.pure-u-xl-15-24,.pure-u-xl-16-24,.pure-u-xl-17-24,.pure-u-xl-18-24,.pure-u-xl-19-24,.pure-u-xl-2-24,.pure-u-xl-2-3,.pure-u-xl-2-5,.pure-u-xl-20-24,.pure-u-xl-21-24,.pure-u-xl-22-24,.pure-u-xl-23-24,.pure-u-xl-24-24,.pure-u-xl-3-24,.pure-u-xl-3-4,.pure-u-xl-3-5,.pure-u-xl-3-8,.pure-u-xl-4-24,.pure-u-xl-4-5,.pure-u-xl-5-12,.pure-u-xl-5-24,.pure-u-xl-5-5,.pure-u-xl-5-6,.pure-u-xl-5-8,.pure-u-xl-6-24,.pure-u-xl-7-12,.pure-u-xl-7-24,.pure-u-xl-7-8,.pure-u-xl-8-24,.pure-u-xl-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-xl-1-24{width:4.1667%}.pure-u-xl-1-12,.pure-u-xl-2-24{width:8.3333%}.pure-u-xl-1-8,.pure-u-xl-3-24{width:12.5%}.pure-u-xl-1-6,.pure-u-xl-4-24{width:16.6667%}.pure-u-xl-1-5{width:20%}.pure-u-xl-5-24{width:20.8333%}.pure-u-xl-1-4,.pure-u-xl-6-24{width:25%}.pure-u-xl-7-24{width:29.1667%}.pure-u-xl-1-3,.pure-u-xl-8-24{width:33.3333%}.pure-u-xl-3-8,.pure-u-xl-9-24{width:37.5%}.pure-u-xl-2-5{width:40%}.pure-u-xl-10-24,.pure-u-xl-5-12{width:41.6667%}.pure-u-xl-11-24{width:45.8333%}.pure-u-xl-1-2,.pure-u-xl-12-24{width:50%}.pure-u-xl-13-24{width:54.1667%}.pure-u-xl-14-24,.pure-u-xl-7-12{width:58.3333%}.pure-u-xl-3-5{width:60%}.pure-u-xl-15-24,.pure-u-xl-5-8{width:62.5%}.pure-u-xl-16-24,.pure-u-xl-2-3{width:66.6667%}.pure-u-xl-17-24{width:70.8333%}.pure-u-xl-18-24,.pure-u-xl-3-4{width:75%}.pure-u-xl-19-24{width:79.1667%}.pure-u-xl-4-5{width:80%}.pure-u-xl-20-24,.pure-u-xl-5-6{width:83.3333%}.pure-u-xl-21-24,.pure-u-xl-7-8{width:87.5%}.pure-u-xl-11-12,.pure-u-xl-22-24{width:91.6667%}.pure-u-xl-23-24{width:95.8333%}.pure-u-xl-1,.pure-u-xl-1-1,.pure-u-xl-24-24,.pure-u-xl-5-5{width:100%}}
-  </style>
-  
 
-  
-  <style type="text/css" media="screen">
-    html {
-	min-height:100%;
-	width:100%;
-	position:relative;
-}
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-cdn-main@1/images/favicons/dsrca.ico" />
 
-body {
-	background-color: rgb(252,252,252);
-	color: #484848;
-}
 
-.nav-menu {
-	padding: 10px 0;
-	border-bottom: 2px solid #e3e3e3;
-}
 
-.pure-menu-heading {
-  text-transform: none;
-  font-size: large;
-}
+<title>Haskellで素数を探そうと思った話 - derbuihan blog</title>
 
-.header {
-	text-align: left;
-	color: #484848;
-	margin-bottom: .5em;
-}
 
-.header ul li {
-		height: auto;
-}
+<meta name="author" content="derbuihan" />
 
-.header ul li a {
-	font-weight: bold;
-	color: #484848;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 
-.header {
-	font-weight: bold;
-	color: #484848;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+<meta name="description" content="derbuihan blog" />
 
-.site-title {
-	color: #484848;
-  text-transform: none;
-  font-weight: normal;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 
-.pull-right {
-	float: right;
-}
+<meta name="keywords" content="Haskell, 数学, 素数" />
 
-.posts-name {
-	text-transform: capitalize;
-	font-weight: bold;
-	padding-left: 0.5em;
-	margin-top: 1em;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 
-.posts {
-	font-family: verdana,arial,helvetica,sans-serif;
-	list-style-type:none;
-	padding-left: 0;
-}
-
-.posts li p {
-	margin-top: 0;
-}
-
-.posts li {
-	padding-top: 1em;
-	padding-bottom: 1em;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-	border-bottom: solid 2px #d7d7d7;
-}
-
-.posts li:first-child {
-	border-top: solid 2px #d7d7d7;
-}
-
-.posts li a {
-	color:#369;
-	text-decoration:none;
-}
-
-.post-list {
-  font-size: large;
-}
-
-.footnote {
-	font-family: verdana,arial,helvetica,sans-serif;
-	color:#888;
-	font-size:0.75em;
-	padding: 0;
-	margin: 0;
-}
-
-.footnote a {
-	color: #888 !important
-}
-
-.footnote a:hover{
-	text-decoration:underline;
-	color:#369;
-}
-
-.footer {
-	position:absolute;
-	z-index:2;
-	height:auto;
-	width:100%;
-	bottom:0;
-}
-
-.footer-content {
-	border-top: 1px solid #e3e3e3;
-	font-size: 80%;
-	color: #bbb;
-}
-
-.footer-content a {
-	color: #bbb;
-}
-
-.footer-content ul {
-	height: auto;
-	margin-top: 0;
-	margin-bottom: 0;
-	display: inline-block;
-	padding-left: 1em;
-}
-
-#gototop-btn {
-	display: inline-block;
-}
-
-#foot-name {
-  color: #484848;
-	text-transform: none;
-}
-
-#foot-copyright {
-	padding-left: 1em;
-	padding-bottom: 0.5em;
-	margin: 0;
-}
-
-.post {
-	font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
-	color:#484848;
-	letter-spacing:normal;
-	padding-left: 0;
-}
-
-.post h1,h2,h3,h4,h5,h6 {
-	font-weight: bold;
-	letter-spacing:normal;
-}
-
-.post-content {
-	z-index: 9;
-	overflow: auto;
-	padding: 0;
-	padding-bottom: 3em;
-	font-size: 16px;
-	line-height: 1.4;
-}
-
-.post-content img {
-	max-width: 100%;
-	height: auto;
-}
-
-.post-content code {
-  background-color: #EEE;
-}
-
-.post-content ul.posts {
-	margin: 0;
-	padding: 0;
-}
-
-.post code {
-  background-color: #EEE;
-}
-
-.post a {
-	color:#c05b4d;
-	text-decoration: none;
-}
-
-.post a:hover {
-	color:#a5473a;
-	text-decoration: underline;
-}
-
-.post h1 {
-	font-size:27px;
-	padding: 0.4em 0.5em;
-	color: #494949;
-	background: #f4f4f4;
-	border-left: solid 5px #7db4e6;
-	border-bottom: solid 3px #d7d7d7;
-}
-
-.post h2 {
-	font-size:25px;
-}
-
-.post h3 {
-	font-size:23px;
-	padding: 0.25em 0.5em;
-	margin-left: 0em;
-	color: #494949;
-	background: transparent;
-	border-left: solid 5px #7db4e6;
-}
-
-.post h4 {
-	font-size:21px;
-	background: linear-gradient(transparent 70%, #DFF2FC 50%);
-	margin-left: 0.5em;
-}
-
-.post h5 {
-	font-size:19px;
-}
-
-.post h6 {
-	font-size:18px;
-}
-
-.post-content > p {
-	margin-left: 1em;
-}
-
-.post-title{
-		margin-top: 0;
-		margin-bottom: 0;
-}
-
-.post-title h1 {
-	font-weight:bold;
-	font-size:27px;
-	line-height: 28px;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-table {
-	width:100%;
-	border-right:#000 solid 1px;
-	border-collapse: collapse;
-}
-
-table thead th {
-	background:#e0e0e0;
-	padding:10px 15px;
-	border-right:#000 solid 1px;
-	border-bottom:#000 solid 1px;
-}
-table thead th:first-child {
-	border-left:#000 solid 1px;
-}
-table thead:first-child {
-	border-top:#000 solid 1px;
-}
-table thead th:last-child {
-	border-right:#000 solid 1px;
-}
-table tbody th {
-	background:#e0e0e0;
-	padding:10px 15px;
-	border-bottom:#000 solid 1px;
-	vertical-align:top;
-}
-table tbody tr:last-child th {
-	border-bottom:#000 solid 1px;
-}
-table tbody td {
-	background:#FFF;
-	padding:10px 15px;
-	border-left:#000 solid 1px;
-	border-bottom:#000 solid 1px;
-	vertical-align:top;
-}
-
-@media screen and (max-width: 640px) {
-table.table01 thead {
-	display:none;
-}
-table.table01 tbody th {
-	display:block;
-}
-table.table01 tbody td {
-	display:block;
-}
-table.table01 tbody td::before {
-	content: attr(label);
-	float: left;
-	clear:both;
-	font-weight:bold;
-}
-table.table01 tbody td p {
-	padding-left:6em;
-}
-}
-
-@media screen and (max-width: 1023px){
-	.desktop {
-		display: none;
-	}
-	.mobile {
-		display: block;
-	}
-	#toggle-btn {
-		display: inline-block;
-		float: right;
-		padding: .5em 1em;
-		text-decoration: none;
-		color: #484848;
-		font-weight: bold;
-	}
-	#toggle-content li {
-		clear: both;
-		height: auto;
-		background-color: rgb(249,249,249);
-	}
-	#toggle-home {
-		display: inline-block;
-	}
-}
-
-@media screen and (min-width: 1023px){
-	.mobile {
-		display:none;
-	}
-	.desktop {
-		display: block;
-	}
-}
-
-  </style>
-  
-  <style type="text/css" media="screen">
-    
-      .hljs{display:block;overflow-x:auto;padding:0.5em;color:#000;background:#f8f8ff}.hljs-comment,.hljs-quote{color:#408080;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-literal,.hljs-subst{color:#954121}.hljs-number{color:#40a070}.hljs-string,.hljs-doctag{color:#219161}.hljs-selector-id,.hljs-selector-class,.hljs-section,.hljs-type{color:#19469d}.hljs-params{color:#00f}.hljs-title{color:#458;font-weight:bold}.hljs-tag,.hljs-name,.hljs-attribute{color:#000080;font-weight:normal}.hljs-variable,.hljs-template-variable{color:#008080}.hljs-regexp,.hljs-link{color:#b68}.hljs-symbol,.hljs-bullet{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:bold}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}
-    
-  </style>
-
-  
-  <link rel="shortcut icon"
-  
-    href="https://derbuihan.github.io/img/favicon.ico"
-  
-  type="image/x-icon">
-
-  <meta name="generator" content="Hugo 0.101.0" />
-
-  
-  
-<meta property="og:url" content="https://derbuihan.github.io/" />
 <meta property="og:title" content="Haskellで素数を探そうと思った話" />
-<meta property="og:description" content="はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_te" />
-<meta property="og:type" content="summary">
-<meta property="og:site_name" content="derbuihan blog" />
-<meta property="og:locale" content="ja_JP" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="@derbuihan" />
+<meta name="twitter:title" content="Haskellで素数を探そうと思った話" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://derbuihan.github.io/posts/haskell_primes/" /><meta property="og:description" content="はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_test.hsからダウンロード! フェルマーテストとは フェルマーの" />
+<meta name="twitter:description" content="はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_test.hsからダウンロード! フェルマーテストとは フェルマーの" /><meta property="og:image" content="https://derbuihan.github.io/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://derbuihan.github.io/img/og.png" /><meta property="article:published_time" content="2019-01-29T16:48:37+09:00" /><meta property="article:modified_time" content="2019-01-29T16:48:37+09:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://derbuihan.github.io/assets/css/fuji.min.css" />
+
+
+
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-106862529-8');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106862529-8"></script>
+
+
+
+
 
 </head>
-<body>
 
-<div class="header pure-g">
-    <div class=" pure-u-lg-5-24"></div>
-    <div class="pure-u-1 pure-u-lg-7-12">
-        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
+<body
+  data-theme="light"
+  data-theme-auto='false'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://derbuihan.github.io/">derbuihan blog</a>
             
-            <a href="https://derbuihan.github.io/" class="site-title pure-menu-heading">derbuihan blog</a>
-            <ul class="pure-menu-list pull-right">
-				
-                <li class="pure-menu-item">
-                  <a href="https://derbuihan.github.io/works" class="pure-menu-link">Works</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="https://derbuihan.github.io/about" class="pure-menu-link">About</a>
-                </li>
-            </ul>
-        </div>
-        <div class="mobile pure-menu nav-menu">
-            <a href="/" class="site-title pure-menu-heading" id="toggle-home">derbuihan blog</a>
-            <a href="#" id="toggle-btn">&#9776;</a>
-            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
-                
-				
-                <li class="pure-menu-item">
-                  <a href="https://derbuihan.github.io/works" class="pure-menu-link">Works</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="https://derbuihan.github.io/about" class="pure-menu-link">About</a>
-                </li>
-            </ul>
+            <span class="title-sub">derbuihan blog</span>
+            
         </div>
     </div>
-    <div class=" pure-u-lg-5-24"></div>
-</div>
+</header>
 
-
-<div class="pure-g">
-  <div class="pure-u-1-24 pure-u-lg-5-24"></div>
-  <div class="pure-u-11-12 pure-u-lg-7-12">
-    <div class="post">
-
-      <div class="post-title">
-        <p class="footnote">
-          <time datetime="2019-01-29 16:48:37 &#43;0900 JST">
+    <main>
+        <div class="container-lg clearfix">
             
-              2019-01-29
-            
-          </time>
-        
-        
-        |
-        
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/haskell">#Haskell</a> <a href="https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6">#数学</a> <a href="https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0">#素数</a> ]
-        
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://derbuihan.github.io/posts/haskell_primes/">Haskellで素数を探そうと思った話</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2019-01-29</span>
 
-        
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;3453 字</span>
 
-        
-        </p>
-        <h1>Haskellで素数を探そうと思った話</h1>
-      </div>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/haskell">Haskell</a>&nbsp;<a href="/tags/%E6%95%B0%E5%AD%A6">数学</a>&nbsp;<a href="/tags/%E7%B4%A0%E6%95%B0">素数</a>&nbsp;</span>
 
-      <div class="post-content">
+    </div>
+    
+    <div class="post-content markdown-body">
         <h3 id="はじめに">はじめに</h3>
-<p><a href="https://ja.wikipedia.org/wiki/%E8%A8%88%E7%AE%97%E6%A9%9F%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E8%A7%A3%E9%87%88">SICP</a>を読んでたら<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9E%E3%83%BC%E3%81%AE%E5%B0%8F%E5%AE%9A%E7%90%86#%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9E%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88">フェルマーテスト</a>について書いてあって、ほんとにこれ速いのかやってみようと思った話です。</p>
-<p>ソースは<a href="https://gist.github.com/derbuihan/af3a8b7fac7dbfeee9d90887f8bd51df">fermat_test.hs</a>からダウンロード!</p>
+<p><a href="https://ja.wikipedia.org/wiki/%E8%A8%88%E7%AE%97%E6%A9%9F%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E8%A7%A3%E9%87%88" target="_blank">SICP</a>を読んでたら<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9E%E3%83%BC%E3%81%AE%E5%B0%8F%E5%AE%9A%E7%90%86#%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9E%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88" target="_blank">フェルマーテスト</a>について書いてあって、ほんとにこれ速いのかやってみようと思った話です。</p>
+<p>ソースは<a href="https://gist.github.com/derbuihan/af3a8b7fac7dbfeee9d90887f8bd51df" target="_blank">fermat_test.hs</a>からダウンロード!</p>
 <h3 id="フェルマーテストとは">フェルマーテストとは</h3>
 <p>フェルマーの小定理はご存知ですよね？</p>
 <blockquote>
@@ -527,35 +145,40 @@ $$ a ^ n \not \equiv a \pmod{n} $$
 <p>部品を1つ1つ揃えていきます。</p>
 <h4 id="互いに素">互いに素</h4>
 <p>最小公倍数を求める関数を考えます。</p>
-<pre tabindex="0"><code>gcd&#39; :: Integer -&gt; Integer -&gt; Integer
-gcd&#39; n 0 = n
-gcd&#39; n m = gcd&#39; m (n `mod` m)
-</code></pre><p>これを用いて、</p>
-<pre tabindex="0"><code>gcd&#39; n m == 1
-</code></pre><p>とすれば$n, m$は互いに素です。
+<pre><code>gcd' :: Integer -&gt; Integer -&gt; Integer
+gcd' n 0 = n
+gcd' n m = gcd' m (n `mod` m)
+</code></pre>
+<p>これを用いて、</p>
+<pre><code>gcd' n m == 1
+</code></pre>
+<p>とすれば$n, m$は互いに素です。
 (Haskellには標準でgcdがあるのでそれを使っても良い)</p>
 <h4 id="an-1-pmodnを求める">$a^{n-1} \pmod{n}$を求める</h4>
 <p>いわゆる、$a^7 = a * (a^3)^2 = a * (a * a^2)^2$として計算量をへらすやつを使います。
 途中で$\pmod{n}$を挟みます。</p>
-<pre tabindex="0"><code>exp_mod :: Integer -&gt; Integer -&gt; Integer
+<pre><code>exp_mod :: Integer -&gt; Integer -&gt; Integer
 exp_mod a n = iter a (n-1) n
   where
     iter a n base
       | n == 1 = a
       | even n = (iter a (n `div` 2) base) ^ 2 `mod` base
       | otherwise = a * (iter a ((n-1) `div` 2) base) ^ 2 `mod` base
-</code></pre><p>これを用いて、</p>
-<pre tabindex="0"><code>exp_mod a n
-</code></pre><p>を計算することで、$a^{n-1} \pmod{n}$が計算できる。</p>
+</code></pre>
+<p>これを用いて、</p>
+<pre><code>exp_mod a n
+</code></pre>
+<p>を計算することで、$a^{n-1} \pmod{n}$が計算できる。</p>
 <h4 id="素数判定">素数判定</h4>
 <p>素数判定を実装すると次のようになります。</p>
-<pre tabindex="0"><code>is_prime&#39; :: Integer -&gt; Bool
-is_prime&#39; n = and $ map (\a -&gt; test n a) [2..(n-1)]
+<pre><code>is_prime' :: Integer -&gt; Bool
+is_prime' n = and $ map (\a -&gt; test n a) [2..(n-1)]
   where
     test n a
-      | gcd&#39; n a == 1 = (1 == exp_mod a n)
+      | gcd' n a == 1 = (1 == exp_mod a n)
       | otherwise = False
-</code></pre><ul>
+</code></pre>
+<ul>
 <li>最小公倍数が1でない整数が見つかったとき、すぐに素数でないことがわかります。</li>
 <li>互いに素な整数$a$に対して$a^{n-1} \pmod{n}$を求めて$1$と一致するか調べます。一致しなければすぐに素数でないことがわかります。</li>
 <li>Haskellは遅延評価なので<code>and</code>は<code>False</code>が見つかった瞬間に<code>False</code>を返すように出来てるはずです。</li>
@@ -565,9 +188,9 @@ is_prime&#39; n = and $ map (\a -&gt; test n a) [2..(n-1)]
 <code>[2..(n-1)]</code>の部分をランダムな自然数に変更することで、フェルマーテストになります。(Haskellの乱数めんどくさいのでやりません。)</p>
 <h4 id="まとめると">まとめると</h4>
 <p>これまでのコードをまとめると</p>
-<pre tabindex="0"><code>gcd&#39; :: Integer -&gt; Integer -&gt; Integer
-gcd&#39; n 0 = n
-gcd&#39; n m = gcd&#39; m (n `mod` m)
+<pre><code>gcd' :: Integer -&gt; Integer -&gt; Integer
+gcd' n 0 = n
+gcd' n m = gcd' m (n `mod` m)
 
 exp_mod :: Integer -&gt; Integer -&gt; Integer
 exp_mod a n = iter a (n-1) n
@@ -577,27 +200,32 @@ exp_mod a n = iter a (n-1) n
       | even n = (iter a (n `div` 2) base) ^ 2 `mod` base
       | otherwise = a * (iter a ((n-1) `div` 2) base) ^ 2 `mod` base
 
-is_prime&#39; :: Integer -&gt; Bool
-is_prime&#39; n = and $ map (\a -&gt; test n a) [2..(n-1)]
+is_prime' :: Integer -&gt; Bool
+is_prime' n = and $ map (\a -&gt; test n a) [2..(n-1)]
   where
     test n a
-      | gcd&#39; n a == 1 = (1 == exp_mod a n)
+      | gcd' n a == 1 = (1 == exp_mod a n)
       | otherwise = False
-</code></pre><p>となる。</p>
+</code></pre>
+<p>となる。</p>
 <h3 id="遊ぶ">遊ぶ</h3>
-<p>Haskellの<a href="http://hackage.haskell.org/package/primes-0.2.1.0/docs/Data-Numbers-Primes.html">素数ライブラリ</a>をinstallする。</p>
-<pre tabindex="0"><code>cabal install primes
-</code></pre><h4 id="267-1を判定">$2^{67}-1$を判定</h4>
+<p>Haskellの<a href="http://hackage.haskell.org/package/primes-0.2.1.0/docs/Data-Numbers-Primes.html" target="_blank">素数ライブラリ</a>をinstallする。</p>
+<pre><code>cabal install primes
+</code></pre>
+<h4 id="267-1を判定">$2^{67}-1$を判定</h4>
 <p>さて、$ 2^{67} - 1 = 147573952589676412927$は素数ではありません。
-(参考:<a href="https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%82%BB%E3%83%B3%E3%83%8C%E6%95%B0">メルセンヌ数</a>)</p>
+(参考:<a href="https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%82%BB%E3%83%B3%E3%83%8C%E6%95%B0" target="_blank">メルセンヌ数</a>)</p>
 <p>Haskellのライブラリで素数か確認すると</p>
-<pre tabindex="0"><code>ghci&gt; import Date.Numbers.Primes
+<pre><code>ghci&gt; import Date.Numbers.Primes
 ghci&gt; isPrime $ 2^67 - 1
-</code></pre><p>処理が終わりません。($\sqrt{n}$まで<code>primes</code>で割っていく実装と<a href="http://hackage.haskell.org/package/primes-0.2.1.0/docs/Data-Numbers-Primes.html">ここ</a>に書いてある)</p>
+
+</code></pre>
+<p>処理が終わりません。($\sqrt{n}$まで<code>primes</code>で割っていく実装と<a href="http://hackage.haskell.org/package/primes-0.2.1.0/docs/Data-Numbers-Primes.html" target="_blank">ここ</a>に書いてある)</p>
 <p>しかし、今回つくった<code>is_prime'</code>では</p>
-<pre tabindex="0"><code>ghci&gt; is_prime&#39; $ 2^67 - 1
+<pre><code>ghci&gt; is_prime' $ 2^67 - 1
 False
-</code></pre><p>一瞬で処理が終わり合成数であることがわかります。(すごい)</p>
+</code></pre>
+<p>一瞬で処理が終わり合成数であることがわかります。(すごい)</p>
 <p>このアルゴリズムのすごいところは、素因数分解は出来ないけど合成数であることはすぐに分かるところですね。
 判定したい数$n$の
 $$
@@ -605,16 +233,17 @@ $$
 $$
 を計算するしていって1にならないのを一つ見つけるだけで良い。</p>
 <h4 id="メルセンヌ数探し">メルセンヌ数探し</h4>
-<pre tabindex="0"><code>primes&#39; :: [Integer]
-primes&#39; = 2: filter is_prime&#39; [3,5..]
+<pre><code>primes' :: [Integer]
+primes' = 2: filter is_prime' [3,5..]
 
-is_prime&#39;&#39; :: Integer -&gt; Bool
-is_prime&#39;&#39; n = and $ map (\a -&gt; test n a) $ takeWhile (&lt; n) [2,3,5]
+is_prime'' :: Integer -&gt; Bool
+is_prime'' n = and $ map (\a -&gt; test n a) $ takeWhile (&lt; n) [2,3,5]
   where
     test n a
-      | gcd&#39; n a == 1 = (1 == exp_mod a n)
+      | gcd' n a == 1 = (1 == exp_mod a n)
       | otherwise = False
-</code></pre><p>を追加します。この関数は<code>2,3,5</code>の倍数でない数に対して、</p>
+</code></pre>
+<p>を追加します。この関数は<code>2,3,5</code>の倍数でない数に対して、</p>
 <p>$$ 2^{n-1}, 3^{n-1}, 5^{n-1} \pmod{n} $$</p>
 <p>を計算します。
 (これによって<code>is_prime''</code>で<code>True</code>になったとしても素数でない数が存在することになります。)</p>
@@ -623,22 +252,26 @@ is_prime&#39;&#39; n = and $ map (\a -&gt; test n a) $ takeWhile (&lt; n) [2,3,5
 <p>pを素数とし$M_p = 2^p-1$もまた素数になる場合、素数$p$をメルセンヌ数といいます。</p>
 </blockquote>
 <p>早速探してみましょう。(1分程度動かしました。)</p>
-<pre tabindex="0"><code>ghci&gt; filter (\p -&gt; is_prime&#39;&#39; $ 2^p -1) primes&#39;
+<pre><code>ghci&gt; filter (\p -&gt; is_prime'' $ 2^p -1) primes'
 [2,3,5,7,13,17,19,31,61,89,107,127,521,607,1279,2203,2281,3217,4253,4423
-</code></pre><p>実際のメルセンヌ数は次の通りです。(参考:<a href="https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%82%BB%E3%83%B3%E3%83%8C%E6%95%B0">メルセンヌ数</a>)</p>
-<pre tabindex="0"><code>p = 2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, ..
-</code></pre><p>今回探した範囲では完全に一致してますね。(すごい)</p>
+</code></pre>
+<p>実際のメルセンヌ数は次の通りです。(参考:<a href="https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%82%BB%E3%83%B3%E3%83%8C%E6%95%B0" target="_blank">メルセンヌ数</a>)</p>
+<pre><code>p = 2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, ..
+</code></pre>
+<p>今回探した範囲では完全に一致してますね。(すごい)</p>
 <p>ちなみに、Haskellの素数ライブラリで1分程度探すと</p>
-<pre tabindex="0"><code>ghci&gt; filter (\p -&gt; isPrime $ 2^p -1) primes
+<pre><code>ghci&gt; filter (\p -&gt; isPrime $ 2^p -1) primes
 [2,3,5,7,13,17,19,31
-</code></pre><p>となり、31までしか探せません。</p>
+</code></pre>
+<p>となり、31までしか探せません。</p>
 <p>メルセンヌ数はリュカ・テストで速くきちんとした素数判定ができるらしい。</p>
 <h4 id="カーマイケル数">カーマイケル数</h4>
 <p>少し気になるのが<code>is_prime''</code>を通過するけど、実際に素数でない数はどんなかずなのか？ですよね。
 実際に探してみましょう。</p>
-<pre tabindex="0"><code>ghci&gt; filter (not . isPrime) $ filter is_prime&#39;&#39; [2..]
+<pre><code>ghci&gt; filter (not . isPrime) $ filter is_prime'' [2..]
 [1729,2821,6601,8911,15841,29341,41041,46657,52633,63973,75361,101101
-</code></pre><p>となり、10万以下に11個あります。(結構少ない)</p>
+</code></pre>
+<p>となり、10万以下に11個あります。(結構少ない)</p>
 <p>これらの数$n$は、$2, 3, 5$と互いに素であり、
 $$
 2^{n-1}, 3^{n-1}, 5^{n-1} \equiv 1 \pmod{n}
@@ -652,37 +285,42 @@ $$
 (このような合成数$n$をカーマイケル数といいます。)</p>
 <p>このような数はフェルマーテストでは弾くことは出来なくて、実際に素因数を見つけて弾くしかありません。</p>
 <p>カーマイケル数を実際に探してみましょう。</p>
-<pre tabindex="0"><code>import Data.Numbers.Primes hiding (primes&#39;) -- プログラムの最初に追加
+<pre><code>import Data.Numbers.Primes hiding (primes') -- プログラムの最初に追加
 
 is_carmichael :: Integer -&gt; Bool
 is_carmichael n = and $ ((not . isPrime) n):(map (\a -&gt; test n a) [2..(n-1)])
   where
     test n a
-      | gcd&#39; n a == 1 = (1 == exp_mod a n)
+      | gcd' n a == 1 = (1 == exp_mod a n)
       | otherwise = True
-</code></pre><ul>
+</code></pre>
+<ul>
 <li><code>not . isPrime</code>を追加して素数でない数から探します。</li>
 <li><code>is_prime</code>を<code>otherwise = True</code>とするだけで良い。(フェルマーテストのみを通過できる数を探せる。)</li>
 </ul>
-<pre tabindex="0"><code>ghci&gt; filter is_carmichael [2..]
+<pre><code>ghci&gt; filter is_carmichael [2..]
 [561,1105,1729,2465,2821,6601,8911,10585,15841,29341,41041,46657,52633,62745,63973,75361,101101
-</code></pre><p>10万以下に16個あった。</p>
+</code></pre>
+<p>10万以下に16個あった。</p>
 <p>これらの数はたまたま約数でテストしない限りフェルマーテストで弾くことができない。(憎い)</p>
 <h3 id="並列化">並列化</h3>
 <p>Haskellの並列計算については、あんまりわかってないけど適当に実装してみた。</p>
-<pre tabindex="0"><code>import Control.Parallel.Strategies
-</code></pre><p>これ以降、コンパイルは</p>
-<pre tabindex="0"><code>ghc -O2 fermat_test.hs -threaded -rtsopts
-</code></pre><p>で行い、実行は</p>
-<pre tabindex="0"><code>time ./fermat_test +RTS -N4
-</code></pre><p>で行う。</p>
+<pre><code>import Control.Parallel.Strategies
+</code></pre>
+<p>これ以降、コンパイルは</p>
+<pre><code>ghc -O2 fermat_test.hs -threaded -rtsopts
+</code></pre>
+<p>で行い、実行は</p>
+<pre><code>time ./fermat_test +RTS -N4
+</code></pre>
+<p>で行う。</p>
 <ul>
 <li>-sをつけると詳細が見れる。</li>
 <li>-N4はスレッド数</li>
 </ul>
 <h4 id="実装-1">実装</h4>
 <p>filterの部分で並列にする。</p>
-<pre tabindex="0"><code>parFilter :: (a -&gt; Bool) -&gt; [a] -&gt; Eval [a]
+<pre><code>parFilter :: (a -&gt; Bool) -&gt; [a] -&gt; Eval [a]
 parFilter f [] = return []
 parFilter f (a:as) = do
         b &lt;- rpar (f a)
@@ -691,22 +329,25 @@ parFilter f (a:as) = do
 
 main :: IO ()
 main = do
-  let ps = takeWhile (&lt; 5000) primes&#39;
-      mersenne = runEval $ parFilter (\n -&gt; is_prime&#39;&#39; (2^n - 1)) ps
+  let ps = takeWhile (&lt; 5000) primes'
+      mersenne = runEval $ parFilter (\n -&gt; is_prime'' (2^n - 1)) ps
   print mersenne
-</code></pre><ul>
+</code></pre>
+<ul>
 <li><code>rpar</code>でタスクが作られるらしい。(タスクの振り分けはHaskellが勝手にやってくれるらしい。)</li>
 </ul>
 <p>実行結果は</p>
-<pre tabindex="0"><code>real    0m7.037s
+<pre><code>real    0m7.037s
 user    0m27.018s
 sys     0m0.313s
-</code></pre><p>となった。</p>
+</code></pre>
+<p>となった。</p>
 <p>普通の<code>filter</code>で実行すると</p>
-<pre tabindex="0"><code>real    0m27.217s
+<pre><code>real    0m27.217s
 user    0m28.602s
 sys     0m3.278s
-</code></pre><p>となり、だいたい4倍も速くなった。(すごい)</p>
+</code></pre>
+<p>となり、だいたい4倍も速くなった。(すごい)</p>
 <h4 id="憎きカーマイケル数を探す">憎きカーマイケル数を探す</h4>
 <p><code>is_carmichael</code>では調べたい合成数$n$について、互いに素な全ての整数$m$に対して、
 $$
@@ -722,31 +363,34 @@ $$
 p^{n-1} \equiv 1 \pmod{n}
 $$
 を計算すれば良いことになる。</p>
-<pre tabindex="0"><code>is_carmichael&#39; :: Integer -&gt; Bool
-is_carmichael&#39; n = and $ map (\a -&gt; test n a) $ takeWhile (&lt; n) primes
+<pre><code>is_carmichael' :: Integer -&gt; Bool
+is_carmichael' n = and $ map (\a -&gt; test n a) $ takeWhile (&lt; n) primes
   where
     test n a
-      | gcd&#39; n a == 1 = (1 == exp_mod a n)
+      | gcd' n a == 1 = (1 == exp_mod a n)
       | otherwise = True
 
 main :: IO ()
 main = do
-  let carmichael = runEval $ parFilter is_carmichael&#39; $ filter (not . isPrime) $ takeWhile (&lt;1000000) [2..]
+  let carmichael = runEval $ parFilter is_carmichael' $ filter (not . isPrime) $ takeWhile (&lt;1000000) [2..]
   print carmichael
-</code></pre><ul>
+</code></pre>
+<ul>
 <li>並列化を行う際には<code>rpar</code>で生成されるタスクが少ない方が良いので、parFilterに通す前に素数は弾いてしまっています。</li>
 <li>上の考察から素数のみでテストするのは<code>is_carmichael'</code>で実装。(これだけで約4倍速くなった。)</li>
 </ul>
 <p>実行結果は</p>
-<pre tabindex="0"><code>real    0m5.806s
+<pre><code>real    0m5.806s
 user    0m10.653s
 sys     0m1.572s
-</code></pre><p>となった。
+</code></pre>
+<p>となった。
 普通の<code>filter</code>で実行すると</p>
-<pre tabindex="0"><code>real    0m9.437s
+<pre><code>real    0m9.437s
 user    0m9.912s
 sys     0m1.567s
-</code></pre><p>となり、だいたい2倍も速くなった。</p>
+</code></pre>
+<p>となり、だいたい2倍も速くなった。</p>
 <p>(計算しかしてないからユーザーモードの実行時間とリアルの実行時間を見るだけで、
 並列化の効率を見ることができるかも？)</p>
 <h3 id="感想">感想</h3>
@@ -757,96 +401,390 @@ sys     0m1.567s
 <li>カーマイケル数を効率的に探す方法とか、フェルマーテストの亜種とか、ぜんぜん違う素数判定のアルゴリズムとかを調べたら面白そうだなとおもった。</li>
 </ul>
 <p>つづく&hellip;</p>
-<pre tabindex="0"><code>561,1105,1729,2465,2821,6601,8911,10585,15841,29341,41041,46657,52633,62745,63973,75361,101101,115921,126217,162401,172081,188461,252601,278545,294409,314821,334153,340561,399001,410041,449065,488881,512461,530881,552721,656601,658801,670033,748657,825265,838201,852841,997633,1024651,1033669,1050985,1082809,1152271,1193221,1461241,1569457,1615681,1773289,1857241,1909001,2100901,2113921,2433601,2455921,2508013,2531845,2628073,2704801,3057601,3146221,3224065,3581761,3664585,3828001,4335241,4463641,4767841,4903921,4909177,5031181,5049001,5148001,5310721,5444489,5481451,5632705,5968873,6049681,6054985,6189121,6313681,6733693,6840001,6868261,7207201,7519441,7995169,8134561,8341201,8355841,8719309,8719921,8830801,8927101,9439201,9494101,9582145,9585541,9613297,9890881
+<pre><code>561,1105,1729,2465,2821,6601,8911,10585,15841,29341,41041,46657,52633,62745,63973,75361,101101,115921,126217,162401,172081,188461,252601,278545,294409,314821,334153,340561,399001,410041,449065,488881,512461,530881,552721,656601,658801,670033,748657,825265,838201,852841,997633,1024651,1033669,1050985,1082809,1152271,1193221,1461241,1569457,1615681,1773289,1857241,1909001,2100901,2113921,2433601,2455921,2508013,2531845,2628073,2704801,3057601,3146221,3224065,3581761,3664585,3828001,4335241,4463641,4767841,4903921,4909177,5031181,5049001,5148001,5310721,5444489,5481451,5632705,5968873,6049681,6054985,6189121,6313681,6733693,6840001,6868261,7207201,7519441,7995169,8134561,8341201,8355841,8719309,8719921,8830801,8927101,9439201,9494101,9582145,9585541,9613297,9890881
 </code></pre>
-      </div>
-    </div>
-  </div>
-  <div class="pure-u-1-24 pure-u-lg-5-24"></div>
-</div>
 
-<div class="footer pure-g">
-  <div class="pure-u-lg-5-24"></div>
-  <div class="pure-u-1 pure-u-lg-7-12">
-    <div class="footer-content">
-      <div class="pure-menu pure-menu-horizontal">
+    </div>
+</article>
+
+
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>ページ</h3>
         <ul>
-          
-          <li class="pure-menu-item" id="foot-name">© derbuihan</li>
-          
-
-          
-
-          
-          <li class="pure-menu-item">
-            <a href="https://github.com/derbuihan" class="pure-menu-link">GitHub</a>
-          </li>
-          
-
-          
-          <li class="pure-menu-item">
-            <a href="https://twitter.com/derbuihan" class="pure-menu-link">Twitter</a>
-          </li>
-          
-
-          
-
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/works/">Works</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
         </ul>
-        <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-      </div>
-      
     </div>
-  </div>
-  <div class="pure-u-lg-5-24"></div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>リンク</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/derbuihan" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/derbuihan" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>タグ</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/atom/">Atom</a>
+            </span>
+            
+            <span>
+                <a href="/tags/bash/">Bash</a>
+            </span>
+            
+            <span>
+                <a href="/tags/coq/">Coq</a>
+            </span>
+            
+            <span>
+                <a href="/tags/datasets/">Datasets</a>
+            </span>
+            
+            <span>
+                <a href="/tags/digestauth/">DigestAuth</a>
+            </span>
+            
+            <span>
+                <a href="/tags/docker/">docker</a>
+            </span>
+            
+            <span>
+                <a href="/tags/elm/">Elm</a>
+            </span>
+            
+            <span>
+                <a href="/tags/emacs/">Emacs</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gitlab/">GitLab</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gpu/">gpu</a>
+            </span>
+            
+            <span>
+                <a href="/tags/haskell/">Haskell</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/js/">JS</a>
+            </span>
+            
+            <span>
+                <a href="/tags/minisat/">MiniSat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/python/">Python</a>
+            </span>
+            
+            <span>
+                <a href="/tags/pytorch/">pytorch</a>
+            </span>
+            
+            <span>
+                <a href="/tags/review/">review</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sat/">SAT</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tensorflow/">tensorflow</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tex/">Tex</a>
+            </span>
+            
+            <span>
+                <a href="/tags/vps/">VPS</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/">機械学習</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/">環境構築</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%9B%B8%E8%BB%A2%E7%A7%BB/">相転移</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%B4%A0%E6%95%B0/">素数</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
 </div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>ページ</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/works/">Works</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>リンク</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/derbuihan" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/derbuihan" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>タグ</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/atom/">Atom</a>
+            </span>
+            
+            <span>
+                <a href="/tags/bash/">Bash</a>
+            </span>
+            
+            <span>
+                <a href="/tags/coq/">Coq</a>
+            </span>
+            
+            <span>
+                <a href="/tags/datasets/">Datasets</a>
+            </span>
+            
+            <span>
+                <a href="/tags/digestauth/">DigestAuth</a>
+            </span>
+            
+            <span>
+                <a href="/tags/docker/">docker</a>
+            </span>
+            
+            <span>
+                <a href="/tags/elm/">Elm</a>
+            </span>
+            
+            <span>
+                <a href="/tags/emacs/">Emacs</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gitlab/">GitLab</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gpu/">gpu</a>
+            </span>
+            
+            <span>
+                <a href="/tags/haskell/">Haskell</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/js/">JS</a>
+            </span>
+            
+            <span>
+                <a href="/tags/minisat/">MiniSat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/python/">Python</a>
+            </span>
+            
+            <span>
+                <a href="/tags/pytorch/">pytorch</a>
+            </span>
+            
+            <span>
+                <a href="/tags/review/">review</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sat/">SAT</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tensorflow/">tensorflow</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tex/">Tex</a>
+            </span>
+            
+            <span>
+                <a href="/tags/vps/">VPS</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/">機械学習</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/">環境構築</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%9B%B8%E8%BB%A2%E7%A7%BB/">相転移</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%B4%A0%E6%95%B0/">素数</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2022-2022
+                <a href="https://derbuihan.github.io/">derbuihan</a>
+                 | <a href="https://github.com/derbuihan/">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 
 
-  <script src="https://derbuihan.github.io/highlight/highlight.min.js"></script>
-  
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/coq.min.js"></script>
-  
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>
-  
-  <script>
-    hljs.initHighlighting();
-    hljs.initLineNumbersOnLoad();
-  </script>
+<script defer src="/assets/js/fuji.min.js"></script>
 
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-    });
-</script>
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-<script type="text/javascript">
-  go();
-  window.addEventListener('resize', go);
-  function go(){
-    var d=document.querySelector(".desktop")
-    if(document.documentElement.clientWidth > 768) {
-      d.style.display="";
-    } else {
-      d.style.display="none";
-    }
-  }
-</script>
-<script type="text/javascript">
-  var a=document.querySelector("#toggle-btn"),b=document.querySelector("#toggle-content");a.addEventListener("click",function(){""==b.style.display?(b.style.display="none",a.innerHTML="☰"):(b.style.display="",a.innerHTML="X")});</script>
-
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-106862529-8', 'auto');
-  ga('send', 'pageview');
+  renderMathInElement(document.querySelector('div.content'), {
+    delimiters: [
+      { left: '$$', right: '$$', display: true },
+      { left: '\\[', right: '\\]', display: true },
+      { left: '$', right: '$', display: false },
+      { left: '\\(', right: '\\)', display: false },
+    ],
+  });
 </script>
+
+
+
 
 </body>
-</html>
 
+</html>

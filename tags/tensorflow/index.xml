@@ -5,7 +5,7 @@
     <link>https://derbuihan.github.io/tags/tensorflow/</link>
     <description>Recent content in tensorflow on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Sun, 03 Jan 2021 06:16:50 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MNIST画像認識の実験</title>
@@ -13,7 +13,7 @@
       <pubDate>Sun, 03 Jan 2021 06:16:50 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/mnist_experiment/</guid>
-      <description>全結合層のネットワークやCNNを用いてMNIST画像認識の実験をした。 実験環境 tensorflow v2.4.0 optimizer=&amp;lsquo;adam&amp;rsquo;, loss=&amp;lsquo;sparse_categorical_crossentropy&amp;rsquo; MNISTのデータの中身 MNISTは0~9の手書き文字</description>
+      <description>全結合層のネットワークやCNNを用いてMNIST画像認識の実験をした。 実験環境 tensorflow v2.4.0 optimizer=&amp;lsquo;adam&amp;rsquo;, loss=&amp;lsquo;sparse_categorical_crossentropy&amp;rsquo; MNISTのデータの中身 MNISTは0~9の手書き文字とそのラベルのデータセットである。 6万枚のtrainデータと</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Wed, 23 Dec 2020 02:42:40 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/tensorflow_datasets_text/</guid>
-      <description>Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。 データの一覧の取得 以下のコマンドでtensorflow_datasetsから</description>
+      <description>Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。 データの一覧の取得 以下のコマンドでtensorflow_datasetsから取得出来るデータセットの一覧がわかります。 &amp;gt;&amp;gt;&amp;gt; import tensorflow_datasets as tfds &amp;gt;&amp;gt;&amp;gt; tfds.list_builders() 英語</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Fri, 18 Dec 2020 12:05:33 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/tensorflow_i7_870/</guid>
-      <description>はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用サーバーを作りました。 このとき、最新のTensorflowをインストー</description>
+      <description>はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用サーバーを作りました。 このとき、最新のTensorflowをインストールしても使えないので苦労しました。 これはi7 870はSand</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@
       <pubDate>Thu, 03 Oct 2019 04:47:58 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</guid>
-      <description>はじめに Docker 19.03以降からDockerのコンテナからNvidia GPUを使いやすくなりました。 tensorflow-gpuをDockerで</description>
+      <description>はじめに Docker 19.03以降からDockerのコンテナからNvidia GPUを使いやすくなりました。 tensorflow-gpuをDockerで使う場合は、公式のtensorflow/tensorflow</description>
     </item>
     
   </channel>

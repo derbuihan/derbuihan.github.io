@@ -1,599 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
-  
-  <meta charset="utf-8">
-  <title>Digest認証の仕組みをBashとJavaScriptで理解したい。</title>
-  <meta name="description"
     
-      content="Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事のnodeはすべてv18である。 Basic認"
-    
-  >
-  <meta name="author" content="derbuihan">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <noscript>
-    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://derbuihan.github.io/css/fonts.css">
-  </noscript>
-  
-  
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-/*!
-normalize.css v^3.0 | MIT License | git.io/normalize
-Copyright (c) Nicolas Gallagher and Jonathan Neal
-*/
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */img,legend{border:0}legend,td,th{padding:0}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,optgroup,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre,textarea{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}table{border-collapse:collapse;border-spacing:0}.hidden,[hidden]{display:none!important}.pure-img{max-width:100%;height:auto;display:block}
-  </style>
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-.pure-menu{box-sizing:border-box}.pure-menu-fixed{position:fixed;left:0;top:0;z-index:3}.pure-menu-item,.pure-menu-list{position:relative}.pure-menu-list{list-style:none;margin:0;padding:0}.pure-menu-item{padding:0;margin:0;height:100%}.pure-menu-heading,.pure-menu-link{display:block;text-decoration:none;white-space:nowrap}.pure-menu-horizontal{width:100%;white-space:normal}.pure-menu-horizontal .pure-menu-list{display:inline-block}.pure-menu-horizontal .pure-menu-heading,.pure-menu-horizontal .pure-menu-item,.pure-menu-horizontal .pure-menu-separator{display:inline-block;zoom:1;vertical-align:middle}.pure-menu-item .pure-menu-item{display:block}.pure-menu-children{display:none;position:absolute;left:100%;top:0;margin:0;padding:0;z-index:3}.pure-menu-horizontal .pure-menu-children{left:0;top:auto;width:inherit}.pure-menu-active>.pure-menu-children,.pure-menu-allow-hover:hover>.pure-menu-children{display:block;position:absolute}.pure-menu-has-children>.pure-menu-link:after{padding-left:.5em;content:"\25B8";font-size:small}.pure-menu-horizontal .pure-menu-has-children>.pure-menu-link:after{content:"\25BE"}.pure-menu-scrollable{overflow-y:scroll;overflow-x:hidden}.pure-menu-scrollable .pure-menu-list{display:block}.pure-menu-horizontal.pure-menu-scrollable .pure-menu-list{display:inline-block}.pure-menu-horizontal.pure-menu-scrollable{white-space:nowrap;overflow-y:hidden;overflow-x:auto;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding:.5em 0}.pure-menu-horizontal.pure-menu-scrollable::-webkit-scrollbar{display:none}.pure-menu-horizontal .pure-menu-children .pure-menu-separator,.pure-menu-separator{background-color:#ccc;height:1px;margin:.3em 0}.pure-menu-horizontal .pure-menu-separator{width:1px;height:1.3em;margin:0 .3em}.pure-menu-horizontal .pure-menu-children .pure-menu-separator{display:block;width:auto}.pure-menu-heading{text-transform:uppercase;color:#565d64}.pure-menu-link{color:#777}.pure-menu-children{background-color:#fff}.pure-menu-disabled,.pure-menu-heading,.pure-menu-link{padding:.5em 1em}.pure-menu-disabled{opacity:.5}.pure-menu-disabled .pure-menu-link:hover{background-color:transparent}.pure-menu-active>.pure-menu-link,.pure-menu-link:focus,.pure-menu-link:hover{background-color:#eee}.pure-menu-selected .pure-menu-link,.pure-menu-selected .pure-menu-link:visited{color:#000}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.101.0" />
 
-  </style>
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-.pure-g{letter-spacing:-.31em;text-rendering:optimizespeed;font-family:FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:flex-start;-ms-flex-line-pack:start;align-content:flex-start}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){table .pure-g{display:block}}.opera-only :-o-prefocus,.pure-g{word-spacing:-.43em}.pure-u,.pure-u-1,.pure-u-1-1,.pure-u-1-12,.pure-u-1-2,.pure-u-1-24,.pure-u-1-3,.pure-u-1-4,.pure-u-1-5,.pure-u-1-6,.pure-u-1-8,.pure-u-10-24,.pure-u-11-12,.pure-u-11-24,.pure-u-12-24,.pure-u-13-24,.pure-u-14-24,.pure-u-15-24,.pure-u-16-24,.pure-u-17-24,.pure-u-18-24,.pure-u-19-24,.pure-u-2-24,.pure-u-2-3,.pure-u-2-5,.pure-u-20-24,.pure-u-21-24,.pure-u-22-24,.pure-u-23-24,.pure-u-24-24,.pure-u-3-24,.pure-u-3-4,.pure-u-3-5,.pure-u-3-8,.pure-u-4-24,.pure-u-4-5,.pure-u-5-12,.pure-u-5-24,.pure-u-5-5,.pure-u-5-6,.pure-u-5-8,.pure-u-6-24,.pure-u-7-12,.pure-u-7-24,.pure-u-7-8,.pure-u-8-24,.pure-u-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-g [class*=pure-u]{font-family:sans-serif}.pure-u-1-24{width:4.1667%}.pure-u-1-12,.pure-u-2-24{width:8.3333%}.pure-u-1-8,.pure-u-3-24{width:12.5%}.pure-u-1-6,.pure-u-4-24{width:16.6667%}.pure-u-1-5{width:20%}.pure-u-5-24{width:20.8333%}.pure-u-1-4,.pure-u-6-24{width:25%}.pure-u-7-24{width:29.1667%}.pure-u-1-3,.pure-u-8-24{width:33.3333%}.pure-u-3-8,.pure-u-9-24{width:37.5%}.pure-u-2-5{width:40%}.pure-u-10-24,.pure-u-5-12{width:41.6667%}.pure-u-11-24{width:45.8333%}.pure-u-1-2,.pure-u-12-24{width:50%}.pure-u-13-24{width:54.1667%}.pure-u-14-24,.pure-u-7-12{width:58.3333%}.pure-u-3-5{width:60%}.pure-u-15-24,.pure-u-5-8{width:62.5%}.pure-u-16-24,.pure-u-2-3{width:66.6667%}.pure-u-17-24{width:70.8333%}.pure-u-18-24,.pure-u-3-4{width:75%}.pure-u-19-24{width:79.1667%}.pure-u-4-5{width:80%}.pure-u-20-24,.pure-u-5-6{width:83.3333%}.pure-u-21-24,.pure-u-7-8{width:87.5%}.pure-u-11-12,.pure-u-22-24{width:91.6667%}.pure-u-23-24{width:95.8333%}.pure-u-1,.pure-u-1-1,.pure-u-24-24,.pure-u-5-5{width:100%}
-  </style>
-  
-  
-  <style type="text/css" media="screen">
-    /*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-@media screen and (min-width:35.5em){.pure-u-sm-1,.pure-u-sm-1-1,.pure-u-sm-1-12,.pure-u-sm-1-2,.pure-u-sm-1-24,.pure-u-sm-1-3,.pure-u-sm-1-4,.pure-u-sm-1-5,.pure-u-sm-1-6,.pure-u-sm-1-8,.pure-u-sm-10-24,.pure-u-sm-11-12,.pure-u-sm-11-24,.pure-u-sm-12-24,.pure-u-sm-13-24,.pure-u-sm-14-24,.pure-u-sm-15-24,.pure-u-sm-16-24,.pure-u-sm-17-24,.pure-u-sm-18-24,.pure-u-sm-19-24,.pure-u-sm-2-24,.pure-u-sm-2-3,.pure-u-sm-2-5,.pure-u-sm-20-24,.pure-u-sm-21-24,.pure-u-sm-22-24,.pure-u-sm-23-24,.pure-u-sm-24-24,.pure-u-sm-3-24,.pure-u-sm-3-4,.pure-u-sm-3-5,.pure-u-sm-3-8,.pure-u-sm-4-24,.pure-u-sm-4-5,.pure-u-sm-5-12,.pure-u-sm-5-24,.pure-u-sm-5-5,.pure-u-sm-5-6,.pure-u-sm-5-8,.pure-u-sm-6-24,.pure-u-sm-7-12,.pure-u-sm-7-24,.pure-u-sm-7-8,.pure-u-sm-8-24,.pure-u-sm-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-sm-1-24{width:4.1667%}.pure-u-sm-1-12,.pure-u-sm-2-24{width:8.3333%}.pure-u-sm-1-8,.pure-u-sm-3-24{width:12.5%}.pure-u-sm-1-6,.pure-u-sm-4-24{width:16.6667%}.pure-u-sm-1-5{width:20%}.pure-u-sm-5-24{width:20.8333%}.pure-u-sm-1-4,.pure-u-sm-6-24{width:25%}.pure-u-sm-7-24{width:29.1667%}.pure-u-sm-1-3,.pure-u-sm-8-24{width:33.3333%}.pure-u-sm-3-8,.pure-u-sm-9-24{width:37.5%}.pure-u-sm-2-5{width:40%}.pure-u-sm-10-24,.pure-u-sm-5-12{width:41.6667%}.pure-u-sm-11-24{width:45.8333%}.pure-u-sm-1-2,.pure-u-sm-12-24{width:50%}.pure-u-sm-13-24{width:54.1667%}.pure-u-sm-14-24,.pure-u-sm-7-12{width:58.3333%}.pure-u-sm-3-5{width:60%}.pure-u-sm-15-24,.pure-u-sm-5-8{width:62.5%}.pure-u-sm-16-24,.pure-u-sm-2-3{width:66.6667%}.pure-u-sm-17-24{width:70.8333%}.pure-u-sm-18-24,.pure-u-sm-3-4{width:75%}.pure-u-sm-19-24{width:79.1667%}.pure-u-sm-4-5{width:80%}.pure-u-sm-20-24,.pure-u-sm-5-6{width:83.3333%}.pure-u-sm-21-24,.pure-u-sm-7-8{width:87.5%}.pure-u-sm-11-12,.pure-u-sm-22-24{width:91.6667%}.pure-u-sm-23-24{width:95.8333%}.pure-u-sm-1,.pure-u-sm-1-1,.pure-u-sm-24-24,.pure-u-sm-5-5{width:100%}}@media screen and (min-width:48em){.pure-u-md-1,.pure-u-md-1-1,.pure-u-md-1-12,.pure-u-md-1-2,.pure-u-md-1-24,.pure-u-md-1-3,.pure-u-md-1-4,.pure-u-md-1-5,.pure-u-md-1-6,.pure-u-md-1-8,.pure-u-md-10-24,.pure-u-md-11-12,.pure-u-md-11-24,.pure-u-md-12-24,.pure-u-md-13-24,.pure-u-md-14-24,.pure-u-md-15-24,.pure-u-md-16-24,.pure-u-md-17-24,.pure-u-md-18-24,.pure-u-md-19-24,.pure-u-md-2-24,.pure-u-md-2-3,.pure-u-md-2-5,.pure-u-md-20-24,.pure-u-md-21-24,.pure-u-md-22-24,.pure-u-md-23-24,.pure-u-md-24-24,.pure-u-md-3-24,.pure-u-md-3-4,.pure-u-md-3-5,.pure-u-md-3-8,.pure-u-md-4-24,.pure-u-md-4-5,.pure-u-md-5-12,.pure-u-md-5-24,.pure-u-md-5-5,.pure-u-md-5-6,.pure-u-md-5-8,.pure-u-md-6-24,.pure-u-md-7-12,.pure-u-md-7-24,.pure-u-md-7-8,.pure-u-md-8-24,.pure-u-md-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-md-1-24{width:4.1667%}.pure-u-md-1-12,.pure-u-md-2-24{width:8.3333%}.pure-u-md-1-8,.pure-u-md-3-24{width:12.5%}.pure-u-md-1-6,.pure-u-md-4-24{width:16.6667%}.pure-u-md-1-5{width:20%}.pure-u-md-5-24{width:20.8333%}.pure-u-md-1-4,.pure-u-md-6-24{width:25%}.pure-u-md-7-24{width:29.1667%}.pure-u-md-1-3,.pure-u-md-8-24{width:33.3333%}.pure-u-md-3-8,.pure-u-md-9-24{width:37.5%}.pure-u-md-2-5{width:40%}.pure-u-md-10-24,.pure-u-md-5-12{width:41.6667%}.pure-u-md-11-24{width:45.8333%}.pure-u-md-1-2,.pure-u-md-12-24{width:50%}.pure-u-md-13-24{width:54.1667%}.pure-u-md-14-24,.pure-u-md-7-12{width:58.3333%}.pure-u-md-3-5{width:60%}.pure-u-md-15-24,.pure-u-md-5-8{width:62.5%}.pure-u-md-16-24,.pure-u-md-2-3{width:66.6667%}.pure-u-md-17-24{width:70.8333%}.pure-u-md-18-24,.pure-u-md-3-4{width:75%}.pure-u-md-19-24{width:79.1667%}.pure-u-md-4-5{width:80%}.pure-u-md-20-24,.pure-u-md-5-6{width:83.3333%}.pure-u-md-21-24,.pure-u-md-7-8{width:87.5%}.pure-u-md-11-12,.pure-u-md-22-24{width:91.6667%}.pure-u-md-23-24{width:95.8333%}.pure-u-md-1,.pure-u-md-1-1,.pure-u-md-24-24,.pure-u-md-5-5{width:100%}}@media screen and (min-width:64em){.pure-u-lg-1,.pure-u-lg-1-1,.pure-u-lg-1-12,.pure-u-lg-1-2,.pure-u-lg-1-24,.pure-u-lg-1-3,.pure-u-lg-1-4,.pure-u-lg-1-5,.pure-u-lg-1-6,.pure-u-lg-1-8,.pure-u-lg-10-24,.pure-u-lg-11-12,.pure-u-lg-11-24,.pure-u-lg-12-24,.pure-u-lg-13-24,.pure-u-lg-14-24,.pure-u-lg-15-24,.pure-u-lg-16-24,.pure-u-lg-17-24,.pure-u-lg-18-24,.pure-u-lg-19-24,.pure-u-lg-2-24,.pure-u-lg-2-3,.pure-u-lg-2-5,.pure-u-lg-20-24,.pure-u-lg-21-24,.pure-u-lg-22-24,.pure-u-lg-23-24,.pure-u-lg-24-24,.pure-u-lg-3-24,.pure-u-lg-3-4,.pure-u-lg-3-5,.pure-u-lg-3-8,.pure-u-lg-4-24,.pure-u-lg-4-5,.pure-u-lg-5-12,.pure-u-lg-5-24,.pure-u-lg-5-5,.pure-u-lg-5-6,.pure-u-lg-5-8,.pure-u-lg-6-24,.pure-u-lg-7-12,.pure-u-lg-7-24,.pure-u-lg-7-8,.pure-u-lg-8-24,.pure-u-lg-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-lg-1-24{width:4.1667%}.pure-u-lg-1-12,.pure-u-lg-2-24{width:8.3333%}.pure-u-lg-1-8,.pure-u-lg-3-24{width:12.5%}.pure-u-lg-1-6,.pure-u-lg-4-24{width:16.6667%}.pure-u-lg-1-5{width:20%}.pure-u-lg-5-24{width:20.8333%}.pure-u-lg-1-4,.pure-u-lg-6-24{width:25%}.pure-u-lg-7-24{width:29.1667%}.pure-u-lg-1-3,.pure-u-lg-8-24{width:33.3333%}.pure-u-lg-3-8,.pure-u-lg-9-24{width:37.5%}.pure-u-lg-2-5{width:40%}.pure-u-lg-10-24,.pure-u-lg-5-12{width:41.6667%}.pure-u-lg-11-24{width:45.8333%}.pure-u-lg-1-2,.pure-u-lg-12-24{width:50%}.pure-u-lg-13-24{width:54.1667%}.pure-u-lg-14-24,.pure-u-lg-7-12{width:58.3333%}.pure-u-lg-3-5{width:60%}.pure-u-lg-15-24,.pure-u-lg-5-8{width:62.5%}.pure-u-lg-16-24,.pure-u-lg-2-3{width:66.6667%}.pure-u-lg-17-24{width:70.8333%}.pure-u-lg-18-24,.pure-u-lg-3-4{width:75%}.pure-u-lg-19-24{width:79.1667%}.pure-u-lg-4-5{width:80%}.pure-u-lg-20-24,.pure-u-lg-5-6{width:83.3333%}.pure-u-lg-21-24,.pure-u-lg-7-8{width:87.5%}.pure-u-lg-11-12,.pure-u-lg-22-24{width:91.6667%}.pure-u-lg-23-24{width:95.8333%}.pure-u-lg-1,.pure-u-lg-1-1,.pure-u-lg-24-24,.pure-u-lg-5-5{width:100%}}@media screen and (min-width:80em){.pure-u-xl-1,.pure-u-xl-1-1,.pure-u-xl-1-12,.pure-u-xl-1-2,.pure-u-xl-1-24,.pure-u-xl-1-3,.pure-u-xl-1-4,.pure-u-xl-1-5,.pure-u-xl-1-6,.pure-u-xl-1-8,.pure-u-xl-10-24,.pure-u-xl-11-12,.pure-u-xl-11-24,.pure-u-xl-12-24,.pure-u-xl-13-24,.pure-u-xl-14-24,.pure-u-xl-15-24,.pure-u-xl-16-24,.pure-u-xl-17-24,.pure-u-xl-18-24,.pure-u-xl-19-24,.pure-u-xl-2-24,.pure-u-xl-2-3,.pure-u-xl-2-5,.pure-u-xl-20-24,.pure-u-xl-21-24,.pure-u-xl-22-24,.pure-u-xl-23-24,.pure-u-xl-24-24,.pure-u-xl-3-24,.pure-u-xl-3-4,.pure-u-xl-3-5,.pure-u-xl-3-8,.pure-u-xl-4-24,.pure-u-xl-4-5,.pure-u-xl-5-12,.pure-u-xl-5-24,.pure-u-xl-5-5,.pure-u-xl-5-6,.pure-u-xl-5-8,.pure-u-xl-6-24,.pure-u-xl-7-12,.pure-u-xl-7-24,.pure-u-xl-7-8,.pure-u-xl-8-24,.pure-u-xl-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.pure-u-xl-1-24{width:4.1667%}.pure-u-xl-1-12,.pure-u-xl-2-24{width:8.3333%}.pure-u-xl-1-8,.pure-u-xl-3-24{width:12.5%}.pure-u-xl-1-6,.pure-u-xl-4-24{width:16.6667%}.pure-u-xl-1-5{width:20%}.pure-u-xl-5-24{width:20.8333%}.pure-u-xl-1-4,.pure-u-xl-6-24{width:25%}.pure-u-xl-7-24{width:29.1667%}.pure-u-xl-1-3,.pure-u-xl-8-24{width:33.3333%}.pure-u-xl-3-8,.pure-u-xl-9-24{width:37.5%}.pure-u-xl-2-5{width:40%}.pure-u-xl-10-24,.pure-u-xl-5-12{width:41.6667%}.pure-u-xl-11-24{width:45.8333%}.pure-u-xl-1-2,.pure-u-xl-12-24{width:50%}.pure-u-xl-13-24{width:54.1667%}.pure-u-xl-14-24,.pure-u-xl-7-12{width:58.3333%}.pure-u-xl-3-5{width:60%}.pure-u-xl-15-24,.pure-u-xl-5-8{width:62.5%}.pure-u-xl-16-24,.pure-u-xl-2-3{width:66.6667%}.pure-u-xl-17-24{width:70.8333%}.pure-u-xl-18-24,.pure-u-xl-3-4{width:75%}.pure-u-xl-19-24{width:79.1667%}.pure-u-xl-4-5{width:80%}.pure-u-xl-20-24,.pure-u-xl-5-6{width:83.3333%}.pure-u-xl-21-24,.pure-u-xl-7-8{width:87.5%}.pure-u-xl-11-12,.pure-u-xl-22-24{width:91.6667%}.pure-u-xl-23-24{width:95.8333%}.pure-u-xl-1,.pure-u-xl-1-1,.pure-u-xl-24-24,.pure-u-xl-5-5{width:100%}}
-  </style>
-  
 
-  
-  <style type="text/css" media="screen">
-    html {
-	min-height:100%;
-	width:100%;
-	position:relative;
-}
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-cdn-main@1/images/favicons/dsrca.ico" />
 
-body {
-	background-color: rgb(252,252,252);
-	color: #484848;
-}
 
-.nav-menu {
-	padding: 10px 0;
-	border-bottom: 2px solid #e3e3e3;
-}
 
-.pure-menu-heading {
-  text-transform: none;
-  font-size: large;
-}
+<title>Digest認証の仕組みをBashとJavaScriptで理解したい。 - derbuihan blog</title>
 
-.header {
-	text-align: left;
-	color: #484848;
-	margin-bottom: .5em;
-}
 
-.header ul li {
-		height: auto;
-}
+<meta name="author" content="derbuihan" />
 
-.header ul li a {
-	font-weight: bold;
-	color: #484848;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 
-.header {
-	font-weight: bold;
-	color: #484848;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+<meta name="description" content="derbuihan blog" />
 
-.site-title {
-	color: #484848;
-  text-transform: none;
-  font-weight: normal;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 
-.pull-right {
-	float: right;
-}
+<meta name="keywords" content="DigestAuth, JS, Bash" />
 
-.posts-name {
-	text-transform: capitalize;
-	font-weight: bold;
-	padding-left: 0.5em;
-	margin-top: 1em;
-	font-family: "Source Sans Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 
-.posts {
-	font-family: verdana,arial,helvetica,sans-serif;
-	list-style-type:none;
-	padding-left: 0;
-}
-
-.posts li p {
-	margin-top: 0;
-}
-
-.posts li {
-	padding-top: 1em;
-	padding-bottom: 1em;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-	border-bottom: solid 2px #d7d7d7;
-}
-
-.posts li:first-child {
-	border-top: solid 2px #d7d7d7;
-}
-
-.posts li a {
-	color:#369;
-	text-decoration:none;
-}
-
-.post-list {
-  font-size: large;
-}
-
-.footnote {
-	font-family: verdana,arial,helvetica,sans-serif;
-	color:#888;
-	font-size:0.75em;
-	padding: 0;
-	margin: 0;
-}
-
-.footnote a {
-	color: #888 !important
-}
-
-.footnote a:hover{
-	text-decoration:underline;
-	color:#369;
-}
-
-.footer {
-	position:absolute;
-	z-index:2;
-	height:auto;
-	width:100%;
-	bottom:0;
-}
-
-.footer-content {
-	border-top: 1px solid #e3e3e3;
-	font-size: 80%;
-	color: #bbb;
-}
-
-.footer-content a {
-	color: #bbb;
-}
-
-.footer-content ul {
-	height: auto;
-	margin-top: 0;
-	margin-bottom: 0;
-	display: inline-block;
-	padding-left: 1em;
-}
-
-#gototop-btn {
-	display: inline-block;
-}
-
-#foot-name {
-  color: #484848;
-	text-transform: none;
-}
-
-#foot-copyright {
-	padding-left: 1em;
-	padding-bottom: 0.5em;
-	margin: 0;
-}
-
-.post {
-	font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
-	color:#484848;
-	letter-spacing:normal;
-	padding-left: 0;
-}
-
-.post h1,h2,h3,h4,h5,h6 {
-	font-weight: bold;
-	letter-spacing:normal;
-}
-
-.post-content {
-	z-index: 9;
-	overflow: auto;
-	padding: 0;
-	padding-bottom: 3em;
-	font-size: 16px;
-	line-height: 1.4;
-}
-
-.post-content img {
-	max-width: 100%;
-	height: auto;
-}
-
-.post-content code {
-  background-color: #EEE;
-}
-
-.post-content ul.posts {
-	margin: 0;
-	padding: 0;
-}
-
-.post code {
-  background-color: #EEE;
-}
-
-.post a {
-	color:#c05b4d;
-	text-decoration: none;
-}
-
-.post a:hover {
-	color:#a5473a;
-	text-decoration: underline;
-}
-
-.post h1 {
-	font-size:27px;
-	padding: 0.4em 0.5em;
-	color: #494949;
-	background: #f4f4f4;
-	border-left: solid 5px #7db4e6;
-	border-bottom: solid 3px #d7d7d7;
-}
-
-.post h2 {
-	font-size:25px;
-}
-
-.post h3 {
-	font-size:23px;
-	padding: 0.25em 0.5em;
-	margin-left: 0em;
-	color: #494949;
-	background: transparent;
-	border-left: solid 5px #7db4e6;
-}
-
-.post h4 {
-	font-size:21px;
-	background: linear-gradient(transparent 70%, #DFF2FC 50%);
-	margin-left: 0.5em;
-}
-
-.post h5 {
-	font-size:19px;
-}
-
-.post h6 {
-	font-size:18px;
-}
-
-.post-content > p {
-	margin-left: 1em;
-}
-
-.post-title{
-		margin-top: 0;
-		margin-bottom: 0;
-}
-
-.post-title h1 {
-	font-weight:bold;
-	font-size:27px;
-	line-height: 28px;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-table {
-	width:100%;
-	border-right:#000 solid 1px;
-	border-collapse: collapse;
-}
-
-table thead th {
-	background:#e0e0e0;
-	padding:10px 15px;
-	border-right:#000 solid 1px;
-	border-bottom:#000 solid 1px;
-}
-table thead th:first-child {
-	border-left:#000 solid 1px;
-}
-table thead:first-child {
-	border-top:#000 solid 1px;
-}
-table thead th:last-child {
-	border-right:#000 solid 1px;
-}
-table tbody th {
-	background:#e0e0e0;
-	padding:10px 15px;
-	border-bottom:#000 solid 1px;
-	vertical-align:top;
-}
-table tbody tr:last-child th {
-	border-bottom:#000 solid 1px;
-}
-table tbody td {
-	background:#FFF;
-	padding:10px 15px;
-	border-left:#000 solid 1px;
-	border-bottom:#000 solid 1px;
-	vertical-align:top;
-}
-
-@media screen and (max-width: 640px) {
-table.table01 thead {
-	display:none;
-}
-table.table01 tbody th {
-	display:block;
-}
-table.table01 tbody td {
-	display:block;
-}
-table.table01 tbody td::before {
-	content: attr(label);
-	float: left;
-	clear:both;
-	font-weight:bold;
-}
-table.table01 tbody td p {
-	padding-left:6em;
-}
-}
-
-@media screen and (max-width: 1023px){
-	.desktop {
-		display: none;
-	}
-	.mobile {
-		display: block;
-	}
-	#toggle-btn {
-		display: inline-block;
-		float: right;
-		padding: .5em 1em;
-		text-decoration: none;
-		color: #484848;
-		font-weight: bold;
-	}
-	#toggle-content li {
-		clear: both;
-		height: auto;
-		background-color: rgb(249,249,249);
-	}
-	#toggle-home {
-		display: inline-block;
-	}
-}
-
-@media screen and (min-width: 1023px){
-	.mobile {
-		display:none;
-	}
-	.desktop {
-		display: block;
-	}
-}
-
-  </style>
-  
-  <style type="text/css" media="screen">
-    
-      .hljs{display:block;overflow-x:auto;padding:0.5em;color:#000;background:#f8f8ff}.hljs-comment,.hljs-quote{color:#408080;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-literal,.hljs-subst{color:#954121}.hljs-number{color:#40a070}.hljs-string,.hljs-doctag{color:#219161}.hljs-selector-id,.hljs-selector-class,.hljs-section,.hljs-type{color:#19469d}.hljs-params{color:#00f}.hljs-title{color:#458;font-weight:bold}.hljs-tag,.hljs-name,.hljs-attribute{color:#000080;font-weight:normal}.hljs-variable,.hljs-template-variable{color:#008080}.hljs-regexp,.hljs-link{color:#b68}.hljs-symbol,.hljs-bullet{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:bold}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}
-    
-  </style>
-
-  
-  <link rel="shortcut icon"
-  
-    href="https://derbuihan.github.io/img/favicon.ico"
-  
-  type="image/x-icon">
-
-  <meta name="generator" content="Hugo 0.101.0" />
-
-  
-  
-<meta property="og:url" content="https://derbuihan.github.io/" />
 <meta property="og:title" content="Digest認証の仕組みをBashとJavaScriptで理解したい。" />
-<meta property="og:description" content="Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事のnodeはすべてv18である。 Basic認" />
-<meta property="og:type" content="summary">
-<meta property="og:site_name" content="derbuihan blog" />
-<meta property="og:locale" content="ja_JP" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="@derbuihan" />
+<meta name="twitter:title" content="Digest認証の仕組みをBashとJavaScriptで理解したい。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://derbuihan.github.io/posts/digest_auth_bash_js/" /><meta property="og:description" content="Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事のnodeはすべてv18である。 Basic認証とDigest認証 Basic認証 はじめにBasic認証の仕" />
+<meta name="twitter:description" content="Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事のnodeはすべてv18である。 Basic認証とDigest認証 Basic認証 はじめにBasic認証の仕" /><meta property="og:image" content="https://derbuihan.github.io/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://derbuihan.github.io/img/og.png" /><meta property="article:published_time" content="2022-07-13T00:27:26+09:00" /><meta property="article:modified_time" content="2022-07-13T00:27:26+09:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://derbuihan.github.io/assets/css/fuji.min.css" />
+
+
+
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-106862529-8');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106862529-8"></script>
+
+
+
+
 
 </head>
-<body>
 
-<div class="header pure-g">
-    <div class=" pure-u-lg-5-24"></div>
-    <div class="pure-u-1 pure-u-lg-7-12">
-        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
+<body
+  data-theme="light"
+  data-theme-auto='false'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://derbuihan.github.io/">derbuihan blog</a>
             
-            <a href="https://derbuihan.github.io/" class="site-title pure-menu-heading">derbuihan blog</a>
-            <ul class="pure-menu-list pull-right">
-				
-                <li class="pure-menu-item">
-                  <a href="https://derbuihan.github.io/works" class="pure-menu-link">Works</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="https://derbuihan.github.io/about" class="pure-menu-link">About</a>
-                </li>
-            </ul>
-        </div>
-        <div class="mobile pure-menu nav-menu">
-            <a href="/" class="site-title pure-menu-heading" id="toggle-home">derbuihan blog</a>
-            <a href="#" id="toggle-btn">&#9776;</a>
-            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
-                
-				
-                <li class="pure-menu-item">
-                  <a href="https://derbuihan.github.io/works" class="pure-menu-link">Works</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="https://derbuihan.github.io/about" class="pure-menu-link">About</a>
-                </li>
-            </ul>
+            <span class="title-sub">derbuihan blog</span>
+            
         </div>
     </div>
-    <div class=" pure-u-lg-5-24"></div>
-</div>
+</header>
 
-
-<div class="pure-g">
-  <div class="pure-u-1-24 pure-u-lg-5-24"></div>
-  <div class="pure-u-11-12 pure-u-lg-7-12">
-    <div class="post">
-
-      <div class="post-title">
-        <p class="footnote">
-          <time datetime="2022-07-13 00:27:26 &#43;0900 JST">
+    <main>
+        <div class="container-lg clearfix">
             
-              2022-07-13
-            
-          </time>
-        
-        
-        |
-        
-        
-        tags: [ <a href="https://derbuihan.github.io/tags/digestauth">#DigestAuth</a> <a href="https://derbuihan.github.io/tags/js">#JS</a> <a href="https://derbuihan.github.io/tags/bash">#Bash</a> ]
-        
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://derbuihan.github.io/posts/digest_auth_bash_js/">Digest認証の仕組みをBashとJavaScriptで理解したい。</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-07-13</span>
 
-        
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;3111 字</span>
 
-        
-        </p>
-        <h1>Digest認証の仕組みをBashとJavaScriptで理解したい。</h1>
-      </div>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/digestauth">DigestAuth</a>&nbsp;<a href="/tags/js">JS</a>&nbsp;<a href="/tags/bash">Bash</a>&nbsp;</span>
 
-      <div class="post-content">
+    </div>
+    
+    <div class="post-content markdown-body">
         <p>Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。
 本記事のnodeはすべてv18である。</p>
 <h3 id="basic認証とdigest認証">Basic認証とDigest認証</h3>
 <h4 id="basic認証">Basic認証</h4>
 <p>はじめにBasic認証の仕組みにを解説する。</p>
 <p>Basic認証においてクライアントが初めてhttpリクエストを送ったときは、Status Codeが<code>401 Unauthorized</code>でヘッダーに</p>
-<pre tabindex="0"><code>www-authenticate: Basic realm=&#34;secure&#34;
-</code></pre><p>が付与されたレスポンスがサーバーから帰ってくる。
+<pre><code>www-authenticate: Basic realm=&quot;secure&quot;
+</code></pre>
+<p>が付与されたレスポンスがサーバーから帰ってくる。
 ちなみにrealmは認証領域を表す。</p>
 <p>クライアントがユーザーとパスワードをuser:passのように入力したときは</p>
-<pre tabindex="0"><code>Authorization: Basic dXNlcjpwYXNz
-</code></pre><p>を付与してレスポンスを返す仕組みになっている。
+<pre><code>Authorization: Basic dXNlcjpwYXNz
+</code></pre>
+<p>を付与してレスポンスを返す仕組みになっている。
 このような動作はBasic認証を用いたサイトにChromeで接続し、デベロッパーツールで通信を監視することで確かめることが出来る。</p>
 <p>次に、<code>dXNlcjpwYXNz</code>の計算方法について確認しておく。
 結論から言うと<code>dXNlcjpwYXNz</code>は<code>user:pass</code>をbase64でエンコードしたものである。
 Bashでは</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>$ echo -n <span style="color:#e6db74">&#34;user:pass&#34;</span> | base64
-</span></span><span style="display:flex;"><span>dXNlcjpwYXNz
-</span></span></code></pre></div><p>JavaScriptでは</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">btoa</span>(<span style="color:#e6db74">&#34;user:pass&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;dXNlcjpwYXNz&#39;</span>
-</span></span></code></pre></div><p>のように計算出来る。</p>
+<pre><code class="language-Bash">$ echo -n &quot;user:pass&quot; | base64
+dXNlcjpwYXNz
+</code></pre>
+<p>JavaScriptでは</p>
+<pre><code class="language-javascript">&gt; btoa(&quot;user:pass&quot;)
+'dXNlcjpwYXNz'
+</code></pre>
+<p>のように計算出来る。</p>
 <p>ただ、Base64はハッシュ関数でもなんでもなくて文字列を単純な方法で変換しているだけなので、簡単に戻すことが出来る。
 Bashでは</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>❯ echo -n <span style="color:#e6db74">&#34;dXNlcjpwYXNz&#34;</span> | base64 -d
-</span></span><span style="display:flex;"><span>user:pass
-</span></span></code></pre></div><p>JavaScriptでは</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">atob</span>(<span style="color:#e6db74">&#34;dXNlcjpwYXNz&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;user:pass&#39;</span>
-</span></span></code></pre></div><p>のように計算出来る。
+<pre><code class="language-Bash">❯ echo -n &quot;dXNlcjpwYXNz&quot; | base64 -d
+user:pass
+</code></pre>
+<p>JavaScriptでは</p>
+<pre><code class="language-javascript">&gt; atob(&quot;dXNlcjpwYXNz&quot;)
+'user:pass'
+</code></pre>
+<p>のように計算出来る。
 これはBasic認証において通信経路でhttpのヘッダーを覗かれるとユーザー名もパスワードもすべて筒抜けになることを示している。
 つまりBasic認証を使う際はhttpsなどを用いて暗号化するなど対策が必要になる。</p>
 <h4 id="digest認証">Digest認証</h4>
 <p>次にDigest認証について説明を行う。
 Basic認証の欠点である通信経路をユーザー名とパスワードがそのまま流れてしまうという欠点を補ったのがDigest認証である。</p>
 <p>Digest認証においてクライアントがサーバーにhttpリクエストを送ったときは、Status Codeが<code>401 Unauthorized</code>でヘッダーに</p>
-<pre tabindex="0"><code>www-authenticate: Digest realm=&#34;secure&#34;, nonce=&#34;9HYa-V1Mba3QOk6f&#34;, algorithm=MD5, qop=&#34;auth&#34;
-</code></pre><p>を付与したレスポンスがサーバーから帰ってくる。
+<pre><code>www-authenticate: Digest realm=&quot;secure&quot;, nonce=&quot;9HYa-V1Mba3QOk6f&quot;, algorithm=MD5, qop=&quot;auth&quot;
+</code></pre>
+<p>を付与したレスポンスがサーバーから帰ってくる。
 realmは認証領域、nonceは認証情報を隠すための乱数、algorithmは用いるハッシュ関数のアルゴリズムを表している。</p>
 <p>クライアントがユーザーとパスワードをuser:passのように入力したときは</p>
-<pre tabindex="0"><code>authorization: Digest username=&#34;user&#34;, realm=&#34;secure&#34;, nonce=&#34;9HYa-V1Mba3QOk6f&#34;, uri=&#34;/&#34;, algorithm=MD5, response=&#34;f11fd3424129e2f27546ce0fc1fd995a&#34;, qop=auth, nc=00000002, cnonce=&#34;59f367b44815ac37&#34;
-</code></pre><p>を付与してレスポンスを返す仕組みになっている。
+<pre><code>authorization: Digest username=&quot;user&quot;, realm=&quot;secure&quot;, nonce=&quot;9HYa-V1Mba3QOk6f&quot;, uri=&quot;/&quot;, algorithm=MD5, response=&quot;f11fd3424129e2f27546ce0fc1fd995a&quot;, qop=auth, nc=00000002, cnonce=&quot;59f367b44815ac37&quot;
+</code></pre>
+<p>を付与してレスポンスを返す仕組みになっている。
 ここで、uriはコンテンツのURI、responseはハッシュ値であり認証に用いられる値、ncは同じnonceを用いてリクエストするたびに増えてく値、cnonceはクライアント側で作られる乱数である。
 responseはユーザー名とパスワードとnonceやcnonceなどを用いて作られる。
 この値が毎回異なるハッシュ値のため、ここからユーザー名とパスワードを導くことは不可能である。</p>
 <p>次に、responseを計算する方法について説明する。
 wikipediaにはresponseは</p>
-<pre tabindex="0"><code>A1 = ユーザ名 &#34;:&#34; realm &#34;:&#34; パスワード
-A2 = HTTPのメソッド &#34;:&#34; コンテンツのURI
-response = MD5( MD5(A1) &#34;:&#34; nonce &#34;:&#34; nc &#34;:&#34; cnonce &#34;:&#34; qop &#34;:&#34; MD5(A2) )
-</code></pre><p>で計算されると書いてある。</p>
+<pre><code>A1 = ユーザ名 &quot;:&quot; realm &quot;:&quot; パスワード
+A2 = HTTPのメソッド &quot;:&quot; コンテンツのURI
+response = MD5( MD5(A1) &quot;:&quot; nonce &quot;:&quot; nc &quot;:&quot; cnonce &quot;:&quot; qop &quot;:&quot; MD5(A2) )
+</code></pre>
+<p>で計算されると書いてある。</p>
 <p>これを参考にBashでresponseを計算すると、</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>$ HA1<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo -n <span style="color:#e6db74">&#34;user:secure:pass&#34;</span> | md5<span style="color:#e6db74">`</span>
-</span></span><span style="display:flex;"><span>$ HA2<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>echo -n <span style="color:#e6db74">&#34;GET:/&#34;</span> | md5<span style="color:#e6db74">`</span>
-</span></span><span style="display:flex;"><span>$ nonce<span style="color:#f92672">=</span>9HYa-V1Mba3QOk6f
-</span></span><span style="display:flex;"><span>$ nc<span style="color:#f92672">=</span><span style="color:#ae81ff">00000002</span>
-</span></span><span style="display:flex;"><span>$ cnonce<span style="color:#f92672">=</span>59f367b44815ac37
-</span></span><span style="display:flex;"><span>$ qop<span style="color:#f92672">=</span>auth
-</span></span><span style="display:flex;"><span>$ echo -n <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HA1<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>nonce<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>nc<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>cnonce<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>qop<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>HA2<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | md5
-</span></span><span style="display:flex;"><span>f11fd3424129e2f27546ce0fc1fd995a
-</span></span></code></pre></div><p>となる。</p>
+<pre><code class="language-Bash">$ HA1=`echo -n &quot;user:secure:pass&quot; | md5`
+$ HA2=`echo -n &quot;GET:/&quot; | md5`
+$ nonce=9HYa-V1Mba3QOk6f
+$ nc=00000002
+$ cnonce=59f367b44815ac37
+$ qop=auth
+$ echo -n &quot;${HA1}:${nonce}:${nc}:${cnonce}:${qop}:${HA2}&quot; | md5
+f11fd3424129e2f27546ce0fc1fd995a
+</code></pre>
+<p>となる。</p>
 <p>JavaScriptでは</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">crypto</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;crypto&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">md5</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">data</span>) =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">md5</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">crypto</span>.<span style="color:#a6e22e">createHash</span>(<span style="color:#e6db74">&#39;md5&#39;</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">md5</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">data</span>, <span style="color:#e6db74">&#39;binary&#39;</span>).<span style="color:#a6e22e">digest</span>(<span style="color:#e6db74">&#39;hex&#39;</span>)
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> () =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;user&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pass&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">realm</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;secure&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">HA1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">md5</span>([<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">realm</span>, <span style="color:#a6e22e">password</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">method</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;GET&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">uri</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">HA2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">md5</span>([<span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">uri</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nonce</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;9HYa-V1Mba3QOk6f&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nc</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;00000002&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cnonce</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;59f367b44815ac37&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">qop</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;auth&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">md5</span>([<span style="color:#a6e22e">HA1</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">nc</span>, <span style="color:#a6e22e">cnonce</span>, <span style="color:#a6e22e">qop</span>, <span style="color:#a6e22e">HA2</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">response</span>); <span style="color:#75715e">// f11fd3424129e2f27546ce0fc1fd995a
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>})();
-</span></span></code></pre></div><p>で計算できる。</p>
+<pre><code class="language-javascript">const crypto = require('crypto');
+
+const md5 = async (data) =&gt; {
+    const md5 = crypto.createHash('md5');
+    return md5.update(data, 'binary').digest('hex')
+};
+
+(async () =&gt; {
+    const username = &quot;user&quot;;
+    const password = &quot;pass&quot;;
+    const realm = &quot;secure&quot;;
+    const HA1 = await md5([username, realm, password].join(&quot;:&quot;));
+
+    const method = &quot;GET&quot;;
+    const uri = &quot;/&quot;;
+    const HA2 = await md5([method, uri].join(&quot;:&quot;));
+
+    const nonce = &quot;9HYa-V1Mba3QOk6f&quot;;
+    const nc = &quot;00000002&quot;;
+    const cnonce = &quot;59f367b44815ac37&quot;;
+    const qop = &quot;auth&quot;;
+    const response = await md5([HA1, nonce, nc, cnonce, qop, HA2].join(&quot;:&quot;));
+
+    console.log(response); // f11fd3424129e2f27546ce0fc1fd995a
+})();
+</code></pre>
+<p>で計算できる。</p>
 <h3 id="まとめ">まとめ</h3>
 <ul>
 <li>Digest認証のハッシュ値の計算をBashとJavaScriptを用いて計算を行った。</li>
@@ -605,183 +234,479 @@ response = MD5( MD5(A1) &#34;:&#34; nonce &#34;:&#34; nc &#34;:&#34; cnonce &#34
 </ul>
 <h3 id="追記">追記</h3>
 <p>Digest認証において、リバースプロキシが状態を保持しているのか確認したかったので、ncが重複するリクエストを送りつける実験を行う。
-今回は私が普段から使っている<a href="https://github.com/traefik/traefik">traefik</a>を用いて試験を行う。</p>
+今回は私が普段から使っている<a href="https://github.com/traefik/traefik" target="_blank">traefik</a>を用いて試験を行う。</p>
 <p>まずtraefikのドキュメントを確認しながら、<code>http://localhost</code>にtraefikを立ててdigest認証を有効化する。
 そして次のコードを書く。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">crypto</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;crypto&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">KD</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">realm</span>, <span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">uri</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">nc</span>, <span style="color:#a6e22e">cnonce</span>, <span style="color:#a6e22e">qop</span>) =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">HA1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">md5</span>([<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">realm</span>, <span style="color:#a6e22e">password</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">HA2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">md5</span>([<span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">uri</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">md5</span>([<span style="color:#a6e22e">HA1</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">nc</span>, <span style="color:#a6e22e">cnonce</span>, <span style="color:#a6e22e">qop</span>, <span style="color:#a6e22e">HA2</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">parse</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">credentials</span>) =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">credentials</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">credentials</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">undefined</span>) <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> {};
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">credentials</span>
-</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">substr</span>(<span style="color:#ae81ff">7</span>)
-</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;, &#34;</span>)
-</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">param</span>) =&gt; {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">val</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">param</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;=&#34;</span>);
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">c</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/&#34;/g</span>, <span style="color:#e6db74">&#34;&#34;</span>);
-</span></span><span style="display:flex;"><span>        });
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">realm</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">opaque</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">algorithm</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">qop</span>];
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> () =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;user&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pass&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">method</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;GET&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">uri</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// const nc = &#34;00000002&#34;; 二度目の実験ではこのコメントを外す
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cnonce</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2b93895fec6ce68d&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost/&#34;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">credentials</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res1</span>.<span style="color:#a6e22e">headers</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;www-authenticate&#34;</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res1</span>.<span style="color:#a6e22e">status</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">realm</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">opaque</span>, <span style="color:#a6e22e">algorithm</span>, <span style="color:#a6e22e">qop</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">credentials</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nc</span> <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;00000000&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span>).<span style="color:#a6e22e">slice</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>); <span style="color:#75715e">// 二度目の実験ではコメントアウト
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">KD</span>(<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">realm</span>, <span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">uri</span>, <span style="color:#a6e22e">nonce</span>, <span style="color:#a6e22e">nc</span>, <span style="color:#a6e22e">cnonce</span>, <span style="color:#a6e22e">qop</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;method&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;GET&#39;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;headers&#34;</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;Authorization&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Digest &#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;username=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;, realm=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">realm</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;, nonce=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">nonce</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;, uri=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">uri</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;, algorithm=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">algorithm</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;, response=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;, opaque=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">opaque</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;, qop=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">qop</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;, nc=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">nc</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;, cnonce=&#34;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">cnonce</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&#34;&#39;</span>
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        };
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">options</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res2</span>.<span style="color:#a6e22e">status</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>})();
-</span></span></code></pre></div><p>このコードをmain.jsで保存して実行すると、</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>$ node main.js
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
-</span></span></code></pre></div><p>となり、最初以外全て認証突破している。
+<pre><code class="language-javascript">const crypto = require('crypto');
+
+const KD = async (username, password, realm, method, uri, nonce, nc, cnonce, qop) =&gt; {
+    const HA1 = await md5([username, realm, password].join(&quot;:&quot;));
+    const HA2 = await md5([method, uri].join(&quot;:&quot;));
+    const response = await md5([HA1, nonce, nc, cnonce, qop, HA2].join(&quot;:&quot;));
+
+    return response
+};
+
+const parse = (credentials) =&gt; {
+    if (credentials == null || credentials == undefined) return;
+    let c = {};
+    credentials
+        .substr(7)
+        .split(&quot;, &quot;)
+        .forEach((param) =&gt; {
+            const [key, val] = param.split(&quot;=&quot;);
+            c[key] = val.replace(/&quot;/g, &quot;&quot;);
+        });
+    return [c.realm, c.nonce, c.opaque, c.algorithm, c.qop];
+};
+
+(async () =&gt; {
+    const username = &quot;user&quot;;
+    const password = &quot;pass&quot;;
+    const method = &quot;GET&quot;;
+    const uri = &quot;/&quot;;
+    // const nc = &quot;00000002&quot;; 二度目の実験ではこのコメントを外す
+    const cnonce = &quot;2b93895fec6ce68d&quot;;
+
+    const url = &quot;http://localhost/&quot;;
+    const res1 = await fetch(url);
+    const credentials = res1.headers.get(&quot;www-authenticate&quot;);
+    console.log(res1.status);
+    let [realm, nonce, opaque, algorithm, qop] = await parse(credentials);
+
+    for (let i = 1; i &lt; 10; i++) {
+        const nc = ('00000000' + i).slice(-8); // 二度目の実験ではコメントアウト
+
+        const response = await KD(username, password, realm, method, uri, nonce, nc, cnonce, qop);
+        const options = {
+            &quot;method&quot; : 'GET',
+            &quot;headers&quot;: {
+                &quot;Authorization&quot;: 'Digest ' + 'username=&quot;' + username + '&quot;, realm=&quot;' + realm + '&quot;, nonce=&quot;' + nonce + '&quot;, uri=&quot;' + uri + '&quot;, algorithm=' + algorithm + ', response=&quot;' + response + '&quot;, opaque=&quot;' + opaque + '&quot;, qop=' + qop + ', nc=' + nc + ', cnonce=&quot;' + cnonce + '&quot;'
+            }
+        };
+        const res2 = await fetch(url, options);
+        console.log(res2.status);
+    }
+})();
+</code></pre>
+<p>このコードをmain.jsで保存して実行すると、</p>
+<pre><code class="language-Bash">$ node main.js
+401
+200
+200
+200
+200
+200
+200
+200
+200
+200
+</code></pre>
+<p>となり、最初以外全て認証突破している。
 一方で、二度目の実験(ncを変化させない)を行うと、</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>$ node main.js
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">200</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">401</span>
-</span></span></code></pre></div><p>となる。
+<pre><code class="language-Bash">$ node main.js
+401
+200
+401
+401
+401
+401
+401
+401
+401
+401
+</code></pre>
+<p>となる。
 最初の401はサーバーがnonceを返す。
 二度目の200はncが初めて使われるので認証突破。
 それ移行はncがすでに使われているので認証を突破できない。
 このことからtraefikのDigest認証は真面目に状態を保持していることがわかった。
 さらに、サーバーで作ったnonceを無視して、クライアント側で勝手にnonceを作って認証情報を送るなどの実験もしたが、それでは突破出来なかった。
 またcnonceは毎回同じでも認証には関係なかった。</p>
-<p>traefikの実装を見てみると、digest認証の部分には<a href="https://github.com/abbot/go-http-auth">abbot/go-http-auth</a>が使われている。
+<p>traefikの実装を見てみると、digest認証の部分には<a href="https://github.com/abbot/go-http-auth" target="_blank">abbot/go-http-auth</a>が使われている。
 このリポジトリを見ると内部でメモリのMapやArrayなどのデータ構造を用いてncやnonceを管理している様子。</p>
 
-      </div>
     </div>
-  </div>
-  <div class="pure-u-1-24 pure-u-lg-5-24"></div>
-</div>
+</article>
 
-<div class="footer pure-g">
-  <div class="pure-u-lg-5-24"></div>
-  <div class="pure-u-1 pure-u-lg-7-12">
-    <div class="footer-content">
-      <div class="pure-menu pure-menu-horizontal">
+
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>ページ</h3>
         <ul>
-          
-          <li class="pure-menu-item" id="foot-name">© derbuihan</li>
-          
-
-          
-
-          
-          <li class="pure-menu-item">
-            <a href="https://github.com/derbuihan" class="pure-menu-link">GitHub</a>
-          </li>
-          
-
-          
-          <li class="pure-menu-item">
-            <a href="https://twitter.com/derbuihan" class="pure-menu-link">Twitter</a>
-          </li>
-          
-
-          
-
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/works/">Works</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
         </ul>
-        <a href="#" class="pure-menu-link pull-right" id="gototop-btn">↑↑</a>
-      </div>
-      
     </div>
-  </div>
-  <div class="pure-u-lg-5-24"></div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>リンク</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/derbuihan" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/derbuihan" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>タグ</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/atom/">Atom</a>
+            </span>
+            
+            <span>
+                <a href="/tags/bash/">Bash</a>
+            </span>
+            
+            <span>
+                <a href="/tags/coq/">Coq</a>
+            </span>
+            
+            <span>
+                <a href="/tags/datasets/">Datasets</a>
+            </span>
+            
+            <span>
+                <a href="/tags/digestauth/">DigestAuth</a>
+            </span>
+            
+            <span>
+                <a href="/tags/docker/">docker</a>
+            </span>
+            
+            <span>
+                <a href="/tags/elm/">Elm</a>
+            </span>
+            
+            <span>
+                <a href="/tags/emacs/">Emacs</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gitlab/">GitLab</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gpu/">gpu</a>
+            </span>
+            
+            <span>
+                <a href="/tags/haskell/">Haskell</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/js/">JS</a>
+            </span>
+            
+            <span>
+                <a href="/tags/minisat/">MiniSat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/python/">Python</a>
+            </span>
+            
+            <span>
+                <a href="/tags/pytorch/">pytorch</a>
+            </span>
+            
+            <span>
+                <a href="/tags/review/">review</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sat/">SAT</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tensorflow/">tensorflow</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tex/">Tex</a>
+            </span>
+            
+            <span>
+                <a href="/tags/vps/">VPS</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/">機械学習</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/">環境構築</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%9B%B8%E8%BB%A2%E7%A7%BB/">相転移</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%B4%A0%E6%95%B0/">素数</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
 </div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>ページ</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/works/">Works</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>リンク</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/derbuihan" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/derbuihan" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>タグ</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/atom/">Atom</a>
+            </span>
+            
+            <span>
+                <a href="/tags/bash/">Bash</a>
+            </span>
+            
+            <span>
+                <a href="/tags/coq/">Coq</a>
+            </span>
+            
+            <span>
+                <a href="/tags/datasets/">Datasets</a>
+            </span>
+            
+            <span>
+                <a href="/tags/digestauth/">DigestAuth</a>
+            </span>
+            
+            <span>
+                <a href="/tags/docker/">docker</a>
+            </span>
+            
+            <span>
+                <a href="/tags/elm/">Elm</a>
+            </span>
+            
+            <span>
+                <a href="/tags/emacs/">Emacs</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gitlab/">GitLab</a>
+            </span>
+            
+            <span>
+                <a href="/tags/gpu/">gpu</a>
+            </span>
+            
+            <span>
+                <a href="/tags/haskell/">Haskell</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">Hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/js/">JS</a>
+            </span>
+            
+            <span>
+                <a href="/tags/minisat/">MiniSat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/python/">Python</a>
+            </span>
+            
+            <span>
+                <a href="/tags/pytorch/">pytorch</a>
+            </span>
+            
+            <span>
+                <a href="/tags/review/">review</a>
+            </span>
+            
+            <span>
+                <a href="/tags/sat/">SAT</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tensorflow/">tensorflow</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tex/">Tex</a>
+            </span>
+            
+            <span>
+                <a href="/tags/vps/">VPS</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/">機械学習</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/">環境構築</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%9B%B8%E8%BB%A2%E7%A7%BB/">相転移</a>
+            </span>
+            
+            <span>
+                <a href="/tags/%E7%B4%A0%E6%95%B0/">素数</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2022-2022
+                <a href="https://derbuihan.github.io/">derbuihan</a>
+                 | <a href="https://github.com/derbuihan/">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 
 
-  <script src="https://derbuihan.github.io/highlight/highlight.min.js"></script>
-  
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/coq.min.js"></script>
-  
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>
-  
-  <script>
-    hljs.initHighlighting();
-    hljs.initLineNumbersOnLoad();
-  </script>
+<script defer src="/assets/js/fuji.min.js"></script>
 
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-    });
-</script>
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-<script type="text/javascript">
-  go();
-  window.addEventListener('resize', go);
-  function go(){
-    var d=document.querySelector(".desktop")
-    if(document.documentElement.clientWidth > 768) {
-      d.style.display="";
-    } else {
-      d.style.display="none";
-    }
-  }
-</script>
-<script type="text/javascript">
-  var a=document.querySelector("#toggle-btn"),b=document.querySelector("#toggle-content");a.addEventListener("click",function(){""==b.style.display?(b.style.display="none",a.innerHTML="☰"):(b.style.display="",a.innerHTML="X")});</script>
-
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-106862529-8', 'auto');
-  ga('send', 'pageview');
+  renderMathInElement(document.querySelector('div.content'), {
+    delimiters: [
+      { left: '$$', right: '$$', display: true },
+      { left: '\\[', right: '\\]', display: true },
+      { left: '$', right: '$', display: false },
+      { left: '\\(', right: '\\)', display: false },
+    ],
+  });
 </script>
+
+
+
 
 </body>
-</html>
 
+</html>

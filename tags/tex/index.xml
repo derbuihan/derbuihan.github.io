@@ -5,7 +5,7 @@
     <link>https://derbuihan.github.io/tags/tex/</link>
     <description>Recent content in Tex on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Sat, 29 Dec 2018 23:35:55 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/tex/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Atomで入れるプラグイン一覧</title>
@@ -13,7 +13,7 @@
       <pubDate>Sat, 29 Dec 2018 23:35:55 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/atom_package/</guid>
-      <description>随時更新していきます。 通常編 とりあえずAtomをインストールしたら入れるプラグイン atomic-emacs AtomでEmacsのキーバインドを使う。 japanese-menu 設定を日本語</description>
+      <description>随時更新していきます。 通常編 とりあえずAtomをインストールしたら入れるプラグイン atomic-emacs AtomでEmacsのキーバインドを使う。 japanese-menu 設定を日本語化 platformio-ide-terminal Ctrl-`で下からターミナルが出てくるようになる。 project-manager p</description>
     </item>
     
   </channel>

@@ -5,7 +5,7 @@
     <link>https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/</link>
     <description>Recent content in 環境構築 on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Fri, 18 Dec 2020 12:05:33 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>i7 870にTensorflowの環境構築方法</title>
@@ -13,7 +13,7 @@
       <pubDate>Fri, 18 Dec 2020 12:05:33 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/tensorflow_i7_870/</guid>
-      <description>はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用サーバーを作りました。 このとき、最新のTensorflowをインストー</description>
+      <description>はじめに 落ちてたi7 870のパソコンにグラボを2枚刺して、機械学習専用サーバーを作りました。 このとき、最新のTensorflowをインストールしても使えないので苦労しました。 これはi7 870はSand</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Thu, 14 Feb 2019 01:14:02 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_downgrade/</guid>
-      <description>いつものように $ brew update &amp;amp;&amp;amp; brew upgrade してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのve</description>
+      <description>いつものように $ brew update &amp;amp;&amp;amp; brew upgrade してたらcoqのversionが8.9.0になってしまい、今まで書いていたコードが動かなくなったので、coqのversionを8.8.2にします。 ほとんど↓の記事を見ながらや</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Sat, 12 Jan 2019 19:26:34 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/without_root/</guid>
-      <description>Rootなしで人権を得る方法です。 Tmuxをビルドする。 こんな素晴らしい記事がある。 これをコピペして実行。 linuxbrewを用いる。 以下を</description>
+      <description>Rootなしで人権を得る方法です。 Tmuxをビルドする。 こんな素晴らしい記事がある。 これをコピペして実行。 linuxbrewを用いる。 以下を~/.bashrcに追加して再度ログイン。 if [ ! -r ~/.linuxbrew ]; then git clone</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@
       <pubDate>Sat, 29 Dec 2018 23:35:55 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/atom_package/</guid>
-      <description>随時更新していきます。 通常編 とりあえずAtomをインストールしたら入れるプラグイン atomic-emacs AtomでEmacsのキーバインドを使う。 japanese-menu 設定を日本語</description>
+      <description>随時更新していきます。 通常編 とりあえずAtomをインストールしたら入れるプラグイン atomic-emacs AtomでEmacsのキーバインドを使う。 japanese-menu 設定を日本語化 platformio-ide-terminal Ctrl-`で下からターミナルが出てくるようになる。 project-manager p</description>
     </item>
     
     <item>
@@ -49,7 +49,7 @@
       <pubDate>Thu, 20 Dec 2018 15:17:22 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_install/</guid>
-      <description>Mac編 brewとbrew caskを用いた環境構築を行います。 GUI版Emacsのインストール brew cask install emacs Coqのインストール brewでCoqを</description>
+      <description>Mac編 brewとbrew caskを用いた環境構築を行います。 GUI版Emacsのインストール brew cask install emacs Coqのインストール brewでCoqをインストールします。 brew install coq Emacsの設定 最近のEmacsは</description>
     </item>
     
   </channel>

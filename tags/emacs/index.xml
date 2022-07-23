@@ -5,7 +5,7 @@
     <link>https://derbuihan.github.io/tags/emacs/</link>
     <description>Recent content in Emacs on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Thu, 20 Dec 2018 15:17:22 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Proof-Generalを用いたCoqの環境構築</title>
@@ -13,7 +13,7 @@
       <pubDate>Thu, 20 Dec 2018 15:17:22 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/coq_install/</guid>
-      <description>Mac編 brewとbrew caskを用いた環境構築を行います。 GUI版Emacsのインストール brew cask install emacs Coqのインストール brewでCoqを</description>
+      <description>Mac編 brewとbrew caskを用いた環境構築を行います。 GUI版Emacsのインストール brew cask install emacs Coqのインストール brewでCoqをインストールします。 brew install coq Emacsの設定 最近のEmacsは</description>
     </item>
     
   </channel>

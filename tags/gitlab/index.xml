@@ -5,7 +5,7 @@
     <link>https://derbuihan.github.io/tags/gitlab/</link>
     <description>Recent content in GitLab on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
+    <language>ja</language>
     <lastBuildDate>Mon, 08 Apr 2019 23:46:31 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/gitlab/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Elmで作ったものをGitLab CI/CDをつかってGitLab Pagesに公開する</title>
@@ -13,7 +13,7 @@
       <pubDate>Mon, 08 Apr 2019 23:46:31 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/elm_gitlab_cicd/</guid>
-      <description>Elmでフーリエ級数展開やライフゲームを制作したのでCI/CDを試してみました。 この記事ではElmで作ったものをGitLab CI/CDを使っ</description>
+      <description>Elmでフーリエ級数展開やライフゲームを制作したのでCI/CDを試してみました。 この記事ではElmで作ったものをGitLab CI/CDを使ってGitLab Pagesにdeployする方法を紹介します。</description>
     </item>
     
   </channel>
