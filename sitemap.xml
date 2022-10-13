@@ -2,10 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://derbuihan.github.io/tags/bash/</loc>
-    <lastmod>2022-07-13T00:27:26+09:00</lastmod>
-  </url><url>
     <loc>https://derbuihan.github.io/</loc>
+    <lastmod>2022-09-16T21:12:37+09:00</lastmod>
+  </url><url>
+    <loc>https://derbuihan.github.io/tags/kernel/</loc>
+    <lastmod>2022-09-16T21:12:37+09:00</lastmod>
+  </url><url>
+    <loc>https://derbuihan.github.io/tags/linux/</loc>
+    <lastmod>2022-09-16T21:12:37+09:00</lastmod>
+  </url><url>
+    <loc>https://derbuihan.github.io/posts/linux_tcp_rto_hack/</loc>
+    <lastmod>2022-09-16T21:12:37+09:00</lastmod>
+  </url><url>
+    <loc>https://derbuihan.github.io/posts/</loc>
+    <lastmod>2022-09-16T21:12:37+09:00</lastmod>
+  </url><url>
+    <loc>https://derbuihan.github.io/tags/tcp/</loc>
+    <lastmod>2022-09-16T21:12:37+09:00</lastmod>
+  </url><url>
+    <loc>https://derbuihan.github.io/tags/bash/</loc>
     <lastmod>2022-07-13T00:27:26+09:00</lastmod>
   </url><url>
     <loc>https://derbuihan.github.io/tags/digestauth/</loc>
@@ -15,9 +30,6 @@
     <lastmod>2022-07-13T00:27:26+09:00</lastmod>
   </url><url>
     <loc>https://derbuihan.github.io/tags/js/</loc>
-    <lastmod>2022-07-13T00:27:26+09:00</lastmod>
-  </url><url>
-    <loc>https://derbuihan.github.io/posts/</loc>
     <lastmod>2022-07-13T00:27:26+09:00</lastmod>
   </url><url>
     <loc>https://derbuihan.github.io/tags/python/</loc>
