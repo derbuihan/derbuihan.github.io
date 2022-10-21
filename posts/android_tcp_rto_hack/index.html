@@ -16,7 +16,7 @@
 
 
 
-<title>Linux - derbuihan blog</title>
+<title>Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法 〜Android編〜 - derbuihan blog</title>
 
 
 <meta name="author" content="derbuihan" />
@@ -25,14 +25,16 @@
 <meta name="description" content="derbuihan blog" />
 
 
-<link rel="alternate" type="application/rss+xml" href="https://derbuihan.github.io/tags/linux/index.xml" title="derbuihan blog" />
+<meta name="keywords" content="Linux, TCP, kernel" />
 
-<meta property="og:title" content="Linux" />
-<meta name="twitter:title" content="Linux" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://derbuihan.github.io/tags/linux/" /><meta property="og:image" content="https://derbuihan.github.io/img/og.png" />
+
+<meta property="og:title" content="Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法 〜Android編〜" />
+<meta name="twitter:title" content="Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法 〜Android編〜" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://derbuihan.github.io/posts/android_tcp_rto_hack/" /><meta property="og:description" content="はじめに Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法はこの記事で実験を行った。 ただ私のようなMacユーザーはLinuxをサーバー用途でしか使わないため、カーネルを書き換え" />
+<meta name="twitter:description" content="はじめに Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法はこの記事で実験を行った。 ただ私のようなMacユーザーはLinuxをサーバー用途でしか使わないため、カーネルを書き換え" /><meta property="og:image" content="https://derbuihan.github.io/img/og.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://derbuihan.github.io/img/og.png" /><meta property="og:updated_time" content="2022-10-21T23:42:59+09:00" />
+<meta name="twitter:image" content="https://derbuihan.github.io/img/og.png" /><meta property="article:published_time" content="2022-10-21T23:42:59+09:00" /><meta property="article:modified_time" content="2022-10-21T23:42:59+09:00" />
 
 
 <style>
@@ -107,46 +109,143 @@
             
             <div class="col-12 col-md-9 float-left content">
                 
-
-<div class="page-info">
-  <span>タグ Linux を持つ記事：</span>
-</div>
-
-
-
-<div class="post">
-  <h2 class="post-item post-title">
-    <a href="https://derbuihan.github.io/posts/android_tcp_rto_hack/">Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法 〜Android編〜</a>
-  </h2>
-  <div class="post-item post-meta">
-    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-10-21</span>
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://derbuihan.github.io/posts/android_tcp_rto_hack/">Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法 〜Android編〜</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-10-21</span>
 
 <span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1752 字</span>
 
 <span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/linux">Linux</a>&nbsp;<a href="/tags/tcp">TCP</a>&nbsp;<a href="/tags/kernel">kernel</a>&nbsp;</span>
 
-  </div>
-  <div class="post-item post-summary markdown-body">
-    はじめに Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法はこの記事で実験を行った。 ただ私のようなMacユーザーはLinuxをサーバー用途でしか使わないため、カーネルを書き換え
-  </div>
-</div>
+    </div>
+    
+    <div class="post-content markdown-body">
+        <h2 id="はじめに">はじめに</h2>
+<p>Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法は<a href="/posts/android_tcp_rto_hack/">この記事</a>で実験を行った。
+ただ私のようなMacユーザーはLinuxをサーバー用途でしか使わないため、カーネルを書き換えたところでそこまで得できない。
+やはりこれを使うにはクライアント端末でKernelを書き換える方が楽しい。
+私が普段使ってるクライアント端末でKernelを書き換えられそうなもの、そうAndroidである。
+この記事では自分の持ってるスマホに、私が書き換えたkernelをインストールして実験してみる。
+（この記事はただの検証記事でありTCPのプロトコルを裏切ることを推奨するものではありません。私も書き換えたカーネルを普段使いしているわけではありません。）</p>
+<h2 id="androidをソースからビルドする方法">Androidをソースからビルドする方法</h2>
+<p>この記事ではPixelExperienceというAndroidのCustom firmwareのビルド方法を紹介する。
+ビルドに用いたマシンは、OS: Ubuntu 22.04 LTS, メモリ: 16GB (+ Swap 32GB)である。
+以下の内容は、<a href="https://wiki.pixelexperience.org/devices/sweet/build/" target="_blank">この記事</a>を参考にした。</p>
+<p>fastbootやadbやgitやpythonをインストールする。</p>
+<pre><code class="language-Bash">sudo apt install android-sdk git python-is-python3
+</code></pre>
+<p>androidをビルドするための依存関係全部インストールするスクリプト実行する。</p>
+<pre><code class="language-Bash">git clone https://github.com/akhilnarang/scripts
+cd scripts
+./setup/android_build_env.sh
+</code></pre>
+<p>ビルド用のディレクトリを作る。</p>
+<pre><code class="language-Bash">mkdir -p ~/android/pe
+</code></pre>
+<p>gitの設定を作る。（すでにやってたら必要なし）</p>
+<pre><code class="language-Bash">git config --global user.email &quot;you@example.com&quot;
+git config --global user.name &quot;Your Name&quot;
+</code></pre>
+<p>~/android/peをrepositoryとして初期化。</p>
+<pre><code class="language-Bash">cd ~/android/pe
+repo init -u https://github.com/PixelExperience/manifest -b twelve-plus
+</code></pre>
+<p>ソースをすべてダウンロード</p>
+<pre><code class="language-Bash">repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+</code></pre>
+<p>ディバイス固有のソースファイルをすべてダウンロード</p>
+<pre><code class="language-Bash">source build/envsetup.sh
+lunch aosp_sweet-userdebug
+</code></pre>
+<p>ccacheを用いてビルドをキャッシュする。
+.bashrcに書き込む。</p>
+<pre><code class="language-Bash">export USE_CCACHE=1
+export CCACHE_EXEC=/usr/bin/ccache
+export CCACHE_DIR=~/.ccache
+</code></pre>
+<p>ccacheの容量を指定し、圧縮を有効化。</p>
+<pre><code class="language-Bash">ccache -C
+ccache -M 50G
+ccache -o compression=true
+</code></pre>
+<p>あとはビルド</p>
+<pre><code class="language-Bash">croot
+mka bacon -j$(nproc --all)
+</code></pre>
+<p>boot.imgのみビルド</p>
+<pre><code class="language-Bash">mka bootimage -j$(nproc --all)
+</code></pre>
+<p><code>echo $OUT</code>にビルドしたinstaller packageや、boot.imgがあるはずなのでそれをtwrpなどで端末に突っ込んだら終了。
+ちなみに、kernelを書き換えるためには、boot.imgのみをインストールすれば良い。</p>
+<h2 id="adb-fastbootのコマンド集">adb, fastbootのコマンド集</h2>
+<p>ここでadbとfastbootでよく使うコマンドをまとめておく</p>
+<p>まず、端末がadbの命令を受け取れる状態かを確認する。</p>
+<pre><code class="language-Bash">adb devices
+</code></pre>
+<p>再起動、リカバリーモード、fastbootモードを起動</p>
+<pre><code class="language-Bash">adb reboot
+adb reboot recovery
+adb reboot fastboot
+</code></pre>
+<p>ファイルを転送（例えばboot.imgを移す方法）</p>
+<pre><code class="language-Bash">adb push out/target/product/sweet/boot.img /sdcard/
+</code></pre>
+<p>Android内のShellを叩く（内部的にはtoyboxなので最低限のコマンドしか叩けない）</p>
+<pre><code class="language-Bash">adb shell ls
+</code></pre>
+<p>fastbootモードでtwrpを起動（起動のみで書き込まれない。twrpの画面からflash出来る。）</p>
+<pre><code class="language-Bash">fastboot boot twrp-3.6.2_9-0-tissot.img 
+</code></pre>
+<p>これだけ覚えとけば大丈夫</p>
+<h2 id="kernelをビルドしてインストール">kernelをビルドしてインストール</h2>
+<p>まず、<code>~/android/pe/kernel/vender/device/</code>内にカーネルのソースコードがあるので、以下に対応する部分を書き換える。</p>
+<p><a href="https://github.com/torvalds/linux/blob/v5.15/include/net/tcp.h#L139" target="_blank">https://github.com/torvalds/linux/blob/v5.15/include/net/tcp.h#L139</a></p>
+<p>変更前</p>
+<pre><code class="language-C">#define TCP_RTO_MAX	((unsigned)(120*HZ))
+</code></pre>
+<p>変更後</p>
+<pre><code class="language-C">#define TCP_RTO_MAX	((unsigned)(1*HZ))
+</code></pre>
+<p>ビルド</p>
+<pre><code class="language-Bash">mka bootimage -j$(nproc --all)
+</code></pre>
+<p>ファイルを転送（例えばboot.imgを移す方法）</p>
+<pre><code class="language-Bash">adb push out/target/product/sweet/boot.img /sdcard/
+</code></pre>
+<p><code>adb reboot recovery</code>でtwrpの画面からkernelをインストールする。</p>
+<h2 id="検証">検証</h2>
+<p>さて、192.168.0.20に23番ポートを塞いだサーバーを用意する。
+このサーバーに対して<code>netcat</code>を用いてtcpの通信を試みる。
+具体的には以下のコマンドで計測を行った。</p>
+<pre><code>adb shell time  netcat 192.168.0.20 23
+</code></pre>
+<p>kernelの書き換え前と書き換え後でtime outまでの時間を計測した。</p>
+<p>kernelの書き換え前</p>
+<pre><code>$ adb shell time  netcat 192.168.0.20 23
+netcat: connect: Connection timed out
+    0m31.26s real     0m00.01s user     0m00.01s system
+</code></pre>
+<p>kernelの書き換え後</p>
+<pre><code>$ adb shell time  netcat 192.168.0.20 23
+netcat: connect: Connection timed out
+    0m05.09s real     0m00.00s user     0m00.01s system
+</code></pre>
+<p>前回の実験と合わせて、Androidは<code>net.ipv4.tcp_syn_retries = 4</code>に設定していることがわかる。
+その上で再送の間隔が指数関数的に伸びないように変更出来た。</p>
+<h2 id="感想">感想</h2>
+<ul>
+<li>Androidのビルドしてインストールは以外と簡単に出来た。（数時間CPU使用率100%だったが。）</li>
+<li>Androidのlinux kernelは普通のlinux kernelと結構似ているので意外と遊びの幅が広いかもしれない。</li>
+<li>古いAndroid端末向けに最新Androidをビルドするとかやってみたい。</li>
+</ul>
 
-<div class="post">
-  <h2 class="post-item post-title">
-    <a href="https://derbuihan.github.io/posts/linux_tcp_rto_hack/">Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法</a>
-  </h2>
-  <div class="post-item post-meta">
-    <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-09-16</span>
+    </div>
+</article>
 
-<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2299 字</span>
-
-<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/linux">Linux</a>&nbsp;<a href="/tags/tcp">TCP</a>&nbsp;<a href="/tags/kernel">kernel</a>&nbsp;</span>
-
-  </div>
-  <div class="post-item post-summary markdown-body">
-    はじめに インターネットには多数のデバイスが存在しており、その多数のデバイスが通信し合うために通信プロトコルが定義されている。 様々な通信プロトコルを勉強していくと、ネットワーク内の通信が正常に行えるため
-  </div>
-</div>
 
 
 
@@ -325,8 +424,6 @@
             
         </div>
     </div>
-    
-    
     
 </aside>
 
@@ -517,6 +614,8 @@
             
         </div>
     </div>
+    
+    
     
     
   </div>
