@@ -6,7 +6,16 @@
     <description>Recent content in Coq on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 14 Feb 2019 01:14:02 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/coq/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Oct 2022 03:53:00 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/coq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Proof-Generalを用いたCoqの環境構築</title>
+      <link>https://derbuihan.github.io/posts/coq_install/</link>
+      <pubDate>Sun, 23 Oct 2022 03:53:00 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/coq_install/</guid>
+      <description>はじめに 久々にCoqで遊びたくなったので、M1 Macにインストールしてみた。 最近のCoqはVSCodeで書くのが主流？らしいが、今回はEmacs + Proof-Generalで環境構築を行う。 環境構築の</description>
+    </item>
+    
     <item>
       <title>MacでCoqのバージョンを指定してインストール</title>
       <link>https://derbuihan.github.io/posts/coq_downgrade/</link>
@@ -50,15 +59,6 @@
       
       <guid>https://derbuihan.github.io/posts/coq_set_theory/</guid>
       <description>はじめに Coqで集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のためauto.を使わないで証明を行います。 集合論 Section Ensembles. (* ここにコードを書く *) End Ensembles. 集合とは 1変数の述語を用いて集合論を定</description>
-    </item>
-    
-    <item>
-      <title>Proof-Generalを用いたCoqの環境構築</title>
-      <link>https://derbuihan.github.io/posts/coq_install/</link>
-      <pubDate>Thu, 20 Dec 2018 15:17:22 +0900</pubDate>
-      
-      <guid>https://derbuihan.github.io/posts/coq_install/</guid>
-      <description>Mac編 brewとbrew caskを用いた環境構築を行います。 GUI版Emacsのインストール brew cask install emacs Coqのインストール brewでCoqをインストールします。 brew install coq Emacsの設定 最近のEmacsは</description>
     </item>
     
   </channel>
