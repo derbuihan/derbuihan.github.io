@@ -163,7 +163,7 @@ Emacsの設定ファイルは<code>~/.emacs.d/init.el</code>に記載する。</
        (company-coq company proof-general)))
   '(proof-three-window-enable t))
 
-(add-hook 'coq-mode-hook #'company-coq-mode)
+(add-hook 'coq-mode-hook 'company-coq-mode)
 </code></pre>
 <p>emacsを起動して</p>
 <blockquote>
