@@ -117,7 +117,7 @@
     <div class="post-item post-meta">
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-10-23</span>
 
-<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;634 字</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;749 字</span>
 
 <span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/coq">Coq</a>&nbsp;<a href="/tags/emacs">Emacs</a>&nbsp;<a href="/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</a>&nbsp;</span>
 
@@ -173,7 +173,7 @@ Emacsの設定ファイルは<code>~/.emacs.d/init.el</code>に記載する。</
 これで環境構築が完了。</p>
 <h3 id="おまけ">おまけ</h3>
 <p>ssreflectのインストール</p>
-<pre><code>brew install ssreflect
+<pre><code>brew install ssreflect --build-from-source
 </code></pre>
 <p>参考: <a href="https://qiita.com/suharahiromichi/items/d16bebbe6f6c98f76d78" target="_blank">SSReflectノート</a></p>
 <p>ProofGeneralで使うキーバインド</p>
@@ -200,6 +200,40 @@ Emacsの設定ファイルは<code>~/.emacs.d/init.el</code>に記載する。</
 </tbody>
 </table>
 <p>参考: <a href="http://proofcafe.org/wiki/ProofGeneral/Keybinds" target="_blank">ProofGeneral/Keybinds</a></p>
+<h3 id="ヒルベルトの公理系を示す">ヒルベルトの公理系を示す。</h3>
+<p>久々のCoqなのでウォーミングアップとしてヒルベルトの公理系を証明してみる。</p>
+<pre><code class="language-Coq">From mathcomp
+       Require Import ssreflect.
+
+Require Import Classical.
+  
+Section Coq_test.
+
+  Variable A B C:Prop.
+
+  Lemma H1: A-&gt;(B-&gt;A).
+  Proof.
+    move =&gt; //.
+  Qed.
+
+  Lemma H2: (A-&gt;(B-&gt;C))-&gt;((A-&gt;B)-&gt;(A-&gt;C)).
+  Proof.
+    move =&gt; x y z.
+    apply x =&gt; //.
+    apply y =&gt; //.
+  Qed.
+
+  Lemma H3: (~C-&gt; ~A)-&gt;(A-&gt;C).
+  Proof.
+    move =&gt; x y.
+    specialize (classic C).
+    elim =&gt; z //.
+    specialize (x z).
+    contradiction.
+  Qed.
+  
+End Coq_test.
+</code></pre>
 <h3 id="感想">感想</h3>
 <ul>
 <li>CoqIDEもいいけど、Emacs + ProofGeneral + company-coqをやると最強になる。</li>
