@@ -6,7 +6,16 @@
     <description>Recent content on derbuihan blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 23 Oct 2022 03:53:00 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 04 Oct 2023 00:19:16 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「官僚制のユートピア」を読んだ</title>
+      <link>https://derbuihan.github.io/posts/the_utopia_of_rules/</link>
+      <pubDate>Wed, 04 Oct 2023 00:19:16 +0900</pubDate>
+      
+      <guid>https://derbuihan.github.io/posts/the_utopia_of_rules/</guid>
+      <description>はじめに デヴィッド・グレーバー「僚制のユートピア テクノロジー、構造的愚かさ、リベラリズムの鉄則」を読んだ。 これまでこのブログでは IT 技術関連の記事を書いてきたが、最近はZennで書くようになったので、こ</description>
+    </item>
+    
     <item>
       <title>Proof-Generalを用いたCoqの環境構築</title>
       <link>https://derbuihan.github.io/posts/coq_install/</link>
