@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>GitLab on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/gitlab/</link>
     <description>Recent content in GitLab on derbuihan blog</description>
+    <image>
+      <title>derbuihan blog</title>
+      <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
+    <language>en</language>
     <lastBuildDate>Mon, 08 Apr 2019 23:46:31 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/gitlab/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Elmで作ったものをGitLab CI/CDをつかってGitLab Pagesに公開する</title>
@@ -13,7 +18,10 @@
       <pubDate>Mon, 08 Apr 2019 23:46:31 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/elm_gitlab_cicd/</guid>
-      <description>Elmでフーリエ級数展開やライフゲームを制作したのでCI/CDを試してみました。 この記事ではElmで作ったものをGitLab CI/CDを使ってGitLab Pagesにdeployする方法を紹介します。</description>
+      <description>Elm でフーリエ級数展開やライフゲームを制作したので CI/CD を試してみました。 この記事では Elm で作ったものを GitLab CI/CD を使って GitLab Pages に deploy する方法を紹介します。
+コードを書く $ elm init $ vim src/Main.elm 今回はsrc/Main.elmを変換して公開します。
+git 管理する GitLab のアカウントを持ってない人はアカウントを作ってください。
+$ git init $ gibo dump elm &amp;gt; .gitignore $ git add elm.json src/Main.elm .gitignore $ git commit -m &amp;#34;first commit&amp;#34; $ git remote add origin git@gitlab.com:&amp;lt;username&amp;gt;/&amp;lt;reponame&amp;gt;.git $ git push --set-upstream origin master gibo は.gitignore を自動生成するコマンドです。(参考) .gitlab-ci.yml を作成 $ vim .gitlab-ci.yml 以下を.gitlab-ci.yml にコピペする</description>
     </item>
     
   </channel>

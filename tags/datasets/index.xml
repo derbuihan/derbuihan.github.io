@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Datasets on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/datasets/</link>
     <description>Recent content in Datasets on derbuihan blog</description>
+    <image>
+      <title>derbuihan blog</title>
+      <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
+    <language>en</language>
     <lastBuildDate>Wed, 23 Dec 2020 02:42:40 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/datasets/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tensorflow Datasetsにある英語の巨大なテキストのデータセット</title>
@@ -13,7 +18,20 @@
       <pubDate>Wed, 23 Dec 2020 02:42:40 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/tensorflow_datasets_text/</guid>
-      <description>Tensorflow Datasetsの中から英語の文章のデータセットをまとめます。 データの一覧の取得 以下のコマンドでtensorflow_datasetsから取得出来るデータセットの一覧がわかります。 &amp;gt;&amp;gt;&amp;gt; import tensorflow_datasets as tfds &amp;gt;&amp;gt;&amp;gt; tfds.list_builders() 英語</description>
+      <description>Tensorflow Datasets の中から英語の文章のデータセットをまとめます。
+データの一覧の取得 以下のコマンドでtensorflow_datasetsから取得出来るデータセットの一覧がわかります。
+&amp;gt;&amp;gt;&amp;gt; import tensorflow_datasets as tfds &amp;gt;&amp;gt;&amp;gt; tfds.list_builders() 英語のデータセット 大量のテキストのデータセット
+c4 Web クロールで集めた巨大なデータセット。英語のは約 1TB ある。 英語以外の言語もデータがあり、すべての言語合わせると 26.76TB あるらしい。
+librispeech_lm 5GB のデータセット
+lm1b 5GB のデータセット
+pg19 古い本のデータセット。10GB ぐらい。
+reddit_disentanglement reddit のデータセット。
+wiki40b wikipedia のデータセット。きれいになってる。
+wikipedia wikipedia のデータセット。きれいになってない。
+その他データセット その他の使えそうなデータセット
+ag_news_subset ニュース記事のタイトルと説明文が、その記事の種類にラベル付けされたデータセット。
+math_dataset 数学に関する英語の問題とその答えのデータセット
+tiny_shakespeare シェイクスピアの文章</description>
     </item>
     
   </channel>

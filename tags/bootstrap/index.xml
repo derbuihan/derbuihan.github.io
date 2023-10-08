@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Bootstrap on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/bootstrap/</link>
     <description>Recent content in Bootstrap on derbuihan blog</description>
+    <image>
+      <title>derbuihan blog</title>
+      <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
+    <language>en</language>
     <lastBuildDate>Mon, 17 Oct 2022 02:12:49 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/bootstrap/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>elmとBootstrapやTailwind CSSを組み合わせて簡単なWebサービスを開発する方法</title>
@@ -13,7 +18,13 @@
       <pubDate>Mon, 17 Oct 2022 02:12:49 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/elm_sampleapp/</guid>
-      <description>はじめに 私はブラウザ上で動く簡単なアプリを作る際にelmを用いることが多い。 elmはブラウザの状態とユーザーの入力を言語の機能とそのアーキテクチャで簡単に管理できるため、簡単なアプリであればほとんど迷</description>
+      <description>はじめに 私はブラウザ上で動く簡単なアプリを作る際にelmを用いることが多い。 elmはブラウザの状態とユーザーの入力を言語の機能とそのアーキテクチャで簡単に管理できるため、簡単なアプリであればほとんど迷うことがなく作りたいものが作れる点で気にいっている。 ただ最近では、elmの便利な状態管理の手法は JS のフレームワークにも導入され、React のコンポーネントを用いた UI 開発や JS のその他の資源と組み合わせることで効率的にフロントエンドを開発することが主流になってきている。 このような流れのためか、ここ数年はelmを用いた開発を行う人が極端に少なくなってきていると感じている。 ただフロントエンドの専門家ではない私からすると、フレームワークの選定に迷う必要がない点や、tsにするかjsにするか迷わなくて良い点や、Haskellライクな言語の楽さとelm-formatの利便性などの観点から考えると、簡単な Web アプリであれば依然としてelmを用いて開発を行うことは悪くない選択肢だと思っている。 この記事ではelmとBootstrapやelmとTailwind CSSを組み合わせたサンプルアプリの構築方法を解説する。
+環境構築(Bootstrap 編) プロジェクトを作成
+$ mkdir elm-bootstrap-sampleapp $ cd elm-bootstrap-sampleapp $ npm init -y bootstrap をインストール（参考）
+$ npm i --save-dev parcel $ npm i --save-dev bootstrap @popperjs/core elm をインストールして環境を構築
+$ npm i --save-dev elm @parcel/transformer-elm $ npx elm init 必要なファイルを作成
+$ touch src/index.html src/index.js src/index.scss src/Main.elm src/index.htmlを書く。
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.</description>
     </item>
     
   </channel>

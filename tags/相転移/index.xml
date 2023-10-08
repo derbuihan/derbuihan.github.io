@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>相転移 on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/%E7%9B%B8%E8%BB%A2%E7%A7%BB/</link>
     <description>Recent content in 相転移 on derbuihan blog</description>
+    <image>
+      <title>derbuihan blog</title>
+      <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
+    <language>en</language>
     <lastBuildDate>Mon, 23 May 2022 17:02:35 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/%E7%9B%B8%E8%BB%A2%E7%A7%BB/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>充足可能性問題の相転移の実験</title>
@@ -13,7 +18,13 @@
       <pubDate>Mon, 23 May 2022 17:02:35 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/minisat_phase_transition/</guid>
-      <description>充足可能性問題 (satisfiability problem, SAT) 「与えられた論理式を真にする真偽値$x_1, x_2 \dots$が存在するか？」という問題を充足可能性問題という。 この問題の最も一般的な形は、NP完全であることが知られている。 例: $(x_1 \lor x_2)</description>
+      <description>充足可能性問題 (satisfiability problem, SAT) 「与えられた論理式を真にする真偽値$x_1, x_2 \dots$が存在するか？」という問題を充足可能性問題という。
+この問題の最も一般的な形は、NP 完全であることが知られている。
+例: $(x_1 \lor x_2) \land (x_1 \lor \bar{x_2}) \land (\bar{x_1} \lor \bar{x_2})$
+解: $x_1=\text{True}$, $x_2=\text{False}$
+この例のように$\bigwedge_i \bigvee_j x_{i,j}$で表される論理式を連言標準形といい、その各項の変数の数が 2 以下であるとき 2-SAT と呼ばれる。 2-SAT は多項式時間で解けるアルゴリズムが存在する。 一方で項の変数の数が 3 以下の 3-SAT は NP 完全であることが知られている。
+問題の生成 3-SAT 問題は DIMACS CNF で記述される。
+c example DIMACS-CNF 3-SAT p cnf 3 5 -1 -2 -3 0 1 -2 3 0 1 2 -3 0 1 -2 -3 0 -1 2 3 0 行頭がcの行はコメントである。 行頭がpの行には変数が 3 つで項数が 5 項である。 また、 -1 -2 -3 0は$\bar{x_1} \lor \bar{x_2} \lor \bar{x_3}$を示している。</description>
     </item>
     
   </channel>

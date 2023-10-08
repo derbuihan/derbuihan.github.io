@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Atom on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/atom/</link>
     <description>Recent content in Atom on derbuihan blog</description>
+    <image>
+      <title>derbuihan blog</title>
+      <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
+    <language>en</language>
     <lastBuildDate>Sat, 29 Dec 2018 23:35:55 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/atom/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Atomで入れるプラグイン一覧</title>
@@ -13,7 +18,18 @@
       <pubDate>Sat, 29 Dec 2018 23:35:55 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/atom_package/</guid>
-      <description>随時更新していきます。 通常編 とりあえずAtomをインストールしたら入れるプラグイン atomic-emacs AtomでEmacsのキーバインドを使う。 japanese-menu 設定を日本語化 platformio-ide-terminal Ctrl-`で下からターミナルが出てくるようになる。 project-manager p</description>
+      <description>随時更新していきます。
+通常編 とりあえず Atom をインストールしたら入れるプラグイン
+atomic-emacs Atom で Emacs のキーバインドを使う。
+japanese-menu 設定を日本語化
+platformio-ide-terminal Ctrl-`で下からターミナルが出てくるようになる。
+project-manager project を管理できるようになる。
+LaTex 環境編 tex を Atom で書くときのプラグイン一覧。
+language-latex シンタックスハイライト
+latex tex のコンパイル
+latexer 補完
+pdf-view pdf を見れるようになる。
+感想 Atom で Coq やりたい。 Atom では Vim より Emacs のが使いやすい。 </description>
     </item>
     
   </channel>

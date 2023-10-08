@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Hugo on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/hugo/</link>
     <description>Recent content in Hugo on derbuihan blog</description>
+    <image>
+      <title>derbuihan blog</title>
+      <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
+    <language>en</language>
     <lastBuildDate>Thu, 20 Dec 2018 12:43:24 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hugoを使って軽量ブログを作る</title>
@@ -13,7 +18,11 @@
       <pubDate>Thu, 20 Dec 2018 12:43:24 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/start_blog_hugo/</guid>
-      <description>Hugoとは オープンソースの軽量ブログジェジェネレーターです。 Markdownで書くことが出来て楽です。 Hugoの使い方 インストール方法 brew install hugo ブログの作成 hugo new site hugo 記事の作成 hugo new post/fuga.md localhostでテ</description>
+      <description>Hugo とは オープンソースの軽量ブログジェジェネレーターです。 Markdown で書くことが出来て楽です。
+Hugo の使い方 インストール方法 brew install hugo ブログの作成 hugo new site hugo 記事の作成 hugo new post/fuga.md localhost でテスト hugo server を実行し、http://localhost:1313/ にアクセス。 この時は public には何も作成されない。
+ページを作成する。 hugo を実行すると public にサイトが作成される。
+git で管理する方法 HUGO でブログ作成 → GitHub Pages で公開する手順に git のサブモジュールを用いて管理する方法が書いてある。 素晴らしいのでやると良い。
+感想 GitHub Pages でブログができてドメイン代しかかからないのが素晴らしいと思いました。 git で push すると更新なのでネットがないところでも blog が書けるのもいいと思います。 Hexo もいいけど npm で拡張するとかめんどくさいから Hugo が楽で良いと思った。 テーマを変えるのも楽だけど、私のセンスがないのでこのブログはダサい。 </description>
     </item>
     
   </channel>

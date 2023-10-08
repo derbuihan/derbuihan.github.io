@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>DigestAuth on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/digestauth/</link>
     <description>Recent content in DigestAuth on derbuihan blog</description>
+    <image>
+      <title>derbuihan blog</title>
+      <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
+    <language>en</language>
     <lastBuildDate>Wed, 13 Jul 2022 00:27:26 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/digestauth/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Digest認証の仕組みをBashとJavaScriptで理解したい。</title>
@@ -13,7 +18,17 @@
       <pubDate>Wed, 13 Jul 2022 00:27:26 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/digest_auth_bash_js/</guid>
-      <description>Basic認証やDigest認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事のnodeはすべてv18である。 Basic認証とDigest認証 Basic認証 はじめにBasic認証の仕</description>
+      <description>Basic 認証や Digest 認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事の node はすべて v18 である。
+Basic 認証と Digest 認証 Basic 認証 はじめに Basic 認証の仕組みにを解説する。
+Basic 認証においてクライアントが初めて http リクエストを送ったときは、Status Code が401 Unauthorizedでヘッダーに
+www-authenticate: Basic realm=&amp;#34;secure&amp;#34; が付与されたレスポンスがサーバーから帰ってくる。 ちなみに realm は認証領域を表す。
+クライアントがユーザーとパスワードを user:pass のように入力したときは
+Authorization: Basic dXNlcjpwYXNz を付与してレスポンスを返す仕組みになっている。 このような動作は Basic 認証を用いたサイトに Chrome で接続し、デベロッパーツールで通信を監視することで確かめることが出来る。
+次に、dXNlcjpwYXNzの計算方法について確認しておく。 結論から言うとdXNlcjpwYXNzはuser:passを base64 でエンコードしたものである。 Bash では
+$ echo -n &amp;#34;user:pass&amp;#34; | base64 dXNlcjpwYXNz JavaScript では
+&amp;gt; btoa(&amp;#34;user:pass&amp;#34;) &amp;#39;dXNlcjpwYXNz&amp;#39; のように計算出来る。
+ただ、Base64 はハッシュ関数でもなんでもなくて文字列を単純な方法で変換しているだけなので、簡単に戻すことが出来る。 Bash では
+❯ echo -n &amp;#34;dXNlcjpwYXNz&amp;#34; | base64 -d user:pass JavaScript では</description>
     </item>
     
   </channel>

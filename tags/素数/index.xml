@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>素数 on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0/</link>
     <description>Recent content in 素数 on derbuihan blog</description>
+    <image>
+      <title>derbuihan blog</title>
+      <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
+    <language>en</language>
     <lastBuildDate>Tue, 29 Jan 2019 16:48:37 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Haskellで素数を探そうと思った話</title>
@@ -13,7 +18,18 @@
       <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
       
       <guid>https://derbuihan.github.io/posts/haskell_primes/</guid>
-      <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。 ソースはfermat_test.hsからダウンロード! フェルマーテストとは フェルマーの</description>
+      <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。
+ソースはfermat_test.hsからダウンロード!
+フェルマーテストとは フェルマーの小定理はご存知ですよね？
+$p$を素数のとき、$a$を$p$と互いに素な整数に対して、 $$a ^ p \equiv a \pmod{p}$$ が成り立つ。
+これの対偶を考えます。
+整数$n$について、$n$と互いに素な整数$a$に対して、 $$ a ^ n \not \equiv a \pmod{n} $$ が成り立つとき、整数$n$は合成数である。
+これによって、ある数が素数であることは示せないが合成数であることを速く示すことはできます。
+実装 部品を 1 つ 1 つ揃えていきます。
+互いに素 最小公倍数を求める関数を考えます。
+gcd&amp;#39; :: Integer -&amp;gt; Integer -&amp;gt; Integer gcd&amp;#39; n 0 = n gcd&amp;#39; n m = gcd&amp;#39; m (n `mod` m) これを用いて、
+gcd&amp;#39; n m == 1 とすれば$n, m$は互いに素です。 (Haskell には標準で gcd があるのでそれを使っても良い)
+$a^{n-1} \pmod{n}$を求める いわゆる、$a^7 = a * (a^3)^2 = a * (a * a^2)^2$として計算量をへらすやつを使います。 途中で$\pmod{n}$を挟みます。</description>
     </item>
     
   </channel>
