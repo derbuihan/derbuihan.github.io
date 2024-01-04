@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on derbuihan blog</title>
     <link>https://derbuihan.github.io/posts/</link>
@@ -11,12 +11,33 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 06 Nov 2023 02:05:18 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Jan 2024 19:04:46 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023年の振り返りと2024年の抱負</title>
+      <link>https://derbuihan.github.io/posts/from_2023_to_2024/</link>
+      <pubDate>Thu, 04 Jan 2024 19:04:46 +0900</pubDate>
+      <guid>https://derbuihan.github.io/posts/from_2023_to_2024/</guid>
+      <description>2023年の振り返りと2024年の抱負を書いておく。すぐ忘れちゃうので
+2023年の振り返り 一年を振り返るとこんな感じだった。
+1月〜3月: AWSの資格を集めてた。 4月〜6月: AIの勉強しながらzennに記事を書いてた。 7月〜9月: C言語のコンパイラ作ったりGPT-4で遊んだりしてた。 10月〜12月: 本読んだりOS自作や現代ポートフォリオ理論を勉強したりしてた。 1月〜3月:AWSの資格を集めてた。 2022年の11月後半ぐらいから2023年の3月までAWSの資格を集めてた。 この頃はAWS使えば全ての課題を解決できると信じ切ってて、割と洗脳状態にあった。
+資格取り終わってしばらくAWSの勉強から離れてみると、AWSって高いし設定項目も多すぎるので、そこまでいい製品ではないような気がしてきた。 例えばこの記事とかはAWSの価格が高すぎることについて言及している。
+あと最近になってほとんどの企業はAWSをAWSの言う通りに使ってるわけではないこともわかってきた。 資格で出てくるベストプラクティスって構築するのがすごく難しいし、そのベストプラクティスを知ってる人が少ないので、実際には別の構成となってることが多い。 ベストプラクティスを守るのが常に正義ってわけでもないので、この構成はベストプラクティスじゃないなぁって思いながら傍観している。 結局、正解なんてないわけだし。
+4月〜6月: AIの勉強しながらzennに記事を書いてた。 4月に自作PCを作った。記事
+この自作PCでDeep Learningの勉強していた。 CNNとRNNあたりまで知ってたけど、その先のことを知らなかったので勉強した。 結果として以下の知識を得られた。
+U-Net: 記事 VAE: 記事 DCGAN: 記事 LSTM: 記事 Transformer: 記事1, 記事2 BERT: 記事 それぞれのモデルについて自分でデータ探してきて動かしたので、理解度は高いと思う。 また、最新のモデルになればなるほど自分で学習させるのが難しいことがわかった。
+あと自作PCでkubeflowを動かしたくてk8sも勉強していた。 k8sの勉強は中途半端になっている。 k8sって理想は素晴らしいけど実際に扱うのは難しすぎると現段階では考えている。
+7月〜9月: C言語のコンパイラ作ったりGPT-4で遊んだりしてた。 Cコンパイラ自作の記事を見つけて面白そうだったので、Cコンパイラを自作し始めた。 途中で中断したりして2024年1月になってもまだ完成していない。 とりあえずセルフホストまではやろうと思っている。
+コンパイラの自作をやってパソコンの仕組みとかC言語のこととか何も知らなかったことに気づいた。 コンパイラを作る中で得た細かい知識はZennのスクラップにまとめている。
+GPT-4を使うようになった。 LibreChatというOSSからAzure OpenAIのGPT-4を使っている。 LibreChatが応援したくて、Issue立てたりThird-Party Toolsにプルリクを送ったりした。
+また、RAGを作りたくて幾つかのベクトルDBも試してみた。いくつか試した感じだとMongoDBとOpenSearchが使いやすかった。 この分野は成長が早いので新製品が出るたびに勉強してたらきりがないので、ある程度時間が経ったらまた勉強したい。 個人的にはDynamoDBのベクトルDB機能かCloudflare Vectorizeに期待したい。 少し試した感じだとベクトルって結構容量が大きいので、全てのデータにベクトルを付与して保存するようになったら、またクラウドの費用が上がりそう。
+10月〜12月: 本読んだりOS自作や現代ポートフォリオ理論を勉強したりしてた。 以下の本を読んだ。
+官僚制のユートピア 記事 Ｃプログラミング診断室 記事 ケーキの切れない非行少年たち ブルシットジョブ 記事 以下の本は途中まで読んだけど、最後まで読めなかった。2024年に読みたい。</description>
+    </item>
     <item>
       <title>「ブルシット・ジョブ」を読んだ</title>
       <link>https://derbuihan.github.io/posts/bullshit_jobs/</link>
       <pubDate>Mon, 06 Nov 2023 02:05:18 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/bullshit_jobs/</guid>
       <description>はじめに デヴィッド・グレーバー「ブルシット・ジョブ――クソどうでもいい仕事の理論」を読んだ。
 デヴィッド・グレーバーの前作「官僚制のユートピア」を読んで1面白かったので、次作の「ブルシット・ジョブ」を手に取った。 結構有名な本らしい。
@@ -36,12 +57,10 @@
 3 なぜ、ブルシット・ジョブをしている人間は、きまって自分が不幸だと述べるのか？ メモ この章ではがツライ理由について述べる。
 大学時代のアルバイト経験で、仕事を効率的に終わらせすぎて、時間が余ってしまった経験を述べる。 仕事が終わったため休んでいたら、雇用主に見つかってひどく怒られたと述べる。</description>
     </item>
-    
     <item>
       <title>「Ｃプログラミング診断室」を読んだ</title>
       <link>https://derbuihan.github.io/posts/c_programming_diagnosis_room/</link>
       <pubDate>Thu, 02 Nov 2023 19:32:18 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/c_programming_diagnosis_room/</guid>
       <description>はじめに 藤原 博文 「Cプログラミング診断室」を読んだ。
 最近 C コンパイラを自作していて、ソフトウェア開発の歴史に興味が湧いている。 その中で昔のソフトウェア開発の現場を少しでも感じたくてこの本を読んだ。
@@ -61,12 +80,10 @@ goto 文と同様に諸悪の根源とされているフローチャートを業
 データ構造を書く データ構造はしっかり書くべきだと言っている。
 プログラムは、データを処理するためにあり、データの違いによって制御の流れ が変更されます。あくまでも、データが主体です。変数、引数などのデータをどう定義するかで、 プログラムの組易さは大幅に改良されます。データ構造がどうなっているかの図の方が、フローチャー トよりはるかに役立ちます。データの意味だけはしっかり書きましょう。</description>
     </item>
-    
     <item>
       <title>「官僚制のユートピア」を読んだ</title>
       <link>https://derbuihan.github.io/posts/the_utopia_of_rules/</link>
       <pubDate>Wed, 04 Oct 2023 00:19:16 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/the_utopia_of_rules/</guid>
       <description>はじめに デヴィッド・グレーバー「僚制のユートピア　テクノロジー、構造的愚かさ、リベラリズムの鉄則」を読んだ。
 これまでこのブログでは IT 技術関連の記事を書いてきたが、最近はZennで書くようになったので、これからはZennに書くのには適さない記事を書いていこうと思う。
@@ -84,12 +101,10 @@ goto 文と同様に諸悪の根源とされているフローチャートを業
 構造的暴力の加害者側は、自身の立ち位置が崩れるのを嫌う。 警察官を例にすると、警察官は普段はペーパーワークをしているが、免許証持ってない人が運転してて逃げた場合とか、逮捕しようとしてるのに抵抗する人に対して暴力的になる。 それは官僚システムの中で自分の役割が危うくなるから。
 感想 官僚制の中では誰しもが構造的暴力の加害者になってしまうことがある。 そうなると自分はあまり意識していない人（構造的暴力の被害者）に良く観察されることになる。 私はこの記事を思い出した。 携帯電話のアプリ開発を軍隊に例えて面白くした記事だが、非常によく書けていると思う。 確かに、この記事の人物たちも官僚的なやり方でアプリの開発をしているし、その上で自身は構造的の被害者なので加害者側をよく観察している。 高度に官僚化された組織において上司というのは構造的暴力の加害者になりやすいので、部下に対して解釈労働を払う方が良いのかもね。</description>
     </item>
-    
     <item>
       <title>Proof-Generalを用いたCoqの環境構築</title>
       <link>https://derbuihan.github.io/posts/coq_install/</link>
       <pubDate>Sun, 23 Oct 2022 03:53:00 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/coq_install/</guid>
       <description>はじめに 久々に Coq で遊びたくなったので、M1 Mac にインストールしてみた。 最近の Coq は VSCode で書くのが主流？らしいが、今回は Emacs + Proof-General で環境構築を行う。
 環境構築の方法 基本的にbrewやmelpaなどの package 管理システムになるべく依存した形で環境構築を行う。
@@ -99,12 +114,10 @@ brew install emacs --cask Emacs の設定 次は Emacs の設定を行う。 Ema
 まずはmelpa(Emacs のプラグインのパッケージマネージャー)のセットアップを行う。 ~/.emacs.d/init.elに以下を記載し、
 (require &amp;#39;package) (let* ((no-ssl (and (memq system-type &amp;#39;(windows-nt ms-dos)) (not (gnutls-available-p)))) (proto (if no-ssl &amp;#34;http&amp;#34; &amp;#34;https&amp;#34;))) (add-to-list &amp;#39;package-archives (cons &amp;#34;melpa&amp;#34; (concat proto &amp;#34;://melpa.org/packages/&amp;#34;)) t)) (package-initialize) emacs を起動して</description>
     </item>
-    
     <item>
       <title>Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法 〜Android編〜</title>
       <link>https://derbuihan.github.io/posts/android_tcp_rto_hack/</link>
       <pubDate>Fri, 21 Oct 2022 23:42:59 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/android_tcp_rto_hack/</guid>
       <description>はじめに Linux カーネルを書き換えて TCP の再送時間のパレート最適性を裏切る方法はこの記事で実験を行った。 ただ私のような Mac ユーザーは Linux をサーバー用途でしか使わないため、カーネルを書き換えたところでそこまで得できない。 やはりこれを使うにはクライアント端末で Kernel を書き換える方が楽しい。 私が普段使ってるクライアント端末で Kernel を書き換えられそうなもの、そう Android である。 この記事では自分の持ってるスマホに、私が書き換えた kernel をインストールして実験してみる。 （この記事はただの検証記事であり TCP のプロトコルを裏切ることを推奨するものではありません。私も書き換えたカーネルを普段使いしているわけではありません。）
 Android をソースからビルドする方法 この記事では PixelExperience という Android の Custom firmware のビルド方法を紹介する。 ビルドに用いたマシンは、OS: Ubuntu 22.04 LTS, メモリ: 16GB (+ Swap 32GB)である。 以下の内容は、この記事を参考にした。
@@ -113,12 +126,10 @@ sudo apt install android-sdk git python-is-python3 android をビルドするた
 git clone https://github.com/akhilnarang/scripts cd scripts ./setup/android_build_env.sh ビルド用のディレクトリを作る。
 mkdir -p ~/android/pe git の設定を作る。（すでにやってたら必要なし）</description>
     </item>
-    
     <item>
       <title>elmとBootstrapやTailwind CSSを組み合わせて簡単なWebサービスを開発する方法</title>
       <link>https://derbuihan.github.io/posts/elm_sampleapp/</link>
       <pubDate>Mon, 17 Oct 2022 02:12:49 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/elm_sampleapp/</guid>
       <description>はじめに 私はブラウザ上で動く簡単なアプリを作る際にelmを用いることが多い。 elmはブラウザの状態とユーザーの入力を言語の機能とそのアーキテクチャで簡単に管理できるため、簡単なアプリであればほとんど迷うことがなく作りたいものが作れる点で気にいっている。 ただ最近では、elmの便利な状態管理の手法は JS のフレームワークにも導入され、React のコンポーネントを用いた UI 開発や JS のその他の資源と組み合わせることで効率的にフロントエンドを開発することが主流になってきている。 このような流れのためか、ここ数年はelmを用いた開発を行う人が極端に少なくなってきていると感じている。 ただフロントエンドの専門家ではない私からすると、フレームワークの選定に迷う必要がない点や、tsにするかjsにするか迷わなくて良い点や、Haskellライクな言語の楽さとelm-formatの利便性などの観点から考えると、簡単な Web アプリであれば依然としてelmを用いて開発を行うことは悪くない選択肢だと思っている。 この記事ではelmとBootstrapやelmとTailwind CSSを組み合わせたサンプルアプリの構築方法を解説する。
 環境構築(Bootstrap 編) プロジェクトを作成
@@ -128,12 +139,10 @@ $ npm i --save-dev elm @parcel/transformer-elm $ npx elm init 必要なファイ
 $ touch src/index.html src/index.js src/index.scss src/Main.elm src/index.htmlを書く。
 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.</description>
     </item>
-    
     <item>
       <title>Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法</title>
       <link>https://derbuihan.github.io/posts/linux_tcp_rto_hack/</link>
       <pubDate>Fri, 16 Sep 2022 21:12:37 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/linux_tcp_rto_hack/</guid>
       <description>はじめに インターネットには多数のデバイスが存在しており、その多数のデバイスが通信し合うために通信プロトコルが定義されている。 様々な通信プロトコルを勉強していくと、ネットワーク内の通信が正常に行えるためにはそのネットワークの参加者全員が通信プロトコルを守っていることが必要になることに気がつく。
 たとえば、TCP の通信が失敗したときの再送の間隔について説明する。 今回はわかりやすく普通のサーバー・クライアントモデルの Web サービスを考え、サーバー対してクライアントから大量のアクセスが集まりそのリソースが枯渇した状況を考える。 サーバーはリソースの枯渇により全てのクライアントと TCP のコネクションを張れないことから、一部クライアントからのアクセスを拒否する。 拒否されたクライアントは再度サーバーに対してアクセスしようと試みる。 これをアクセス出来るまでクライアントは繰り返すわけだが、その間隔は実は一定ではない。 最初は 1 秒程度で素早く再送するが、サーバーが何度もアクセスを拒否すると、クライアントの方で自動で再送の間隔を指数関数的に伸ばしてアクセスするようになっている。 このような仕様になってる理由は、全員が間隔を開けずに即座に繰り返し通信を試みた場合はサーバーのリソースは一生枯渇したままで回復しない可能性があるためである。 一方でクライアント側で指数関数的に間隔を伸ばしていくと、サーバーがアクセスを拒否し続ければいつかはリソースが回復し少しクライアントの通信を捌けるようになる。 そのため、TCP ではアクセスに失敗したときクライアント側で再送する間隔を指数関数的に引き伸ばしていくというプロトコルになっているのである。
@@ -145,12 +154,10 @@ TCP がアクセスを再試行する回数は/etc/sysctl.conf内に、
 net.ipv4.tcp_syn_retries = 5 を書くことで調整が可能である。（この場合は 5 回リトライする）
 つぎに、TCP の再送時間の計測方法を説明する。 まず Server で 23 番の TCP ポートを塞ぐ。 クライアント側で Server に telnet でアクセスを行う。</description>
     </item>
-    
     <item>
       <title>Digest認証の仕組みをBashとJavaScriptで理解したい。</title>
       <link>https://derbuihan.github.io/posts/digest_auth_bash_js/</link>
       <pubDate>Wed, 13 Jul 2022 00:27:26 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/digest_auth_bash_js/</guid>
       <description>Basic 認証や Digest 認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事の node はすべて v18 である。
 Basic 認証と Digest 認証 Basic 認証 はじめに Basic 認証の仕組みにを解説する。
@@ -164,12 +171,10 @@ $ echo -n &amp;#34;user:pass&amp;#34; | base64 dXNlcjpwYXNz JavaScript では
 ただ、Base64 はハッシュ関数でもなんでもなくて文字列を単純な方法で変換しているだけなので、簡単に戻すことが出来る。 Bash では
 ❯ echo -n &amp;#34;dXNlcjpwYXNz&amp;#34; | base64 -d user:pass JavaScript では</description>
     </item>
-    
     <item>
       <title>PyTorchの自動微分を使った1次元のイジング模型の分配関数の計算</title>
       <link>https://derbuihan.github.io/posts/pytorch_1d_ising/</link>
       <pubDate>Fri, 03 Jun 2022 21:43:29 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/pytorch_1d_ising/</guid>
       <description>1 次元のイジング模型 周期的境界条件のもとで 1 次元のイジング模型のハミルトニアンは
 $$ H\left(\sigma_{1}, \cdots, \sigma_{N} \right) = -J \sum_{i} \sigma_{i} \sigma_{i+1} - h \sum_{i} \sigma_{i} $$
@@ -179,12 +184,10 @@ $$ Z = \sum_{\sigma_{1}, \cdots, \sigma_{N} = \pm 1} e^{- \beta H \left(\sigma_{
 と計算出来る。 ここで、$\beta = \frac{1}{k_B T}$は逆温度である。 この分配関数は次のように書き換えることが出来る。
 $$ Z = \sum_{\sigma_{1}, \cdots, \sigma_{N}} \exp{\left( \sum_i \beta J \sigma_i \sigma_{i+1} + \frac{\beta h}{2} (\sigma_i + \sigma_{i+1}) \right)} = \mathrm{tr} \left( T^N \right) $$</description>
     </item>
-    
     <item>
       <title>充足可能性問題の相転移の実験</title>
       <link>https://derbuihan.github.io/posts/minisat_phase_transition/</link>
       <pubDate>Mon, 23 May 2022 17:02:35 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/minisat_phase_transition/</guid>
       <description>充足可能性問題 (satisfiability problem, SAT) 「与えられた論理式を真にする真偽値$x_1, x_2 \dots$が存在するか？」という問題を充足可能性問題という。
 この問題の最も一般的な形は、NP 完全であることが知られている。
@@ -194,12 +197,10 @@ $$ Z = \sum_{\sigma_{1}, \cdots, \sigma_{N}} \exp{\left( \sum_i \beta J \sigma_i
 問題の生成 3-SAT 問題は DIMACS CNF で記述される。
 c example DIMACS-CNF 3-SAT p cnf 3 5 -1 -2 -3 0 1 -2 3 0 1 2 -3 0 1 -2 -3 0 -1 2 3 0 行頭がcの行はコメントである。 行頭がpの行には変数が 3 つで項数が 5 項である。 また、 -1 -2 -3 0は$\bar{x_1} \lor \bar{x_2} \lor \bar{x_3}$を示している。</description>
     </item>
-    
     <item>
       <title>PyTorchを用いて三角ゲームを解いてみた。</title>
       <link>https://derbuihan.github.io/posts/pytorch_triangle_game/</link>
       <pubDate>Sun, 15 May 2022 14:59:38 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/pytorch_triangle_game/</guid>
       <description>先日、三角ゲームというゲームを知った。 今回はこのゲームを Pytorch を用いて解いてみた。
 三角ゲームの説明 はじめに三角ゲームについて説明する。 例として$n=5$人($A, B, C, D, E$)で遊ぶ場合を説明する。
@@ -209,12 +210,10 @@ PyTorch を使って解く このゲームを PyTorch を用いて解いてみ�
 ライブラリのインポート はじめに、準備としてライブラリのインポートと保存用の関数を用意。
 import torch from torch import norm, dot, abs from random import randrange, random import matplotlib.pyplot as plt def savefig(xs, ys, i): plt.figure(figsize=(8,8)) plt.xlim([-0.5, 1.5]) plt.ylim([-0.5, 1.5]) plt.</description>
     </item>
-    
     <item>
       <title>MNIST画像認識の実験</title>
       <link>https://derbuihan.github.io/posts/mnist_experiment/</link>
       <pubDate>Sun, 03 Jan 2021 06:16:50 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/mnist_experiment/</guid>
       <description>全結合層のネットワークや CNN を用いて MNIST 画像認識の実験をした。
 実験環境 tensorflow v2.4.0 optimizer=&amp;lsquo;adam&amp;rsquo;, loss=&amp;lsquo;sparse_categorical_crossentropy&amp;rsquo; MNIST のデータの中身 MNIST は 0~9 の手書き文字とそのラベルのデータセットである。 6 万枚の train データと 1 万枚の test データに分かれている。
@@ -223,12 +222,10 @@ import tensorflow as tf (X_train, y_train), (X_test, y_test) = tf.keras.datasets
 普通に学習 全結合のモデル (その 1) 下記のような全結合が 2 層のモデルを作った。
 model = tf.keras.models.Sequential([ tf.keras.layers.Flatten(input_shape=(28, 28,)), tf.keras.layers.Dense(512, activation=&amp;#39;relu&amp;#39;), tf.keras.layers.Dropout(0.25), tf.keras.layers.Dense(10, activation=&amp;#39;softmax&amp;#39;) ]) 全パラメータの数は 407,050。</description>
     </item>
-    
     <item>
       <title>Tensorflow Datasetsにある英語の巨大なテキストのデータセット</title>
       <link>https://derbuihan.github.io/posts/tensorflow_datasets_text/</link>
       <pubDate>Wed, 23 Dec 2020 02:42:40 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/tensorflow_datasets_text/</guid>
       <description>Tensorflow Datasets の中から英語の文章のデータセットをまとめます。
 データの一覧の取得 以下のコマンドでtensorflow_datasetsから取得出来るデータセットの一覧がわかります。
@@ -245,12 +242,10 @@ ag_news_subset ニュース記事のタイトルと説明文が、その記事�
 math_dataset 数学に関する英語の問題とその答えのデータセット
 tiny_shakespeare シェイクスピアの文章</description>
     </item>
-    
     <item>
       <title>i7 870にTensorflowの環境構築方法</title>
       <link>https://derbuihan.github.io/posts/tensorflow_i7_870/</link>
       <pubDate>Fri, 18 Dec 2020 12:05:33 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/tensorflow_i7_870/</guid>
       <description>はじめに 落ちてた i7 870 のパソコンにグラボを 2 枚刺して、機械学習専用サーバーを作りました。 このとき、最新の Tensorflow をインストールしても使えないので苦労しました。 これは i7 870 は Sandy Bridge 以前の CPU なので AVX 命令がないのが原因です。 この記事では i7 870 でも機械学習が出来るように、少し古めの Tensorflow の環境を構築する方法を解説します。
 この情報は 2020 年 12 月に出来た方法です。
@@ -258,23 +253,19 @@ tiny_shakespeare シェイクスピアの文章</description>
 $ conda create -n tf1 python==3.7 anaconda $ conda activate tf1 tensorflow-gpu v1.15.0 を指定してインストール
 $ conda install -c anaconda tensorflow-gpu==1.15.0 $ conda install -c anaconda keras ついでに、tensorflow-datasets をインストール(conda で入るのはバージョンが古いので pip でインストール)</description>
     </item>
-    
     <item>
       <title>これまでに使ってきたVPSのレビュー</title>
       <link>https://derbuihan.github.io/posts/vps_review/</link>
       <pubDate>Sat, 04 Jan 2020 10:09:03 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/vps_review/</guid>
       <description>私はこれまでにいくつか VPS を借りて運用してきました。 実際に借りて運用した VPS のレビューを書きます。
 Scaleway CPU: 2Core x86 64bit メモリ: 2G SSD: 50GB 値段: 月 3 ユーロ (約 400 円) 場所: ヨーロッパ のプランを 2017 年 ~ 2019 年にかけて 2 年近く借りてました。 初めて自ら借りた VPS ということもあり長く借りていましたが、あんまり使っていないことに気づき解約しました。 場所がヨーロッパということもあり、SSH してコマンドを入力すると遅さを感じますが、Web サービスを運用する分には問題ないと思います。 この価格帯でメモリ 2GB、ストレージが SSD、通信が無制限な VPS は安いと思います。 mastodon や GitLab みたいなメモリをいっぱい使うサービスを運用するのにはオススメです。 Scaleway では CPU が ARM の VPS も貸していて、それも短い期間借りていた事がありますが、docker でサービスを運用したい場合は image が動かないので苦労したのでやめました。
 GCE CPU: 2Core x86 64bit メモリ: 0.6GB HDD: 30GB 値段: 無料 場所: アメリカ西海岸 のプランを一年前から現在まで借りてます。 このプランは Google が無料で VPS を貸しているということで有名です。 私は wordpress でブログを運用しています。 メモリが 0.</description>
     </item>
-    
     <item>
       <title>tensorflow-gpuをDockerで動かしたときにIllegal instructionと出たときの対処法</title>
       <link>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</link>
       <pubDate>Thu, 03 Oct 2019 04:47:58 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</guid>
       <description>はじめに Docker 19.03 以降から Docker のコンテナから Nvidia GPU を使いやすくなりました。 tensorflow-gpu を Docker で使う場合は、公式のtensorflow/tensorflow:latest-gpu-py3があります。
 エラーの内容 このコンテナを Sandy Bridge 以前の CPU で使うと
@@ -286,12 +277,10 @@ tensorflow をコンテナ内でビルドする 古い CPU でも動く tensorfl
 動作環境 Ubuntu 18.04 docker 19.03 以降 nvidia-driver-435 遊び方 環境がきちんと整っていれば次で動作すると思います。
 $ git clone https://github.com/derbuihan/docker-tensorflow-gpu $ cd docker-tensorflow-gpu $ docker build -t mnist_sample . $ docker run --gpus device=0 -it --rm mnist_sample /bin/bash (base)$ conda activate tf-gpu (tf-gpu)$ wget https://raw.</description>
     </item>
-    
     <item>
       <title>物理学科が半年ぐらい数学を独学で勉強した話</title>
       <link>https://derbuihan.github.io/posts/study_math/</link>
       <pubDate>Sun, 07 Jul 2019 01:37:56 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/study_math/</guid>
       <description>はじめに 物理を勉強していくうちに数学にも興味をもったので、学部 3 年生の後半から学部 4 年生になるまでの約半年間ひとりで数学を勉強しました。 数学科の人からすればまだ入門したてのペーペーでしょうが、独学で数学の勉強を始める方への助けになればと思い勉強法などを書いておきます。
 数学の勉強を始める前に 数学の勉強を始める前に必ず知ってないといけないことがあります。 それは、必ず全ての証明を手で追わないといけないということです。 これをやらないと結局は定義も理解できませんし、勉強も長続きしません。
@@ -309,24 +298,20 @@ $ git clone https://github.com/derbuihan/docker-tensorflow-gpu $ cd docker-tenso
 集合論 独学と自慢してましたが実は集合論だけは授業と演習の単位を取りました。 多分、どの大学でも集合と位相１みたいな授業は集合の授業のはずなので、それを取ると数学の勉強のやり方やリアルな研究者を見れて良いと思います。 集合論は数学の勉強を始めるなら一番はじめにやるべきです。
 位相空間 位相は位相入門―距離空間と位相空間を読みました。 内容は絞っているように見えますが、証明はわかりやすく書いてあるので読みやすいです。 この本に書いてある以上の知識が求められる機会が今後の勉強であるのかは謎。 第二章は定理の番号がズレているので悲しい気持ちになります。</description>
     </item>
-    
     <item>
       <title>Elmで作ったものをGitLab CI/CDをつかってGitLab Pagesに公開する</title>
       <link>https://derbuihan.github.io/posts/elm_gitlab_cicd/</link>
       <pubDate>Mon, 08 Apr 2019 23:46:31 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/elm_gitlab_cicd/</guid>
       <description>Elm でフーリエ級数展開やライフゲームを制作したので CI/CD を試してみました。 この記事では Elm で作ったものを GitLab CI/CD を使って GitLab Pages に deploy する方法を紹介します。
 コードを書く $ elm init $ vim src/Main.elm 今回はsrc/Main.elmを変換して公開します。
 git 管理する GitLab のアカウントを持ってない人はアカウントを作ってください。
 $ git init $ gibo dump elm &amp;gt; .gitignore $ git add elm.json src/Main.elm .gitignore $ git commit -m &amp;#34;first commit&amp;#34; $ git remote add origin git@gitlab.com:&amp;lt;username&amp;gt;/&amp;lt;reponame&amp;gt;.git $ git push --set-upstream origin master gibo は.gitignore を自動生成するコマンドです。(参考) .gitlab-ci.yml を作成 $ vim .gitlab-ci.yml 以下を.gitlab-ci.yml にコピペする</description>
     </item>
-    
     <item>
       <title>MacでCoqのバージョンを指定してインストール</title>
       <link>https://derbuihan.github.io/posts/coq_downgrade/</link>
       <pubDate>Thu, 14 Feb 2019 01:14:02 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/coq_downgrade/</guid>
       <description>いつものように
 $ brew update &amp;amp;&amp;amp; brew upgrade してたら coq の version が 8.9.0 になってしまい、今まで書いていたコードが動かなくなったので、coq の version を 8.8.2 にします。
@@ -338,12 +323,10 @@ $ brew switch coq 8.8.2 で coq の version を変えれるらしいです。
 $ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula $ git log coq.rb で適当に指定の version を見つける。
 commit ef92c34e061cb99920f7ae05d3ba205fccc5f1b8 Author: BrewTestBot &amp;lt;homebrew-test-bot@lists.sfconservancy.org&amp;gt; Date: Wed Oct 31 17:08:20 2018 +0000 coq: update 8.</description>
     </item>
-    
     <item>
       <title>Haskellで素数を探そうと思った話</title>
       <link>https://derbuihan.github.io/posts/haskell_primes/</link>
       <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/haskell_primes/</guid>
       <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。
 ソースはfermat_test.hsからダウンロード!
@@ -358,47 +341,39 @@ gcd&amp;#39; :: Integer -&amp;gt; Integer -&amp;gt; Integer gcd&amp;#39; n 0 = n
 gcd&amp;#39; n m == 1 とすれば$n, m$は互いに素です。 (Haskell には標準で gcd があるのでそれを使っても良い)
 $a^{n-1} \pmod{n}$を求める いわゆる、$a^7 = a * (a^3)^2 = a * (a * a^2)^2$として計算量をへらすやつを使います。 途中で$\pmod{n}$を挟みます。</description>
     </item>
-    
     <item>
       <title>Coqで自然数が加法,乗法について可換モノイド</title>
       <link>https://derbuihan.github.io/posts/coq_natural_number/</link>
       <pubDate>Wed, 16 Jan 2019 04:20:21 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/coq_natural_number/</guid>
       <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それを Coq/SSReflect で示します。 (実際はSoftware Foundations の第一章を SSReflect 使って解いただけ。)
 可換モノイド S が可換モノイドとは
 結合律 $$ \forall x, y, z \in S, (x \cdot y) \cdot z = x \cdot (y \cdot z) $$ 単位元の存在 $$ \exists e \in S, \forall x \in S , e \cdot x = x \cdot e = x $$ 可換 $$ \forall x, y \in S, x \cdot y = y \cdot x $$ を満たすことである。</description>
     </item>
-    
     <item>
       <title>Coqは直観論理である。</title>
       <link>https://derbuihan.github.io/posts/coq_logic/</link>
       <pubDate>Sun, 13 Jan 2019 14:20:08 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/coq_logic/</guid>
       <description>直観論理とは Coq は直観論理で許される推論規則で演繹を行う。 直観論理の説明はWikipediaにある。
 簡単に説明すると、私達が普通に数学で用いている論理は古典論理で、直観論理は古典論理から排中律を除いたものである。 排中律を除くことで二重否定の除去など、古典論理では証明できるが直観論理では証明できないものがある。 Coq ではClassicalというライブラリを Import すると古典論理を使えるようになる。 詳しい説明は情報科学における論理を読むと良い。
 この記事では、直感論理と古典論理の微妙な違いを集めて遊ぼうと思います。
 直感論理で示せる命題 二重否定をつける Lemma PPNN : forall p : Prop, p -&amp;gt; ~~p. Proof. intros. intro. apply H0. trivial. Qed. 三重否定を否定にする Lemma NNN : forall p : Prop, ~~~ p -&amp;gt; ~p. Proof. intros. intro. apply H. intro. contradiction. Qed. 対偶の片方 Lemma Cont : forall p q : Prop, (p -&amp;gt; q) -&amp;gt; (~q -&amp;gt; ~p). Proof. intros. intro. apply H0.</description>
     </item>
-    
     <item>
       <title>Root権限がない環境で色々インストールする。</title>
       <link>https://derbuihan.github.io/posts/without_root/</link>
       <pubDate>Sat, 12 Jan 2019 19:26:34 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/without_root/</guid>
       <description>Root なしで人権を得る方法です。
 Tmux をビルドする。 こんな素晴らしい記事がある。 これをコピペして実行。
 linuxbrewを用いる。 以下を~/.bashrcに追加して再度ログイン。
 if [ ! -r ~/.linuxbrew ]; then git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew fi if [ -r ~/.linuxbrew ]; then export PATH=&amp;#34;$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH&amp;#34; export MANPATH=&amp;#34;$MANPATH:$HOME/.linuxbrew/share/man&amp;#34; export INFOPATH=&amp;#34;$INFOPATH:$HOME/.linuxbrew/share/info&amp;#34; #export LD_LIBRARY_PATH=&amp;#34;$LD_LIBRARY_PATH:$HOME/.linuxbrew/lib&amp;#34; fi </description>
     </item>
-    
     <item>
       <title>Coqで外延性の公理</title>
       <link>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</link>
       <pubDate>Mon, 31 Dec 2018 23:08:04 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</guid>
       <description>外延性の公理から集合の等号に対して同値関係を示します。(Coq で)
 外延性の公理とは A, B を任意の集合とするとき、もし任意の集合 X について「X が A の要素であるならば、そのときに限り X は B の要素である」が成り立つならば、A と B は等しい。
@@ -406,12 +381,10 @@ if [ ! -r ~/.linuxbrew ]; then git clone https://github.com/Linuxbrew/brew.git ~
 ∈ と=を定義する Section Axiom_Of_Extensionality. Variable Var : Type. Variable In : Var -&amp;gt; Var -&amp;gt; Prop. Variable Eq : Var -&amp;gt; Var -&amp;gt; Prop. (* ここにコードを書く *) End Axiom_Of_Extensionality. ∈ を In、=を Eq とした。
 同値関係とは 反射律: a = a 対称律: a = b ⇒ b = a 推移律: a = b ∧ b = c ⇒ a = c 同値関係を参考。</description>
     </item>
-    
     <item>
       <title>Atomで入れるプラグイン一覧</title>
       <link>https://derbuihan.github.io/posts/atom_package/</link>
       <pubDate>Sat, 29 Dec 2018 23:35:55 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/atom_package/</guid>
       <description>随時更新していきます。
 通常編 とりあえず Atom をインストールしたら入れるプラグイン
@@ -426,12 +399,10 @@ latexer 補完
 pdf-view pdf を見れるようになる。
 感想 Atom で Coq やりたい。 Atom では Vim より Emacs のが使いやすい。 </description>
     </item>
-    
     <item>
       <title>Coqで集合論 その1</title>
       <link>https://derbuihan.github.io/posts/coq_set_theory/</link>
       <pubDate>Thu, 27 Dec 2018 04:42:41 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/coq_set_theory/</guid>
       <description>はじめに Coq で集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のため auto.を使わないで証明を行います。
 集合論 Section Ensembles. (* ここにコードを書く *) End Ensembles. 集合とは 1 変数の述語を用いて集合論を定義する。
@@ -440,12 +411,10 @@ Variable U : Type. Definition Ensemble := U -&amp;gt; Prop. U は述語の変数
 例): 「ソクラテスが人間という集合に含まれる。」は、「ソクラテスが人間ある。」ということである。
 Definition In (A : Ensemble) (a : U) : Prop := A a. Notation &amp;#34;a ∈ A&amp;#34; := (In A a) (at level 55,no associativity).</description>
     </item>
-    
     <item>
       <title>hugoを使って軽量ブログを作る</title>
       <link>https://derbuihan.github.io/posts/start_blog_hugo/</link>
       <pubDate>Thu, 20 Dec 2018 12:43:24 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/start_blog_hugo/</guid>
       <description>Hugo とは オープンソースの軽量ブログジェジェネレーターです。 Markdown で書くことが出来て楽です。
 Hugo の使い方 インストール方法 brew install hugo ブログの作成 hugo new site hugo 記事の作成 hugo new post/fuga.md localhost でテスト hugo server を実行し、http://localhost:1313/ にアクセス。 この時は public には何も作成されない。
@@ -453,6 +422,5 @@ Hugo の使い方 インストール方法 brew install hugo ブログの作成 
 git で管理する方法 HUGO でブログ作成 → GitHub Pages で公開する手順に git のサブモジュールを用いて管理する方法が書いてある。 素晴らしいのでやると良い。
 感想 GitHub Pages でブログができてドメイン代しかかからないのが素晴らしいと思いました。 git で push すると更新なのでネットがないところでも blog が書けるのもいいと思います。 Hexo もいいけど npm で拡張するとかめんどくさいから Hugo が楽で良いと思った。 テーマを変えるのも楽だけど、私のセンスがないのでこのブログはダサい。 </description>
     </item>
-    
   </channel>
 </rss>

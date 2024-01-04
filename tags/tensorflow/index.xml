@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tensorflow on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/tensorflow/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 03 Jan 2021 06:16:50 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Jan 2021 06:16:50 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MNIST画像認識の実験</title>
       <link>https://derbuihan.github.io/posts/mnist_experiment/</link>
       <pubDate>Sun, 03 Jan 2021 06:16:50 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/mnist_experiment/</guid>
       <description>全結合層のネットワークや CNN を用いて MNIST 画像認識の実験をした。
 実験環境 tensorflow v2.4.0 optimizer=&amp;lsquo;adam&amp;rsquo;, loss=&amp;lsquo;sparse_categorical_crossentropy&amp;rsquo; MNIST のデータの中身 MNIST は 0~9 の手書き文字とそのラベルのデータセットである。 6 万枚の train データと 1 万枚の test データに分かれている。
@@ -25,12 +25,10 @@ import tensorflow as tf (X_train, y_train), (X_test, y_test) = tf.keras.datasets
 普通に学習 全結合のモデル (その 1) 下記のような全結合が 2 層のモデルを作った。
 model = tf.keras.models.Sequential([ tf.keras.layers.Flatten(input_shape=(28, 28,)), tf.keras.layers.Dense(512, activation=&amp;#39;relu&amp;#39;), tf.keras.layers.Dropout(0.25), tf.keras.layers.Dense(10, activation=&amp;#39;softmax&amp;#39;) ]) 全パラメータの数は 407,050。</description>
     </item>
-    
     <item>
       <title>Tensorflow Datasetsにある英語の巨大なテキストのデータセット</title>
       <link>https://derbuihan.github.io/posts/tensorflow_datasets_text/</link>
       <pubDate>Wed, 23 Dec 2020 02:42:40 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/tensorflow_datasets_text/</guid>
       <description>Tensorflow Datasets の中から英語の文章のデータセットをまとめます。
 データの一覧の取得 以下のコマンドでtensorflow_datasetsから取得出来るデータセットの一覧がわかります。
@@ -47,12 +45,10 @@ ag_news_subset ニュース記事のタイトルと説明文が、その記事�
 math_dataset 数学に関する英語の問題とその答えのデータセット
 tiny_shakespeare シェイクスピアの文章</description>
     </item>
-    
     <item>
       <title>i7 870にTensorflowの環境構築方法</title>
       <link>https://derbuihan.github.io/posts/tensorflow_i7_870/</link>
       <pubDate>Fri, 18 Dec 2020 12:05:33 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/tensorflow_i7_870/</guid>
       <description>はじめに 落ちてた i7 870 のパソコンにグラボを 2 枚刺して、機械学習専用サーバーを作りました。 このとき、最新の Tensorflow をインストールしても使えないので苦労しました。 これは i7 870 は Sandy Bridge 以前の CPU なので AVX 命令がないのが原因です。 この記事では i7 870 でも機械学習が出来るように、少し古めの Tensorflow の環境を構築する方法を解説します。
 この情報は 2020 年 12 月に出来た方法です。
@@ -60,12 +56,10 @@ tiny_shakespeare シェイクスピアの文章</description>
 $ conda create -n tf1 python==3.7 anaconda $ conda activate tf1 tensorflow-gpu v1.15.0 を指定してインストール
 $ conda install -c anaconda tensorflow-gpu==1.15.0 $ conda install -c anaconda keras ついでに、tensorflow-datasets をインストール(conda で入るのはバージョンが古いので pip でインストール)</description>
     </item>
-    
     <item>
       <title>tensorflow-gpuをDockerで動かしたときにIllegal instructionと出たときの対処法</title>
       <link>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</link>
       <pubDate>Thu, 03 Oct 2019 04:47:58 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</guid>
       <description>はじめに Docker 19.03 以降から Docker のコンテナから Nvidia GPU を使いやすくなりました。 tensorflow-gpu を Docker で使う場合は、公式のtensorflow/tensorflow:latest-gpu-py3があります。
 エラーの内容 このコンテナを Sandy Bridge 以前の CPU で使うと
@@ -77,6 +71,5 @@ tensorflow をコンテナ内でビルドする 古い CPU でも動く tensorfl
 動作環境 Ubuntu 18.04 docker 19.03 以降 nvidia-driver-435 遊び方 環境がきちんと整っていれば次で動作すると思います。
 $ git clone https://github.com/derbuihan/docker-tensorflow-gpu $ cd docker-tensorflow-gpu $ docker build -t mnist_sample . $ docker run --gpus device=0 -it --rm mnist_sample /bin/bash (base)$ conda activate tf-gpu (tf-gpu)$ wget https://raw.</description>
     </item>
-    
   </channel>
 </rss>

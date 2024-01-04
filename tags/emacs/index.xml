@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Emacs on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/emacs/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Oct 2022 03:53:00 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Oct 2022 03:53:00 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Proof-Generalを用いたCoqの環境構築</title>
       <link>https://derbuihan.github.io/posts/coq_install/</link>
       <pubDate>Sun, 23 Oct 2022 03:53:00 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/coq_install/</guid>
       <description>はじめに 久々に Coq で遊びたくなったので、M1 Mac にインストールしてみた。 最近の Coq は VSCode で書くのが主流？らしいが、今回は Emacs + Proof-General で環境構築を行う。
 環境構築の方法 基本的にbrewやmelpaなどの package 管理システムになるべく依存した形で環境構築を行う。
@@ -26,6 +26,5 @@ brew install emacs --cask Emacs の設定 次は Emacs の設定を行う。 Ema
 まずはmelpa(Emacs のプラグインのパッケージマネージャー)のセットアップを行う。 ~/.emacs.d/init.elに以下を記載し、
 (require &amp;#39;package) (let* ((no-ssl (and (memq system-type &amp;#39;(windows-nt ms-dos)) (not (gnutls-available-p)))) (proto (if no-ssl &amp;#34;http&amp;#34; &amp;#34;https&amp;#34;))) (add-to-list &amp;#39;package-archives (cons &amp;#34;melpa&amp;#34; (concat proto &amp;#34;://melpa.org/packages/&amp;#34;)) t)) (package-initialize) emacs を起動して</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JS on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/js/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 13 Jul 2022 00:27:26 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/js/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Jul 2022 00:27:26 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/js/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Digest認証の仕組みをBashとJavaScriptで理解したい。</title>
       <link>https://derbuihan.github.io/posts/digest_auth_bash_js/</link>
       <pubDate>Wed, 13 Jul 2022 00:27:26 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/digest_auth_bash_js/</guid>
       <description>Basic 認証や Digest 認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事の node はすべて v18 である。
 Basic 認証と Digest 認証 Basic 認証 はじめに Basic 認証の仕組みにを解説する。
@@ -30,6 +30,5 @@ $ echo -n &amp;#34;user:pass&amp;#34; | base64 dXNlcjpwYXNz JavaScript では
 ただ、Base64 はハッシュ関数でもなんでもなくて文字列を単純な方法で変換しているだけなので、簡単に戻すことが出来る。 Bash では
 ❯ echo -n &amp;#34;dXNlcjpwYXNz&amp;#34; | base64 -d user:pass JavaScript では</description>
     </item>
-    
   </channel>
 </rss>

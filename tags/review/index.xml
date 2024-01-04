@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>review on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/review/</link>
@@ -11,17 +11,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Jan 2020 10:09:03 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/review/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Jan 2020 10:09:03 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/review/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>これまでに使ってきたVPSのレビュー</title>
       <link>https://derbuihan.github.io/posts/vps_review/</link>
       <pubDate>Sat, 04 Jan 2020 10:09:03 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/vps_review/</guid>
       <description>私はこれまでにいくつか VPS を借りて運用してきました。 実際に借りて運用した VPS のレビューを書きます。
 Scaleway CPU: 2Core x86 64bit メモリ: 2G SSD: 50GB 値段: 月 3 ユーロ (約 400 円) 場所: ヨーロッパ のプランを 2017 年 ~ 2019 年にかけて 2 年近く借りてました。 初めて自ら借りた VPS ということもあり長く借りていましたが、あんまり使っていないことに気づき解約しました。 場所がヨーロッパということもあり、SSH してコマンドを入力すると遅さを感じますが、Web サービスを運用する分には問題ないと思います。 この価格帯でメモリ 2GB、ストレージが SSD、通信が無制限な VPS は安いと思います。 mastodon や GitLab みたいなメモリをいっぱい使うサービスを運用するのにはオススメです。 Scaleway では CPU が ARM の VPS も貸していて、それも短い期間借りていた事がありますが、docker でサービスを運用したい場合は image が動かないので苦労したのでやめました。
 GCE CPU: 2Core x86 64bit メモリ: 0.6GB HDD: 30GB 値段: 無料 場所: アメリカ西海岸 のプランを一年前から現在まで借りてます。 このプランは Google が無料で VPS を貸しているということで有名です。 私は wordpress でブログを運用しています。 メモリが 0.</description>
     </item>
-    
   </channel>
 </rss>

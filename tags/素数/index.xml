@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>素数 on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 29 Jan 2019 16:48:37 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Jan 2019 16:48:37 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/%E7%B4%A0%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Haskellで素数を探そうと思った話</title>
       <link>https://derbuihan.github.io/posts/haskell_primes/</link>
       <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/haskell_primes/</guid>
       <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。
 ソースはfermat_test.hsからダウンロード!
@@ -31,6 +31,5 @@ gcd&amp;#39; :: Integer -&amp;gt; Integer -&amp;gt; Integer gcd&amp;#39; n 0 = n
 gcd&amp;#39; n m == 1 とすれば$n, m$は互いに素です。 (Haskell には標準で gcd があるのでそれを使っても良い)
 $a^{n-1} \pmod{n}$を求める いわゆる、$a^7 = a * (a^3)^2 = a * (a * a^2)^2$として計算量をへらすやつを使います。 途中で$\pmod{n}$を挟みます。</description>
     </item>
-    
   </channel>
 </rss>

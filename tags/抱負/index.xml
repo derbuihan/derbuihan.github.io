@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>抱負 on derbuihan blog</title>
+    <link>https://derbuihan.github.io/tags/%E6%8A%B1%E8%B2%A0/</link>
+    <description>Recent content in 抱負 on derbuihan blog</description>
+    <image>
+      <title>derbuihan blog</title>
+      <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 04 Jan 2024 19:04:46 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/%E6%8A%B1%E8%B2%A0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023年の振り返りと2024年の抱負</title>
+      <link>https://derbuihan.github.io/posts/from_2023_to_2024/</link>
+      <pubDate>Thu, 04 Jan 2024 19:04:46 +0900</pubDate>
+      <guid>https://derbuihan.github.io/posts/from_2023_to_2024/</guid>
+      <description>2023年の振り返りと2024年の抱負を書いておく。すぐ忘れちゃうので
+2023年の振り返り 一年を振り返るとこんな感じだった。
+1月〜3月: AWSの資格を集めてた。 4月〜6月: AIの勉強しながらzennに記事を書いてた。 7月〜9月: C言語のコンパイラ作ったりGPT-4で遊んだりしてた。 10月〜12月: 本読んだりOS自作や現代ポートフォリオ理論を勉強したりしてた。 1月〜3月:AWSの資格を集めてた。 2022年の11月後半ぐらいから2023年の3月までAWSの資格を集めてた。 この頃はAWS使えば全ての課題を解決できると信じ切ってて、割と洗脳状態にあった。
+資格取り終わってしばらくAWSの勉強から離れてみると、AWSって高いし設定項目も多すぎるので、そこまでいい製品ではないような気がしてきた。 例えばこの記事とかはAWSの価格が高すぎることについて言及している。
+あと最近になってほとんどの企業はAWSをAWSの言う通りに使ってるわけではないこともわかってきた。 資格で出てくるベストプラクティスって構築するのがすごく難しいし、そのベストプラクティスを知ってる人が少ないので、実際には別の構成となってることが多い。 ベストプラクティスを守るのが常に正義ってわけでもないので、この構成はベストプラクティスじゃないなぁって思いながら傍観している。 結局、正解なんてないわけだし。
+4月〜6月: AIの勉強しながらzennに記事を書いてた。 4月に自作PCを作った。記事
+この自作PCでDeep Learningの勉強していた。 CNNとRNNあたりまで知ってたけど、その先のことを知らなかったので勉強した。 結果として以下の知識を得られた。
+U-Net: 記事 VAE: 記事 DCGAN: 記事 LSTM: 記事 Transformer: 記事1, 記事2 BERT: 記事 それぞれのモデルについて自分でデータ探してきて動かしたので、理解度は高いと思う。 また、最新のモデルになればなるほど自分で学習させるのが難しいことがわかった。
+あと自作PCでkubeflowを動かしたくてk8sも勉強していた。 k8sの勉強は中途半端になっている。 k8sって理想は素晴らしいけど実際に扱うのは難しすぎると現段階では考えている。
+7月〜9月: C言語のコンパイラ作ったりGPT-4で遊んだりしてた。 Cコンパイラ自作の記事を見つけて面白そうだったので、Cコンパイラを自作し始めた。 途中で中断したりして2024年1月になってもまだ完成していない。 とりあえずセルフホストまではやろうと思っている。
+コンパイラの自作をやってパソコンの仕組みとかC言語のこととか何も知らなかったことに気づいた。 コンパイラを作る中で得た細かい知識はZennのスクラップにまとめている。
+GPT-4を使うようになった。 LibreChatというOSSからAzure OpenAIのGPT-4を使っている。 LibreChatが応援したくて、Issue立てたりThird-Party Toolsにプルリクを送ったりした。
+また、RAGを作りたくて幾つかのベクトルDBも試してみた。いくつか試した感じだとMongoDBとOpenSearchが使いやすかった。 この分野は成長が早いので新製品が出るたびに勉強してたらきりがないので、ある程度時間が経ったらまた勉強したい。 個人的にはDynamoDBのベクトルDB機能かCloudflare Vectorizeに期待したい。 少し試した感じだとベクトルって結構容量が大きいので、全てのデータにベクトルを付与して保存するようになったら、またクラウドの費用が上がりそう。
+10月〜12月: 本読んだりOS自作や現代ポートフォリオ理論を勉強したりしてた。 以下の本を読んだ。
+官僚制のユートピア 記事 Ｃプログラミング診断室 記事 ケーキの切れない非行少年たち ブルシットジョブ 記事 以下の本は途中まで読んだけど、最後まで読めなかった。2024年に読みたい。</description>
+    </item>
+  </channel>
+</rss>

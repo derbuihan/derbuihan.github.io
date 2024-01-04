@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gpu on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/gpu/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 03 Oct 2019 04:47:58 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/gpu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Oct 2019 04:47:58 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/gpu/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>tensorflow-gpuをDockerで動かしたときにIllegal instructionと出たときの対処法</title>
       <link>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</link>
       <pubDate>Thu, 03 Oct 2019 04:47:58 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</guid>
       <description>はじめに Docker 19.03 以降から Docker のコンテナから Nvidia GPU を使いやすくなりました。 tensorflow-gpu を Docker で使う場合は、公式のtensorflow/tensorflow:latest-gpu-py3があります。
 エラーの内容 このコンテナを Sandy Bridge 以前の CPU で使うと
@@ -28,6 +28,5 @@ tensorflow をコンテナ内でビルドする 古い CPU でも動く tensorfl
 動作環境 Ubuntu 18.04 docker 19.03 以降 nvidia-driver-435 遊び方 環境がきちんと整っていれば次で動作すると思います。
 $ git clone https://github.com/derbuihan/docker-tensorflow-gpu $ cd docker-tensorflow-gpu $ docker build -t mnist_sample . $ docker run --gpus device=0 -it --rm mnist_sample /bin/bash (base)$ conda activate tf-gpu (tf-gpu)$ wget https://raw.</description>
     </item>
-    
   </channel>
 </rss>

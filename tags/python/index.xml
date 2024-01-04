@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/python/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 03 Jun 2022 21:43:29 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Jun 2022 21:43:29 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PyTorchの自動微分を使った1次元のイジング模型の分配関数の計算</title>
       <link>https://derbuihan.github.io/posts/pytorch_1d_ising/</link>
       <pubDate>Fri, 03 Jun 2022 21:43:29 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/pytorch_1d_ising/</guid>
       <description>1 次元のイジング模型 周期的境界条件のもとで 1 次元のイジング模型のハミルトニアンは
 $$ H\left(\sigma_{1}, \cdots, \sigma_{N} \right) = -J \sum_{i} \sigma_{i} \sigma_{i+1} - h \sum_{i} \sigma_{i} $$
@@ -26,12 +26,10 @@ $$ Z = \sum_{\sigma_{1}, \cdots, \sigma_{N} = \pm 1} e^{- \beta H \left(\sigma_{
 と計算出来る。 ここで、$\beta = \frac{1}{k_B T}$は逆温度である。 この分配関数は次のように書き換えることが出来る。
 $$ Z = \sum_{\sigma_{1}, \cdots, \sigma_{N}} \exp{\left( \sum_i \beta J \sigma_i \sigma_{i+1} + \frac{\beta h}{2} (\sigma_i + \sigma_{i+1}) \right)} = \mathrm{tr} \left( T^N \right) $$</description>
     </item>
-    
     <item>
       <title>PyTorchを用いて三角ゲームを解いてみた。</title>
       <link>https://derbuihan.github.io/posts/pytorch_triangle_game/</link>
       <pubDate>Sun, 15 May 2022 14:59:38 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/pytorch_triangle_game/</guid>
       <description>先日、三角ゲームというゲームを知った。 今回はこのゲームを Pytorch を用いて解いてみた。
 三角ゲームの説明 はじめに三角ゲームについて説明する。 例として$n=5$人($A, B, C, D, E$)で遊ぶ場合を説明する。
@@ -41,6 +39,5 @@ PyTorch を使って解く このゲームを PyTorch を用いて解いてみ�
 ライブラリのインポート はじめに、準備としてライブラリのインポートと保存用の関数を用意。
 import torch from torch import norm, dot, abs from random import randrange, random import matplotlib.pyplot as plt def savefig(xs, ys, i): plt.figure(figsize=(8,8)) plt.xlim([-0.5, 1.5]) plt.ylim([-0.5, 1.5]) plt.</description>
     </item>
-    
   </channel>
 </rss>

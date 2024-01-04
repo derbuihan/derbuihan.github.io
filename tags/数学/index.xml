@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数学 on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 07 Jul 2019 01:37:56 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Jul 2019 01:37:56 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>物理学科が半年ぐらい数学を独学で勉強した話</title>
       <link>https://derbuihan.github.io/posts/study_math/</link>
       <pubDate>Sun, 07 Jul 2019 01:37:56 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/study_math/</guid>
       <description>はじめに 物理を勉強していくうちに数学にも興味をもったので、学部 3 年生の後半から学部 4 年生になるまでの約半年間ひとりで数学を勉強しました。 数学科の人からすればまだ入門したてのペーペーでしょうが、独学で数学の勉強を始める方への助けになればと思い勉強法などを書いておきます。
 数学の勉強を始める前に 数学の勉強を始める前に必ず知ってないといけないことがあります。 それは、必ず全ての証明を手で追わないといけないということです。 これをやらないと結局は定義も理解できませんし、勉強も長続きしません。
@@ -34,12 +34,10 @@
 集合論 独学と自慢してましたが実は集合論だけは授業と演習の単位を取りました。 多分、どの大学でも集合と位相１みたいな授業は集合の授業のはずなので、それを取ると数学の勉強のやり方やリアルな研究者を見れて良いと思います。 集合論は数学の勉強を始めるなら一番はじめにやるべきです。
 位相空間 位相は位相入門―距離空間と位相空間を読みました。 内容は絞っているように見えますが、証明はわかりやすく書いてあるので読みやすいです。 この本に書いてある以上の知識が求められる機会が今後の勉強であるのかは謎。 第二章は定理の番号がズレているので悲しい気持ちになります。</description>
     </item>
-    
     <item>
       <title>Haskellで素数を探そうと思った話</title>
       <link>https://derbuihan.github.io/posts/haskell_primes/</link>
       <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/haskell_primes/</guid>
       <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。
 ソースはfermat_test.hsからダウンロード!
@@ -54,23 +52,19 @@ gcd&amp;#39; :: Integer -&amp;gt; Integer -&amp;gt; Integer gcd&amp;#39; n 0 = n
 gcd&amp;#39; n m == 1 とすれば$n, m$は互いに素です。 (Haskell には標準で gcd があるのでそれを使っても良い)
 $a^{n-1} \pmod{n}$を求める いわゆる、$a^7 = a * (a^3)^2 = a * (a * a^2)^2$として計算量をへらすやつを使います。 途中で$\pmod{n}$を挟みます。</description>
     </item>
-    
     <item>
       <title>Coqで自然数が加法,乗法について可換モノイド</title>
       <link>https://derbuihan.github.io/posts/coq_natural_number/</link>
       <pubDate>Wed, 16 Jan 2019 04:20:21 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/coq_natural_number/</guid>
       <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それを Coq/SSReflect で示します。 (実際はSoftware Foundations の第一章を SSReflect 使って解いただけ。)
 可換モノイド S が可換モノイドとは
 結合律 $$ \forall x, y, z \in S, (x \cdot y) \cdot z = x \cdot (y \cdot z) $$ 単位元の存在 $$ \exists e \in S, \forall x \in S , e \cdot x = x \cdot e = x $$ 可換 $$ \forall x, y \in S, x \cdot y = y \cdot x $$ を満たすことである。</description>
     </item>
-    
     <item>
       <title>Coqで外延性の公理</title>
       <link>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</link>
       <pubDate>Mon, 31 Dec 2018 23:08:04 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</guid>
       <description>外延性の公理から集合の等号に対して同値関係を示します。(Coq で)
 外延性の公理とは A, B を任意の集合とするとき、もし任意の集合 X について「X が A の要素であるならば、そのときに限り X は B の要素である」が成り立つならば、A と B は等しい。
@@ -78,12 +72,10 @@ $a^{n-1} \pmod{n}$を求める いわゆる、$a^7 = a * (a^3)^2 = a * (a * a^2)
 ∈ と=を定義する Section Axiom_Of_Extensionality. Variable Var : Type. Variable In : Var -&amp;gt; Var -&amp;gt; Prop. Variable Eq : Var -&amp;gt; Var -&amp;gt; Prop. (* ここにコードを書く *) End Axiom_Of_Extensionality. ∈ を In、=を Eq とした。
 同値関係とは 反射律: a = a 対称律: a = b ⇒ b = a 推移律: a = b ∧ b = c ⇒ a = c 同値関係を参考。</description>
     </item>
-    
     <item>
       <title>Coqで集合論 その1</title>
       <link>https://derbuihan.github.io/posts/coq_set_theory/</link>
       <pubDate>Thu, 27 Dec 2018 04:42:41 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/coq_set_theory/</guid>
       <description>はじめに Coq で集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のため auto.を使わないで証明を行います。
 集合論 Section Ensembles. (* ここにコードを書く *) End Ensembles. 集合とは 1 変数の述語を用いて集合論を定義する。
@@ -92,6 +84,5 @@ Variable U : Type. Definition Ensemble := U -&amp;gt; Prop. U は述語の変数
 例): 「ソクラテスが人間という集合に含まれる。」は、「ソクラテスが人間ある。」ということである。
 Definition In (A : Ensemble) (a : U) : Prop := A a. Notation &amp;#34;a ∈ A&amp;#34; := (In A a) (at level 55,no associativity).</description>
     </item>
-    
   </channel>
 </rss>

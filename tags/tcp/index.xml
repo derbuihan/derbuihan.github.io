@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TCP on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/tcp/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 21 Oct 2022 23:42:59 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Oct 2022 23:42:59 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法 〜Android編〜</title>
       <link>https://derbuihan.github.io/posts/android_tcp_rto_hack/</link>
       <pubDate>Fri, 21 Oct 2022 23:42:59 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/android_tcp_rto_hack/</guid>
       <description>はじめに Linux カーネルを書き換えて TCP の再送時間のパレート最適性を裏切る方法はこの記事で実験を行った。 ただ私のような Mac ユーザーは Linux をサーバー用途でしか使わないため、カーネルを書き換えたところでそこまで得できない。 やはりこれを使うにはクライアント端末で Kernel を書き換える方が楽しい。 私が普段使ってるクライアント端末で Kernel を書き換えられそうなもの、そう Android である。 この記事では自分の持ってるスマホに、私が書き換えた kernel をインストールして実験してみる。 （この記事はただの検証記事であり TCP のプロトコルを裏切ることを推奨するものではありません。私も書き換えたカーネルを普段使いしているわけではありません。）
 Android をソースからビルドする方法 この記事では PixelExperience という Android の Custom firmware のビルド方法を紹介する。 ビルドに用いたマシンは、OS: Ubuntu 22.04 LTS, メモリ: 16GB (+ Swap 32GB)である。 以下の内容は、この記事を参考にした。
@@ -25,12 +25,10 @@ sudo apt install android-sdk git python-is-python3 android をビルドするた
 git clone https://github.com/akhilnarang/scripts cd scripts ./setup/android_build_env.sh ビルド用のディレクトリを作る。
 mkdir -p ~/android/pe git の設定を作る。（すでにやってたら必要なし）</description>
     </item>
-    
     <item>
       <title>Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法</title>
       <link>https://derbuihan.github.io/posts/linux_tcp_rto_hack/</link>
       <pubDate>Fri, 16 Sep 2022 21:12:37 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/linux_tcp_rto_hack/</guid>
       <description>はじめに インターネットには多数のデバイスが存在しており、その多数のデバイスが通信し合うために通信プロトコルが定義されている。 様々な通信プロトコルを勉強していくと、ネットワーク内の通信が正常に行えるためにはそのネットワークの参加者全員が通信プロトコルを守っていることが必要になることに気がつく。
 たとえば、TCP の通信が失敗したときの再送の間隔について説明する。 今回はわかりやすく普通のサーバー・クライアントモデルの Web サービスを考え、サーバー対してクライアントから大量のアクセスが集まりそのリソースが枯渇した状況を考える。 サーバーはリソースの枯渇により全てのクライアントと TCP のコネクションを張れないことから、一部クライアントからのアクセスを拒否する。 拒否されたクライアントは再度サーバーに対してアクセスしようと試みる。 これをアクセス出来るまでクライアントは繰り返すわけだが、その間隔は実は一定ではない。 最初は 1 秒程度で素早く再送するが、サーバーが何度もアクセスを拒否すると、クライアントの方で自動で再送の間隔を指数関数的に伸ばしてアクセスするようになっている。 このような仕様になってる理由は、全員が間隔を開けずに即座に繰り返し通信を試みた場合はサーバーのリソースは一生枯渇したままで回復しない可能性があるためである。 一方でクライアント側で指数関数的に間隔を伸ばしていくと、サーバーがアクセスを拒否し続ければいつかはリソースが回復し少しクライアントの通信を捌けるようになる。 そのため、TCP ではアクセスに失敗したときクライアント側で再送する間隔を指数関数的に引き伸ばしていくというプロトコルになっているのである。
@@ -42,6 +40,5 @@ TCP がアクセスを再試行する回数は/etc/sysctl.conf内に、
 net.ipv4.tcp_syn_retries = 5 を書くことで調整が可能である。（この場合は 5 回リトライする）
 つぎに、TCP の再送時間の計測方法を説明する。 まず Server で 23 番の TCP ポートを塞ぐ。 クライアント側で Server に telnet でアクセスを行う。</description>
     </item>
-    
   </channel>
 </rss>

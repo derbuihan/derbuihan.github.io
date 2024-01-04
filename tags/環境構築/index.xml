@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>環境構築 on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Oct 2022 03:53:00 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Oct 2022 03:53:00 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Proof-Generalを用いたCoqの環境構築</title>
       <link>https://derbuihan.github.io/posts/coq_install/</link>
       <pubDate>Sun, 23 Oct 2022 03:53:00 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/coq_install/</guid>
       <description>はじめに 久々に Coq で遊びたくなったので、M1 Mac にインストールしてみた。 最近の Coq は VSCode で書くのが主流？らしいが、今回は Emacs + Proof-General で環境構築を行う。
 環境構築の方法 基本的にbrewやmelpaなどの package 管理システムになるべく依存した形で環境構築を行う。
@@ -26,12 +26,10 @@ brew install emacs --cask Emacs の設定 次は Emacs の設定を行う。 Ema
 まずはmelpa(Emacs のプラグインのパッケージマネージャー)のセットアップを行う。 ~/.emacs.d/init.elに以下を記載し、
 (require &amp;#39;package) (let* ((no-ssl (and (memq system-type &amp;#39;(windows-nt ms-dos)) (not (gnutls-available-p)))) (proto (if no-ssl &amp;#34;http&amp;#34; &amp;#34;https&amp;#34;))) (add-to-list &amp;#39;package-archives (cons &amp;#34;melpa&amp;#34; (concat proto &amp;#34;://melpa.org/packages/&amp;#34;)) t)) (package-initialize) emacs を起動して</description>
     </item>
-    
     <item>
       <title>i7 870にTensorflowの環境構築方法</title>
       <link>https://derbuihan.github.io/posts/tensorflow_i7_870/</link>
       <pubDate>Fri, 18 Dec 2020 12:05:33 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/tensorflow_i7_870/</guid>
       <description>はじめに 落ちてた i7 870 のパソコンにグラボを 2 枚刺して、機械学習専用サーバーを作りました。 このとき、最新の Tensorflow をインストールしても使えないので苦労しました。 これは i7 870 は Sandy Bridge 以前の CPU なので AVX 命令がないのが原因です。 この記事では i7 870 でも機械学習が出来るように、少し古めの Tensorflow の環境を構築する方法を解説します。
 この情報は 2020 年 12 月に出来た方法です。
@@ -39,12 +37,10 @@ brew install emacs --cask Emacs の設定 次は Emacs の設定を行う。 Ema
 $ conda create -n tf1 python==3.7 anaconda $ conda activate tf1 tensorflow-gpu v1.15.0 を指定してインストール
 $ conda install -c anaconda tensorflow-gpu==1.15.0 $ conda install -c anaconda keras ついでに、tensorflow-datasets をインストール(conda で入るのはバージョンが古いので pip でインストール)</description>
     </item>
-    
     <item>
       <title>MacでCoqのバージョンを指定してインストール</title>
       <link>https://derbuihan.github.io/posts/coq_downgrade/</link>
       <pubDate>Thu, 14 Feb 2019 01:14:02 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/coq_downgrade/</guid>
       <description>いつものように
 $ brew update &amp;amp;&amp;amp; brew upgrade してたら coq の version が 8.9.0 になってしまい、今まで書いていたコードが動かなくなったので、coq の version を 8.8.2 にします。
@@ -56,24 +52,20 @@ $ brew switch coq 8.8.2 で coq の version を変えれるらしいです。
 $ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula $ git log coq.rb で適当に指定の version を見つける。
 commit ef92c34e061cb99920f7ae05d3ba205fccc5f1b8 Author: BrewTestBot &amp;lt;homebrew-test-bot@lists.sfconservancy.org&amp;gt; Date: Wed Oct 31 17:08:20 2018 +0000 coq: update 8.</description>
     </item>
-    
     <item>
       <title>Root権限がない環境で色々インストールする。</title>
       <link>https://derbuihan.github.io/posts/without_root/</link>
       <pubDate>Sat, 12 Jan 2019 19:26:34 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/without_root/</guid>
       <description>Root なしで人権を得る方法です。
 Tmux をビルドする。 こんな素晴らしい記事がある。 これをコピペして実行。
 linuxbrewを用いる。 以下を~/.bashrcに追加して再度ログイン。
 if [ ! -r ~/.linuxbrew ]; then git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew fi if [ -r ~/.linuxbrew ]; then export PATH=&amp;#34;$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH&amp;#34; export MANPATH=&amp;#34;$MANPATH:$HOME/.linuxbrew/share/man&amp;#34; export INFOPATH=&amp;#34;$INFOPATH:$HOME/.linuxbrew/share/info&amp;#34; #export LD_LIBRARY_PATH=&amp;#34;$LD_LIBRARY_PATH:$HOME/.linuxbrew/lib&amp;#34; fi </description>
     </item>
-    
     <item>
       <title>Atomで入れるプラグイン一覧</title>
       <link>https://derbuihan.github.io/posts/atom_package/</link>
       <pubDate>Sat, 29 Dec 2018 23:35:55 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/atom_package/</guid>
       <description>随時更新していきます。
 通常編 とりあえず Atom をインストールしたら入れるプラグイン
@@ -88,6 +80,5 @@ latexer 補完
 pdf-view pdf を見れるようになる。
 感想 Atom で Coq やりたい。 Atom では Vim より Emacs のが使いやすい。 </description>
     </item>
-    
   </channel>
 </rss>

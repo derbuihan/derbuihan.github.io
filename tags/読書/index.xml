@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>読書 on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/%E8%AA%AD%E6%9B%B8/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 06 Nov 2023 02:05:18 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/%E8%AA%AD%E6%9B%B8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Nov 2023 02:05:18 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/%E8%AA%AD%E6%9B%B8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>「ブルシット・ジョブ」を読んだ</title>
       <link>https://derbuihan.github.io/posts/bullshit_jobs/</link>
       <pubDate>Mon, 06 Nov 2023 02:05:18 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/bullshit_jobs/</guid>
       <description>はじめに デヴィッド・グレーバー「ブルシット・ジョブ――クソどうでもいい仕事の理論」を読んだ。
 デヴィッド・グレーバーの前作「官僚制のユートピア」を読んで1面白かったので、次作の「ブルシット・ジョブ」を手に取った。 結構有名な本らしい。
@@ -36,12 +36,10 @@
 3 なぜ、ブルシット・ジョブをしている人間は、きまって自分が不幸だと述べるのか？ メモ この章ではがツライ理由について述べる。
 大学時代のアルバイト経験で、仕事を効率的に終わらせすぎて、時間が余ってしまった経験を述べる。 仕事が終わったため休んでいたら、雇用主に見つかってひどく怒られたと述べる。</description>
     </item>
-    
     <item>
       <title>「Ｃプログラミング診断室」を読んだ</title>
       <link>https://derbuihan.github.io/posts/c_programming_diagnosis_room/</link>
       <pubDate>Thu, 02 Nov 2023 19:32:18 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/c_programming_diagnosis_room/</guid>
       <description>はじめに 藤原 博文 「Cプログラミング診断室」を読んだ。
 最近 C コンパイラを自作していて、ソフトウェア開発の歴史に興味が湧いている。 その中で昔のソフトウェア開発の現場を少しでも感じたくてこの本を読んだ。
@@ -61,12 +59,10 @@ goto 文と同様に諸悪の根源とされているフローチャートを業
 データ構造を書く データ構造はしっかり書くべきだと言っている。
 プログラムは、データを処理するためにあり、データの違いによって制御の流れ が変更されます。あくまでも、データが主体です。変数、引数などのデータをどう定義するかで、 プログラムの組易さは大幅に改良されます。データ構造がどうなっているかの図の方が、フローチャー トよりはるかに役立ちます。データの意味だけはしっかり書きましょう。</description>
     </item>
-    
     <item>
       <title>「官僚制のユートピア」を読んだ</title>
       <link>https://derbuihan.github.io/posts/the_utopia_of_rules/</link>
       <pubDate>Wed, 04 Oct 2023 00:19:16 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/the_utopia_of_rules/</guid>
       <description>はじめに デヴィッド・グレーバー「僚制のユートピア　テクノロジー、構造的愚かさ、リベラリズムの鉄則」を読んだ。
 これまでこのブログでは IT 技術関連の記事を書いてきたが、最近はZennで書くようになったので、これからはZennに書くのには適さない記事を書いていこうと思う。
@@ -84,6 +80,5 @@ goto 文と同様に諸悪の根源とされているフローチャートを業
 構造的暴力の加害者側は、自身の立ち位置が崩れるのを嫌う。 警察官を例にすると、警察官は普段はペーパーワークをしているが、免許証持ってない人が運転してて逃げた場合とか、逮捕しようとしてるのに抵抗する人に対して暴力的になる。 それは官僚システムの中で自分の役割が危うくなるから。
 感想 官僚制の中では誰しもが構造的暴力の加害者になってしまうことがある。 そうなると自分はあまり意識していない人（構造的暴力の被害者）に良く観察されることになる。 私はこの記事を思い出した。 携帯電話のアプリ開発を軍隊に例えて面白くした記事だが、非常によく書けていると思う。 確かに、この記事の人物たちも官僚的なやり方でアプリの開発をしているし、その上で自身は構造的の被害者なので加害者側をよく観察している。 高度に官僚化された組織において上司というのは構造的暴力の加害者になりやすいので、部下に対して解釈労働を払う方が良いのかもね。</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SAT on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/sat/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 23 May 2022 17:02:35 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/sat/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 May 2022 17:02:35 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/sat/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>充足可能性問題の相転移の実験</title>
       <link>https://derbuihan.github.io/posts/minisat_phase_transition/</link>
       <pubDate>Mon, 23 May 2022 17:02:35 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/minisat_phase_transition/</guid>
       <description>充足可能性問題 (satisfiability problem, SAT) 「与えられた論理式を真にする真偽値$x_1, x_2 \dots$が存在するか？」という問題を充足可能性問題という。
 この問題の最も一般的な形は、NP 完全であることが知られている。
@@ -26,6 +26,5 @@
 問題の生成 3-SAT 問題は DIMACS CNF で記述される。
 c example DIMACS-CNF 3-SAT p cnf 3 5 -1 -2 -3 0 1 -2 3 0 1 2 -3 0 1 -2 -3 0 -1 2 3 0 行頭がcの行はコメントである。 行頭がpの行には変数が 3 つで項数が 5 項である。 また、 -1 -2 -3 0は$\bar{x_1} \lor \bar{x_2} \lor \bar{x_3}$を示している。</description>
     </item>
-    
   </channel>
 </rss>

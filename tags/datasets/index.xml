@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Datasets on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/datasets/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 23 Dec 2020 02:42:40 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/datasets/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Dec 2020 02:42:40 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/datasets/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tensorflow Datasetsにある英語の巨大なテキストのデータセット</title>
       <link>https://derbuihan.github.io/posts/tensorflow_datasets_text/</link>
       <pubDate>Wed, 23 Dec 2020 02:42:40 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/tensorflow_datasets_text/</guid>
       <description>Tensorflow Datasets の中から英語の文章のデータセットをまとめます。
 データの一覧の取得 以下のコマンドでtensorflow_datasetsから取得出来るデータセットの一覧がわかります。
@@ -33,6 +33,5 @@ ag_news_subset ニュース記事のタイトルと説明文が、その記事�
 math_dataset 数学に関する英語の問題とその答えのデータセット
 tiny_shakespeare シェイクスピアの文章</description>
     </item>
-    
   </channel>
 </rss>

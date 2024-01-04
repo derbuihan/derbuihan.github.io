@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Elm on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/elm/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 17 Oct 2022 02:12:49 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/elm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Oct 2022 02:12:49 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/elm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>elmとBootstrapやTailwind CSSを組み合わせて簡単なWebサービスを開発する方法</title>
       <link>https://derbuihan.github.io/posts/elm_sampleapp/</link>
       <pubDate>Mon, 17 Oct 2022 02:12:49 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/elm_sampleapp/</guid>
       <description>はじめに 私はブラウザ上で動く簡単なアプリを作る際にelmを用いることが多い。 elmはブラウザの状態とユーザーの入力を言語の機能とそのアーキテクチャで簡単に管理できるため、簡単なアプリであればほとんど迷うことがなく作りたいものが作れる点で気にいっている。 ただ最近では、elmの便利な状態管理の手法は JS のフレームワークにも導入され、React のコンポーネントを用いた UI 開発や JS のその他の資源と組み合わせることで効率的にフロントエンドを開発することが主流になってきている。 このような流れのためか、ここ数年はelmを用いた開発を行う人が極端に少なくなってきていると感じている。 ただフロントエンドの専門家ではない私からすると、フレームワークの選定に迷う必要がない点や、tsにするかjsにするか迷わなくて良い点や、Haskellライクな言語の楽さとelm-formatの利便性などの観点から考えると、簡単な Web アプリであれば依然としてelmを用いて開発を行うことは悪くない選択肢だと思っている。 この記事ではelmとBootstrapやelmとTailwind CSSを組み合わせたサンプルアプリの構築方法を解説する。
 環境構築(Bootstrap 編) プロジェクトを作成
@@ -26,18 +26,15 @@ $ npm i --save-dev elm @parcel/transformer-elm $ npx elm init 必要なファイ
 $ touch src/index.html src/index.js src/index.scss src/Main.elm src/index.htmlを書く。
 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.</description>
     </item>
-    
     <item>
       <title>Elmで作ったものをGitLab CI/CDをつかってGitLab Pagesに公開する</title>
       <link>https://derbuihan.github.io/posts/elm_gitlab_cicd/</link>
       <pubDate>Mon, 08 Apr 2019 23:46:31 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/elm_gitlab_cicd/</guid>
       <description>Elm でフーリエ級数展開やライフゲームを制作したので CI/CD を試してみました。 この記事では Elm で作ったものを GitLab CI/CD を使って GitLab Pages に deploy する方法を紹介します。
 コードを書く $ elm init $ vim src/Main.elm 今回はsrc/Main.elmを変換して公開します。
 git 管理する GitLab のアカウントを持ってない人はアカウントを作ってください。
 $ git init $ gibo dump elm &amp;gt; .gitignore $ git add elm.json src/Main.elm .gitignore $ git commit -m &amp;#34;first commit&amp;#34; $ git remote add origin git@gitlab.com:&amp;lt;username&amp;gt;/&amp;lt;reponame&amp;gt;.git $ git push --set-upstream origin master gibo は.gitignore を自動生成するコマンドです。(参考) .gitlab-ci.yml を作成 $ vim .gitlab-ci.yml 以下を.gitlab-ci.yml にコピペする</description>
     </item>
-    
   </channel>
 </rss>

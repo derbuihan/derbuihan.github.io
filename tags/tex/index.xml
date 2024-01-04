@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tex on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/tex/</link>
@@ -11,12 +11,12 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 29 Dec 2018 23:35:55 +0900</lastBuildDate><atom:link href="https://derbuihan.github.io/tags/tex/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 Dec 2018 23:35:55 +0900</lastBuildDate>
+    <atom:link href="https://derbuihan.github.io/tags/tex/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Atomで入れるプラグイン一覧</title>
       <link>https://derbuihan.github.io/posts/atom_package/</link>
       <pubDate>Sat, 29 Dec 2018 23:35:55 +0900</pubDate>
-      
       <guid>https://derbuihan.github.io/posts/atom_package/</guid>
       <description>随時更新していきます。
 通常編 とりあえず Atom をインストールしたら入れるプラグイン
@@ -31,6 +31,5 @@ latexer 補完
 pdf-view pdf を見れるようになる。
 感想 Atom で Coq やりたい。 Atom では Vim より Emacs のが使いやすい。 </description>
     </item>
-    
   </channel>
 </rss>
