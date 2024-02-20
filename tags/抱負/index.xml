@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>抱負 on derbuihan blog</title>
     <link>https://derbuihan.github.io/tags/%E6%8A%B1%E8%B2%A0/</link>
@@ -26,7 +26,7 @@
 あと、JavaScriptやReactやAWS Amplify周りの勉強も少ししていた。 そもそもAWSの資格を集め始めたのは、TypeScriptでCDKを書くのが面白そうだったからで、資格集めが一段落したタイミングでJavaScriptの勉強をしていた。 ブラウザのJavaScriptとnodejsの違いを理解したのとJavaScriptの実行モデルが複雑なこととかを学んだ。 それに関連してReactの勉強もした。 関数コンポーネントとかReact HooksとかReduxとかが面白かったことを覚えている。 AWS Amplifyも少し触った。 GraphQLでサーバー側のデータベース更新のイベントをブラウザ側に通知するというのが面白かったことを覚えている。 この辺は進化が激しすぎるので、必要になったタイミングで勉強するようにして、深入りはしないようにしたい。
 4月〜6月: AIの勉強しながらzennに記事を書いてた。 4月に自作PCを作った。記事
 この自作PCでDeep Learningの勉強していた。 CNNとRNNあたりまで知ってたけど、その先のことを知らなかったので勉強した。 結果として以下の知識を得られた。
-U-Net: 記事 VAE: 記事 DCGAN: 記事 LSTM: 記事 Transformer: 記事1, 記事2 BERT: 記事 それぞれのモデルについて自分でデータ探してきて動かしたので、理解度は高いと思う。 また、最新のモデルになればなるほど自分で学習させるのが難しいことがわかった。
+U-Net: 記事 VAE: 記事 DCGAN: 記事 LSTM: 記事 Transformer: 記事1, 記事2 BERT: 記事 それぞれのモデルについて自分でデータ探してきて動かしたので、理解度は高いと思う。 また、最新のモデルになればなるほど自分で学習させるのが難しいこととわかった。
 あと自作PCでkubeflowを動かしたくてk8sも勉強していた。 k8sの勉強は中途半端になっている。 k8sって理想は素晴らしいけど実際に扱うのは難しすぎると現段階では考えている。
 7月〜9月: C言語のコンパイラ作ったりGPT-4で遊んだりしてた。 Cコンパイラ自作の記事を見つけて面白そうだったので、Cコンパイラを自作し始めた。 途中で中断したりして2024年1月になってもまだ完成していない。 とりあえずセルフホストまではやろうと思っている。
 コンパイラの自作をやってパソコンの仕組みとかC言語のこととか何も知らなかったことに気づいた。 コンパイラを作る中で得た細かい知識はZennのスクラップにまとめている。
