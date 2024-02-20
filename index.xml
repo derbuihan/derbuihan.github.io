@@ -11,8 +11,18 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 04 Jan 2024 19:04:46 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 21 Feb 2024 00:03:58 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>サイトリンク集</title>
+      <link>https://derbuihan.github.io/links/</link>
+      <pubDate>Wed, 21 Feb 2024 00:03:58 +0900</pubDate>
+      <guid>https://derbuihan.github.io/links/</guid>
+      <description>私がよく見るサイトのリンク集です。 勝手に公開しておりリンク先のサイトの運営者の方々にはご了承を得ていません。
+https://hgot07.hatenablog.com/
+https://w0.hatenablog.com/
+https://vengineer.hatenablog.com/</description>
+    </item>
     <item>
       <title>2023年の振り返りと2024年の抱負</title>
       <link>https://derbuihan.github.io/posts/from_2023_to_2024/</link>
