@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 04 Jan 2024 19:04:46 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 26 Feb 2024 16:41:48 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>読書</title>
+      <link>https://derbuihan.github.io/tags/%E8%AA%AD%E6%9B%B8/</link>
+      <pubDate>Mon, 26 Feb 2024 16:41:48 +0900</pubDate>
+      <guid>https://derbuihan.github.io/tags/%E8%AA%AD%E6%9B%B8/</guid>
+      <description></description>
+    </item>
     <item>
       <title>抱負</title>
       <link>https://derbuihan.github.io/tags/%E6%8A%B1%E8%B2%A0/</link>
@@ -25,13 +32,6 @@
       <link>https://derbuihan.github.io/tags/%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/</link>
       <pubDate>Thu, 04 Jan 2024 19:04:46 +0900</pubDate>
       <guid>https://derbuihan.github.io/tags/%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>読書</title>
-      <link>https://derbuihan.github.io/tags/%E8%AA%AD%E6%9B%B8/</link>
-      <pubDate>Mon, 06 Nov 2023 02:05:18 +0900</pubDate>
-      <guid>https://derbuihan.github.io/tags/%E8%AA%AD%E6%9B%B8/</guid>
       <description></description>
     </item>
     <item>
@@ -56,7 +56,7 @@
       <description></description>
     </item>
     <item>
-      <title>kernel</title>
+      <title>Kernel</title>
       <link>https://derbuihan.github.io/tags/kernel/</link>
       <pubDate>Fri, 21 Oct 2022 23:42:59 +0900</pubDate>
       <guid>https://derbuihan.github.io/tags/kernel/</guid>
@@ -126,7 +126,7 @@
       <description></description>
     </item>
     <item>
-      <title>pytorch</title>
+      <title>Pytorch</title>
       <link>https://derbuihan.github.io/tags/pytorch/</link>
       <pubDate>Fri, 03 Jun 2022 21:43:29 +0900</pubDate>
       <guid>https://derbuihan.github.io/tags/pytorch/</guid>
@@ -154,7 +154,7 @@
       <description></description>
     </item>
     <item>
-      <title>tensorflow</title>
+      <title>Tensorflow</title>
       <link>https://derbuihan.github.io/tags/tensorflow/</link>
       <pubDate>Sun, 03 Jan 2021 06:16:50 +0900</pubDate>
       <guid>https://derbuihan.github.io/tags/tensorflow/</guid>
@@ -175,7 +175,7 @@
       <description></description>
     </item>
     <item>
-      <title>review</title>
+      <title>Review</title>
       <link>https://derbuihan.github.io/tags/review/</link>
       <pubDate>Sat, 04 Jan 2020 10:09:03 +0900</pubDate>
       <guid>https://derbuihan.github.io/tags/review/</guid>
@@ -189,14 +189,14 @@
       <description></description>
     </item>
     <item>
-      <title>docker</title>
+      <title>Docker</title>
       <link>https://derbuihan.github.io/tags/docker/</link>
       <pubDate>Thu, 03 Oct 2019 04:47:58 +0900</pubDate>
       <guid>https://derbuihan.github.io/tags/docker/</guid>
       <description></description>
     </item>
     <item>
-      <title>gpu</title>
+      <title>Gpu</title>
       <link>https://derbuihan.github.io/tags/gpu/</link>
       <pubDate>Thu, 03 Oct 2019 04:47:58 +0900</pubDate>
       <guid>https://derbuihan.github.io/tags/gpu/</guid>
