@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Wed, 13 Jul 2022 00:27:26 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/digestauth/index.xml" rel="self" type="application/rss+xml" />
@@ -18,17 +18,38 @@
       <link>https://derbuihan.github.io/posts/digest_auth_bash_js/</link>
       <pubDate>Wed, 13 Jul 2022 00:27:26 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/digest_auth_bash_js/</guid>
-      <description>Basic 認証や Digest 認証をゼロから実装する機会があったのでその仕組をメモしておく。 本記事の node はすべて v18 である。
-Basic 認証と Digest 認証 Basic 認証 はじめに Basic 認証の仕組みにを解説する。
-Basic 認証においてクライアントが初めて http リクエストを送ったときは、Status Code が401 Unauthorizedでヘッダーに
-www-authenticate: Basic realm=&amp;#34;secure&amp;#34; が付与されたレスポンスがサーバーから帰ってくる。 ちなみに realm は認証領域を表す。
-クライアントがユーザーとパスワードを user:pass のように入力したときは
-Authorization: Basic dXNlcjpwYXNz を付与してレスポンスを返す仕組みになっている。 このような動作は Basic 認証を用いたサイトに Chrome で接続し、デベロッパーツールで通信を監視することで確かめることが出来る。
-次に、dXNlcjpwYXNzの計算方法について確認しておく。 結論から言うとdXNlcjpwYXNzはuser:passを base64 でエンコードしたものである。 Bash では
-$ echo -n &amp;#34;user:pass&amp;#34; | base64 dXNlcjpwYXNz JavaScript では
-&amp;gt; btoa(&amp;#34;user:pass&amp;#34;) &amp;#39;dXNlcjpwYXNz&amp;#39; のように計算出来る。
-ただ、Base64 はハッシュ関数でもなんでもなくて文字列を単純な方法で変換しているだけなので、簡単に戻すことが出来る。 Bash では
-❯ echo -n &amp;#34;dXNlcjpwYXNz&amp;#34; | base64 -d user:pass JavaScript では</description>
+      <description>&lt;p&gt;Basic 認証や Digest 認証をゼロから実装する機会があったのでその仕組をメモしておく。
+本記事の node はすべて v18 である。&lt;/p&gt;
+&lt;h3 id=&#34;basic-認証と-digest-認証&#34;&gt;Basic 認証と Digest 認証&lt;/h3&gt;
+&lt;h4 id=&#34;basic-認証&#34;&gt;Basic 認証&lt;/h4&gt;
+&lt;p&gt;はじめに Basic 認証の仕組みにを解説する。&lt;/p&gt;
+&lt;p&gt;Basic 認証においてクライアントが初めて http リクエストを送ったときは、Status Code が&lt;code&gt;401 Unauthorized&lt;/code&gt;でヘッダーに&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;www-authenticate: Basic realm=&amp;#34;secure&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;が付与されたレスポンスがサーバーから帰ってくる。
+ちなみに realm は認証領域を表す。&lt;/p&gt;
+&lt;p&gt;クライアントがユーザーとパスワードを user:pass のように入力したときは&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Authorization: Basic dXNlcjpwYXNz
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;を付与してレスポンスを返す仕組みになっている。
+このような動作は Basic 認証を用いたサイトに Chrome で接続し、デベロッパーツールで通信を監視することで確かめることが出来る。&lt;/p&gt;
+&lt;p&gt;次に、&lt;code&gt;dXNlcjpwYXNz&lt;/code&gt;の計算方法について確認しておく。
+結論から言うと&lt;code&gt;dXNlcjpwYXNz&lt;/code&gt;は&lt;code&gt;user:pass&lt;/code&gt;を base64 でエンコードしたものである。
+Bash では&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Bash&#34; data-lang=&#34;Bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; -n &lt;span class=&#34;s2&#34;&gt;&amp;#34;user:pass&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; base64
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dXNlcjpwYXNz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;JavaScript では&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;btoa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;user:pass&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dXNlcjpwYXNz&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;のように計算出来る。&lt;/p&gt;
+&lt;p&gt;ただ、Base64 はハッシュ関数でもなんでもなくて文字列を単純な方法で変換しているだけなので、簡単に戻すことが出来る。
+Bash では&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Bash&#34; data-lang=&#34;Bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; -n &lt;span class=&#34;s2&#34;&gt;&amp;#34;dXNlcjpwYXNz&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; base64 -d
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user:pass
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;JavaScript では&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;atob&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;dXNlcjpwYXNz&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;user:pass&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;のように計算出来る。
+これは Basic 認証において通信経路で http のヘッダーを覗かれるとユーザー名もパスワードもすべて筒抜けになることを示している。
+つまり Basic 認証を使う際は https などを用いて暗号化するなど対策が必要になる。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Fri, 03 Jun 2022 21:43:29 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
@@ -18,26 +18,62 @@
       <link>https://derbuihan.github.io/posts/pytorch_1d_ising/</link>
       <pubDate>Fri, 03 Jun 2022 21:43:29 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/pytorch_1d_ising/</guid>
-      <description>1 次元のイジング模型 周期的境界条件のもとで 1 次元のイジング模型のハミルトニアンは
-$$ H\left(\sigma_{1}, \cdots, \sigma_{N} \right) = -J \sum_{i} \sigma_{i} \sigma_{i+1} - h \sum_{i} \sigma_{i} $$
-である。 ここで、$\sigma_{i}=\pm 1$はスピンを表し、周期的境界条件から$\sigma_{1} = \sigma_{N+1}$が成り立つ。 また$h$は外部磁場を表し、$J$は隣り合うスピンの相互作用を表す。
-このハミルトニアン$H$から分配関数$Z$は
-$$ Z = \sum_{\sigma_{1}, \cdots, \sigma_{N} = \pm 1} e^{- \beta H \left(\sigma_{1}, \cdots, \sigma_{N} \right)} $$
-と計算出来る。 ここで、$\beta = \frac{1}{k_B T}$は逆温度である。 この分配関数は次のように書き換えることが出来る。
-$$ Z = \sum_{\sigma_{1}, \cdots, \sigma_{N}} \exp{\left( \sum_i \beta J \sigma_i \sigma_{i+1} + \frac{\beta h}{2} (\sigma_i + \sigma_{i+1}) \right)} = \mathrm{tr} \left( T^N \right) $$</description>
+      <description>&lt;h3 id=&#34;1-次元のイジング模型&#34;&gt;1 次元のイジング模型&lt;/h3&gt;
+&lt;p&gt;周期的境界条件のもとで 1 次元のイジング模型のハミルトニアンは&lt;/p&gt;
+&lt;p&gt;$$
+H\left(\sigma_{1}, \cdots, \sigma_{N} \right) = -J \sum_{i} \sigma_{i} \sigma_{i+1} - h \sum_{i} \sigma_{i}
+$$&lt;/p&gt;
+&lt;p&gt;である。
+ここで、$\sigma_{i}=\pm 1$はスピンを表し、周期的境界条件から$\sigma_{1} = \sigma_{N+1}$が成り立つ。
+また$h$は外部磁場を表し、$J$は隣り合うスピンの相互作用を表す。&lt;/p&gt;
+&lt;p&gt;このハミルトニアン$H$から分配関数$Z$は&lt;/p&gt;
+&lt;p&gt;$$
+Z = \sum_{\sigma_{1}, \cdots, \sigma_{N} = \pm 1} e^{- \beta H \left(\sigma_{1}, \cdots, \sigma_{N} \right)}
+$$&lt;/p&gt;
+&lt;p&gt;と計算出来る。
+ここで、$\beta = \frac{1}{k_B T}$は逆温度である。
+この分配関数は次のように書き換えることが出来る。&lt;/p&gt;
+&lt;p&gt;$$
+Z = \sum_{\sigma_{1}, \cdots, \sigma_{N}} \exp{\left( \sum_i \beta J \sigma_i \sigma_{i+1} + \frac{\beta h}{2} (\sigma_i + \sigma_{i+1}) \right)} = \mathrm{tr} \left( T^N \right)
+$$&lt;/p&gt;</description>
     </item>
     <item>
       <title>PyTorchを用いて三角ゲームを解いてみた。</title>
       <link>https://derbuihan.github.io/posts/pytorch_triangle_game/</link>
       <pubDate>Sun, 15 May 2022 14:59:38 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/pytorch_triangle_game/</guid>
-      <description>先日、三角ゲームというゲームを知った。 今回はこのゲームを Pytorch を用いて解いてみた。
-三角ゲームの説明 はじめに三角ゲームについて説明する。 例として$n=5$人($A, B, C, D, E$)で遊ぶ場合を説明する。
-ゲームを始める前にそれぞれのプレイヤーは、自分以外の異なる２人のプレイヤーを選択する。 ここでは、$A = (B, C)$, $B = (A, C)$, $C = (B, D)$, $D = (C, E)$, $E = (C, D)$を選んだとする。 それぞれのプレイヤーは選択したプレイヤーと正三角形を作るように移動を行う。 最終的にこの条件をなるべく満たしながら最も多くの正三角形を作成することがこのゲームの目標である。
-この例では以下のようにそれぞれのプレイヤーが移動すれば、すべての条件を満たし最大の 5 個の正三角形が作成出来る。
-PyTorch を使って解く このゲームを PyTorch を用いて解いてみる。
-ライブラリのインポート はじめに、準備としてライブラリのインポートと保存用の関数を用意。
-import torch from torch import norm, dot, abs from random import randrange, random import matplotlib.pyplot as plt def savefig(xs, ys, i): plt.figure(figsize=(8,8)) plt.xlim([-0.5, 1.5]) plt.ylim([-0.5, 1.5]) plt.</description>
+      <description>&lt;p&gt;先日、三角ゲームというゲームを知った。
+今回はこのゲームを Pytorch を用いて解いてみた。&lt;/p&gt;
+&lt;h3 id=&#34;三角ゲームの説明&#34;&gt;三角ゲームの説明&lt;/h3&gt;
+&lt;p&gt;はじめに三角ゲームについて説明する。
+例として$n=5$人($A, B, C, D, E$)で遊ぶ場合を説明する。&lt;/p&gt;
+&lt;p&gt;ゲームを始める前にそれぞれのプレイヤーは、自分以外の異なる２人のプレイヤーを選択する。
+ここでは、$A = (B, C)$, $B = (A, C)$, $C = (B, D)$, $D = (C, E)$, $E = (C, D)$を選んだとする。
+それぞれのプレイヤーは選択したプレイヤーと正三角形を作るように移動を行う。
+最終的にこの条件をなるべく満たしながら最も多くの正三角形を作成することがこのゲームの目標である。&lt;/p&gt;
+&lt;p&gt;この例では以下のようにそれぞれのプレイヤーが移動すれば、すべての条件を満たし最大の 5 個の正三角形が作成出来る。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;n=5の例&#34; loading=&#34;lazy&#34; src=&#34;https://derbuihan.github.io/img/pytorch_triangle_game/n5_example.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;pytorch-を使って解く&#34;&gt;PyTorch を使って解く&lt;/h3&gt;
+&lt;p&gt;このゲームを PyTorch を用いて解いてみる。&lt;/p&gt;
+&lt;h4 id=&#34;ライブラリのインポート&#34;&gt;ライブラリのインポート&lt;/h4&gt;
+&lt;p&gt;はじめに、準備としてライブラリのインポートと保存用の関数を用意。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;torch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;torch&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;norm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;abs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;random&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;randrange&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;plt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;savefig&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ys&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;figure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;figsize&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xlim&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ylim&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scatter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ys&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;marker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;savefig&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;fig/fig&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zfill&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.png&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;close&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;import で error が出たら&lt;code&gt;pip3 install torch matplotlib&lt;/code&gt;する。
+&lt;code&gt;savefig(xs, ys, i)&lt;/code&gt;は、座標のリスト&lt;code&gt;(xs, ys)&lt;/code&gt;を取得して、図を作成し&lt;code&gt;fig/fig000i.png&lt;/code&gt;に保存する。&lt;/p&gt;
+&lt;h4 id=&#34;ゲームの準備&#34;&gt;ゲームの準備&lt;/h4&gt;
+&lt;p&gt;次はゲームの準備を行う。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

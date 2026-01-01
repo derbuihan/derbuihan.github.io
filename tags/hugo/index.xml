@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Thu, 20 Dec 2018 12:43:24 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
@@ -18,11 +18,33 @@
       <link>https://derbuihan.github.io/posts/start_blog_hugo/</link>
       <pubDate>Thu, 20 Dec 2018 12:43:24 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/start_blog_hugo/</guid>
-      <description>Hugo とは オープンソースの軽量ブログジェジェネレーターです。 Markdown で書くことが出来て楽です。
-Hugo の使い方 インストール方法 brew install hugo ブログの作成 hugo new site hugo 記事の作成 hugo new post/fuga.md localhost でテスト hugo server を実行し、http://localhost:1313/ にアクセス。 この時は public には何も作成されない。
-ページを作成する。 hugo を実行すると public にサイトが作成される。
-git で管理する方法 HUGO でブログ作成 → GitHub Pages で公開する手順に git のサブモジュールを用いて管理する方法が書いてある。 素晴らしいのでやると良い。
-感想 GitHub Pages でブログができてドメイン代しかかからないのが素晴らしいと思いました。 git で push すると更新なのでネットがないところでも blog が書けるのもいいと思います。 Hexo もいいけど npm で拡張するとかめんどくさいから Hugo が楽で良いと思った。 テーマを変えるのも楽だけど、私のセンスがないのでこのブログはダサい。 </description>
+      <description>&lt;h3 id=&#34;hugo-とは&#34;&gt;Hugo とは&lt;/h3&gt;
+&lt;p&gt;オープンソースの軽量ブログジェジェネレーターです。
+Markdown で書くことが出来て楽です。&lt;/p&gt;
+&lt;h3 id=&#34;hugo-の使い方&#34;&gt;Hugo の使い方&lt;/h3&gt;
+&lt;h4 id=&#34;インストール方法&#34;&gt;インストール方法&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;brew install hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;ブログの作成&#34;&gt;ブログの作成&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo new site hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;記事の作成&#34;&gt;記事の作成&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo new post/fuga.md
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;localhost-でテスト&#34;&gt;localhost でテスト&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo server
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;を実行し、http://localhost:1313/ にアクセス。
+この時は public には何も作成されない。&lt;/p&gt;
+&lt;h4 id=&#34;ページを作成する&#34;&gt;ページを作成する。&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;を実行すると public にサイトが作成される。&lt;/p&gt;
+&lt;h4 id=&#34;git-で管理する方法&#34;&gt;git で管理する方法&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://chanmitsu55.github.io/2017/12/25/2017-12-25-create-blog-by-hugo/&#34;&gt;HUGO でブログ作成 → GitHub Pages で公開する手順&lt;/a&gt;に git のサブモジュールを用いて管理する方法が書いてある。
+素晴らしいのでやると良い。&lt;/p&gt;
+&lt;h3 id=&#34;感想&#34;&gt;感想&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub Pages でブログができてドメイン代しかかからないのが素晴らしいと思いました。&lt;/li&gt;
+&lt;li&gt;git で push すると更新なのでネットがないところでも blog が書けるのもいいと思います。&lt;/li&gt;
+&lt;li&gt;Hexo もいいけど npm で拡張するとかめんどくさいから Hugo が楽で良いと思った。&lt;/li&gt;
+&lt;li&gt;テーマを変えるのも楽だけど、私のセンスがないのでこのブログはダサい。&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>

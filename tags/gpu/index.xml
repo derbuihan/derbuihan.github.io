@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Thu, 03 Oct 2019 04:47:58 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/gpu/index.xml" rel="self" type="application/rss+xml" />
@@ -18,15 +18,40 @@
       <link>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</link>
       <pubDate>Thu, 03 Oct 2019 04:47:58 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</guid>
-      <description>はじめに Docker 19.03 以降から Docker のコンテナから Nvidia GPU を使いやすくなりました。 tensorflow-gpu を Docker で使う場合は、公式のtensorflow/tensorflow:latest-gpu-py3があります。
-エラーの内容 このコンテナを Sandy Bridge 以前の CPU で使うと
-Illegal instruction (core dumped) というエラーが出ます。 これは AVX という命令が古すぎる CPU にはないために起こるエラーです。
-解決方法 解決方法は
-tensorflow をコンテナ内でビルドする 古い CPU でも動く tensorflow をどっかから取ってくる。 の二種類があります。
-この記事では 2.を使い、Anaconda のリポジトリから取ってきた tensorflow-gpu を用いたDockerfileを書いたので紹介します。
-使い方 Dockerfileを使ってください。
-動作環境 Ubuntu 18.04 docker 19.03 以降 nvidia-driver-435 遊び方 環境がきちんと整っていれば次で動作すると思います。
-$ git clone https://github.com/derbuihan/docker-tensorflow-gpu $ cd docker-tensorflow-gpu $ docker build -t mnist_sample . $ docker run --gpus device=0 -it --rm mnist_sample /bin/bash (base)$ conda activate tf-gpu (tf-gpu)$ wget https://raw.</description>
+      <description>&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;Docker 19.03 以降から Docker のコンテナから Nvidia GPU を使いやすくなりました。
+tensorflow-gpu を Docker で使う場合は、公式の&lt;a href=&#34;https://hub.docker.com/r/tensorflow/tensorflow&#34;&gt;tensorflow/tensorflow:latest-gpu-py3&lt;/a&gt;があります。&lt;/p&gt;
+&lt;h4 id=&#34;エラーの内容&#34;&gt;エラーの内容&lt;/h4&gt;
+&lt;p&gt;このコンテナを Sandy Bridge 以前の CPU で使うと&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Illegal instruction (core dumped)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;というエラーが出ます。
+これは AVX という命令が古すぎる CPU にはないために起こるエラーです。&lt;/p&gt;
+&lt;h4 id=&#34;解決方法&#34;&gt;解決方法&lt;/h4&gt;
+&lt;p&gt;解決方法は&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;tensorflow をコンテナ内でビルドする&lt;/li&gt;
+&lt;li&gt;古い CPU でも動く tensorflow をどっかから取ってくる。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;の二種類があります。&lt;/p&gt;
+&lt;p&gt;この記事では 2.を使い、Anaconda のリポジトリから取ってきた tensorflow-gpu を用いた&lt;a href=&#34;https://github.com/derbuihan/docker-tensorflow-gpu&#34;&gt;Dockerfile&lt;/a&gt;を書いたので紹介します。&lt;/p&gt;
+&lt;h3 id=&#34;使い方&#34;&gt;使い方&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/derbuihan/docker-tensorflow-gpu&#34;&gt;Dockerfile&lt;/a&gt;を使ってください。&lt;/p&gt;
+&lt;h4 id=&#34;動作環境&#34;&gt;動作環境&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 18.04&lt;/li&gt;
+&lt;li&gt;docker 19.03 以降&lt;/li&gt;
+&lt;li&gt;nvidia-driver-435&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;遊び方&#34;&gt;遊び方&lt;/h4&gt;
+&lt;p&gt;環境がきちんと整っていれば次で動作すると思います。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ git clone https://github.com/derbuihan/docker-tensorflow-gpu
+$ cd docker-tensorflow-gpu
+$ docker build -t mnist_sample .
+$ docker run --gpus device=0 -it --rm mnist_sample /bin/bash
+(base)$ conda activate tf-gpu
+(tf-gpu)$ wget https://raw.githubusercontent.com/keras-team/keras/master/examples/mnist_cnn.py
+(tf-gpu)$ python mnist_cnn.py
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
   </channel>
 </rss>

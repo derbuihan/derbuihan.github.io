@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Tue, 29 Jan 2019 16:48:37 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
@@ -18,18 +18,37 @@
       <link>https://derbuihan.github.io/posts/haskell_primes/</link>
       <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/haskell_primes/</guid>
-      <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。
-ソースはfermat_test.hsからダウンロード!
-フェルマーテストとは フェルマーの小定理はご存知ですよね？
-$p$を素数のとき、$a$を$p$と互いに素な整数に対して、 $$a ^ p \equiv a \pmod{p}$$ が成り立つ。
-これの対偶を考えます。
-整数$n$について、$n$と互いに素な整数$a$に対して、 $$ a ^ n \not \equiv a \pmod{n} $$ が成り立つとき、整数$n$は合成数である。
-これによって、ある数が素数であることは示せないが合成数であることを速く示すことはできます。
-実装 部品を 1 つ 1 つ揃えていきます。
-互いに素 最小公倍数を求める関数を考えます。
-gcd&amp;#39; :: Integer -&amp;gt; Integer -&amp;gt; Integer gcd&amp;#39; n 0 = n gcd&amp;#39; n m = gcd&amp;#39; m (n `mod` m) これを用いて、
-gcd&amp;#39; n m == 1 とすれば$n, m$は互いに素です。 (Haskell には標準で gcd があるのでそれを使っても良い)
-$a^{n-1} \pmod{n}$を求める いわゆる、$a^7 = a * (a^3)^2 = a * (a * a^2)^2$として計算量をへらすやつを使います。 途中で$\pmod{n}$を挟みます。</description>
+      <description>&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E8%A8%88%E7%AE%97%E6%A9%9F%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E8%A7%A3%E9%87%88&#34;&gt;SICP&lt;/a&gt;を読んでたら&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9E%E3%83%BC%E3%81%AE%E5%B0%8F%E5%AE%9A%E7%90%86#%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9E%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88&#34;&gt;フェルマーテスト&lt;/a&gt;について書いてあって、ほんとにこれ速いのかやってみようと思った話です。&lt;/p&gt;
+&lt;p&gt;ソースは&lt;a href=&#34;https://gist.github.com/derbuihan/af3a8b7fac7dbfeee9d90887f8bd51df&#34;&gt;fermat_test.hs&lt;/a&gt;からダウンロード!&lt;/p&gt;
+&lt;h3 id=&#34;フェルマーテストとは&#34;&gt;フェルマーテストとは&lt;/h3&gt;
+&lt;p&gt;フェルマーの小定理はご存知ですよね？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$p$を素数のとき、$a$を$p$と互いに素な整数に対して、
+$$a ^ p \equiv a \pmod{p}$$
+が成り立つ。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;これの対偶を考えます。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;整数$n$について、$n$と互いに素な整数$a$に対して、
+$$ a ^ n \not \equiv a \pmod{n} $$
+が成り立つとき、整数$n$は合成数である。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;これによって、ある数が素数であることは示せないが合成数であることを速く示すことはできます。&lt;/p&gt;
+&lt;h3 id=&#34;実装&#34;&gt;実装&lt;/h3&gt;
+&lt;p&gt;部品を 1 つ 1 つ揃えていきます。&lt;/p&gt;
+&lt;h4 id=&#34;互いに素&#34;&gt;互いに素&lt;/h4&gt;
+&lt;p&gt;最小公倍数を求める関数を考えます。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;gcd&amp;#39; :: Integer -&amp;gt; Integer -&amp;gt; Integer
+gcd&amp;#39; n 0 = n
+gcd&amp;#39; n m = gcd&amp;#39; m (n `mod` m)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これを用いて、&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;gcd&amp;#39; n m == 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;とすれば$n, m$は互いに素です。
+(Haskell には標準で gcd があるのでそれを使っても良い)&lt;/p&gt;
+&lt;h4 id=&#34;an-1-pmodnを求める&#34;&gt;$a^{n-1} \pmod{n}$を求める&lt;/h4&gt;
+&lt;p&gt;いわゆる、$a^7 = a * (a^3)^2 = a * (a * a^2)^2$として計算量をへらすやつを使います。
+途中で$\pmod{n}$を挟みます。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

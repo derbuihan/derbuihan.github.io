@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Thu, 04 Jan 2024 19:04:46 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/index.xml" rel="self" type="application/rss+xml" />
@@ -18,20 +18,72 @@
       <link>https://derbuihan.github.io/posts/from_2023_to_2024/</link>
       <pubDate>Thu, 04 Jan 2024 19:04:46 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/from_2023_to_2024/</guid>
-      <description>2023年の振り返りと2024年の抱負を書いておく。すぐ忘れちゃうので
-2023年の振り返り 一年を振り返るとこんな感じだった。
-1月〜3月: AWSの資格を集めてた。 4月〜6月: AIの勉強しながらzennに記事を書いてた。 7月〜9月: C言語のコンパイラ作ったりGPT-4で遊んだりしてた。 10月〜12月: 本読んだりOS自作や現代ポートフォリオ理論を勉強したりしてた。 1月〜3月:AWSの資格を集めてた。 2022年の11月後半ぐらいから2023年の3月までAWSの資格を集めてた。 この頃はAWS使えばすべての課題を解決できると信じ切ってて、割と洗脳状態にあった。
-資格取り終わってしばらくAWSの勉強から離れてみると、AWSって高いし設定項目も多すぎるので、そこまでいい製品ではないような気がしてきた。 たとえばこの記事とかはAWSの価格が高すぎることについて言及している。
-また、最近になってほとんどの企業はAWSをAWSの言う通りに使ってるわけではないこともわかってきた。 資格で出てくるベストプラクティスって構築するのがすごく難しいし、そのベストプラクティスを知ってる人が少ないので、実際には別の構成となってることが多い。 ベストプラクティスを守るのが常に正義ってわけでもないので、この構成はベストプラクティスじゃないなぁって思いながら傍観している。 結局、正解なんてないわけだし。
-あと、JavaScriptやReactやAWS Amplify周りの勉強も少ししていた。 そもそもAWSの資格を集め始めたのは、TypeScriptでCDKを書くのが面白そうだったからで、資格集めが一段落したタイミングでJavaScriptの勉強をしていた。 ブラウザのJavaScriptとnodejsの違いを理解したのとJavaScriptの実行モデルが複雑なこととかを学んだ。 それに関連してReactの勉強もした。 関数コンポーネントとかReact HooksとかReduxとかが面白かったことを覚えている。 AWS Amplifyも少し触った。 GraphQLでサーバー側のデータベース更新のイベントをブラウザ側に通知するというのが面白かったことを覚えている。 この辺は進化が激しすぎるので、必要になったタイミングで勉強するようにして、深入りはしないようにしたい。
-4月〜6月: AIの勉強しながらzennに記事を書いてた。 4月に自作PCを作った。記事
-この自作PCでDeep Learningの勉強していた。 CNNとRNNあたりまで知ってたけど、その先のことを知らなかったので勉強した。 結果として以下の知識を得られた。
-U-Net: 記事 VAE: 記事 DCGAN: 記事 LSTM: 記事 Transformer: 記事1, 記事2 BERT: 記事 それぞれのモデルについて自分でデータ探してきて動かしたので、理解度は高いと思う。 また、最新のモデルになればなるほど自分で学習させるのが難しいこととわかった。
-あと自作PCでkubeflowを動かしたくてk8sも勉強していた。 k8sの勉強は中途半端になっている。 k8sって理想は素晴らしいけど実際に扱うのは難しすぎると現段階では考えている。
-7月〜9月: C言語のコンパイラ作ったりGPT-4で遊んだりしてた。 Cコンパイラ自作の記事を見つけて面白そうだったので、Cコンパイラを自作し始めた。 途中で中断したりして2024年1月になってもまだ完成していない。 とりあえずセルフホストまではやろうと思っている。
-コンパイラの自作をやってパソコンの仕組みとかC言語のこととか何も知らなかったことに気づいた。 コンパイラを作る中で得た細かい知識はZennのスクラップにまとめている。
-GPT-4を使うようになった。 LibreChatというOSSからAzure OpenAIのGPT-4を使っている。 LibreChatが応援したくて、Issue立てたりThird-Party Toolsにプルリクを送ったりした。
-また、RAGを作りたくていくつかのベクトルDBも試してみた。いくつか試した感じだとMongoDBとOpenSearchが使いやすかった。 この分野は成長が早いので新製品が出るたびに勉強してたらきりがないので、ある程度時間が経ったら勉強したい。 個人的にはDynamoDBのベクトルDB機能かCloudflare Vectorizeに期待したい。 少し試した感じだとベクトルって結構容量が大きいので、すべてのデータにベクトルを付与して保存するようになったら、クラウドの費用が上がりそう。</description>
+      <description>&lt;p&gt;2023年の振り返りと2024年の抱負を書いておく。すぐ忘れちゃうので&lt;/p&gt;
+&lt;h1 id=&#34;2023年の振り返り&#34;&gt;2023年の振り返り&lt;/h1&gt;
+&lt;p&gt;一年を振り返るとこんな感じだった。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1月〜3月: AWSの資格を集めてた。&lt;/li&gt;
+&lt;li&gt;4月〜6月: AIの勉強しながらzennに記事を書いてた。&lt;/li&gt;
+&lt;li&gt;7月〜9月: C言語のコンパイラ作ったりGPT-4で遊んだりしてた。&lt;/li&gt;
+&lt;li&gt;10月〜12月: 本読んだりOS自作や現代ポートフォリオ理論を勉強したりしてた。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;1月3月awsの資格を集めてた&#34;&gt;1月〜3月:AWSの資格を集めてた。&lt;/h2&gt;
+&lt;p&gt;2022年の11月後半ぐらいから2023年の3月までAWSの資格を集めてた。
+この頃はAWS使えばすべての課題を解決できると信じ切ってて、割と洗脳状態にあった。&lt;/p&gt;
+&lt;p&gt;資格取り終わってしばらくAWSの勉強から離れてみると、AWSって高いし設定項目も多すぎるので、そこまでいい製品ではないような気がしてきた。
+たとえば&lt;a href=&#34;https://www.tcdigital.jp/dev_blog/%E6%9C%AA%E5%88%86%E9%A1%9E/%E3%81%95%E3%81%8F%E3%82%89%E3%81%AE%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%81%8B%E3%82%89aws%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%A6%E4%B8%80%E3%83%B6%E6%9C%88%E3%81%AE%E6%84%9F%E6%83%B3/&#34;&gt;この記事&lt;/a&gt;とかはAWSの価格が高すぎることについて言及している。&lt;/p&gt;
+&lt;p&gt;また、最近になってほとんどの企業はAWSをAWSの言う通りに使ってるわけではないこともわかってきた。
+資格で出てくるベストプラクティスって構築するのがすごく難しいし、そのベストプラクティスを知ってる人が少ないので、実際には別の構成となってることが多い。
+ベストプラクティスを守るのが常に正義ってわけでもないので、この構成はベストプラクティスじゃないなぁって思いながら傍観している。
+結局、正解なんてないわけだし。&lt;/p&gt;
+&lt;p&gt;あと、JavaScriptやReactやAWS Amplify周りの勉強も少ししていた。
+そもそもAWSの資格を集め始めたのは、TypeScriptでCDKを書くのが面白そうだったからで、資格集めが一段落したタイミングでJavaScriptの勉強をしていた。
+ブラウザのJavaScriptとnodejsの違いを理解したのとJavaScriptの実行モデルが複雑なこととかを学んだ。
+それに関連してReactの勉強もした。
+関数コンポーネントとかReact HooksとかReduxとかが面白かったことを覚えている。
+AWS Amplifyも少し触った。
+GraphQLでサーバー側のデータベース更新のイベントをブラウザ側に通知するというのが面白かったことを覚えている。
+この辺は進化が激しすぎるので、必要になったタイミングで勉強するようにして、深入りはしないようにしたい。&lt;/p&gt;
+&lt;h2 id=&#34;4月6月-aiの勉強しながらzennに記事を書いてた&#34;&gt;4月〜6月: AIの勉強しながらzennに記事を書いてた。&lt;/h2&gt;
+&lt;p&gt;4月に自作PCを作った。&lt;a href=&#34;https://zenn.dev/derbuihan/articles/928ae5f279afbc&#34;&gt;記事&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;この自作PCでDeep Learningの勉強していた。
+CNNとRNNあたりまで知ってたけど、その先のことを知らなかったので勉強した。
+結果として以下の知識を得られた。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;U-Net: &lt;a href=&#34;https://zenn.dev/derbuihan/articles/cc23e8d3be1570&#34;&gt;記事&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;VAE: &lt;a href=&#34;https://zenn.dev/derbuihan/articles/a69df133014944&#34;&gt;記事&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;DCGAN: &lt;a href=&#34;https://zenn.dev/derbuihan/articles/9af322aba9da7a&#34;&gt;記事&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;LSTM: &lt;a href=&#34;https://zenn.dev/derbuihan/articles/c964a0b1c75d28&#34;&gt;記事&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Transformer: &lt;a href=&#34;https://zenn.dev/derbuihan/articles/681e8e0538aaaf&#34;&gt;記事1&lt;/a&gt;, &lt;a href=&#34;https://zenn.dev/derbuihan/articles/050a9cf6f7ef7c&#34;&gt;記事2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;BERT: &lt;a href=&#34;https://zenn.dev/derbuihan/articles/775fab4d13d8a4&#34;&gt;記事&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;それぞれのモデルについて自分でデータ探してきて動かしたので、理解度は高いと思う。
+また、最新のモデルになればなるほど自分で学習させるのが難しいこととわかった。&lt;/p&gt;
+&lt;p&gt;あと自作PCでkubeflowを動かしたくてk8sも勉強していた。
+k8sの勉強は中途半端になっている。
+k8sって理想は素晴らしいけど実際に扱うのは難しすぎると現段階では考えている。&lt;/p&gt;
+&lt;h2 id=&#34;7月9月-c言語のコンパイラ作ったりgpt-4で遊んだりしてた&#34;&gt;7月〜9月: C言語のコンパイラ作ったりGPT-4で遊んだりしてた。&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.sigbus.info/compilerbook&#34;&gt;Cコンパイラ自作の記事&lt;/a&gt;を見つけて面白そうだったので、Cコンパイラを自作し始めた。
+途中で中断したりして2024年1月になってもまだ完成していない。
+とりあえずセルフホストまではやろうと思っている。&lt;/p&gt;
+&lt;p&gt;コンパイラの自作をやってパソコンの仕組みとかC言語のこととか何も知らなかったことに気づいた。
+コンパイラを作る中で得た細かい知識は&lt;a href=&#34;https://zenn.dev/derbuihan/scraps/d17f5619cfe5b4&#34;&gt;Zennのスクラップ&lt;/a&gt;にまとめている。&lt;/p&gt;
+&lt;p&gt;GPT-4を使うようになった。
+&lt;a href=&#34;https://github.com/danny-avila/LibreChat/tree/main&#34;&gt;LibreChat&lt;/a&gt;というOSSからAzure OpenAIのGPT-4を使っている。
+LibreChatが応援したくて、Issue立てたりThird-Party Toolsにプルリクを送ったりした。&lt;/p&gt;
+&lt;p&gt;また、RAGを作りたくていくつかのベクトルDBも試してみた。いくつか試した感じだとMongoDBとOpenSearchが使いやすかった。
+この分野は成長が早いので新製品が出るたびに勉強してたらきりがないので、ある程度時間が経ったら勉強したい。
+個人的にはDynamoDBのベクトルDB機能かCloudflare Vectorizeに期待したい。
+少し試した感じだとベクトルって結構容量が大きいので、すべてのデータにベクトルを付与して保存するようになったら、クラウドの費用が上がりそう。&lt;/p&gt;
+&lt;h2 id=&#34;10月12月-本読んだりos自作や現代ポートフォリオ理論を勉強したりしてた&#34;&gt;10月〜12月: 本読んだりOS自作や現代ポートフォリオ理論を勉強したりしてた。&lt;/h2&gt;
+&lt;p&gt;以下の本を読んだ。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;官僚制のユートピア &lt;a href=&#34;https://derbuihan.github.io/posts/the_utopia_of_rules/&#34;&gt;記事&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Cプログラミング診断室 &lt;a href=&#34;https://derbuihan.github.io/posts/c_programming_diagnosis_room/&#34;&gt;記事&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ケーキの切れない非行少年たち&lt;/li&gt;
+&lt;li&gt;ブルシットジョブ &lt;a href=&#34;https://derbuihan.github.io/posts/bullshit_jobs/&#34;&gt;記事&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以下の本は途中まで読んだけど、最後まで読めなかった。2024年に読みたい。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Sun, 07 Jul 2019 01:37:56 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
@@ -18,71 +18,180 @@
       <link>https://derbuihan.github.io/posts/study_math/</link>
       <pubDate>Sun, 07 Jul 2019 01:37:56 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/study_math/</guid>
-      <description>はじめに 物理を勉強していくうちに数学にも興味をもったので、学部 3 年生の後半から学部 4 年生になるまでの約半年間ひとりで数学を勉強しました。 数学科の人からすればまだ入門したてのペーペーでしょうが、独学で数学の勉強を始める方への助けになればと思い勉強法などを書いておきます。
-数学の勉強を始める前に 数学の勉強を始める前に必ず知ってないといけないことがあります。 それは、必ず全ての証明を手で追わないといけないということです。 これをやらないと結局は定義も理解できませんし、勉強も長続きしません。
-証明を手で追うためにはいくつかの必要な知識があります。 私は学部 2 年の頃にこれらの知識がなく数学の勉強を始めたので挫折しました。 まずはこれらのことを知ってから数学の本を読みましょう。
-数学は論理で出来ている。 実は数学の勉強は論理学を勉強してからでないと始められません。私は文系の授業で論理学を学ぶ機会があり、そこで数学は論理学で出来ていることを知りました。論理学を勉強すると、数学の本に載っている定理もかなりのものが考えれば証明できるようになります。本としては前に書いた情報科学における論理とかでも良いかもしれませんがすこし難しいし、ここまでの知識は数学では求められていかもしれません。パソコンに詳しい人はこの pdfで Coq から論理学を勉強するのがおすすめです。
-本を探すところから始まる。 たとえば、証明の書き方には本によって癖があります。
-この定理を示すためには、〇〇と✗✗が必要である。 〇〇を示す。 〜〜〜 〇〇が示された。 ✗✗を示す。 〜〜〜 ✗✗が示された。 よって定理が示された。 と丁寧に書いてくれる本もあれば、
-〜〜〜 〇〇が示された。 〜〜〜 ✗✗が示された。 〇〇と✗✗からこの定理が示された。 と淡白に書いてある本もあります。 かなり勉強していけばどちらで書いてあっても変わらないと感じるのかもしれませんが、はじめのうちは後者のように書かれるとすごく難しく感じます。
-また、例が多すぎてなかなか前に進めない本や、つながりがわかりにくい本などいろいろな本があります。 私は一つの単元ごとに本を探すだけで 3 日ぐらいは時間を使っても良いと思ってます。 それぐらいには本選びは大事です。
-たとえば集合・位相入門 松坂は有名ですが、独学で数学を一から始めるのであればこの本はおすすめしません。さっきの例でいうと後者のような証明の書き方をしていて難しく感じるからです。
-勉強したこと 偉そうにいろいろ書きましたが、結局半年で何を勉強したのかと言いますと
-集合と位相 代数系の最初の方 関数解析をフーリエ級数展開まで テンソル解析の最初の方 複素解析の復習 を、この順番に勉強しました。 最後の 3 つは物理学科の院試に向けて勉強した感じです。
-一覧にするとそんなにやってない感じしますね&amp;hellip; まあ、実際ペーペーなんですけど&amp;hellip;
-読んだ本 万人におすすめできるわけではないです。 こんな本もあるよって紹介です。 でも、この記事で紹介する本は全て私が数十時間かけて読んだ本です。
-集合論 独学と自慢してましたが実は集合論だけは授業と演習の単位を取りました。 多分、どの大学でも集合と位相１みたいな授業は集合の授業のはずなので、それを取ると数学の勉強のやり方やリアルな研究者を見れて良いと思います。 集合論は数学の勉強を始めるなら一番はじめにやるべきです。
-位相空間 位相は位相入門―距離空間と位相空間を読みました。 内容は絞っているように見えますが、証明はわかりやすく書いてあるので読みやすいです。 この本に書いてある以上の知識が求められる機会が今後の勉強であるのかは謎。 第二章は定理の番号がズレているので悲しい気持ちになります。</description>
+      <description>&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;物理を勉強していくうちに数学にも興味をもったので、学部 3 年生の後半から学部 4 年生になるまでの約半年間ひとりで数学を勉強しました。
+数学科の人からすればまだ入門したてのペーペーでしょうが、独学で数学の勉強を始める方への助けになればと思い勉強法などを書いておきます。&lt;/p&gt;
+&lt;h3 id=&#34;数学の勉強を始める前に&#34;&gt;数学の勉強を始める前に&lt;/h3&gt;
+&lt;p&gt;数学の勉強を始める前に必ず知ってないといけないことがあります。
+それは、必ず全ての証明を手で追わないといけないということです。
+これをやらないと結局は定義も理解できませんし、勉強も長続きしません。&lt;/p&gt;
+&lt;p&gt;証明を手で追うためにはいくつかの必要な知識があります。
+私は学部 2 年の頃にこれらの知識がなく数学の勉強を始めたので挫折しました。
+まずはこれらのことを知ってから数学の本を読みましょう。&lt;/p&gt;
+&lt;h4 id=&#34;数学は論理で出来ている&#34;&gt;数学は論理で出来ている。&lt;/h4&gt;
+&lt;p&gt;実は数学の勉強は論理学を勉強してからでないと始められません。私は文系の授業で論理学を学ぶ機会があり、そこで数学は論理学で出来ていることを知りました。論理学を勉強すると、数学の本に載っている定理もかなりのものが考えれば証明できるようになります。本としては前に書いた&lt;a href=&#34;https://amzn.to/3QSzyI6&#34;&gt;情報科学における論理&lt;/a&gt;とかでも良いかもしれませんがすこし難しいし、ここまでの知識は数学では求められていかもしれません。パソコンに詳しい人は&lt;a href=&#34;http://herb.h.kobe-u.ac.jp/coq/coq.pdf&#34;&gt;この pdf&lt;/a&gt;で Coq から論理学を勉強するのがおすすめです。&lt;/p&gt;
+&lt;h4 id=&#34;本を探すところから始まる&#34;&gt;本を探すところから始まる。&lt;/h4&gt;
+&lt;p&gt;たとえば、証明の書き方には本によって癖があります。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;この定理を示すためには、〇〇と✗✗が必要である。
+〇〇を示す。
+〜〜〜
+〇〇が示された。
+✗✗を示す。
+〜〜〜
+✗✗が示された。
+よって定理が示された。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;と丁寧に書いてくれる本もあれば、&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;〜〜〜
+〇〇が示された。
+〜〜〜
+✗✗が示された。
+〇〇と✗✗からこの定理が示された。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;と淡白に書いてある本もあります。
+かなり勉強していけばどちらで書いてあっても変わらないと感じるのかもしれませんが、はじめのうちは後者のように書かれるとすごく難しく感じます。&lt;/p&gt;
+&lt;p&gt;また、例が多すぎてなかなか前に進めない本や、つながりがわかりにくい本などいろいろな本があります。
+私は一つの単元ごとに本を探すだけで 3 日ぐらいは時間を使っても良いと思ってます。
+それぐらいには本選びは大事です。&lt;/p&gt;
+&lt;p&gt;たとえば&lt;a href=&#34;https://amzn.to/3GjKd9R&#34;&gt;集合・位相入門 松坂&lt;/a&gt;は有名ですが、独学で数学を一から始めるのであればこの本はおすすめしません。さっきの例でいうと後者のような証明の書き方をしていて難しく感じるからです。&lt;/p&gt;
+&lt;h3 id=&#34;勉強したこと&#34;&gt;勉強したこと&lt;/h3&gt;
+&lt;p&gt;偉そうにいろいろ書きましたが、結局半年で何を勉強したのかと言いますと&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;集合と位相&lt;/li&gt;
+&lt;li&gt;代数系の最初の方&lt;/li&gt;
+&lt;li&gt;関数解析をフーリエ級数展開まで&lt;/li&gt;
+&lt;li&gt;テンソル解析の最初の方&lt;/li&gt;
+&lt;li&gt;複素解析の復習&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;を、この順番に勉強しました。
+最後の 3 つは物理学科の院試に向けて勉強した感じです。&lt;/p&gt;
+&lt;p&gt;一覧にするとそんなにやってない感じしますね&amp;hellip;
+まあ、実際ペーペーなんですけど&amp;hellip;&lt;/p&gt;
+&lt;h3 id=&#34;読んだ本&#34;&gt;読んだ本&lt;/h3&gt;
+&lt;p&gt;万人におすすめできるわけではないです。
+こんな本もあるよって紹介です。
+でも、この記事で紹介する本は全て私が数十時間かけて読んだ本です。&lt;/p&gt;
+&lt;h4 id=&#34;集合論&#34;&gt;集合論&lt;/h4&gt;
+&lt;p&gt;独学と自慢してましたが実は集合論だけは授業と演習の単位を取りました。
+多分、どの大学でも集合と位相１みたいな授業は集合の授業のはずなので、それを取ると数学の勉強のやり方やリアルな研究者を見れて良いと思います。
+集合論は数学の勉強を始めるなら一番はじめにやるべきです。&lt;/p&gt;
+&lt;h4 id=&#34;位相空間&#34;&gt;位相空間&lt;/h4&gt;
+&lt;p&gt;位相は&lt;a href=&#34;https://amzn.to/3N7BzPx&#34;&gt;位相入門―距離空間と位相空間&lt;/a&gt;を読みました。
+内容は絞っているように見えますが、証明はわかりやすく書いてあるので読みやすいです。
+この本に書いてある以上の知識が求められる機会が今後の勉強であるのかは謎。
+第二章は定理の番号がズレているので悲しい気持ちになります。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Haskellで素数を探そうと思った話</title>
       <link>https://derbuihan.github.io/posts/haskell_primes/</link>
       <pubDate>Tue, 29 Jan 2019 16:48:37 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/haskell_primes/</guid>
-      <description>はじめに SICPを読んでたらフェルマーテストについて書いてあって、ほんとにこれ速いのかやってみようと思った話です。
-ソースはfermat_test.hsからダウンロード!
-フェルマーテストとは フェルマーの小定理はご存知ですよね？
-$p$を素数のとき、$a$を$p$と互いに素な整数に対して、 $$a ^ p \equiv a \pmod{p}$$ が成り立つ。
-これの対偶を考えます。
-整数$n$について、$n$と互いに素な整数$a$に対して、 $$ a ^ n \not \equiv a \pmod{n} $$ が成り立つとき、整数$n$は合成数である。
-これによって、ある数が素数であることは示せないが合成数であることを速く示すことはできます。
-実装 部品を 1 つ 1 つ揃えていきます。
-互いに素 最小公倍数を求める関数を考えます。
-gcd&amp;#39; :: Integer -&amp;gt; Integer -&amp;gt; Integer gcd&amp;#39; n 0 = n gcd&amp;#39; n m = gcd&amp;#39; m (n `mod` m) これを用いて、
-gcd&amp;#39; n m == 1 とすれば$n, m$は互いに素です。 (Haskell には標準で gcd があるのでそれを使っても良い)
-$a^{n-1} \pmod{n}$を求める いわゆる、$a^7 = a * (a^3)^2 = a * (a * a^2)^2$として計算量をへらすやつを使います。 途中で$\pmod{n}$を挟みます。</description>
+      <description>&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E8%A8%88%E7%AE%97%E6%A9%9F%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E8%A7%A3%E9%87%88&#34;&gt;SICP&lt;/a&gt;を読んでたら&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9E%E3%83%BC%E3%81%AE%E5%B0%8F%E5%AE%9A%E7%90%86#%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9E%E3%83%BC%E3%83%86%E3%82%B9%E3%83%88&#34;&gt;フェルマーテスト&lt;/a&gt;について書いてあって、ほんとにこれ速いのかやってみようと思った話です。&lt;/p&gt;
+&lt;p&gt;ソースは&lt;a href=&#34;https://gist.github.com/derbuihan/af3a8b7fac7dbfeee9d90887f8bd51df&#34;&gt;fermat_test.hs&lt;/a&gt;からダウンロード!&lt;/p&gt;
+&lt;h3 id=&#34;フェルマーテストとは&#34;&gt;フェルマーテストとは&lt;/h3&gt;
+&lt;p&gt;フェルマーの小定理はご存知ですよね？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$p$を素数のとき、$a$を$p$と互いに素な整数に対して、
+$$a ^ p \equiv a \pmod{p}$$
+が成り立つ。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;これの対偶を考えます。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;整数$n$について、$n$と互いに素な整数$a$に対して、
+$$ a ^ n \not \equiv a \pmod{n} $$
+が成り立つとき、整数$n$は合成数である。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;これによって、ある数が素数であることは示せないが合成数であることを速く示すことはできます。&lt;/p&gt;
+&lt;h3 id=&#34;実装&#34;&gt;実装&lt;/h3&gt;
+&lt;p&gt;部品を 1 つ 1 つ揃えていきます。&lt;/p&gt;
+&lt;h4 id=&#34;互いに素&#34;&gt;互いに素&lt;/h4&gt;
+&lt;p&gt;最小公倍数を求める関数を考えます。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;gcd&amp;#39; :: Integer -&amp;gt; Integer -&amp;gt; Integer
+gcd&amp;#39; n 0 = n
+gcd&amp;#39; n m = gcd&amp;#39; m (n `mod` m)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これを用いて、&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;gcd&amp;#39; n m == 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;とすれば$n, m$は互いに素です。
+(Haskell には標準で gcd があるのでそれを使っても良い)&lt;/p&gt;
+&lt;h4 id=&#34;an-1-pmodnを求める&#34;&gt;$a^{n-1} \pmod{n}$を求める&lt;/h4&gt;
+&lt;p&gt;いわゆる、$a^7 = a * (a^3)^2 = a * (a * a^2)^2$として計算量をへらすやつを使います。
+途中で$\pmod{n}$を挟みます。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Coqで自然数が加法,乗法について可換モノイド</title>
       <link>https://derbuihan.github.io/posts/coq_natural_number/</link>
       <pubDate>Wed, 16 Jan 2019 04:20:21 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/coq_natural_number/</guid>
-      <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それを Coq/SSReflect で示します。 (実際はSoftware Foundations の第一章を SSReflect 使って解いただけ。)
-可換モノイド S が可換モノイドとは
-結合律 $$ \forall x, y, z \in S, (x \cdot y) \cdot z = x \cdot (y \cdot z) $$ 単位元の存在 $$ \exists e \in S, \forall x \in S , e \cdot x = x \cdot e = x $$ 可換 $$ \forall x, y \in S, x \cdot y = y \cdot x $$ を満たすことである。</description>
+      <description>&lt;h3 id=&#34;目的&#34;&gt;目的&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://amzn.to/3uyaij1&#34;&gt;代数入門―群と加群 &lt;/a&gt;を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それを Coq/SSReflect で示します。
+(実際は&lt;a href=&#34;http://proofcafe.org/sf/Basics_J.html&#34;&gt;Software Foundations の第一章&lt;/a&gt;を SSReflect 使って解いただけ。)&lt;/p&gt;
+&lt;h3 id=&#34;可換モノイド&#34;&gt;可換モノイド&lt;/h3&gt;
+&lt;p&gt;S が可換モノイドとは&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;結合律 $$ \forall x, y, z \in S, (x \cdot y) \cdot z = x \cdot (y \cdot z) $$&lt;/li&gt;
+&lt;li&gt;単位元の存在 $$ \exists e \in S, \forall x \in S , e \cdot x = x \cdot e = x $$&lt;/li&gt;
+&lt;li&gt;可換 $$ \forall x, y \in S, x \cdot y = y \cdot x $$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;を満たすことである。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Coqで外延性の公理</title>
       <link>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</link>
       <pubDate>Mon, 31 Dec 2018 23:08:04 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</guid>
-      <description>外延性の公理から集合の等号に対して同値関係を示します。(Coq で)
-外延性の公理とは A, B を任意の集合とするとき、もし任意の集合 X について「X が A の要素であるならば、そのときに限り X は B の要素である」が成り立つならば、A と B は等しい。
-外延性の公理から引用。
-∈ と=を定義する Section Axiom_Of_Extensionality. Variable Var : Type. Variable In : Var -&amp;gt; Var -&amp;gt; Prop. Variable Eq : Var -&amp;gt; Var -&amp;gt; Prop. (* ここにコードを書く *) End Axiom_Of_Extensionality. ∈ を In、=を Eq とした。
-同値関係とは 反射律: a = a 対称律: a = b ⇒ b = a 推移律: a = b ∧ b = c ⇒ a = c 同値関係を参考。</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86&#34;&gt;外延性の公理&lt;/a&gt;から集合の等号に対して&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82&#34;&gt;同値関係&lt;/a&gt;を示します。(Coq で)&lt;/p&gt;
+&lt;h3 id=&#34;外延性の公理とは&#34;&gt;外延性の公理とは&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A, B を任意の集合とするとき、もし任意の集合 X について「X が A の要素であるならば、そのときに限り X は B の要素である」が成り立つならば、A と B は等しい。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86&#34;&gt;外延性の公理&lt;/a&gt;から引用。&lt;/p&gt;
+&lt;h3 id=&#34;-とを定義する&#34;&gt;∈ と=を定義する&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Section Axiom_Of_Extensionality.
+
+  Variable Var : Type.
+  Variable In : Var -&amp;gt; Var -&amp;gt; Prop.
+  Variable Eq : Var -&amp;gt; Var -&amp;gt; Prop.
+
+  (* ここにコードを書く *)
+
+End Axiom_Of_Extensionality.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;∈ を In、=を Eq とした。&lt;/p&gt;
+&lt;h3 id=&#34;同値関係とは&#34;&gt;同値関係とは&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;反射律: a = a&lt;/li&gt;
+&lt;li&gt;対称律: a = b ⇒ b = a&lt;/li&gt;
+&lt;li&gt;推移律: a = b ∧ b = c ⇒ a = c&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82&#34;&gt;同値関係&lt;/a&gt;を参考。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Coqで集合論 その1</title>
       <link>https://derbuihan.github.io/posts/coq_set_theory/</link>
       <pubDate>Thu, 27 Dec 2018 04:42:41 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/coq_set_theory/</guid>
-      <description>はじめに Coq で集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のため auto.を使わないで証明を行います。
-集合論 Section Ensembles. (* ここにコードを書く *) End Ensembles. 集合とは 1 変数の述語を用いて集合論を定義する。
-Variable U : Type. Definition Ensemble := U -&amp;gt; Prop. U は述語の変数の型であり、Ensemble は U を受け取って命題を返す 1 変数の述語である。 今回は Ensemble を集合とする。
-∈ を定義 元 a が集合 A に含まれるということは、変数 a と 1 変数の述語 A について A(a)ということである。
-例): 「ソクラテスが人間という集合に含まれる。」は、「ソクラテスが人間ある。」ということである。
-Definition In (A : Ensemble) (a : U) : Prop := A a. Notation &amp;#34;a ∈ A&amp;#34; := (In A a) (at level 55,no associativity).</description>
+      <description>&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;Coq で集合を扱う標準ライブラリ&lt;a href=&#34;https://coq.inria.fr/library/Coq.Sets.Ensembles.html&#34;&gt;Ensembles&lt;/a&gt;の再開発を行います。
+勉強のため auto.を使わないで証明を行います。&lt;/p&gt;
+&lt;h3 id=&#34;集合論&#34;&gt;集合論&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Section Ensembles.
+
+  (* ここにコードを書く *)
+
+End Ensembles.
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;集合とは&#34;&gt;集合とは&lt;/h4&gt;
+&lt;p&gt;1 変数の述語を用いて集合論を定義する。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Variable U : Type.
+Definition Ensemble := U -&amp;gt; Prop.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;U は述語の変数の型であり、Ensemble は U を受け取って命題を返す 1 変数の述語である。
+今回は Ensemble を集合とする。&lt;/p&gt;
+&lt;h4 id=&#34;-を定義&#34;&gt;∈ を定義&lt;/h4&gt;
+&lt;p&gt;元 a が集合 A に含まれるということは、変数 a と 1 変数の述語 A について A(a)ということである。&lt;/p&gt;
+&lt;p&gt;例): 「ソクラテスが人間という集合に含まれる。」は、「ソクラテスが人間ある。」ということである。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Definition In (A : Ensemble) (a : U) : Prop := A a.
+Notation &amp;#34;a ∈ A&amp;#34; := (In A a) (at level 55,no associativity).
+Notation &amp;#34;a ∉ A&amp;#34; := (~ In A a) (at level 55,no associativity).
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Notation を定義すると楽しくなってきますね。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

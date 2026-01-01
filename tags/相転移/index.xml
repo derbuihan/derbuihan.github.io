@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Mon, 23 May 2022 17:02:35 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/%E7%9B%B8%E8%BB%A2%E7%A7%BB/index.xml" rel="self" type="application/rss+xml" />
@@ -18,13 +18,26 @@
       <link>https://derbuihan.github.io/posts/minisat_phase_transition/</link>
       <pubDate>Mon, 23 May 2022 17:02:35 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/minisat_phase_transition/</guid>
-      <description>充足可能性問題 (satisfiability problem, SAT) 「与えられた論理式を真にする真偽値$x_1, x_2 \dots$が存在するか？」という問題を充足可能性問題という。
-この問題の最も一般的な形は、NP 完全であることが知られている。
-例: $(x_1 \lor x_2) \land (x_1 \lor \bar{x_2}) \land (\bar{x_1} \lor \bar{x_2})$
-解: $x_1=\text{True}$, $x_2=\text{False}$
-この例のように$\bigwedge_i \bigvee_j x_{i,j}$で表される論理式を連言標準形といい、その各項の変数の数が 2 以下であるとき 2-SAT と呼ばれる。 2-SAT は多項式時間で解けるアルゴリズムが存在する。 一方で項の変数の数が 3 以下の 3-SAT は NP 完全であることが知られている。
-問題の生成 3-SAT 問題は DIMACS CNF で記述される。
-c example DIMACS-CNF 3-SAT p cnf 3 5 -1 -2 -3 0 1 -2 3 0 1 2 -3 0 1 -2 -3 0 -1 2 3 0 行頭がcの行はコメントである。 行頭がpの行には変数が 3 つで項数が 5 項である。 また、 -1 -2 -3 0は$\bar{x_1} \lor \bar{x_2} \lor \bar{x_3}$を示している。</description>
+      <description>&lt;h3 id=&#34;充足可能性問題-satisfiability-problem-sat&#34;&gt;充足可能性問題 (satisfiability problem, SAT)&lt;/h3&gt;
+&lt;p&gt;「与えられた論理式を真にする真偽値$x_1, x_2 \dots$が存在するか？」という問題を充足可能性問題という。&lt;/p&gt;
+&lt;p&gt;この問題の最も一般的な形は、NP 完全であることが知られている。&lt;/p&gt;
+&lt;p&gt;例: $(x_1 \lor x_2) \land (x_1 \lor \bar{x_2}) \land (\bar{x_1} \lor \bar{x_2})$&lt;/p&gt;
+&lt;p&gt;解: $x_1=\text{True}$, $x_2=\text{False}$&lt;/p&gt;
+&lt;p&gt;この例のように$\bigwedge_i \bigvee_j x_{i,j}$で表される論理式を連言標準形といい、その各項の変数の数が 2 以下であるとき 2-SAT と呼ばれる。
+2-SAT は多項式時間で解けるアルゴリズムが存在する。
+一方で項の変数の数が 3 以下の 3-SAT は NP 完全であることが知られている。&lt;/p&gt;
+&lt;h3 id=&#34;問題の生成&#34;&gt;問題の生成&lt;/h3&gt;
+&lt;p&gt;3-SAT 問題は DIMACS CNF で記述される。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt; c example DIMACS-CNF 3-SAT
+ p cnf 3 5
+ -1 -2 -3 0
+ 1 -2 3 0
+ 1 2 -3 0
+ 1 -2 -3 0
+ -1 2 3 0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;行頭が&lt;code&gt;c&lt;/code&gt;の行はコメントである。
+行頭が&lt;code&gt;p&lt;/code&gt;の行には変数が 3 つで項数が 5 項である。
+また、 &lt;code&gt;-1 -2 -3 0&lt;/code&gt;は$\bar{x_1} \lor \bar{x_2} \lor \bar{x_3}$を示している。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

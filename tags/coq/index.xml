@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Sun, 23 Oct 2022 03:53:00 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/coq/index.xml" rel="self" type="application/rss+xml" />
@@ -18,70 +18,178 @@
       <link>https://derbuihan.github.io/posts/coq_install/</link>
       <pubDate>Sun, 23 Oct 2022 03:53:00 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/coq_install/</guid>
-      <description>はじめに 久々に Coq で遊びたくなったので、M1 Mac にインストールしてみた。 最近の Coq は VSCode で書くのが主流？らしいが、今回は Emacs + Proof-General で環境構築を行う。
-環境構築の方法 基本的にbrewやmelpaなどの package 管理システムになるべく依存した形で環境構築を行う。
-はじめに、Coqのインストール(&amp;ndash;build-from-source をつけないとcoqtop実行時にエラーが出た。)
-brew install coq --build-from-source GUI 版 Emacs のインストール
-brew install emacs --cask Emacs の設定 次は Emacs の設定を行う。 Emacs の設定ファイルは~/.emacs.d/init.elに記載する。
-まずはmelpa(Emacs のプラグインのパッケージマネージャー)のセットアップを行う。 ~/.emacs.d/init.elに以下を記載し、
-(require &amp;#39;package) (let* ((no-ssl (and (memq system-type &amp;#39;(windows-nt ms-dos)) (not (gnutls-available-p)))) (proto (if no-ssl &amp;#34;http&amp;#34; &amp;#34;https&amp;#34;))) (add-to-list &amp;#39;package-archives (cons &amp;#34;melpa&amp;#34; (concat proto &amp;#34;://melpa.org/packages/&amp;#34;)) t)) (package-initialize) emacs を起動して</description>
+      <description>&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;久々に Coq で遊びたくなったので、M1 Mac にインストールしてみた。
+最近の Coq は VSCode で書くのが主流？らしいが、今回は Emacs + Proof-General で環境構築を行う。&lt;/p&gt;
+&lt;h3 id=&#34;環境構築の方法&#34;&gt;環境構築の方法&lt;/h3&gt;
+&lt;p&gt;基本的に&lt;code&gt;brew&lt;/code&gt;や&lt;code&gt;melpa&lt;/code&gt;などの package 管理システムになるべく依存した形で環境構築を行う。&lt;/p&gt;
+&lt;p&gt;はじめに、&lt;code&gt;Coq&lt;/code&gt;のインストール(&amp;ndash;build-from-source をつけないと&lt;code&gt;coqtop&lt;/code&gt;実行時にエラーが出た。)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;brew install coq --build-from-source
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;GUI 版 Emacs のインストール&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;brew install emacs --cask
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;emacs-の設定&#34;&gt;Emacs の設定&lt;/h3&gt;
+&lt;p&gt;次は Emacs の設定を行う。
+Emacs の設定ファイルは&lt;code&gt;~/.emacs.d/init.el&lt;/code&gt;に記載する。&lt;/p&gt;
+&lt;p&gt;まずは&lt;code&gt;melpa&lt;/code&gt;(Emacs のプラグインのパッケージマネージャー)のセットアップを行う。
+&lt;code&gt;~/.emacs.d/init.el&lt;/code&gt;に以下を記載し、&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(require &amp;#39;package)
+(let* ((no-ssl (and (memq system-type &amp;#39;(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl &amp;#34;http&amp;#34; &amp;#34;https&amp;#34;)))
+  (add-to-list &amp;#39;package-archives
+               (cons &amp;#34;melpa&amp;#34; (concat proto &amp;#34;://melpa.org/packages/&amp;#34;)) t))
+(package-initialize)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;emacs を起動して&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;M-x package-refresh-contents RET ← 初回のみ実行&lt;/p&gt;</description>
     </item>
     <item>
       <title>MacでCoqのバージョンを指定してインストール</title>
       <link>https://derbuihan.github.io/posts/coq_downgrade/</link>
       <pubDate>Thu, 14 Feb 2019 01:14:02 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/coq_downgrade/</guid>
-      <description>いつものように
-$ brew update &amp;amp;&amp;amp; brew upgrade してたら coq の version が 8.9.0 になってしまい、今まで書いていたコードが動かなくなったので、coq の version を 8.8.2 にします。
-ほとんど ↓ の記事を見ながらやりました。
-参考: Homebrew で旧バージョンのパッケージをインストールしたい
-brew でバージョン指定してインストールする方法 ローカルに Coq がある場合 $ brew info coq を実行して version 8.8.2 がローカルに残っているなと思ったら
-$ brew switch coq 8.8.2 で coq の version を変えれるらしいです。
-ローカルに Coq がない場合 まず、
-$ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula $ git log coq.rb で適当に指定の version を見つける。
-commit ef92c34e061cb99920f7ae05d3ba205fccc5f1b8 Author: BrewTestBot &amp;lt;homebrew-test-bot@lists.sfconservancy.org&amp;gt; Date: Wed Oct 31 17:08:20 2018 +0000 coq: update 8.</description>
+      <description>&lt;p&gt;いつものように&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew update &amp;amp;&amp;amp; brew upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;してたら coq の version が 8.9.0 になってしまい、今まで書いていたコードが動かなくなったので、coq の version を 8.8.2 にします。&lt;/p&gt;
+&lt;p&gt;ほとんど ↓ の記事を見ながらやりました。&lt;/p&gt;
+&lt;p&gt;参考: &lt;a href=&#34;https://qiita.com/KyoheiG3/items/912bcc27462871487845&#34;&gt;Homebrew で旧バージョンのパッケージをインストールしたい&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;brew-でバージョン指定してインストールする方法&#34;&gt;brew でバージョン指定してインストールする方法&lt;/h3&gt;
+&lt;h4 id=&#34;ローカルに-coq-がある場合&#34;&gt;ローカルに Coq がある場合&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew info coq
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;を実行して version 8.8.2 がローカルに残っているなと思ったら&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew switch coq 8.8.2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;で coq の version を変えれるらしいです。&lt;/p&gt;
+&lt;h4 id=&#34;ローカルに-coq-がない場合&#34;&gt;ローカルに Coq がない場合&lt;/h4&gt;
+&lt;p&gt;まず、&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
+$ git log coq.rb
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;で適当に指定の version を見つける。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;commit ef92c34e061cb99920f7ae05d3ba205fccc5f1b8
+Author: BrewTestBot &amp;lt;homebrew-test-bot@lists.sfconservancy.org&amp;gt;
+Date:   Wed Oct 31 17:08:20 2018 +0000
+
+    coq: update 8.8.2 bottle.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;今回は、↑ の version に downgrade したいと思います。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Coqで自然数が加法,乗法について可換モノイド</title>
       <link>https://derbuihan.github.io/posts/coq_natural_number/</link>
       <pubDate>Wed, 16 Jan 2019 04:20:21 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/coq_natural_number/</guid>
-      <description>目的 代数入門―群と加群 を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それを Coq/SSReflect で示します。 (実際はSoftware Foundations の第一章を SSReflect 使って解いただけ。)
-可換モノイド S が可換モノイドとは
-結合律 $$ \forall x, y, z \in S, (x \cdot y) \cdot z = x \cdot (y \cdot z) $$ 単位元の存在 $$ \exists e \in S, \forall x \in S , e \cdot x = x \cdot e = x $$ 可換 $$ \forall x, y \in S, x \cdot y = y \cdot x $$ を満たすことである。</description>
+      <description>&lt;h3 id=&#34;目的&#34;&gt;目的&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://amzn.to/3uyaij1&#34;&gt;代数入門―群と加群 &lt;/a&gt;を読んでいたら自然数が加法,乗法について可換モノイドだと書いてあった気がするので、それを Coq/SSReflect で示します。
+(実際は&lt;a href=&#34;http://proofcafe.org/sf/Basics_J.html&#34;&gt;Software Foundations の第一章&lt;/a&gt;を SSReflect 使って解いただけ。)&lt;/p&gt;
+&lt;h3 id=&#34;可換モノイド&#34;&gt;可換モノイド&lt;/h3&gt;
+&lt;p&gt;S が可換モノイドとは&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;結合律 $$ \forall x, y, z \in S, (x \cdot y) \cdot z = x \cdot (y \cdot z) $$&lt;/li&gt;
+&lt;li&gt;単位元の存在 $$ \exists e \in S, \forall x \in S , e \cdot x = x \cdot e = x $$&lt;/li&gt;
+&lt;li&gt;可換 $$ \forall x, y \in S, x \cdot y = y \cdot x $$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;を満たすことである。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Coqは直観論理である。</title>
       <link>https://derbuihan.github.io/posts/coq_logic/</link>
       <pubDate>Sun, 13 Jan 2019 14:20:08 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/coq_logic/</guid>
-      <description>直観論理とは Coq は直観論理で許される推論規則で演繹を行う。 直観論理の説明はWikipediaにある。
-簡単に説明すると、私達が普通に数学で用いている論理は古典論理で、直観論理は古典論理から排中律を除いたものである。 排中律を除くことで二重否定の除去など、古典論理では証明できるが直観論理では証明できないものがある。 Coq ではClassicalというライブラリを Import すると古典論理を使えるようになる。 詳しい説明は情報科学における論理を読むと良い。
-この記事では、直感論理と古典論理の微妙な違いを集めて遊ぼうと思います。
-直感論理で示せる命題 二重否定をつける Lemma PPNN : forall p : Prop, p -&amp;gt; ~~p. Proof. intros. intro. apply H0. trivial. Qed. 三重否定を否定にする Lemma NNN : forall p : Prop, ~~~ p -&amp;gt; ~p. Proof. intros. intro. apply H. intro. contradiction. Qed. 対偶の片方 Lemma Cont : forall p q : Prop, (p -&amp;gt; q) -&amp;gt; (~q -&amp;gt; ~p). Proof. intros. intro. apply H0.</description>
+      <description>&lt;h3 id=&#34;直観論理とは&#34;&gt;直観論理とは&lt;/h3&gt;
+&lt;p&gt;Coq は直観論理で許される推論規則で演繹を行う。
+直観論理の説明は&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E7%9B%B4%E8%A6%B3%E8%AB%96%E7%90%86&#34;&gt;Wikipedia&lt;/a&gt;にある。&lt;/p&gt;
+&lt;p&gt;簡単に説明すると、私達が普通に数学で用いている論理は古典論理で、直観論理は古典論理から排中律を除いたものである。
+排中律を除くことで二重否定の除去など、古典論理では証明できるが直観論理では証明できないものがある。
+Coq では&lt;a href=&#34;https://coq.inria.fr/library/Coq.Logic.Classical_Prop.html&#34;&gt;Classical&lt;/a&gt;というライブラリを Import すると古典論理を使えるようになる。
+詳しい説明は&lt;a href=&#34;https://amzn.to/47xjKBK&#34;&gt;情報科学における論理&lt;/a&gt;を読むと良い。&lt;/p&gt;
+&lt;p&gt;この記事では、直感論理と古典論理の微妙な違いを集めて遊ぼうと思います。&lt;/p&gt;
+&lt;h3 id=&#34;直感論理で示せる命題&#34;&gt;直感論理で示せる命題&lt;/h3&gt;
+&lt;h4 id=&#34;二重否定をつける&#34;&gt;二重否定をつける&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Lemma PPNN : forall p : Prop, p -&amp;gt; ~~p.
+Proof.
+  intros.
+  intro.
+  apply H0.
+  trivial.
+Qed.
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;三重否定を否定にする&#34;&gt;三重否定を否定にする&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Lemma NNN : forall p : Prop, ~~~ p -&amp;gt; ~p.
+Proof.
+  intros.
+  intro.
+  apply H.
+  intro.
+  contradiction.
+Qed.
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;対偶の片方&#34;&gt;対偶の片方&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Lemma Cont : forall p q : Prop, (p -&amp;gt; q) -&amp;gt; (~q -&amp;gt; ~p).
+Proof.
+  intros.
+  intro.
+  apply H0.
+  apply H.
+  trivial.
+Qed.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;古典論理で示せる命題&#34;&gt;古典論理で示せる命題&lt;/h3&gt;
+&lt;p&gt;古典論理で示せる命題と真理値表を用いて恒真になる命題は一致します。(命題論理の完全性と健全性で検索)&lt;/p&gt;</description>
     </item>
     <item>
       <title>Coqで外延性の公理</title>
       <link>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</link>
       <pubDate>Mon, 31 Dec 2018 23:08:04 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/coq_axiom_of_extensionality/</guid>
-      <description>外延性の公理から集合の等号に対して同値関係を示します。(Coq で)
-外延性の公理とは A, B を任意の集合とするとき、もし任意の集合 X について「X が A の要素であるならば、そのときに限り X は B の要素である」が成り立つならば、A と B は等しい。
-外延性の公理から引用。
-∈ と=を定義する Section Axiom_Of_Extensionality. Variable Var : Type. Variable In : Var -&amp;gt; Var -&amp;gt; Prop. Variable Eq : Var -&amp;gt; Var -&amp;gt; Prop. (* ここにコードを書く *) End Axiom_Of_Extensionality. ∈ を In、=を Eq とした。
-同値関係とは 反射律: a = a 対称律: a = b ⇒ b = a 推移律: a = b ∧ b = c ⇒ a = c 同値関係を参考。</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86&#34;&gt;外延性の公理&lt;/a&gt;から集合の等号に対して&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82&#34;&gt;同値関係&lt;/a&gt;を示します。(Coq で)&lt;/p&gt;
+&lt;h3 id=&#34;外延性の公理とは&#34;&gt;外延性の公理とは&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A, B を任意の集合とするとき、もし任意の集合 X について「X が A の要素であるならば、そのときに限り X は B の要素である」が成り立つならば、A と B は等しい。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E5%A4%96%E5%BB%B6%E6%80%A7%E3%81%AE%E5%85%AC%E7%90%86&#34;&gt;外延性の公理&lt;/a&gt;から引用。&lt;/p&gt;
+&lt;h3 id=&#34;-とを定義する&#34;&gt;∈ と=を定義する&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Section Axiom_Of_Extensionality.
+
+  Variable Var : Type.
+  Variable In : Var -&amp;gt; Var -&amp;gt; Prop.
+  Variable Eq : Var -&amp;gt; Var -&amp;gt; Prop.
+
+  (* ここにコードを書く *)
+
+End Axiom_Of_Extensionality.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;∈ を In、=を Eq とした。&lt;/p&gt;
+&lt;h3 id=&#34;同値関係とは&#34;&gt;同値関係とは&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;反射律: a = a&lt;/li&gt;
+&lt;li&gt;対称律: a = b ⇒ b = a&lt;/li&gt;
+&lt;li&gt;推移律: a = b ∧ b = c ⇒ a = c&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82&#34;&gt;同値関係&lt;/a&gt;を参考。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Coqで集合論 その1</title>
       <link>https://derbuihan.github.io/posts/coq_set_theory/</link>
       <pubDate>Thu, 27 Dec 2018 04:42:41 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/coq_set_theory/</guid>
-      <description>はじめに Coq で集合を扱う標準ライブラリEnsemblesの再開発を行います。 勉強のため auto.を使わないで証明を行います。
-集合論 Section Ensembles. (* ここにコードを書く *) End Ensembles. 集合とは 1 変数の述語を用いて集合論を定義する。
-Variable U : Type. Definition Ensemble := U -&amp;gt; Prop. U は述語の変数の型であり、Ensemble は U を受け取って命題を返す 1 変数の述語である。 今回は Ensemble を集合とする。
-∈ を定義 元 a が集合 A に含まれるということは、変数 a と 1 変数の述語 A について A(a)ということである。
-例): 「ソクラテスが人間という集合に含まれる。」は、「ソクラテスが人間ある。」ということである。
-Definition In (A : Ensemble) (a : U) : Prop := A a. Notation &amp;#34;a ∈ A&amp;#34; := (In A a) (at level 55,no associativity).</description>
+      <description>&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;Coq で集合を扱う標準ライブラリ&lt;a href=&#34;https://coq.inria.fr/library/Coq.Sets.Ensembles.html&#34;&gt;Ensembles&lt;/a&gt;の再開発を行います。
+勉強のため auto.を使わないで証明を行います。&lt;/p&gt;
+&lt;h3 id=&#34;集合論&#34;&gt;集合論&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Section Ensembles.
+
+  (* ここにコードを書く *)
+
+End Ensembles.
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;集合とは&#34;&gt;集合とは&lt;/h4&gt;
+&lt;p&gt;1 変数の述語を用いて集合論を定義する。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Variable U : Type.
+Definition Ensemble := U -&amp;gt; Prop.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;U は述語の変数の型であり、Ensemble は U を受け取って命題を返す 1 変数の述語である。
+今回は Ensemble を集合とする。&lt;/p&gt;
+&lt;h4 id=&#34;-を定義&#34;&gt;∈ を定義&lt;/h4&gt;
+&lt;p&gt;元 a が集合 A に含まれるということは、変数 a と 1 変数の述語 A について A(a)ということである。&lt;/p&gt;
+&lt;p&gt;例): 「ソクラテスが人間という集合に含まれる。」は、「ソクラテスが人間ある。」ということである。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Definition In (A : Ensemble) (a : U) : Prop := A a.
+Notation &amp;#34;a ∈ A&amp;#34; := (In A a) (at level 55,no associativity).
+Notation &amp;#34;a ∉ A&amp;#34; := (~ In A a) (at level 55,no associativity).
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Notation を定義すると楽しくなってきますね。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

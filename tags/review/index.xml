@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Sat, 04 Jan 2020 10:09:03 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/review/index.xml" rel="self" type="application/rss+xml" />
@@ -18,9 +18,36 @@
       <link>https://derbuihan.github.io/posts/vps_review/</link>
       <pubDate>Sat, 04 Jan 2020 10:09:03 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/vps_review/</guid>
-      <description>私はこれまでにいくつか VPS を借りて運用してきました。 実際に借りて運用した VPS のレビューを書きます。
-Scaleway CPU: 2Core x86 64bit メモリ: 2G SSD: 50GB 値段: 月 3 ユーロ (約 400 円) 場所: ヨーロッパ のプランを 2017 年 ~ 2019 年にかけて 2 年近く借りてました。 初めて自ら借りた VPS ということもあり長く借りていましたが、あんまり使っていないことに気づき解約しました。 場所がヨーロッパということもあり、SSH してコマンドを入力すると遅さを感じますが、Web サービスを運用する分には問題ないと思います。 この価格帯でメモリ 2GB、ストレージが SSD、通信が無制限な VPS は安いと思います。 mastodon や GitLab みたいなメモリをいっぱい使うサービスを運用するのにはオススメです。 Scaleway では CPU が ARM の VPS も貸していて、それも短い期間借りていた事がありますが、docker でサービスを運用したい場合は image が動かないので苦労したのでやめました。
-GCE CPU: 2Core x86 64bit メモリ: 0.6GB HDD: 30GB 値段: 無料 場所: アメリカ西海岸 のプランを一年前から現在まで借りてます。 このプランは Google が無料で VPS を貸しているということで有名です。 私は wordpress でブログを運用しています。 メモリが 0.</description>
+      <description>&lt;p&gt;私はこれまでにいくつか VPS を借りて運用してきました。
+実際に借りて運用した VPS のレビューを書きます。&lt;/p&gt;
+&lt;h4 id=&#34;scaleway&#34;&gt;Scaleway&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU: 2Core x86 64bit&lt;/li&gt;
+&lt;li&gt;メモリ: 2G&lt;/li&gt;
+&lt;li&gt;SSD: 50GB&lt;/li&gt;
+&lt;li&gt;値段: 月 3 ユーロ (約 400 円)&lt;/li&gt;
+&lt;li&gt;場所: ヨーロッパ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;のプランを 2017 年 ~ 2019 年にかけて 2 年近く借りてました。
+初めて自ら借りた VPS ということもあり長く借りていましたが、あんまり使っていないことに気づき解約しました。
+場所がヨーロッパということもあり、SSH してコマンドを入力すると遅さを感じますが、Web サービスを運用する分には問題ないと思います。
+この価格帯でメモリ 2GB、ストレージが SSD、通信が無制限な VPS は安いと思います。
+mastodon や GitLab みたいなメモリをいっぱい使うサービスを運用するのにはオススメです。
+Scaleway では CPU が ARM の VPS も貸していて、それも短い期間借りていた事がありますが、docker でサービスを運用したい場合は image が動かないので苦労したのでやめました。&lt;/p&gt;
+&lt;h4 id=&#34;gce&#34;&gt;GCE&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU: 2Core x86 64bit&lt;/li&gt;
+&lt;li&gt;メモリ: 0.6GB&lt;/li&gt;
+&lt;li&gt;HDD: 30GB&lt;/li&gt;
+&lt;li&gt;値段: 無料&lt;/li&gt;
+&lt;li&gt;場所: アメリカ西海岸&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;のプランを一年前から現在まで借りてます。
+このプランは Google が無料で VPS を貸しているということで有名です。
+私は wordpress でブログを運用しています。
+メモリが 0.6GB ということで少ないと感じるかもしれませんが、Swap をきちんと確保すれば安定して運用できます。
+通信は月に 1GB までしか無料にならないですが、CDN 等を活用することでなんとかなってます。
+2020 年から Global IP を取るとお金がかかるようになるらしいので、無料じゃなくなるかもしれません。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

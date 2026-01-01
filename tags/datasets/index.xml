@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Wed, 23 Dec 2020 02:42:40 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/datasets/index.xml" rel="self" type="application/rss+xml" />
@@ -18,20 +18,36 @@
       <link>https://derbuihan.github.io/posts/tensorflow_datasets_text/</link>
       <pubDate>Wed, 23 Dec 2020 02:42:40 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/tensorflow_datasets_text/</guid>
-      <description>Tensorflow Datasets の中から英語の文章のデータセットをまとめます。
-データの一覧の取得 以下のコマンドでtensorflow_datasetsから取得出来るデータセットの一覧がわかります。
-&amp;gt;&amp;gt;&amp;gt; import tensorflow_datasets as tfds &amp;gt;&amp;gt;&amp;gt; tfds.list_builders() 英語のデータセット 大量のテキストのデータセット
-c4 Web クロールで集めた巨大なデータセット。英語のは約 1TB ある。 英語以外の言語もデータがあり、すべての言語合わせると 26.76TB あるらしい。
-librispeech_lm 5GB のデータセット
-lm1b 5GB のデータセット
-pg19 古い本のデータセット。10GB ぐらい。
-reddit_disentanglement reddit のデータセット。
-wiki40b wikipedia のデータセット。きれいになってる。
-wikipedia wikipedia のデータセット。きれいになってない。
-その他データセット その他の使えそうなデータセット
-ag_news_subset ニュース記事のタイトルと説明文が、その記事の種類にラベル付けされたデータセット。
-math_dataset 数学に関する英語の問題とその答えのデータセット
-tiny_shakespeare シェイクスピアの文章</description>
+      <description>&lt;p&gt;Tensorflow Datasets の中から英語の文章のデータセットをまとめます。&lt;/p&gt;
+&lt;h3 id=&#34;データの一覧の取得&#34;&gt;データの一覧の取得&lt;/h3&gt;
+&lt;p&gt;以下のコマンドで&lt;code&gt;tensorflow_datasets&lt;/code&gt;から取得出来るデータセットの一覧がわかります。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;tensorflow_datasets&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;tfds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tfds&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;list_builders&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;英語のデータセット&#34;&gt;英語のデータセット&lt;/h3&gt;
+&lt;p&gt;大量のテキストのデータセット&lt;/p&gt;
+&lt;h4 id=&#34;c4&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/c4&#34;&gt;c4&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Web クロールで集めた巨大なデータセット。英語のは約 1TB ある。
+英語以外の言語もデータがあり、すべての言語合わせると 26.76TB あるらしい。&lt;/p&gt;
+&lt;h4 id=&#34;librispeech_&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/librispeech_lm&#34;&gt;librispeech_lm&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;5GB のデータセット&lt;/p&gt;
+&lt;h4 id=&#34;lm1b&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/lm1b&#34;&gt;lm1b&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;5GB のデータセット&lt;/p&gt;
+&lt;h4 id=&#34;pg19&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/pg19&#34;&gt;pg19&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;古い本のデータセット。10GB ぐらい。&lt;/p&gt;
+&lt;h4 id=&#34;reddit_&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/reddit_disentanglement&#34;&gt;reddit_disentanglement&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;reddit のデータセット。&lt;/p&gt;
+&lt;h4 id=&#34;wiki40b&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/wiki40b&#34;&gt;wiki40b&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;wikipedia のデータセット。きれいになってる。&lt;/p&gt;
+&lt;h4 id=&#34;wikipedia&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/wikipedia&#34;&gt;wikipedia&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;wikipedia のデータセット。きれいになってない。&lt;/p&gt;
+&lt;h3 id=&#34;その他データセット&#34;&gt;その他データセット&lt;/h3&gt;
+&lt;p&gt;その他の使えそうなデータセット&lt;/p&gt;
+&lt;h4 id=&#34;ag_&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/ag_news_subset&#34;&gt;ag_news_subset&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;ニュース記事のタイトルと説明文が、その記事の種類にラベル付けされたデータセット。&lt;/p&gt;
+&lt;h4 id=&#34;math_&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/math_dataset&#34;&gt;math_dataset&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;数学に関する英語の問題とその答えのデータセット&lt;/p&gt;
+&lt;h4 id=&#34;tiny_&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/tiny_shakespeare&#34;&gt;tiny_shakespeare&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;シェイクスピアの文章&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

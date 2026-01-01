@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Sat, 29 Dec 2018 23:35:55 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/tex/index.xml" rel="self" type="application/rss+xml" />
@@ -18,18 +18,32 @@
       <link>https://derbuihan.github.io/posts/atom_package/</link>
       <pubDate>Sat, 29 Dec 2018 23:35:55 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/atom_package/</guid>
-      <description>随時更新していきます。
-通常編 とりあえず Atom をインストールしたら入れるプラグイン
-atomic-emacs Atom で Emacs のキーバインドを使う。
-japanese-menu 設定を日本語化
-platformio-ide-terminal Ctrl-`で下からターミナルが出てくるようになる。
-project-manager project を管理できるようになる。
-LaTex 環境編 tex を Atom で書くときのプラグイン一覧。
-language-latex シンタックスハイライト
-latex tex のコンパイル
-latexer 補完
-pdf-view pdf を見れるようになる。
-感想 Atom で Coq やりたい。 Atom では Vim より Emacs のが使いやすい。 </description>
+      <description>&lt;p&gt;随時更新していきます。&lt;/p&gt;
+&lt;h3 id=&#34;通常編&#34;&gt;通常編&lt;/h3&gt;
+&lt;p&gt;とりあえず Atom をインストールしたら入れるプラグイン&lt;/p&gt;
+&lt;h4 id=&#34;atomic-emacs&#34;&gt;&lt;a href=&#34;https://atom.io/packages/atomic-emacs&#34;&gt;atomic-emacs&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Atom で Emacs のキーバインドを使う。&lt;/p&gt;
+&lt;h4 id=&#34;japanese-menu&#34;&gt;&lt;a href=&#34;https://atom.io/packages/japanese-menu&#34;&gt;japanese-menu&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;設定を日本語化&lt;/p&gt;
+&lt;h4 id=&#34;platformio-ide-terminal&#34;&gt;&lt;a href=&#34;https://atom.io/packages/platformio-ide-terminal&#34;&gt;platformio-ide-terminal&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Ctrl-`で下からターミナルが出てくるようになる。&lt;/p&gt;
+&lt;h4 id=&#34;project-manager&#34;&gt;&lt;a href=&#34;https://atom.io/packages/project-managerv&#34;&gt;project-manager&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;project を管理できるようになる。&lt;/p&gt;
+&lt;h3 id=&#34;latex-環境編&#34;&gt;LaTex 環境編&lt;/h3&gt;
+&lt;p&gt;tex を Atom で書くときのプラグイン一覧。&lt;/p&gt;
+&lt;h4 id=&#34;language-latex&#34;&gt;&lt;a href=&#34;https://atom.io/packages/language-latex&#34;&gt;language-latex&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;シンタックスハイライト&lt;/p&gt;
+&lt;h4 id=&#34;latex&#34;&gt;&lt;a href=&#34;https://atom.io/packages/latex&#34;&gt;latex&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;tex のコンパイル&lt;/p&gt;
+&lt;h4 id=&#34;latexer&#34;&gt;&lt;a href=&#34;https://atom.io/packages/latexer&#34;&gt;latexer&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;補完&lt;/p&gt;
+&lt;h4 id=&#34;pdf-view&#34;&gt;&lt;a href=&#34;https://atom.io/packages/pdf-view&#34;&gt;pdf-view&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;pdf を見れるようになる。&lt;/p&gt;
+&lt;h3 id=&#34;感想&#34;&gt;感想&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Atom で Coq やりたい。&lt;/li&gt;
+&lt;li&gt;Atom では Vim より Emacs のが使いやすい。&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>

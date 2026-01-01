@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Sun, 23 Oct 2022 03:53:00 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
@@ -18,13 +18,30 @@
       <link>https://derbuihan.github.io/posts/coq_install/</link>
       <pubDate>Sun, 23 Oct 2022 03:53:00 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/coq_install/</guid>
-      <description>はじめに 久々に Coq で遊びたくなったので、M1 Mac にインストールしてみた。 最近の Coq は VSCode で書くのが主流？らしいが、今回は Emacs + Proof-General で環境構築を行う。
-環境構築の方法 基本的にbrewやmelpaなどの package 管理システムになるべく依存した形で環境構築を行う。
-はじめに、Coqのインストール(&amp;ndash;build-from-source をつけないとcoqtop実行時にエラーが出た。)
-brew install coq --build-from-source GUI 版 Emacs のインストール
-brew install emacs --cask Emacs の設定 次は Emacs の設定を行う。 Emacs の設定ファイルは~/.emacs.d/init.elに記載する。
-まずはmelpa(Emacs のプラグインのパッケージマネージャー)のセットアップを行う。 ~/.emacs.d/init.elに以下を記載し、
-(require &amp;#39;package) (let* ((no-ssl (and (memq system-type &amp;#39;(windows-nt ms-dos)) (not (gnutls-available-p)))) (proto (if no-ssl &amp;#34;http&amp;#34; &amp;#34;https&amp;#34;))) (add-to-list &amp;#39;package-archives (cons &amp;#34;melpa&amp;#34; (concat proto &amp;#34;://melpa.org/packages/&amp;#34;)) t)) (package-initialize) emacs を起動して</description>
+      <description>&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;久々に Coq で遊びたくなったので、M1 Mac にインストールしてみた。
+最近の Coq は VSCode で書くのが主流？らしいが、今回は Emacs + Proof-General で環境構築を行う。&lt;/p&gt;
+&lt;h3 id=&#34;環境構築の方法&#34;&gt;環境構築の方法&lt;/h3&gt;
+&lt;p&gt;基本的に&lt;code&gt;brew&lt;/code&gt;や&lt;code&gt;melpa&lt;/code&gt;などの package 管理システムになるべく依存した形で環境構築を行う。&lt;/p&gt;
+&lt;p&gt;はじめに、&lt;code&gt;Coq&lt;/code&gt;のインストール(&amp;ndash;build-from-source をつけないと&lt;code&gt;coqtop&lt;/code&gt;実行時にエラーが出た。)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;brew install coq --build-from-source
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;GUI 版 Emacs のインストール&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;brew install emacs --cask
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;emacs-の設定&#34;&gt;Emacs の設定&lt;/h3&gt;
+&lt;p&gt;次は Emacs の設定を行う。
+Emacs の設定ファイルは&lt;code&gt;~/.emacs.d/init.el&lt;/code&gt;に記載する。&lt;/p&gt;
+&lt;p&gt;まずは&lt;code&gt;melpa&lt;/code&gt;(Emacs のプラグインのパッケージマネージャー)のセットアップを行う。
+&lt;code&gt;~/.emacs.d/init.el&lt;/code&gt;に以下を記載し、&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(require &amp;#39;package)
+(let* ((no-ssl (and (memq system-type &amp;#39;(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl &amp;#34;http&amp;#34; &amp;#34;https&amp;#34;)))
+  (add-to-list &amp;#39;package-archives
+               (cons &amp;#34;melpa&amp;#34; (concat proto &amp;#34;://melpa.org/packages/&amp;#34;)) t))
+(package-initialize)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;emacs を起動して&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;M-x package-refresh-contents RET ← 初回のみ実行&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

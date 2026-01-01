@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Sun, 03 Jan 2021 06:16:50 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/index.xml" rel="self" type="application/rss+xml" />
@@ -18,58 +18,145 @@
       <link>https://derbuihan.github.io/posts/mnist_experiment/</link>
       <pubDate>Sun, 03 Jan 2021 06:16:50 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/mnist_experiment/</guid>
-      <description>全結合層のネットワークや CNN を用いて MNIST 画像認識の実験をした。
-実験環境 tensorflow v2.4.0 optimizer=&amp;lsquo;adam&amp;rsquo;, loss=&amp;lsquo;sparse_categorical_crossentropy&amp;rsquo; MNIST のデータの中身 MNIST は 0~9 の手書き文字とそのラベルのデータセットである。 6 万枚の train データと 1 万枚の test データに分かれている。
-この記事では、次のように前処理を行った。
-import tensorflow as tf (X_train, y_train), (X_test, y_test) = tf.keras.datasets.mnist.load_data() X_train = X_train.astype(&amp;#39;float32&amp;#39;) / 255 X_test = X_test.astype(&amp;#39;float32&amp;#39;) / 255 0~255 の値を 255 で割ることで 0~1 の値にすることによって、勾配消失を防ぐことが出来る。
-普通に学習 全結合のモデル (その 1) 下記のような全結合が 2 層のモデルを作った。
-model = tf.keras.models.Sequential([ tf.keras.layers.Flatten(input_shape=(28, 28,)), tf.keras.layers.Dense(512, activation=&amp;#39;relu&amp;#39;), tf.keras.layers.Dropout(0.25), tf.keras.layers.Dense(10, activation=&amp;#39;softmax&amp;#39;) ]) 全パラメータの数は 407,050。</description>
+      <description>&lt;p&gt;全結合層のネットワークや CNN を用いて MNIST 画像認識の実験をした。&lt;/p&gt;
+&lt;h3 id=&#34;実験環境&#34;&gt;実験環境&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;tensorflow v2.4.0&lt;/li&gt;
+&lt;li&gt;optimizer=&amp;lsquo;adam&amp;rsquo;, loss=&amp;lsquo;sparse_categorical_crossentropy&amp;rsquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;mnist-のデータの中身&#34;&gt;MNIST のデータの中身&lt;/h3&gt;
+&lt;p&gt;MNIST は 0~9 の手書き文字とそのラベルのデータセットである。
+6 万枚の train データと 1 万枚の test データに分かれている。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;MNISTのデータ&#34; loading=&#34;lazy&#34; src=&#34;https://derbuihan.github.io/img/mnist_experiment/mnist_data.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;この記事では、次のように前処理を行った。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;tensorflow&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;tf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;X_train&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_train&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;X_test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;keras&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;datasets&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mnist&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;load_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;X_train&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;X_train&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;astype&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;255&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;X_test&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;X_test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;astype&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;255&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;0&lt;del&gt;255 の値を 255 で割ることで 0&lt;/del&gt;1 の値にすることによって、勾配消失を防ぐことが出来る。&lt;/p&gt;
+&lt;h1 id=&#34;普通に学習&#34;&gt;普通に学習&lt;/h1&gt;
+&lt;h3 id=&#34;全結合のモデル-その-1&#34;&gt;全結合のモデル (その 1)&lt;/h3&gt;
+&lt;p&gt;下記のような全結合が 2 層のモデルを作った。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;keras&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;models&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Sequential&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;keras&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;layers&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Flatten&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;input_shape&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;28&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;28&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,)),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;keras&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;layers&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Dense&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;512&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;activation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;keras&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;layers&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Dropout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.25&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;keras&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;layers&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Dense&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;activation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;softmax&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;全パラメータの数は 407,050。&lt;/p&gt;
+&lt;p&gt;学習条件はこんな感じ&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;X_train&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_train&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;epochs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;50&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;validation_split&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;batch_size&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;学習履歴と最終的な正解率と損失関数の値は次のようになった。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;学習履歴&#34; loading=&#34;lazy&#34; src=&#34;https://derbuihan.github.io/img/mnist_experiment/dense_history.png&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Train, loss: 0.0102, accuracy: 0.9975&lt;/li&gt;
+&lt;li&gt;Test, loss: 0.1410, accuracy: 0.9847&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Test データに対する正解率は 98.47%になった。
+validation の損失関数が&lt;code&gt;epoch=5&lt;/code&gt;で最小になり、&lt;code&gt;epoch=50&lt;/code&gt;はその 2 倍ぐらいになっている。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Tensorflow Datasetsにある英語の巨大なテキストのデータセット</title>
       <link>https://derbuihan.github.io/posts/tensorflow_datasets_text/</link>
       <pubDate>Wed, 23 Dec 2020 02:42:40 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/tensorflow_datasets_text/</guid>
-      <description>Tensorflow Datasets の中から英語の文章のデータセットをまとめます。
-データの一覧の取得 以下のコマンドでtensorflow_datasetsから取得出来るデータセットの一覧がわかります。
-&amp;gt;&amp;gt;&amp;gt; import tensorflow_datasets as tfds &amp;gt;&amp;gt;&amp;gt; tfds.list_builders() 英語のデータセット 大量のテキストのデータセット
-c4 Web クロールで集めた巨大なデータセット。英語のは約 1TB ある。 英語以外の言語もデータがあり、すべての言語合わせると 26.76TB あるらしい。
-librispeech_lm 5GB のデータセット
-lm1b 5GB のデータセット
-pg19 古い本のデータセット。10GB ぐらい。
-reddit_disentanglement reddit のデータセット。
-wiki40b wikipedia のデータセット。きれいになってる。
-wikipedia wikipedia のデータセット。きれいになってない。
-その他データセット その他の使えそうなデータセット
-ag_news_subset ニュース記事のタイトルと説明文が、その記事の種類にラベル付けされたデータセット。
-math_dataset 数学に関する英語の問題とその答えのデータセット
-tiny_shakespeare シェイクスピアの文章</description>
+      <description>&lt;p&gt;Tensorflow Datasets の中から英語の文章のデータセットをまとめます。&lt;/p&gt;
+&lt;h3 id=&#34;データの一覧の取得&#34;&gt;データの一覧の取得&lt;/h3&gt;
+&lt;p&gt;以下のコマンドで&lt;code&gt;tensorflow_datasets&lt;/code&gt;から取得出来るデータセットの一覧がわかります。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;tensorflow_datasets&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;tfds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tfds&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;list_builders&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;英語のデータセット&#34;&gt;英語のデータセット&lt;/h3&gt;
+&lt;p&gt;大量のテキストのデータセット&lt;/p&gt;
+&lt;h4 id=&#34;c4&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/c4&#34;&gt;c4&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Web クロールで集めた巨大なデータセット。英語のは約 1TB ある。
+英語以外の言語もデータがあり、すべての言語合わせると 26.76TB あるらしい。&lt;/p&gt;
+&lt;h4 id=&#34;librispeech_&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/librispeech_lm&#34;&gt;librispeech_lm&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;5GB のデータセット&lt;/p&gt;
+&lt;h4 id=&#34;lm1b&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/lm1b&#34;&gt;lm1b&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;5GB のデータセット&lt;/p&gt;
+&lt;h4 id=&#34;pg19&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/pg19&#34;&gt;pg19&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;古い本のデータセット。10GB ぐらい。&lt;/p&gt;
+&lt;h4 id=&#34;reddit_&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/reddit_disentanglement&#34;&gt;reddit_disentanglement&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;reddit のデータセット。&lt;/p&gt;
+&lt;h4 id=&#34;wiki40b&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/wiki40b&#34;&gt;wiki40b&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;wikipedia のデータセット。きれいになってる。&lt;/p&gt;
+&lt;h4 id=&#34;wikipedia&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/wikipedia&#34;&gt;wikipedia&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;wikipedia のデータセット。きれいになってない。&lt;/p&gt;
+&lt;h3 id=&#34;その他データセット&#34;&gt;その他データセット&lt;/h3&gt;
+&lt;p&gt;その他の使えそうなデータセット&lt;/p&gt;
+&lt;h4 id=&#34;ag_&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/ag_news_subset&#34;&gt;ag_news_subset&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;ニュース記事のタイトルと説明文が、その記事の種類にラベル付けされたデータセット。&lt;/p&gt;
+&lt;h4 id=&#34;math_&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/math_dataset&#34;&gt;math_dataset&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;数学に関する英語の問題とその答えのデータセット&lt;/p&gt;
+&lt;h4 id=&#34;tiny_&#34;&gt;&lt;a href=&#34;https://www.tensorflow.org/datasets/catalog/tiny_shakespeare&#34;&gt;tiny_shakespeare&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;シェイクスピアの文章&lt;/p&gt;</description>
     </item>
     <item>
       <title>i7 870にTensorflowの環境構築方法</title>
       <link>https://derbuihan.github.io/posts/tensorflow_i7_870/</link>
       <pubDate>Fri, 18 Dec 2020 12:05:33 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/tensorflow_i7_870/</guid>
-      <description>はじめに 落ちてた i7 870 のパソコンにグラボを 2 枚刺して、機械学習専用サーバーを作りました。 このとき、最新の Tensorflow をインストールしても使えないので苦労しました。 これは i7 870 は Sandy Bridge 以前の CPU なので AVX 命令がないのが原因です。 この記事では i7 870 でも機械学習が出来るように、少し古めの Tensorflow の環境を構築する方法を解説します。
-この情報は 2020 年 12 月に出来た方法です。
-前提 CUDA 10.2 Nvidia Driver Version: 440.100 Anaconda をインストール tensorflow v1.5.0 のインストール方法 はじめに、仮想環境の作成
-$ conda create -n tf1 python==3.7 anaconda $ conda activate tf1 tensorflow-gpu v1.15.0 を指定してインストール
-$ conda install -c anaconda tensorflow-gpu==1.15.0 $ conda install -c anaconda keras ついでに、tensorflow-datasets をインストール(conda で入るのはバージョンが古いので pip でインストール)</description>
+      <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
+&lt;p&gt;落ちてた i7 870 のパソコンにグラボを 2 枚刺して、機械学習専用サーバーを作りました。
+このとき、最新の Tensorflow をインストールしても使えないので苦労しました。
+これは i7 870 は Sandy Bridge 以前の CPU なので AVX 命令がないのが原因です。
+この記事では i7 870 でも機械学習が出来るように、少し古めの Tensorflow の環境を構築する方法を解説します。&lt;/p&gt;
+&lt;p&gt;この情報は 2020 年 12 月に出来た方法です。&lt;/p&gt;
+&lt;h1 id=&#34;前提&#34;&gt;前提&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;CUDA 10.2&lt;/li&gt;
+&lt;li&gt;Nvidia Driver Version: 440.100&lt;/li&gt;
+&lt;li&gt;Anaconda をインストール&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;tensorflow-v150-のインストール方法&#34;&gt;tensorflow v1.5.0 のインストール方法&lt;/h1&gt;
+&lt;p&gt;はじめに、仮想環境の作成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Bash&#34; data-lang=&#34;Bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ conda create -n tf1 &lt;span class=&#34;nv&#34;&gt;python&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;3.7 anaconda
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ conda activate tf1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;tensorflow-gpu v1.15.0 を指定してインストール&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Bash&#34; data-lang=&#34;Bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ conda install -c anaconda tensorflow-gpu&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;1.15.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ conda install -c anaconda keras
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ついでに、tensorflow-datasets をインストール(conda で入るのはバージョンが古いので pip でインストール)&lt;/p&gt;</description>
     </item>
     <item>
       <title>tensorflow-gpuをDockerで動かしたときにIllegal instructionと出たときの対処法</title>
       <link>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</link>
       <pubDate>Thu, 03 Oct 2019 04:47:58 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/docker_tensorflow_gpu/</guid>
-      <description>はじめに Docker 19.03 以降から Docker のコンテナから Nvidia GPU を使いやすくなりました。 tensorflow-gpu を Docker で使う場合は、公式のtensorflow/tensorflow:latest-gpu-py3があります。
-エラーの内容 このコンテナを Sandy Bridge 以前の CPU で使うと
-Illegal instruction (core dumped) というエラーが出ます。 これは AVX という命令が古すぎる CPU にはないために起こるエラーです。
-解決方法 解決方法は
-tensorflow をコンテナ内でビルドする 古い CPU でも動く tensorflow をどっかから取ってくる。 の二種類があります。
-この記事では 2.を使い、Anaconda のリポジトリから取ってきた tensorflow-gpu を用いたDockerfileを書いたので紹介します。
-使い方 Dockerfileを使ってください。
-動作環境 Ubuntu 18.04 docker 19.03 以降 nvidia-driver-435 遊び方 環境がきちんと整っていれば次で動作すると思います。
-$ git clone https://github.com/derbuihan/docker-tensorflow-gpu $ cd docker-tensorflow-gpu $ docker build -t mnist_sample . $ docker run --gpus device=0 -it --rm mnist_sample /bin/bash (base)$ conda activate tf-gpu (tf-gpu)$ wget https://raw.</description>
+      <description>&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;Docker 19.03 以降から Docker のコンテナから Nvidia GPU を使いやすくなりました。
+tensorflow-gpu を Docker で使う場合は、公式の&lt;a href=&#34;https://hub.docker.com/r/tensorflow/tensorflow&#34;&gt;tensorflow/tensorflow:latest-gpu-py3&lt;/a&gt;があります。&lt;/p&gt;
+&lt;h4 id=&#34;エラーの内容&#34;&gt;エラーの内容&lt;/h4&gt;
+&lt;p&gt;このコンテナを Sandy Bridge 以前の CPU で使うと&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Illegal instruction (core dumped)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;というエラーが出ます。
+これは AVX という命令が古すぎる CPU にはないために起こるエラーです。&lt;/p&gt;
+&lt;h4 id=&#34;解決方法&#34;&gt;解決方法&lt;/h4&gt;
+&lt;p&gt;解決方法は&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;tensorflow をコンテナ内でビルドする&lt;/li&gt;
+&lt;li&gt;古い CPU でも動く tensorflow をどっかから取ってくる。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;の二種類があります。&lt;/p&gt;
+&lt;p&gt;この記事では 2.を使い、Anaconda のリポジトリから取ってきた tensorflow-gpu を用いた&lt;a href=&#34;https://github.com/derbuihan/docker-tensorflow-gpu&#34;&gt;Dockerfile&lt;/a&gt;を書いたので紹介します。&lt;/p&gt;
+&lt;h3 id=&#34;使い方&#34;&gt;使い方&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/derbuihan/docker-tensorflow-gpu&#34;&gt;Dockerfile&lt;/a&gt;を使ってください。&lt;/p&gt;
+&lt;h4 id=&#34;動作環境&#34;&gt;動作環境&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 18.04&lt;/li&gt;
+&lt;li&gt;docker 19.03 以降&lt;/li&gt;
+&lt;li&gt;nvidia-driver-435&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;遊び方&#34;&gt;遊び方&lt;/h4&gt;
+&lt;p&gt;環境がきちんと整っていれば次で動作すると思います。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ git clone https://github.com/derbuihan/docker-tensorflow-gpu
+$ cd docker-tensorflow-gpu
+$ docker build -t mnist_sample .
+$ docker run --gpus device=0 -it --rm mnist_sample /bin/bash
+(base)$ conda activate tf-gpu
+(tf-gpu)$ wget https://raw.githubusercontent.com/keras-team/keras/master/examples/mnist_cnn.py
+(tf-gpu)$ python mnist_cnn.py
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
   </channel>
 </rss>

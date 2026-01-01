@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Mon, 17 Oct 2022 02:12:49 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/elm/index.xml" rel="self" type="application/rss+xml" />
@@ -18,23 +18,83 @@
       <link>https://derbuihan.github.io/posts/elm_sampleapp/</link>
       <pubDate>Mon, 17 Oct 2022 02:12:49 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/elm_sampleapp/</guid>
-      <description>はじめに 私はブラウザ上で動く簡単なアプリを作る際にelmを用いることが多い。 elmはブラウザの状態とユーザーの入力を言語の機能とそのアーキテクチャで簡単に管理できるため、簡単なアプリであればほとんど迷うことがなく作りたいものが作れる点で気にいっている。 ただ最近では、elmの便利な状態管理の手法は JS のフレームワークにも導入され、React のコンポーネントを用いた UI 開発や JS のその他の資源と組み合わせることで効率的にフロントエンドを開発することが主流になってきている。 このような流れのためか、ここ数年はelmを用いた開発を行う人が極端に少なくなってきていると感じている。 ただフロントエンドの専門家ではない私からすると、フレームワークの選定に迷う必要がない点や、tsにするかjsにするか迷わなくて良い点や、Haskellライクな言語の楽さとelm-formatの利便性などの観点から考えると、簡単な Web アプリであれば依然としてelmを用いて開発を行うことは悪くない選択肢だと思っている。 この記事ではelmとBootstrapやelmとTailwind CSSを組み合わせたサンプルアプリの構築方法を解説する。
-環境構築(Bootstrap 編) プロジェクトを作成
-$ mkdir elm-bootstrap-sampleapp $ cd elm-bootstrap-sampleapp $ npm init -y bootstrap をインストール（参考）
-$ npm i --save-dev parcel $ npm i --save-dev bootstrap @popperjs/core elm をインストールして環境を構築
-$ npm i --save-dev elm @parcel/transformer-elm $ npx elm init 必要なファイルを作成
-$ touch src/index.html src/index.js src/index.scss src/Main.elm src/index.htmlを書く。
-&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.</description>
+      <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;私はブラウザ上で動く簡単なアプリを作る際に&lt;code&gt;elm&lt;/code&gt;を用いることが多い。
+&lt;code&gt;elm&lt;/code&gt;はブラウザの状態とユーザーの入力を言語の機能とそのアーキテクチャで簡単に管理できるため、簡単なアプリであればほとんど迷うことがなく作りたいものが作れる点で気にいっている。
+ただ最近では、&lt;code&gt;elm&lt;/code&gt;の便利な状態管理の手法は JS のフレームワークにも導入され、React のコンポーネントを用いた UI 開発や JS のその他の資源と組み合わせることで効率的にフロントエンドを開発することが主流になってきている。
+このような流れのためか、ここ数年は&lt;code&gt;elm&lt;/code&gt;を用いた開発を行う人が極端に少なくなってきていると感じている。
+ただフロントエンドの専門家ではない私からすると、フレームワークの選定に迷う必要がない点や、&lt;code&gt;ts&lt;/code&gt;にするか&lt;code&gt;js&lt;/code&gt;にするか迷わなくて良い点や、&lt;code&gt;Haskell&lt;/code&gt;ライクな言語の楽さと&lt;code&gt;elm-format&lt;/code&gt;の利便性などの観点から考えると、簡単な Web アプリであれば依然として&lt;code&gt;elm&lt;/code&gt;を用いて開発を行うことは悪くない選択肢だと思っている。
+この記事では&lt;code&gt;elm&lt;/code&gt;と&lt;code&gt;Bootstrap&lt;/code&gt;や&lt;code&gt;elm&lt;/code&gt;と&lt;code&gt;Tailwind CSS&lt;/code&gt;を組み合わせたサンプルアプリの構築方法を解説する。&lt;/p&gt;
+&lt;h2 id=&#34;環境構築bootstrap-編&#34;&gt;環境構築(Bootstrap 編)&lt;/h2&gt;
+&lt;p&gt;プロジェクトを作成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ mkdir elm-bootstrap-sampleapp
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; elm-bootstrap-sampleapp
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ npm init -y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;bootstrap をインストール（&lt;a href=&#34;https://getbootstrap.com/docs/5.2/getting-started/parcel/&#34;&gt;参考&lt;/a&gt;）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ npm i --save-dev parcel
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ npm i --save-dev bootstrap @popperjs/core
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;elm をインストールして環境を構築&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ npm i --save-dev elm @parcel/transformer-elm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ npx elm init
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;必要なファイルを作成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ touch src/index.html src/index.js src/index.scss src/Main.elm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;src/index.html&lt;/code&gt;を書く。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;charset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;UTF-8&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;viewport&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;index.scss&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;rel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;root&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;module&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;index.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;src/index.js&lt;/code&gt;を書く。
+&lt;code&gt;bootstrap&lt;/code&gt;と&lt;code&gt;elm&lt;/code&gt;の&lt;code&gt;javascript&lt;/code&gt;が共存している。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Elmで作ったものをGitLab CI/CDをつかってGitLab Pagesに公開する</title>
       <link>https://derbuihan.github.io/posts/elm_gitlab_cicd/</link>
       <pubDate>Mon, 08 Apr 2019 23:46:31 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/elm_gitlab_cicd/</guid>
-      <description>Elm でフーリエ級数展開やライフゲームを制作したので CI/CD を試してみました。 この記事では Elm で作ったものを GitLab CI/CD を使って GitLab Pages に deploy する方法を紹介します。
-コードを書く $ elm init $ vim src/Main.elm 今回はsrc/Main.elmを変換して公開します。
-git 管理する GitLab のアカウントを持ってない人はアカウントを作ってください。
-$ git init $ gibo dump elm &amp;gt; .gitignore $ git add elm.json src/Main.elm .gitignore $ git commit -m &amp;#34;first commit&amp;#34; $ git remote add origin git@gitlab.com:&amp;lt;username&amp;gt;/&amp;lt;reponame&amp;gt;.git $ git push --set-upstream origin master gibo は.gitignore を自動生成するコマンドです。(参考) .gitlab-ci.yml を作成 $ vim .gitlab-ci.yml 以下を.gitlab-ci.yml にコピペする</description>
+      <description>&lt;p&gt;Elm で&lt;a href=&#34;https://derbuihan.gitlab.io/fourier/&#34;&gt;フーリエ級数展開&lt;/a&gt;や&lt;a href=&#34;https://derbuihan.gitlab.io/LifeGame/&#34;&gt;ライフゲーム&lt;/a&gt;を制作したので CI/CD を試してみました。
+この記事では Elm で作ったものを GitLab CI/CD を使って GitLab Pages に deploy する方法を紹介します。&lt;/p&gt;
+&lt;h3 id=&#34;コードを書く&#34;&gt;コードを書く&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ elm init
+$ vim src/Main.elm
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;今回は&lt;code&gt;src/Main.elm&lt;/code&gt;を変換して公開します。&lt;/p&gt;
+&lt;h3 id=&#34;git-管理する&#34;&gt;git 管理する&lt;/h3&gt;
+&lt;p&gt;GitLab のアカウントを持ってない人はアカウントを作ってください。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ git init
+$ gibo dump elm &amp;gt; .gitignore
+$ git add elm.json src/Main.elm .gitignore
+$ git commit -m &amp;#34;first commit&amp;#34;
+$ git remote add origin git@gitlab.com:&amp;lt;username&amp;gt;/&amp;lt;reponame&amp;gt;.git
+$ git push --set-upstream origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;gibo は.gitignore を自動生成するコマンドです。(&lt;a href=&#34;https://qiita.com/tmknom/items/c4bcebe17d25381fa45d&#34;&gt;参考&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;gitlab-ciyml-を作成&#34;&gt;.gitlab-ci.yml を作成&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ vim .gitlab-ci.yml
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以下を.gitlab-ci.yml にコピペする&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;image: node:alpine
+
+pages:
+  cache:
+    paths:
+      - node_modules/
+  stage: deploy
+  script:
+    - npm install -g --unsafe-perm elm
+    - elm make src/Main.elm --optimize --output=public/index.html
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;あとは&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

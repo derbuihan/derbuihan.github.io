@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Mon, 08 Apr 2019 23:46:31 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/gitlab/index.xml" rel="self" type="application/rss+xml" />
@@ -18,10 +18,42 @@
       <link>https://derbuihan.github.io/posts/elm_gitlab_cicd/</link>
       <pubDate>Mon, 08 Apr 2019 23:46:31 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/elm_gitlab_cicd/</guid>
-      <description>Elm でフーリエ級数展開やライフゲームを制作したので CI/CD を試してみました。 この記事では Elm で作ったものを GitLab CI/CD を使って GitLab Pages に deploy する方法を紹介します。
-コードを書く $ elm init $ vim src/Main.elm 今回はsrc/Main.elmを変換して公開します。
-git 管理する GitLab のアカウントを持ってない人はアカウントを作ってください。
-$ git init $ gibo dump elm &amp;gt; .gitignore $ git add elm.json src/Main.elm .gitignore $ git commit -m &amp;#34;first commit&amp;#34; $ git remote add origin git@gitlab.com:&amp;lt;username&amp;gt;/&amp;lt;reponame&amp;gt;.git $ git push --set-upstream origin master gibo は.gitignore を自動生成するコマンドです。(参考) .gitlab-ci.yml を作成 $ vim .gitlab-ci.yml 以下を.gitlab-ci.yml にコピペする</description>
+      <description>&lt;p&gt;Elm で&lt;a href=&#34;https://derbuihan.gitlab.io/fourier/&#34;&gt;フーリエ級数展開&lt;/a&gt;や&lt;a href=&#34;https://derbuihan.gitlab.io/LifeGame/&#34;&gt;ライフゲーム&lt;/a&gt;を制作したので CI/CD を試してみました。
+この記事では Elm で作ったものを GitLab CI/CD を使って GitLab Pages に deploy する方法を紹介します。&lt;/p&gt;
+&lt;h3 id=&#34;コードを書く&#34;&gt;コードを書く&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ elm init
+$ vim src/Main.elm
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;今回は&lt;code&gt;src/Main.elm&lt;/code&gt;を変換して公開します。&lt;/p&gt;
+&lt;h3 id=&#34;git-管理する&#34;&gt;git 管理する&lt;/h3&gt;
+&lt;p&gt;GitLab のアカウントを持ってない人はアカウントを作ってください。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ git init
+$ gibo dump elm &amp;gt; .gitignore
+$ git add elm.json src/Main.elm .gitignore
+$ git commit -m &amp;#34;first commit&amp;#34;
+$ git remote add origin git@gitlab.com:&amp;lt;username&amp;gt;/&amp;lt;reponame&amp;gt;.git
+$ git push --set-upstream origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;gibo は.gitignore を自動生成するコマンドです。(&lt;a href=&#34;https://qiita.com/tmknom/items/c4bcebe17d25381fa45d&#34;&gt;参考&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;gitlab-ciyml-を作成&#34;&gt;.gitlab-ci.yml を作成&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ vim .gitlab-ci.yml
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以下を.gitlab-ci.yml にコピペする&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;image: node:alpine
+
+pages:
+  cache:
+    paths:
+      - node_modules/
+  stage: deploy
+  script:
+    - npm install -g --unsafe-perm elm
+    - elm make src/Main.elm --optimize --output=public/index.html
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;あとは&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

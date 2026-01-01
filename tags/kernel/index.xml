@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Fri, 21 Oct 2022 23:42:59 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
@@ -18,27 +18,65 @@
       <link>https://derbuihan.github.io/posts/android_tcp_rto_hack/</link>
       <pubDate>Fri, 21 Oct 2022 23:42:59 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/android_tcp_rto_hack/</guid>
-      <description>はじめに Linux カーネルを書き換えて TCP の再送時間のパレート最適性を裏切る方法はこの記事で実験を行った。 ただ私のような Mac ユーザーは Linux をサーバー用途でしか使わないため、カーネルを書き換えたところでそこまで得できない。 やはりこれを使うにはクライアント端末で Kernel を書き換える方が楽しい。 私が普段使ってるクライアント端末で Kernel を書き換えられそうなもの、そう Android である。 この記事では自分の持ってるスマホに、私が書き換えた kernel をインストールして実験してみる。 （この記事はただの検証記事であり TCP のプロトコルを裏切ることを推奨するものではありません。私も書き換えたカーネルを普段使いしているわけではありません。）
-Android をソースからビルドする方法 この記事では PixelExperience という Android の Custom firmware のビルド方法を紹介する。 ビルドに用いたマシンは、OS: Ubuntu 22.04 LTS, メモリ: 16GB (+ Swap 32GB)である。 以下の内容は、この記事を参考にした。
-fastboot や adb や git や python をインストールする。
-sudo apt install android-sdk git python-is-python3 android をビルドするための依存関係全部インストールするスクリプト実行する。
-git clone https://github.com/akhilnarang/scripts cd scripts ./setup/android_build_env.sh ビルド用のディレクトリを作る。
-mkdir -p ~/android/pe git の設定を作る。（すでにやってたら必要なし）</description>
+      <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;Linux カーネルを書き換えて TCP の再送時間のパレート最適性を裏切る方法は&lt;a href=&#34;https://derbuihan.github.io/posts/android_tcp_rto_hack/&#34;&gt;この記事&lt;/a&gt;で実験を行った。
+ただ私のような Mac ユーザーは Linux をサーバー用途でしか使わないため、カーネルを書き換えたところでそこまで得できない。
+やはりこれを使うにはクライアント端末で Kernel を書き換える方が楽しい。
+私が普段使ってるクライアント端末で Kernel を書き換えられそうなもの、そう Android である。
+この記事では自分の持ってるスマホに、私が書き換えた kernel をインストールして実験してみる。
+（この記事はただの検証記事であり TCP のプロトコルを裏切ることを推奨するものではありません。私も書き換えたカーネルを普段使いしているわけではありません。）&lt;/p&gt;
+&lt;h2 id=&#34;android-をソースからビルドする方法&#34;&gt;Android をソースからビルドする方法&lt;/h2&gt;
+&lt;p&gt;この記事では PixelExperience という Android の Custom firmware のビルド方法を紹介する。
+ビルドに用いたマシンは、OS: Ubuntu 22.04 LTS, メモリ: 16GB (+ Swap 32GB)である。
+以下の内容は、&lt;a href=&#34;https://wiki.pixelexperience.org/devices/sweet/build/&#34;&gt;この記事&lt;/a&gt;を参考にした。&lt;/p&gt;
+&lt;p&gt;fastboot や adb や git や python をインストールする。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Bash&#34; data-lang=&#34;Bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install android-sdk git python-is-python3
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;android をビルドするための依存関係全部インストールするスクリプト実行する。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Bash&#34; data-lang=&#34;Bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/akhilnarang/scripts
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; scripts
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./setup/android_build_env.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ビルド用のディレクトリを作る。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Bash&#34; data-lang=&#34;Bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir -p ~/android/pe
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;git の設定を作る。（すでにやってたら必要なし）&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linuxカーネルを書き換えてTCPの再送時間のパレート最適性を裏切る方法</title>
       <link>https://derbuihan.github.io/posts/linux_tcp_rto_hack/</link>
       <pubDate>Fri, 16 Sep 2022 21:12:37 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/linux_tcp_rto_hack/</guid>
-      <description>はじめに インターネットには多数のデバイスが存在しており、その多数のデバイスが通信し合うために通信プロトコルが定義されている。 様々な通信プロトコルを勉強していくと、ネットワーク内の通信が正常に行えるためにはそのネットワークの参加者全員が通信プロトコルを守っていることが必要になることに気がつく。
-たとえば、TCP の通信が失敗したときの再送の間隔について説明する。 今回はわかりやすく普通のサーバー・クライアントモデルの Web サービスを考え、サーバー対してクライアントから大量のアクセスが集まりそのリソースが枯渇した状況を考える。 サーバーはリソースの枯渇により全てのクライアントと TCP のコネクションを張れないことから、一部クライアントからのアクセスを拒否する。 拒否されたクライアントは再度サーバーに対してアクセスしようと試みる。 これをアクセス出来るまでクライアントは繰り返すわけだが、その間隔は実は一定ではない。 最初は 1 秒程度で素早く再送するが、サーバーが何度もアクセスを拒否すると、クライアントの方で自動で再送の間隔を指数関数的に伸ばしてアクセスするようになっている。 このような仕様になってる理由は、全員が間隔を開けずに即座に繰り返し通信を試みた場合はサーバーのリソースは一生枯渇したままで回復しない可能性があるためである。 一方でクライアント側で指数関数的に間隔を伸ばしていくと、サーバーがアクセスを拒否し続ければいつかはリソースが回復し少しクライアントの通信を捌けるようになる。 そのため、TCP ではアクセスに失敗したときクライアント側で再送する間隔を指数関数的に引き伸ばしていくというプロトコルになっているのである。
-ここで注目したいのが、TCP の再送間隔の調整はクライアントで行われるという点である。 再送の間隔を極端に短くして再度送信するようなデバイスを作ったとしたら、そのデバイスはネットワークの中で唯一得することが出来るのである。 囚人のジレンマの言葉で言えば、現在のネットワークは全員が黙秘しているパレート最適な状態であるから、自分だけ自白することで自分だけの利得を最大化出来るのである。 (世界中の数百億台というディバイスでパレート最適な状態を保っているというのは考え深いものがある。) このようなインターネットのプロトコルのパレート最適性を裏切る方法は TCP の再送時間以外にも探せばいくつもあるだろう。 この記事では TCP の再送間隔について Linux カーネルを弄って実験をする。
-実験条件 OS: Ubuntu 22.04.1 LTS Linux kernel version: 5.15.73
-Server と Client の IP アドレスは
-Server: 192.168.0.10 Client: 192.168.0.20 とする。
-TCP がアクセスを再試行する回数は/etc/sysctl.conf内に、
-net.ipv4.tcp_syn_retries = 5 を書くことで調整が可能である。（この場合は 5 回リトライする）
-つぎに、TCP の再送時間の計測方法を説明する。 まず Server で 23 番の TCP ポートを塞ぐ。 クライアント側で Server に telnet でアクセスを行う。</description>
+      <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;インターネットには多数のデバイスが存在しており、その多数のデバイスが通信し合うために通信プロトコルが定義されている。
+様々な通信プロトコルを勉強していくと、ネットワーク内の通信が正常に行えるためにはそのネットワークの参加者全員が通信プロトコルを守っていることが必要になることに気がつく。&lt;/p&gt;
+&lt;p&gt;たとえば、TCP の通信が失敗したときの再送の間隔について説明する。
+今回はわかりやすく普通のサーバー・クライアントモデルの Web サービスを考え、サーバー対してクライアントから大量のアクセスが集まりそのリソースが枯渇した状況を考える。
+サーバーはリソースの枯渇により全てのクライアントと TCP のコネクションを張れないことから、一部クライアントからのアクセスを拒否する。
+拒否されたクライアントは再度サーバーに対してアクセスしようと試みる。
+これをアクセス出来るまでクライアントは繰り返すわけだが、その間隔は実は一定ではない。
+最初は 1 秒程度で素早く再送するが、サーバーが何度もアクセスを拒否すると、クライアントの方で自動で再送の間隔を指数関数的に伸ばしてアクセスするようになっている。
+このような仕様になってる理由は、全員が間隔を開けずに即座に繰り返し通信を試みた場合はサーバーのリソースは一生枯渇したままで回復しない可能性があるためである。
+一方でクライアント側で指数関数的に間隔を伸ばしていくと、サーバーがアクセスを拒否し続ければいつかはリソースが回復し少しクライアントの通信を捌けるようになる。
+そのため、TCP ではアクセスに失敗したときクライアント側で再送する間隔を指数関数的に引き伸ばしていくというプロトコルになっているのである。&lt;/p&gt;
+&lt;p&gt;ここで注目したいのが、TCP の再送間隔の調整はクライアントで行われるという点である。
+再送の間隔を極端に短くして再度送信するようなデバイスを作ったとしたら、そのデバイスはネットワークの中で唯一得することが出来るのである。
+囚人のジレンマの言葉で言えば、現在のネットワークは全員が黙秘しているパレート最適な状態であるから、自分だけ自白することで自分だけの利得を最大化出来るのである。
+(世界中の数百億台というディバイスでパレート最適な状態を保っているというのは考え深いものがある。)
+このようなインターネットのプロトコルのパレート最適性を裏切る方法は TCP の再送時間以外にも探せばいくつもあるだろう。
+この記事では TCP の再送間隔について Linux カーネルを弄って実験をする。&lt;/p&gt;
+&lt;h2 id=&#34;実験条件&#34;&gt;実験条件&lt;/h2&gt;
+&lt;p&gt;OS: Ubuntu 22.04.1 LTS
+Linux kernel version: 5.15.73&lt;/p&gt;
+&lt;p&gt;Server と Client の IP アドレスは&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Server: 192.168.0.10&lt;/li&gt;
+&lt;li&gt;Client: 192.168.0.20&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;とする。&lt;/p&gt;
+&lt;p&gt;TCP がアクセスを再試行する回数は&lt;code&gt;/etc/sysctl.conf&lt;/code&gt;内に、&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;net.ipv4.tcp_syn_retries = 5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;を書くことで調整が可能である。（この場合は 5 回リトライする）&lt;/p&gt;
+&lt;p&gt;つぎに、TCP の再送時間の計測方法を説明する。
+まず Server で 23 番の TCP ポートを塞ぐ。
+クライアント側で Server に telnet でアクセスを行う。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

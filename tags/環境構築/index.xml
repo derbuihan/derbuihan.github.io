@@ -9,7 +9,7 @@
       <url>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://derbuihan.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
     <lastBuildDate>Sun, 23 Oct 2022 03:53:00 +0900</lastBuildDate>
     <atom:link href="https://derbuihan.github.io/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/index.xml" rel="self" type="application/rss+xml" />
@@ -18,67 +18,139 @@
       <link>https://derbuihan.github.io/posts/coq_install/</link>
       <pubDate>Sun, 23 Oct 2022 03:53:00 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/coq_install/</guid>
-      <description>はじめに 久々に Coq で遊びたくなったので、M1 Mac にインストールしてみた。 最近の Coq は VSCode で書くのが主流？らしいが、今回は Emacs + Proof-General で環境構築を行う。
-環境構築の方法 基本的にbrewやmelpaなどの package 管理システムになるべく依存した形で環境構築を行う。
-はじめに、Coqのインストール(&amp;ndash;build-from-source をつけないとcoqtop実行時にエラーが出た。)
-brew install coq --build-from-source GUI 版 Emacs のインストール
-brew install emacs --cask Emacs の設定 次は Emacs の設定を行う。 Emacs の設定ファイルは~/.emacs.d/init.elに記載する。
-まずはmelpa(Emacs のプラグインのパッケージマネージャー)のセットアップを行う。 ~/.emacs.d/init.elに以下を記載し、
-(require &amp;#39;package) (let* ((no-ssl (and (memq system-type &amp;#39;(windows-nt ms-dos)) (not (gnutls-available-p)))) (proto (if no-ssl &amp;#34;http&amp;#34; &amp;#34;https&amp;#34;))) (add-to-list &amp;#39;package-archives (cons &amp;#34;melpa&amp;#34; (concat proto &amp;#34;://melpa.org/packages/&amp;#34;)) t)) (package-initialize) emacs を起動して</description>
+      <description>&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;久々に Coq で遊びたくなったので、M1 Mac にインストールしてみた。
+最近の Coq は VSCode で書くのが主流？らしいが、今回は Emacs + Proof-General で環境構築を行う。&lt;/p&gt;
+&lt;h3 id=&#34;環境構築の方法&#34;&gt;環境構築の方法&lt;/h3&gt;
+&lt;p&gt;基本的に&lt;code&gt;brew&lt;/code&gt;や&lt;code&gt;melpa&lt;/code&gt;などの package 管理システムになるべく依存した形で環境構築を行う。&lt;/p&gt;
+&lt;p&gt;はじめに、&lt;code&gt;Coq&lt;/code&gt;のインストール(&amp;ndash;build-from-source をつけないと&lt;code&gt;coqtop&lt;/code&gt;実行時にエラーが出た。)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;brew install coq --build-from-source
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;GUI 版 Emacs のインストール&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;brew install emacs --cask
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;emacs-の設定&#34;&gt;Emacs の設定&lt;/h3&gt;
+&lt;p&gt;次は Emacs の設定を行う。
+Emacs の設定ファイルは&lt;code&gt;~/.emacs.d/init.el&lt;/code&gt;に記載する。&lt;/p&gt;
+&lt;p&gt;まずは&lt;code&gt;melpa&lt;/code&gt;(Emacs のプラグインのパッケージマネージャー)のセットアップを行う。
+&lt;code&gt;~/.emacs.d/init.el&lt;/code&gt;に以下を記載し、&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(require &amp;#39;package)
+(let* ((no-ssl (and (memq system-type &amp;#39;(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl &amp;#34;http&amp;#34; &amp;#34;https&amp;#34;)))
+  (add-to-list &amp;#39;package-archives
+               (cons &amp;#34;melpa&amp;#34; (concat proto &amp;#34;://melpa.org/packages/&amp;#34;)) t))
+(package-initialize)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;emacs を起動して&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;M-x package-refresh-contents RET ← 初回のみ実行&lt;/p&gt;</description>
     </item>
     <item>
       <title>i7 870にTensorflowの環境構築方法</title>
       <link>https://derbuihan.github.io/posts/tensorflow_i7_870/</link>
       <pubDate>Fri, 18 Dec 2020 12:05:33 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/tensorflow_i7_870/</guid>
-      <description>はじめに 落ちてた i7 870 のパソコンにグラボを 2 枚刺して、機械学習専用サーバーを作りました。 このとき、最新の Tensorflow をインストールしても使えないので苦労しました。 これは i7 870 は Sandy Bridge 以前の CPU なので AVX 命令がないのが原因です。 この記事では i7 870 でも機械学習が出来るように、少し古めの Tensorflow の環境を構築する方法を解説します。
-この情報は 2020 年 12 月に出来た方法です。
-前提 CUDA 10.2 Nvidia Driver Version: 440.100 Anaconda をインストール tensorflow v1.5.0 のインストール方法 はじめに、仮想環境の作成
-$ conda create -n tf1 python==3.7 anaconda $ conda activate tf1 tensorflow-gpu v1.15.0 を指定してインストール
-$ conda install -c anaconda tensorflow-gpu==1.15.0 $ conda install -c anaconda keras ついでに、tensorflow-datasets をインストール(conda で入るのはバージョンが古いので pip でインストール)</description>
+      <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
+&lt;p&gt;落ちてた i7 870 のパソコンにグラボを 2 枚刺して、機械学習専用サーバーを作りました。
+このとき、最新の Tensorflow をインストールしても使えないので苦労しました。
+これは i7 870 は Sandy Bridge 以前の CPU なので AVX 命令がないのが原因です。
+この記事では i7 870 でも機械学習が出来るように、少し古めの Tensorflow の環境を構築する方法を解説します。&lt;/p&gt;
+&lt;p&gt;この情報は 2020 年 12 月に出来た方法です。&lt;/p&gt;
+&lt;h1 id=&#34;前提&#34;&gt;前提&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;CUDA 10.2&lt;/li&gt;
+&lt;li&gt;Nvidia Driver Version: 440.100&lt;/li&gt;
+&lt;li&gt;Anaconda をインストール&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;tensorflow-v150-のインストール方法&#34;&gt;tensorflow v1.5.0 のインストール方法&lt;/h1&gt;
+&lt;p&gt;はじめに、仮想環境の作成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Bash&#34; data-lang=&#34;Bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ conda create -n tf1 &lt;span class=&#34;nv&#34;&gt;python&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;3.7 anaconda
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ conda activate tf1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;tensorflow-gpu v1.15.0 を指定してインストール&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Bash&#34; data-lang=&#34;Bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ conda install -c anaconda tensorflow-gpu&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;1.15.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ conda install -c anaconda keras
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ついでに、tensorflow-datasets をインストール(conda で入るのはバージョンが古いので pip でインストール)&lt;/p&gt;</description>
     </item>
     <item>
       <title>MacでCoqのバージョンを指定してインストール</title>
       <link>https://derbuihan.github.io/posts/coq_downgrade/</link>
       <pubDate>Thu, 14 Feb 2019 01:14:02 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/coq_downgrade/</guid>
-      <description>いつものように
-$ brew update &amp;amp;&amp;amp; brew upgrade してたら coq の version が 8.9.0 になってしまい、今まで書いていたコードが動かなくなったので、coq の version を 8.8.2 にします。
-ほとんど ↓ の記事を見ながらやりました。
-参考: Homebrew で旧バージョンのパッケージをインストールしたい
-brew でバージョン指定してインストールする方法 ローカルに Coq がある場合 $ brew info coq を実行して version 8.8.2 がローカルに残っているなと思ったら
-$ brew switch coq 8.8.2 で coq の version を変えれるらしいです。
-ローカルに Coq がない場合 まず、
-$ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula $ git log coq.rb で適当に指定の version を見つける。
-commit ef92c34e061cb99920f7ae05d3ba205fccc5f1b8 Author: BrewTestBot &amp;lt;homebrew-test-bot@lists.sfconservancy.org&amp;gt; Date: Wed Oct 31 17:08:20 2018 +0000 coq: update 8.</description>
+      <description>&lt;p&gt;いつものように&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew update &amp;amp;&amp;amp; brew upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;してたら coq の version が 8.9.0 になってしまい、今まで書いていたコードが動かなくなったので、coq の version を 8.8.2 にします。&lt;/p&gt;
+&lt;p&gt;ほとんど ↓ の記事を見ながらやりました。&lt;/p&gt;
+&lt;p&gt;参考: &lt;a href=&#34;https://qiita.com/KyoheiG3/items/912bcc27462871487845&#34;&gt;Homebrew で旧バージョンのパッケージをインストールしたい&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;brew-でバージョン指定してインストールする方法&#34;&gt;brew でバージョン指定してインストールする方法&lt;/h3&gt;
+&lt;h4 id=&#34;ローカルに-coq-がある場合&#34;&gt;ローカルに Coq がある場合&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew info coq
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;を実行して version 8.8.2 がローカルに残っているなと思ったら&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew switch coq 8.8.2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;で coq の version を変えれるらしいです。&lt;/p&gt;
+&lt;h4 id=&#34;ローカルに-coq-がない場合&#34;&gt;ローカルに Coq がない場合&lt;/h4&gt;
+&lt;p&gt;まず、&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula
+$ git log coq.rb
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;で適当に指定の version を見つける。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;commit ef92c34e061cb99920f7ae05d3ba205fccc5f1b8
+Author: BrewTestBot &amp;lt;homebrew-test-bot@lists.sfconservancy.org&amp;gt;
+Date:   Wed Oct 31 17:08:20 2018 +0000
+
+    coq: update 8.8.2 bottle.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;今回は、↑ の version に downgrade したいと思います。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Root権限がない環境で色々インストールする。</title>
       <link>https://derbuihan.github.io/posts/without_root/</link>
       <pubDate>Sat, 12 Jan 2019 19:26:34 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/without_root/</guid>
-      <description>Root なしで人権を得る方法です。
-Tmux をビルドする。 こんな素晴らしい記事がある。 これをコピペして実行。
-linuxbrewを用いる。 以下を~/.bashrcに追加して再度ログイン。
-if [ ! -r ~/.linuxbrew ]; then git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew fi if [ -r ~/.linuxbrew ]; then export PATH=&amp;#34;$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH&amp;#34; export MANPATH=&amp;#34;$MANPATH:$HOME/.linuxbrew/share/man&amp;#34; export INFOPATH=&amp;#34;$INFOPATH:$HOME/.linuxbrew/share/info&amp;#34; #export LD_LIBRARY_PATH=&amp;#34;$LD_LIBRARY_PATH:$HOME/.linuxbrew/lib&amp;#34; fi </description>
+      <description>&lt;p&gt;Root なしで人権を得る方法です。&lt;/p&gt;
+&lt;h3 id=&#34;tmux-をビルドする&#34;&gt;Tmux をビルドする。&lt;/h3&gt;
+&lt;p&gt;こんな素晴らしい&lt;a href=&#34;https://gist.github.com/ryin/3106801&#34;&gt;記事&lt;/a&gt;がある。
+&lt;a href=&#34;https://gist.github.com/derbuihan/4f100cdabce545f80c5a48223c9c7057&#34;&gt;これ&lt;/a&gt;をコピペして実行。&lt;/p&gt;
+&lt;h3 id=&#34;linuxbrewを用いる&#34;&gt;&lt;a href=&#34;http://linuxbrew.sh/&#34;&gt;linuxbrew&lt;/a&gt;を用いる。&lt;/h3&gt;
+&lt;p&gt;以下を&lt;code&gt;~/.bashrc&lt;/code&gt;に追加して再度ログイン。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if [ ! -r ~/.linuxbrew ]; then
+  git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew
+fi
+
+if [ -r ~/.linuxbrew ]; then
+  export PATH=&amp;#34;$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH&amp;#34;
+  export MANPATH=&amp;#34;$MANPATH:$HOME/.linuxbrew/share/man&amp;#34;
+  export INFOPATH=&amp;#34;$INFOPATH:$HOME/.linuxbrew/share/info&amp;#34;
+  #export LD_LIBRARY_PATH=&amp;#34;$LD_LIBRARY_PATH:$HOME/.linuxbrew/lib&amp;#34;
+fi
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Atomで入れるプラグイン一覧</title>
       <link>https://derbuihan.github.io/posts/atom_package/</link>
       <pubDate>Sat, 29 Dec 2018 23:35:55 +0900</pubDate>
       <guid>https://derbuihan.github.io/posts/atom_package/</guid>
-      <description>随時更新していきます。
-通常編 とりあえず Atom をインストールしたら入れるプラグイン
-atomic-emacs Atom で Emacs のキーバインドを使う。
-japanese-menu 設定を日本語化
-platformio-ide-terminal Ctrl-`で下からターミナルが出てくるようになる。
-project-manager project を管理できるようになる。
-LaTex 環境編 tex を Atom で書くときのプラグイン一覧。
-language-latex シンタックスハイライト
-latex tex のコンパイル
-latexer 補完
-pdf-view pdf を見れるようになる。
-感想 Atom で Coq やりたい。 Atom では Vim より Emacs のが使いやすい。 </description>
+      <description>&lt;p&gt;随時更新していきます。&lt;/p&gt;
+&lt;h3 id=&#34;通常編&#34;&gt;通常編&lt;/h3&gt;
+&lt;p&gt;とりあえず Atom をインストールしたら入れるプラグイン&lt;/p&gt;
+&lt;h4 id=&#34;atomic-emacs&#34;&gt;&lt;a href=&#34;https://atom.io/packages/atomic-emacs&#34;&gt;atomic-emacs&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Atom で Emacs のキーバインドを使う。&lt;/p&gt;
+&lt;h4 id=&#34;japanese-menu&#34;&gt;&lt;a href=&#34;https://atom.io/packages/japanese-menu&#34;&gt;japanese-menu&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;設定を日本語化&lt;/p&gt;
+&lt;h4 id=&#34;platformio-ide-terminal&#34;&gt;&lt;a href=&#34;https://atom.io/packages/platformio-ide-terminal&#34;&gt;platformio-ide-terminal&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Ctrl-`で下からターミナルが出てくるようになる。&lt;/p&gt;
+&lt;h4 id=&#34;project-manager&#34;&gt;&lt;a href=&#34;https://atom.io/packages/project-managerv&#34;&gt;project-manager&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;project を管理できるようになる。&lt;/p&gt;
+&lt;h3 id=&#34;latex-環境編&#34;&gt;LaTex 環境編&lt;/h3&gt;
+&lt;p&gt;tex を Atom で書くときのプラグイン一覧。&lt;/p&gt;
+&lt;h4 id=&#34;language-latex&#34;&gt;&lt;a href=&#34;https://atom.io/packages/language-latex&#34;&gt;language-latex&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;シンタックスハイライト&lt;/p&gt;
+&lt;h4 id=&#34;latex&#34;&gt;&lt;a href=&#34;https://atom.io/packages/latex&#34;&gt;latex&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;tex のコンパイル&lt;/p&gt;
+&lt;h4 id=&#34;latexer&#34;&gt;&lt;a href=&#34;https://atom.io/packages/latexer&#34;&gt;latexer&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;補完&lt;/p&gt;
+&lt;h4 id=&#34;pdf-view&#34;&gt;&lt;a href=&#34;https://atom.io/packages/pdf-view&#34;&gt;pdf-view&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;pdf を見れるようになる。&lt;/p&gt;
+&lt;h3 id=&#34;感想&#34;&gt;感想&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Atom で Coq やりたい。&lt;/li&gt;
+&lt;li&gt;Atom では Vim より Emacs のが使いやすい。&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>
